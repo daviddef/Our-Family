@@ -1,0 +1,70 @@
+---
+// The same tree as BigTree, laid out vertically for a phone. The wide SVG is
+// unreadable below about 760px — only a third of it fits — so on narrow screens
+// this replaces it: read from the top down, the families feed into grandparents,
+// the grandparents into a parent, and both parents into the boys.
+const { base } = Astro.props;
+
+const sides = [
+  {
+    title: "Mum’s side",
+    parent: { rel: "Mum", name: "C" },
+    groups: [
+      { gp: { rel: "Grandpa", name: "I", k: "britain" },
+        fams: [{ k: "britain", slug: "darcy", name: "D’Arcy", land: "England & Ireland", ggp: "Kenneth" }] },
+      { gp: { rel: "Grandma", name: "G", k: "italy" },
+        fams: [{ k: "italy", slug: "falco", name: "Falco", land: "Italy", ggp: "C" }] },
+    ],
+  },
+  {
+    title: "Dad’s side",
+    parent: { rel: "Dad", name: "D" },
+    groups: [
+      { gp: { rel: "Grandma", name: "C", k: "argentina" },
+        fams: [
+          { k: "safrica", slug: "booyzen", name: "Booyzen", land: "South Africa", ggp: "Catherine" },
+          { k: "argentina", slug: "lerena", name: "Lerena", land: "Argentina", ggp: "Nuno" },
+        ] },
+      { gp: { rel: "Grandpa", name: "I", k: "croatia" },
+        fams: [
+          { k: "croatia", slug: "defranceski", name: "Defranceski", land: "Croatia", ggp: "Ivan" },
+          { k: "blazevic", slug: "blazevic", name: "Blažević", land: "Croatia", ggp: "Hedviga" },
+        ] },
+    ],
+  },
+];
+---
+
+<div class="mtree">
+  {sides.map(side => (
+    <section class="mside">
+      <h3>{side.title}</h3>
+      {side.groups.map(g => (
+        <div class="mgroup">
+          {g.fams.map(f => (
+            <a class={`mfam c-${f.k}`} href={`${base}${f.slug}/`}>
+              <span class="bar" aria-hidden="true"></span>
+              <span class="nm">{f.name}</span>
+              <span class="ld">{f.land}</span>
+              <span class="gg">{f.ggp}</span>
+            </a>
+          ))}
+          <div class={`mgp c-${g.gp.k}`}>
+            <span class="arw" aria-hidden="true">↓</span>
+            <b>{g.gp.rel}</b><i>{g.gp.name}</i>
+          </div>
+        </div>
+      ))}
+      <div class="mparent">
+        <span class="arw" aria-hidden="true">↓</span>
+        <b>{side.parent.rel}</b><i>{side.parent.name}</i>
+      </div>
+    </section>
+  ))}
+
+  <div class="mboys">
+    <span class="arw" aria-hidden="true">↓</span>
+    <div class="pair"><span>A</span><span>M</span></div>
+    <small>Brisbane, Australia</small>
+  </div>
+</div>

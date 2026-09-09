@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import BigTree from "../components/BigTree.astro";
 import WorldMap from "../components/WorldMap.astro";
+import TreeMobile from "../components/TreeMobile.astro";
 import Icon from "../components/Icon.astro";
 import { u } from "../lib/url.js";
 import { families, joining, numbers } from "../data/families.js";
@@ -21,9 +22,10 @@ import { families, joining, numbers } from "../data/families.js";
 
   <section>
     <div class="wrap">
-      <div class="treewrap">
+      <div class="treewrap wide-only">
         <div class="scroll"><BigTree base={u("/")} /></div>
       </div>
+      <div class="narrow-only"><TreeMobile base={u("/")} /></div>
       <p class="lead center" style="margin:20px auto 0;max-width:60ch">
         Start at the bottom, with A and M, and climb. Every line going up is a real
         person who really lived. Tap any family at the top of the tree.</p>

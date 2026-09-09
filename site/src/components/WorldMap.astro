@@ -16,16 +16,16 @@ const pt = (km, bearing, extra = 0) => {
 };
 
 const places = [
-  { k: "britain",   slug: "darcy",       name: "England",      km: 16526, bear: 327.3,
-    lab: [268, 118], anchor: "middle" },
-  { k: "croatia",   slug: "defranceski", name: "Croatia",      km: 15907, bear: 309.7,
-    lab: [220, 172], anchor: "middle", pair: "blazevic" },
-  { k: "italy",     slug: "falco",       name: "Italy",        km: 15961, bear: 302.8,
-    lab: [187, 232], anchor: "end" },
-  { k: "safrica",   slug: "booyzen",     name: "South Africa", km: 11401, bear: 224.8,
-    lab: [266, 462], anchor: "end" },
-  { k: "argentina", slug: "lerena",      name: "Argentina",    km: 12410, bear: 149.9,
-    lab: [508, 502], anchor: "start" },
+  { k: "britain",   slug: "darcy",       name: "England",      km: 16526, bear: 327.3, fam: "D’Arcy",
+    lab: [268, 96], anchor: "middle" },
+  { k: "croatia",   slug: "defranceski", name: "Croatia",      km: 15907, bear: 309.7, fam: "Defranceski · Blažević",
+    lab: [220, 150], anchor: "middle", pair: "blazevic" },
+  { k: "italy",     slug: "falco",       name: "Italy",        km: 15961, bear: 302.8, fam: "Falco",
+    lab: [187, 236], anchor: "end" },
+  { k: "safrica",   slug: "booyzen",     name: "South Africa", km: 11401, bear: 224.8, fam: "Booyzen",
+    lab: [266, 458], anchor: "end" },
+  { k: "argentina", slug: "lerena",      name: "Argentina",    km: 12410, bear: 149.9, fam: "Lerena",
+    lab: [508, 498], anchor: "start" },
 ].map(p => ({ ...p, xy: pt(p.km, p.bear) }));
 
 const rings = [5000, 10000, 15000];
@@ -79,6 +79,8 @@ const fmt = n => n.toLocaleString("en-GB");
             style="font-family:var(--sans);font-size:17px;font-weight:800;paint-order:stroke;stroke:var(--panel);stroke-width:5px;stroke-linejoin:round">{p.name}</text>
       <text x={p.lab[0]} y={p.lab[1] + 18} text-anchor={p.anchor} fill={`var(--${p.k}-deep)`}
             style="font-family:var(--sans);font-size:14px;font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:5px;stroke-linejoin:round">{fmt(p.km)} km</text>
+      <text x={p.lab[0]} y={p.lab[1] + 34} text-anchor={p.anchor} fill="var(--ink-3)"
+            style="font-family:var(--sans);font-size:11.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;paint-order:stroke;stroke:var(--panel);stroke-width:5px;stroke-linejoin:round">{p.fam}</text>
     </a>
   ))}
 

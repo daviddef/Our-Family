@@ -1,7 +1,10 @@
 ---
 // The whole story in one picture: five families at the top of the tree,
-// growing down through the grandparents and the parents into two boys.
+// growing down through the five great-grandparents who each carried one of those
+// surnames, then the grandparents, the parents, and two boys.
 // Read it from the bottom up — that is the way you climb a family tree.
+//
+// Living people are shown by initial only, with no dates.
 
 const C = {
   britain: "var(--britain)", italy: "var(--italy)", safrica: "var(--safrica)",
@@ -16,7 +19,7 @@ const D = {
   argentina: "var(--argentina-deep)", croatia: "var(--croatia-deep)", sun: "#A87905",
 };
 
-// top-of-tree family badges
+// top of the tree: the five families
 const fams = [
   { x: 100, k: "britain",   name: "D’Arcy",       land: "England & Ireland", slug: "darcy" },
   { x: 300, k: "italy",     name: "Falco",        land: "Italy",             slug: "falco" },
@@ -25,16 +28,21 @@ const fams = [
   { x: 900, k: "croatia",   name: "Defranceski",  land: "Croatia",           slug: "defranceski" },
 ];
 
-// people
 const people = [
-  { x: 500, y: 174, k: "safrica",   rel: "Great-grandma", name: "Catherine" },
-  { x: 700, y: 174, k: "argentina", rel: "Great-grandpa", name: "Nuno" },
-  { x: 100, y: 286, k: "britain",   rel: "Grandpa",   name: "Ian" },
-  { x: 300, y: 286, k: "italy",     rel: "Grandma",   name: "Giuseppina" },
-  { x: 620, y: 286, k: "argentina", rel: "Grandma",   name: "Cheryl" },
-  { x: 900, y: 286, k: "croatia",   rel: "Grandpa",   name: "Ivan" },
-  { x: 200, y: 400, k: "italy",     rel: "Mum",       name: "Cristina" },
-  { x: 760, y: 400, k: "croatia",   rel: "Dad",       name: "David" },
+  // the great-grandparents — each one carried the surname above them
+  { x: 100, y: 174, k: "britain",   rel: "Great-grandpa",  name: "Kenneth" },
+  { x: 300, y: 174, k: "italy",     rel: "Great-grandpa",  name: "C" },
+  { x: 500, y: 174, k: "safrica",   rel: "Great-grandma",  name: "Catherine" },
+  { x: 700, y: 174, k: "argentina", rel: "Great-grandpa",  name: "Nuno" },
+  { x: 900, y: 174, k: "croatia",   rel: "Great-grandpa",  name: "Ivan" },
+  // the grandparents
+  { x: 100, y: 286, k: "britain",   rel: "Grandpa", name: "I" },
+  { x: 300, y: 286, k: "italy",     rel: "Grandma", name: "G" },
+  { x: 620, y: 286, k: "argentina", rel: "Grandma", name: "C" },
+  { x: 900, y: 286, k: "croatia",   rel: "Grandpa", name: "I" },
+  // the parents
+  { x: 200, y: 400, k: "italy",     rel: "Mum", name: "C" },
+  { x: 760, y: 400, k: "croatia",   rel: "Dad", name: "D" },
 ];
 
 // branch: from a point above to a point below
@@ -42,15 +50,18 @@ const branch = (x1, y1, x2, y2) =>
   `M${x1},${y1} C${x1},${y1 + (y2 - y1) * 0.6} ${x2},${y2 - (y2 - y1) * 0.6} ${x2},${y2}`;
 
 const limbs = [
-  // family badge -> first person
-  { d: branch(100, 96, 100, 258), k: "britain",   w: 6 },
-  { d: branch(300, 96, 300, 258), k: "italy",     w: 6 },
+  // family -> the great-grandparent who carried that name
+  { d: branch(100, 96, 100, 146), k: "britain",   w: 6 },
+  { d: branch(300, 96, 300, 146), k: "italy",     w: 6 },
   { d: branch(500, 96, 500, 146), k: "safrica",   w: 6 },
   { d: branch(700, 96, 700, 146), k: "argentina", w: 6 },
-  { d: branch(900, 96, 900, 258), k: "croatia",   w: 6 },
-  // great-grandparents -> Grandma Cheryl
+  { d: branch(900, 96, 900, 146), k: "croatia",   w: 6 },
+  // great-grandparents -> grandparents
+  { d: branch(100, 202, 100, 258), k: "britain",   w: 8 },
+  { d: branch(300, 202, 300, 258), k: "italy",     w: 8 },
   { d: branch(500, 202, 620, 258), k: "safrica",   w: 8 },
   { d: branch(700, 202, 620, 258), k: "argentina", w: 8 },
+  { d: branch(900, 202, 900, 258), k: "croatia",   w: 8 },
   // grandparents -> parents
   { d: branch(100, 314, 200, 372), k: "britain",   w: 9 },
   { d: branch(300, 314, 200, 372), k: "italy",     w: 9 },
@@ -65,14 +76,14 @@ const limbs = [
 ];
 
 const boys = [
-  { x: 400, name: "Alessio", year: "2017" },
-  { x: 580, name: "Mateo",   year: "2019" },
+  { x: 400, name: "A" },
+  { x: 580, name: "M" },
 ];
 const { base } = Astro.props;
 ---
 
 <svg viewBox="0 0 1000 622" role="img"
-     aria-label="A family tree. Five families — D’Arcy from England and Ireland, Falco from Italy, Booyzen from South Africa, Lerena from Argentina and Defranceski from Croatia — join through four grandparents and two parents into Alessio and Mateo, born in Brisbane.">
+     aria-label="A family tree. Five families — D’Arcy from England and Ireland, Falco from Italy, Booyzen from South Africa, Lerena from Argentina and Defranceski from Croatia — each pass down through a great-grandparent, then four grandparents and two parents, into two boys, A and M, in Brisbane.">
 
   <!-- branches -->
   {limbs.map(l => (
@@ -107,15 +118,13 @@ const { base } = Astro.props;
   <!-- the boys -->
   {boys.map(b => (
     <g>
-      <rect x={b.x - 76} y={505} width={152} height={64} rx={18}
+      <rect x={b.x - 76} y={505} width={152} height={60} rx={18}
             fill="var(--sun-wash)" stroke="var(--safrica)" stroke-width="4" />
-      <text x={b.x} y={533} text-anchor="middle" fill="var(--ink)"
-            style="font-family:var(--serif);font-size:26px;font-weight:600">{b.name}</text>
-      <text x={b.x} y={554} text-anchor="middle" fill="var(--safrica)"
-            style="font-family:var(--sans);font-size:12.5px;font-weight:800">{b.year}</text>
+      <text x={b.x} y={544} text-anchor="middle" fill="var(--ink)"
+            style="font-family:var(--serif);font-size:30px;font-weight:600">{b.name}</text>
     </g>
   ))}
 
-  <text x="490" y="600" text-anchor="middle" fill="var(--ink-3)"
+  <text x="490" y="596" text-anchor="middle" fill="var(--ink-3)"
         style="font-family:var(--sans);font-size:13px;font-weight:800;letter-spacing:.09em;text-transform:uppercase">Brisbane, Australia</text>
 </svg>

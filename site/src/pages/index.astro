@@ -10,7 +10,7 @@ import { families, joining, numbers } from "../data/families.js";
   <div class="hero">
     <div class="wrap">
       <h1>Five families,<br />two <span>boys</span>.</h1>
-      <p class="lead">Alessio and Mateo were born in Brisbane. But the people they come from
+      <p class="lead">A and M were born in Brisbane. But the people they come from
       lived on four different continents — a stonecutter on a Croatian hill, a farmer in Italy,
       a horse trainer in Argentina, a family on the dry plains of South Africa, and a soldier
       who sailed from England.</p>
@@ -24,7 +24,7 @@ import { families, joining, numbers } from "../data/families.js";
         <div class="scroll"><BigTree base={u("/")} /></div>
       </div>
       <p class="lead center" style="margin:20px auto 0;max-width:60ch">
-        Start at the bottom, with Alessio and Mateo, and climb. Every line going up is a real
+        Start at the bottom, with A and M, and climb. Every line going up is a real
         person who really lived. Tap any family at the top of the tree.</p>
     </div>
   </section>
@@ -100,7 +100,7 @@ import { families, joining, numbers } from "../data/families.js";
       <div class="joins" style="margin-top:28px">
         {joining.map(j => (
           <div class={`join ${j.big ? "big" : ""} ${j.boy ? "boy" : ""}`}>
-            <div class="yr">{j.year}</div>
+            <div class={`yr ${j.year === "then" ? "then" : ""}`}>{j.year}</div>
             <div>
               <div class="txt">{j.text}</div>
               <div class="dots" aria-hidden="true">

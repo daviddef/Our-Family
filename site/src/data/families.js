@@ -1,10 +1,11 @@
-// The five families that meet in Alessio and Mateo.
+// The five families that meet in the two boys.
 // Every fact here is carried over from one of the five research archives.
 // Written to be read out loud to a child of six, and read alone by a child of ten.
 
+// Living people are shown by initial only, with no dates.
 export const boys = [
-  { name: "Alessio", full: "Alessio David Defranceski", born: "14 March 2017", place: "Brisbane" },
-  { name: "Mateo", full: "Mateo Cristian Defranceski", born: "12 September 2019", place: "Brisbane" },
+  { name: "A", place: "Brisbane" },
+  { name: "M", place: "Brisbane" },
 ];
 
 export const families = [
@@ -37,7 +38,7 @@ export const families = [
       },
       {
         big: "Grandpa was born in a town of the big wind.",
-        text: "Ivan was born in Senj, right on the Adriatic Sea. Senj is famous for a wind called the bura, which comes roaring down off the mountains so hard that it can blow a person right over.",
+        text: "He was born in Senj, right on the Adriatic Sea. Senj is famous for a wind called the bura, which comes roaring down off the mountains so hard that it can blow a person right over.",
       },
       {
         big: "Then they crossed the whole world — twice.",
@@ -45,9 +46,9 @@ export const families = [
       },
     ],
     ladder: [
-      { name: "Alessio & Mateo", when: "2017 & 2019", where: "Brisbane, Australia", you: true },
-      { name: "David", rel: "Dad", when: "born 1979", where: "Johannesburg, South Africa" },
-      { name: "Ivan", rel: "Grandpa", when: "born 1951", where: "Senj, Croatia" },
+      { name: "A & M", where: "Brisbane, Australia", you: true },
+      { name: "D", rel: "Dad", where: "Johannesburg, South Africa" },
+      { name: "I", rel: "Grandpa", where: "Senj, Croatia" },
       { name: "Ivan", rel: "Great-grandpa", when: "1925–1995", where: "Crikvenica → Senj" },
       { name: "Anton Rudolf", rel: "2× great-grandpa", when: "1890–1943", where: "Klenovica, house 22" },
       { name: "Josip", rel: "3× great-grandpa", when: "1863–1951", where: "Gračišće → Crikvenica", job: "stonemason" },
@@ -100,10 +101,10 @@ export const families = [
       },
     ],
     ladder: [
-      { name: "Alessio & Mateo", when: "2017 & 2019", where: "Brisbane, Australia", you: true },
-      { name: "Cristina", rel: "Mum", when: "born 1988", where: "Brisbane, Australia" },
-      { name: "Giuseppina", rel: "Grandma", when: "born 1955", where: "Benevento, Italy" },
-      { name: "Carmine", rel: "Great-grandpa", when: "born 1930", where: "Forchia, Italy" },
+      { name: "A & M", where: "Brisbane, Australia", you: true },
+      { name: "C", rel: "Mum", where: "Brisbane, Australia" },
+      { name: "G", rel: "Grandma", where: "Benevento, Italy" },
+      { name: "C", rel: "Great-grandpa", where: "Forchia, Italy" },
       { name: "Carmine Antonio", rel: "2× great-grandpa", when: "1901–1988", where: "Arienzo → Brisbane" },
       { name: "Raffaele", rel: "3× great-grandpa", when: "born 1873", where: "Arienzo, Italy", job: "farmer" },
       { name: "Carmine Antonio", rel: "4× great-grandpa", when: "born 1850", where: "Arienzo, Italy" },
@@ -149,13 +150,13 @@ export const families = [
       },
       {
         big: "The horses never stopped.",
-        text: "Bob’s son was a trainer. His grandson Tex was a top jockey for twenty-two years. And Gavin Lerena — Dad’s cousin — is a champion jockey in South Africa right now.",
+        text: "Bob’s son became a trainer too. His grandson was a top jockey for twenty-two years. And there is a Lerena riding as a champion jockey in South Africa right now — one of your cousins.",
       },
     ],
     ladder: [
-      { name: "Alessio & Mateo", when: "2017 & 2019", where: "Brisbane, Australia", you: true },
-      { name: "David", rel: "Dad", when: "born 1979", where: "Johannesburg, South Africa" },
-      { name: "Cheryl", rel: "Grandma", when: "born 1955", where: "Johannesburg, South Africa" },
+      { name: "A & M", where: "Brisbane, Australia", you: true },
+      { name: "D", rel: "Dad", where: "Johannesburg, South Africa" },
+      { name: "C", rel: "Grandma", where: "Johannesburg, South Africa" },
       { name: "Nuno Fernando", rel: "Great-grandpa", when: "1924–1971", where: "Cape Town → Germiston" },
       { name: "Pablo Armando “Bob”", rel: "2× great-grandpa", when: "1882–1950", where: "Rosario → Cape Town", job: "horse trainer", last: true },
     ],
@@ -204,9 +205,9 @@ export const families = [
       },
     ],
     ladder: [
-      { name: "Alessio & Mateo", when: "2017 & 2019", where: "Brisbane, Australia", you: true },
-      { name: "David", rel: "Dad", when: "born 1979", where: "Johannesburg, South Africa" },
-      { name: "Cheryl", rel: "Grandma", when: "born 1955", where: "Johannesburg, South Africa" },
+      { name: "A & M", where: "Brisbane, Australia", you: true },
+      { name: "D", rel: "Dad", where: "Johannesburg, South Africa" },
+      { name: "C", rel: "Grandma", where: "Johannesburg, South Africa" },
       { name: "Catherine Mary Sophia", rel: "Great-grandma", when: "1929–2013", where: "Johannesburg" },
       { name: "George Downing Mountjoy", rel: "2× great-grandpa", when: "1901–1947", where: "South Africa", job: "railways" },
       { name: "Willem Hermanus", rel: "3× great-grandpa", when: "1851–1905", where: "Cradock → Indwe", job: "changed the name" },
@@ -255,9 +256,9 @@ export const families = [
       },
     ],
     ladder: [
-      { name: "Alessio & Mateo", when: "2017 & 2019", where: "Brisbane, Australia", you: true },
-      { name: "Cristina", rel: "Mum", when: "born 1988", where: "Brisbane, Australia" },
-      { name: "Ian Kenneth", rel: "Grandpa", when: "born 1955", where: "Brisbane, Australia" },
+      { name: "A & M", where: "Brisbane, Australia", you: true },
+      { name: "C", rel: "Mum", where: "Brisbane, Australia" },
+      { name: "I", rel: "Grandpa", where: "Brisbane, Australia" },
       { name: "Kenneth Lindsay", rel: "Great-grandpa", when: "1927–2010", where: "Sandgate, Queensland", job: "and the parrot" },
       { name: "Lindesay Atkinson", rel: "2× great-grandpa", when: "1892–1936", where: "Brisbane, Queensland", job: "clerk" },
       { name: "George Pitt", rel: "3× great-grandpa", when: "1864–1931", where: "Brisbane, Queensland", job: "chief clerk, railways" },
@@ -270,53 +271,38 @@ export const families = [
   },
 ];
 
-// How the five became one.
+// How the five became one. Living people are shown by role only, and years that
+// would give away a living person's birth date are left out.
 export const joining = [
   {
     year: "1949",
-    a: "Booyzen",
-    b: "Lerena",
     text: "Catherine Booyzen married Nuno Lerena at St Joseph’s church in Mayfair, Johannesburg. South Africa met Argentina.",
     keys: ["safrica", "argentina"],
   },
   {
-    year: "1979",
-    a: "Lerena",
-    b: "Defranceski",
-    text: "Cheryl Lerena and Ivan Defranceski had a son in Johannesburg — your dad, David. Now Croatia was in the story too.",
+    year: "then",
+    text: "Their daughter — your grandma — grew up in Johannesburg, and had a son of her own there. That was your dad. Now Croatia was in the story too.",
     keys: ["argentina", "croatia"],
   },
   {
     year: "1980",
-    a: "Falco",
-    b: "D’Arcy",
-    text: "On the other side of the world, in Brisbane, Giuseppina Falco married Ian D’Arcy. Italy met England and Ireland.",
+    text: "On the other side of the world, in Brisbane, your other grandma married your other grandpa. Italy met England and Ireland.",
     keys: ["italy", "britain"],
   },
   {
-    year: "1988",
-    a: "",
-    b: "",
-    text: "Your mum, Cristina, was born in Brisbane — and she was born a twin.",
+    year: "then",
+    text: "Your mum was born in Brisbane — and she was born a twin.",
     keys: ["italy", "britain"],
   },
   {
     year: "2015",
-    a: "Defranceski",
-    b: "D’Arcy",
-    text: "On 19 December, in Brisbane, David married Cristina. That is the day all five families finally became one.",
+    text: "On 19 December, in Brisbane, your mum and dad were married. That is the day all five families finally became one.",
     keys: ["croatia", "argentina", "safrica", "italy", "britain"],
     big: true,
   },
   {
-    year: "2017",
-    text: "Alessio David Defranceski was born in Brisbane on 14 March.",
-    keys: ["croatia", "argentina", "safrica", "italy", "britain"],
-    boy: true,
-  },
-  {
-    year: "2019",
-    text: "Mateo Cristian Defranceski was born in Brisbane on 12 September.",
+    year: "then",
+    text: "Then came A. And two years later, M. Both born in Brisbane — with all five families inside them.",
     keys: ["croatia", "argentina", "safrica", "italy", "britain"],
     boy: true,
   },

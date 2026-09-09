@@ -67,7 +67,7 @@ const rungs = [...f.ladder].reverse();
               {r.rel && <div class="rel">{r.rel}</div>}
               {r.you && <div class="rel" style="color:var(--safrica)">That's you</div>}
               <div class="nm">{r.name}</div>
-              <div class="det">{r.when} · {r.where}</div>
+              <div class="det">{[r.when, r.where].filter(Boolean).join(" · ")}</div>
               {r.job && <span class="job">{r.job}</span>}
             </div>
           </div>

@@ -223,6 +223,7 @@ section h2{font-size:clamp(30px,4.4vw,46px)}
 .join.big{border-color:var(--sun);border-width:4px;background:var(--sun-wash)}
 .join.boy{border-color:var(--safrica);border-style:dashed}
 .join .yr{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--safrica);line-height:1}
+.join .yr.then{font-size:26px;font-style:italic;color:var(--ink-3)}
 .join .txt{font-size:17.5px;line-height:1.6;color:var(--ink-2)}
 .join .dots{display:flex;gap:5px;margin-top:9px}
 .join .dots i{width:15px;height:15px;border-radius:50%;display:block}

@@ -4,9 +4,13 @@ The landing site for the five family archives — and the only one of the six wr
 
 **Live:** https://daviddef.github.io/Our-Family/
 
-Alessio (b. 14 March 2017) and Mateo (b. 12 September 2019) were born in Brisbane. Five separately
-researched families meet in them. This site tells that story in a way a six-year-old can follow and a
-ten-year-old can read alone, and then hands the reader off to the grown-up archive behind each family.
+Two boys were born in Brisbane. Five separately researched families meet in them. This site tells that
+story in a way a six-year-old can follow and a ten-year-old can read alone, and then hands the reader
+off to the grown-up archive behind each family.
+
+**Everyone still living is shown by initial only, with no dates** — the boys as *A* and *M*, their
+parents, grandparents and any great-grandparent without a recorded death likewise. Where a year would
+give away a living person's birth date, the timeline says *then* instead.
 
 | | Family | From | Archive |
 |---|---|---|---|
@@ -18,33 +22,39 @@ ten-year-old can read alone, and then hands the reader off to the grown-up archi
 
 ## How the five join
 
-Four of them arrive through the four grandparents. The fifth, Booyzen, arrives one generation higher —
-through Catherine Mary Sophia Booyzen, who married Nuno Fernando Lerena at St Joseph's, Mayfair, in 1949.
+Each family badge passes down through the one great-grandparent who actually carried that surname,
+then into a grandparent. Four of the five arrive through the four grandparents; Booyzen and Lerena
+both arrive through the same grandmother, whose parents were Catherine Booyzen and Nuno Lerena
+(married at St Joseph's, Mayfair, in 1949).
 
 ```
-D'Arcy   Falco        Booyzen   Lerena        Defranceski
-   \      /               \      /                 |
-    \    /              Catherine  Nuno            |
-     \  /                     \    /               |
-     Cristina                  Cheryl ———————— Ivan
-      (Mum)                          \          /
-         \                            \        /
-          \                            David (Dad)
-           \                          /
-            \________________________/
-                        |
-               Alessio  ·  Mateo
-                   Brisbane
+ D'Arcy      Falco      Booyzen     Lerena     Defranceski
+    |          |            |          |            |
+ Kenneth       C        Catherine    Nuno         Ivan        <- great-grandparents
+    |          |             \        /             |
+    I          G               Grandma C            I         <- grandparents
+     \        /                        \           /
+       Mum C                             Dad D
+          \                              /
+           \____________________________/
+                          |
+                       A  ·  M
+                       Brisbane
 ```
 
-## The rule this site does not follow
+## Living people
 
 All five research archives **omit living people from the build entirely**. This one cannot — it is a
-site *about* two living children, made for them, at their father's request. It therefore names the boys,
-their parents and their grandparents, and nobody else who is living.
+site *about* two living children, made for them. So it takes the next-strictest line instead:
 
-That is a deliberate exception, not an oversight. If it should be narrowed, or the repository made
-private, that is a one-line change and a settings toggle.
+- no forenames or surnames for anyone living — an initial only;
+- no birth years, and no event year that would reveal one;
+- birthplaces and the family roles (Mum, Dad, Grandma, Grandpa) are kept, because they carry the story
+  and neither identifies a person on its own;
+- the deceased are named in full, as in the sibling archives.
+
+Anyone with a recorded death is named; anyone without one is treated as living, including the Falco
+great-grandfather born in 1930.
 
 ## Every fact is carried, not invented
 

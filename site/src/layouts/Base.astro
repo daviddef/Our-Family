@@ -9,8 +9,8 @@ const here = Astro.url.pathname;
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>{title === SITE ? "Our Family — where Alessio and Mateo come from" : `${title} — ${SITE}`}</title>
-<meta name="description" content={dek ?? "Five families, four continents, two boys in Brisbane. The family story of Alessio and Mateo Defranceski, told for children."} />
+<title>{title === SITE ? "Our Family — where we come from" : `${title} — ${SITE}`}</title>
+<meta name="description" content={dek ?? "Five families, four continents, two boys in Brisbane — a family story told for children. Living people are named by initial only."} />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,500&family=Nunito:wght@400;700;800&display=swap" />
@@ -40,7 +40,7 @@ const here = Astro.url.pathname;
     <div class="flinks">
       {families.map(f => <a href={f.archive}>{f.archiveName} →</a>)}
     </div>
-    <p class="dim">Built for Alessio and Mateo, {new Date().getFullYear()}. If anything here is wrong,
+    <p class="dim">Built for A and M, {new Date().getFullYear()}. Everyone still living is shown by initial only, with no dates. If anything here is wrong,
     it should be fixed — tell us and we will fix it.</p>
   </div>
 </footer>

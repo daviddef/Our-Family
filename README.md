@@ -62,6 +62,19 @@ great-grandfather born in 1930.
 because they are published sportsmen already named in the Lerena archive and in the racing press. The
 relative is given as "your dad's cousin", which names no one in the household.
 
+## Pages
+
+`/` the landing page · `/jobs/` what everybody did for a living · and one page per family.
+
+The landing page carries the convergence tree (a wide SVG on desktop, a vertical HTML layout
+below 760px, because the SVG showed only a third of itself on a phone), a compass of true
+bearings and distances from Brisbane, a strip of faces, and the timeline of how the six joined.
+
+`/jobs/` groups all 22 recorded occupations by what the work actually was rather than by
+surname — the things made by hand, the things carried, the things grown, the horses, the
+soldiers, the desks. Where a register gave the original word it is kept: *lapicida*,
+*trhonoša*, *agricola*, *gostioničar*, *radnica u tvornici duhana*.
+
 ## Photographs
 
 Ten images in `site/public/photos/`, all carried from the archives and all of people who are dead.

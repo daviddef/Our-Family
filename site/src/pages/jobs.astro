@@ -1,0 +1,59 @@
+---
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import { u } from "../lib/url.js";
+import { groups } from "../data/jobs.js";
+const count = groups.reduce((n, g) => n + g.jobs.length, 0);
+---
+<Base title="Jobs" dek="Every job the six family archives record for a direct ancestor — stonecutters, carriers, a cigar roller, a tailor, a horse trainer, a surveyor and a man who guarded a convict ship.">
+
+  <div class="hero" style="text-align:left">
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--safrica)">What they did all day</div>
+      <h1 style="font-size:clamp(38px,7vw,70px)">{count} jobs</h1>
+      <p class="lead big">Nobody in this family was famous. They cut stone, led packhorses over a
+      mountain, rolled cigars, sewed suits, trained racehorses, drew a map of a place that
+      became a city, and filled in an enormous amount of paperwork.</p>
+      <p class="lead">Some of these jobs were written down in Latin, because that is what
+      the priest wrote in. Where we know the original word, it is here too.</p>
+    </div>
+  </div>
+
+  {groups.map(g => (
+    <section>
+      <div class="wrap">
+        <div class="jobhead">
+          <Icon name={g.icon} size={38} color="var(--safrica)" />
+          <h2>{g.title}</h2>
+        </div>
+        <div class="grid g2" style="margin-top:24px">
+          {g.jobs.map(j => (
+            <div class={`jobcard c-${j.k}`}>
+              <div class="jt">{j.job}</div>
+              {j.latin && <div class="jlat">“{j.latin}”</div>}
+              <div class="jwho">{j.who} · {j.when}</div>
+              <p>{j.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section>
+    <div class="wrap">
+      <div class="callout" style="--c:var(--sun);--cw:var(--sun-wash);--cd:#A87905">
+        <h3>🔤 One word worth knowing</h3>
+        <p><b>Trhonoša.</b> It is not just an old word for “worker”. The trhonoše were a
+        particular trade in one particular town: the men of Senj who carried goods over the
+        Velebit mountains on packhorses. Senj existed because that was the place where the sea
+        met the road. When a word like that turns up in a register, it does not only tell you
+        what somebody did — it tells you where they lived and why the town was there at all.</p>
+      </div>
+      <div class="pager">
+        <a href={u("/")}>🌳 Back to the tree</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

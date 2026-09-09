@@ -34,6 +34,7 @@ const here = Astro.url.pathname;
       {families.map(f => (
         <a href={u(`/${f.slug}/`)} class={`c-${f.key} ${here === u(`/${f.slug}/`) ? "on" : ""}`}>{f.name}</a>
       ))}
+      <a href={u("/jobs/")} class={`c-sun ${here === u("/jobs/") ? "on" : ""}`}>Jobs</a>
     </nav>
   </div>
 </header>

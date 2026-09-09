@@ -392,3 +392,20 @@ footer.site .dim{color:var(--ink-3);font-size:14px}
   display:block;margin-top:10px;font-size:11.5px;font-weight:800;letter-spacing:.1em;
   text-transform:uppercase;color:var(--ink-3);
 }
+
+/* ---------- jobs ---------- */
+.jobhead{display:flex;align-items:center;gap:14px}
+.jobhead svg{flex:none}
+.jobcard{
+  background:var(--panel);border:2px solid var(--rule);border-left:10px solid var(--c);
+  border-radius:16px;padding:18px 20px 20px;
+}
+.jobcard .jt{font-family:var(--serif);font-size:27px;font-weight:600;color:var(--cd);line-height:1.15}
+.jobcard .jlat{
+  font-family:var(--serif);font-style:italic;font-size:17px;color:var(--c);margin-top:2px;
+}
+.jobcard .jwho{
+  font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--ink-3);margin-top:7px;
+}
+.jobcard p{margin-top:10px;font-size:16.5px;line-height:1.58;color:var(--ink-2)}

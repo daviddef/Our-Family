@@ -78,6 +78,36 @@ const rungs = [...f.ladder].reverse();
 
   <section>
     <div class="wrap">
+      <div class="kicker">Their faces</div>
+      <h2>{f.photos.length ? "Look at them" : "Nobody to look at — yet"}</h2>
+      {f.photos.length > 0 ? (
+        <>
+          <p class="lead">Real photographs of real people you are related to. Some are more than
+          a hundred years old.</p>
+          <div class="gallery">
+            {f.photos.map(ph => (
+              <figure class={`frame ${ph.wide ? "wide" : ""}`}>
+                <img src={u(`/photos/${ph.src}`)} width={ph.w} height={ph.h}
+                     loading="lazy" decoding="async" alt={ph.alt} />
+                <figcaption>
+                  <b>{ph.who}</b>
+                  <span>{ph.cap}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </>
+      ) : (
+        <div class="callout" style="margin-top:20px">
+          <h3>📷 No pictures. Not one.</h3>
+          <p>{f.noPhotos}</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
       <div class="kicker">The good bits</div>
       <h2>Things they actually did</h2>
       <div class="facts" style="margin-top:34px">

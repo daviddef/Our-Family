@@ -265,3 +265,26 @@ footer.site .dim{color:var(--ink-3);font-size:14px}
   border:2px solid var(--rule-2);color:var(--ink-2);
 }
 .flinks a:hover{border-color:var(--sun);color:var(--ink)}
+
+/* ---------- photographs ---------- */
+.gallery{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:22px;margin-top:28px;align-items:start;
+}
+.frame{
+  margin:0;background:var(--panel);border:3px solid var(--c);border-radius:18px;
+  padding:12px 12px 4px;box-shadow:0 4px 0 var(--cw);
+}
+.frame.wide{grid-column:span 2}
+@media (max-width:640px){.frame.wide{grid-column:span 1}}
+.frame img{
+  display:block;width:100%;height:auto;border-radius:10px;
+  background:var(--cw);
+}
+.frame figcaption{padding:12px 4px 12px}
+.frame figcaption b{
+  display:block;font-family:var(--serif);font-size:21px;font-weight:600;color:var(--cd);line-height:1.2;
+}
+.frame figcaption span{
+  display:block;margin-top:6px;font-size:15px;line-height:1.5;color:var(--ink-2);
+}

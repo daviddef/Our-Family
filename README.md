@@ -60,6 +60,25 @@ great-grandfather born in 1930.
 because they are published sportsmen already named in the Lerena archive and in the racing press. The
 relative is given as "your dad's cousin", which names no one in the household.
 
+## Photographs
+
+Ten images in `site/public/photos/`, all carried from the archives and all of people who are dead.
+No photograph of a living person appears anywhere on this site.
+
+| Family | Images |
+|---|---|
+| Defranceski | Josip and Ana (the hand-tinted pair), Ursula, and the *Status Animarum* page for house 5 |
+| Falco | Filomena Annecchino; and the couple the Falco archive could not identify, captioned as such |
+| Lerena | Bob Lerena's 1940 Argentine passport — face, consular stamp and his own signature |
+| Booyzen | George Augustus Kolbe (a painting), Margaret Downing, and the grave at Burgersdorp |
+| D'Arcy | **None.** The page says so, and says it is the next thing to look for. |
+
+Confidence is carried across with the pictures. Margaret Downing is captioned "probably" because
+the Booyzen archive marks her *Plausible*. The Falco couple is captioned as unidentified because
+that archive found the same photograph filed twice under two different couples' names, and
+declined to choose. The wrongly-named file that started out as "Carminantonio and Filomena" was
+dropped once that audit was read.
+
 ## Every fact is carried, not invented
 
 Nothing here was researched fresh. Each statement was lifted from one of the five archives and rewritten

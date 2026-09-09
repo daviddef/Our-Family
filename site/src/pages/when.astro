@@ -1,0 +1,54 @@
+---
+import Base from "../layouts/Base.astro";
+import SpanChart from "../components/SpanChart.astro";
+import { u } from "../lib/url.js";
+import { moments } from "../data/moments.js";
+---
+<Base title="When" dek="How far back each of the six families can be proved, and the biggest dated moments in all of them, in order.">
+
+  <div class="hero" style="text-align:left">
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--safrica)">How long ago</div>
+      <h1 style="font-size:clamp(38px,7vw,70px)">When</h1>
+      <p class="lead big">A number like 1750 does not mean much on its own. So here are all six
+      families on the same line, so you can see which ones go back furthest — and then the
+      biggest moments in all of them, in the order they actually happened.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2>How far back we can prove</h2>
+      <p class="lead">The solid bar starts at the oldest person we have a real date for.
+      The faded part is older still — but it is reached through the mothers instead of the
+      fathers, or it has not been properly checked yet.</p>
+      <div class="mapwrap"><div class="scroll"><SpanChart /></div></div>
+      <p class="cap">Six families and only about 130 years between the oldest and the youngest
+      start. The Lerena bar is the short one because that research began most recently — not
+      because the family is any younger.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--safrica)">In order</div>
+      <h2>{moments.length} moments</h2>
+      <div class="moments">
+        {moments.map(m => (
+          <div class={`moment c-${m.k} ${m.big ? "big" : ""}`}>
+            <div class="my">{m.y}</div>
+            <div>
+              <div class="mt">{m.t}</div>
+              <p>{m.w}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="pager">
+        <a href={u("/")}>🌳 Back to the tree</a>
+        <a href={u("/jobs/")}>What they did for a living</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

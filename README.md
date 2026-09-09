@@ -64,11 +64,19 @@ relative is given as "your dad's cousin", which names no one in the household.
 
 ## Pages
 
-`/` the landing page · `/jobs/` what everybody did for a living · and one page per family.
+`/` the landing page · `/when/` how far back each line goes and the moments in order ·
+`/jobs/` what everybody did for a living · and one page per family.
 
 The landing page carries the convergence tree (a wide SVG on desktop, a vertical HTML layout
 below 760px, because the SVG showed only a third of itself on a phone), a compass of true
 bearings and distances from Brisbane, a strip of faces, and the timeline of how the six joined.
+
+`/when/` answers the question a date cannot: it puts all six families on one scale, so it is
+visible at a glance that Defranceski and D'Arcy reach the 1750s while Lerena starts in 1882 —
+and that the Lerena bar is short because the research is young, not the family. Faded
+extensions mark where a line goes deeper through the mothers (Blažević to about 1690 at
+Karlobag) or through something untested (Booyzen to 1683 in England). Below it, 23 dated
+moments in the order they happened.
 
 `/jobs/` groups all 22 recorded occupations by what the work actually was rather than by
 surname — the things made by hand, the things carried, the things grown, the horses, the

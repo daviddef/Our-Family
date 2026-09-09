@@ -23,6 +23,7 @@
   --argentina:#EE9A1C;  --argentina-wash:#FDEDD1; --argentina-deep:#A96706;
   --safrica:#DE5334;    --safrica-wash:#FCE3DB;   --safrica-deep:#9B3319;
   --britain:#8560C9;    --britain-wash:#EDE4FB;   --britain-deep:#5B3A96;
+  --blazevic:#C4407E;   --blazevic-wash:#FBE1EE;  --blazevic-deep:#8E2456;
 
   --serif:"EB Garamond",Georgia,"Times New Roman",serif;
   --sans:"Nunito","Trebuchet MS","Helvetica Neue",Arial,sans-serif;
@@ -34,6 +35,7 @@
 .c-argentina{--c:var(--argentina);--cw:var(--argentina-wash);--cd:var(--argentina-deep)}
 .c-safrica{--c:var(--safrica);--cw:var(--safrica-wash);--cd:var(--safrica-deep)}
 .c-britain{--c:var(--britain);--cw:var(--britain-wash);--cd:var(--britain-deep)}
+.c-blazevic{--c:var(--blazevic);--cw:var(--blazevic-wash);--cd:var(--blazevic-deep)}
 .c-sun{--c:var(--sun);--cw:var(--sun-wash);--cd:#A87905}
 
 *{box-sizing:border-box}
@@ -133,7 +135,7 @@ section h2{font-size:clamp(30px,4.4vw,46px)}
 /* ---------- the big tree ---------- */
 .treewrap{background:var(--panel);border:3px solid var(--rule-2);border-radius:24px;padding:12px}
 .treewrap .scroll{overflow-x:auto}
-.treewrap svg{display:block;min-width:720px;margin:0 auto}
+.treewrap svg{display:block;min-width:940px;margin:0 auto}
 
 /* ---------- journey ---------- */
 .journey{display:flex;flex-direction:column;gap:12px}
@@ -296,8 +298,9 @@ footer.site .dim{color:var(--ink-3);font-size:14px}
 
 /* ---------- faces strip ---------- */
 .faces{
-  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:28px;
+  display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;margin-top:28px;
 }
+@media (max-width:1040px){.faces{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:860px){.faces{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:520px){.faces{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .face{
@@ -320,3 +323,5 @@ footer.site .dim{color:var(--ink-3);font-size:14px}
   display:block;margin-top:3px;font-size:12px;font-weight:800;letter-spacing:.06em;
   text-transform:uppercase;color:var(--c);
 }
+
+.cap{margin-top:12px;font-size:15px;color:var(--ink-3);max-width:70ch}

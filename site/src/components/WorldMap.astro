@@ -19,7 +19,7 @@ const places = [
   { k: "britain",   slug: "darcy",       name: "England",      km: 16526, bear: 327.3,
     lab: [268, 118], anchor: "middle" },
   { k: "croatia",   slug: "defranceski", name: "Croatia",      km: 15907, bear: 309.7,
-    lab: [220, 172], anchor: "middle" },
+    lab: [220, 172], anchor: "middle", pair: "blazevic" },
   { k: "italy",     slug: "falco",       name: "Italy",        km: 15961, bear: 302.8,
     lab: [187, 232], anchor: "end" },
   { k: "safrica",   slug: "booyzen",     name: "South Africa", km: 11401, bear: 224.8,
@@ -37,7 +37,7 @@ const fmt = n => n.toLocaleString("en-GB");
 ---
 
 <svg viewBox="0 0 800 700" role="img"
-     aria-label="A compass centred on Brisbane. England lies 16,526 km to the north-west, Croatia 15,907 km north-west, Italy 15,961 km north-west, South Africa 11,401 km to the south-west and Argentina 12,410 km to the south-east.">
+     aria-label="A compass centred on Brisbane. Croatia’s pin is split in two colours because two of the families come from there. England lies 16,526 km to the north-west, Croatia 15,907 km north-west, Italy 15,961 km north-west, South Africa 11,401 km to the south-west and Argentina 12,410 km to the south-east.">
 
   <!-- distance rings -->
   {rings.map(km => (
@@ -57,7 +57,7 @@ const fmt = n => n.toLocaleString("en-GB");
           style="font-family:var(--serif);font-size:20px;font-weight:600">{c.t}</text>
   ))}
 
-  <!-- the five journeys -->
+  <!-- the journeys: five spokes, because Croatia carries two of the six families -->
   {places.map(p => (
     <line x1={CX} y1={CY} x2={p.xy[0]} y2={p.xy[1]}
           stroke={`var(--${p.k})`} stroke-width="4" stroke-linecap="round"
@@ -68,6 +68,13 @@ const fmt = n => n.toLocaleString("en-GB");
   {places.map(p => (
     <a href={`${Astro.props.base}${p.slug}/`}>
       <circle cx={p.xy[0]} cy={p.xy[1]} r="11" fill={`var(--${p.k})`} stroke="var(--panel)" stroke-width="3.5" />
+      {p.pair && (
+        <path d={`M${p.xy[0]},${p.xy[1] - 11} A11,11 0 0 1 ${p.xy[0]},${p.xy[1] + 11} Z`}
+              fill={`var(--${p.pair})`} />
+      )}
+      {p.pair && (
+        <circle cx={p.xy[0]} cy={p.xy[1]} r="11" fill="none" stroke="var(--panel)" stroke-width="3.5" />
+      )}
       <text x={p.lab[0]} y={p.lab[1]} text-anchor={p.anchor} fill={`var(--${p.k}-deep)`}
             style="font-family:var(--sans);font-size:17px;font-weight:800;paint-order:stroke;stroke:var(--panel);stroke-width:5px;stroke-linejoin:round">{p.name}</text>
       <text x={p.lab[0]} y={p.lab[1] + 18} text-anchor={p.anchor} fill={`var(--${p.k})`}

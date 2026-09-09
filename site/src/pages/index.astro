@@ -10,12 +10,12 @@ import { families, joining, numbers } from "../data/families.js";
 
   <div class="hero">
     <div class="wrap">
-      <h1>Five families,<br />two <span>boys</span>.</h1>
+      <h1>Six families,<br />two <span>boys</span>.</h1>
       <p class="lead">A and M were born in Brisbane. But the people they come from
-      lived on four different continents — a stonecutter on a Croatian hill, a farmer in Italy,
-      a horse trainer in Argentina, a family on the dry plains of South Africa, and a soldier
-      who sailed from England.</p>
-      <p class="lead">Here is how all five of them ended up in one house.</p>
+      lived on four different continents — a stonecutter on a Croatian hill, a carrier who took
+      packhorses over a Croatian mountain, a farmer in Italy, a horse trainer in Argentina, a
+      family on the dry plains of South Africa, and a soldier who sailed from England.</p>
+      <p class="lead">Here is how all six of them ended up in one house.</p>
     </div>
   </div>
 
@@ -43,7 +43,7 @@ import { families, joining, numbers } from "../data/families.js";
   <section>
     <div class="wrap">
       <div class="kicker c-sun" style="--c:var(--safrica)">Pick a family</div>
-      <h2>The five families</h2>
+      <h2>The six families</h2>
       <p class="lead">Each one has its own colour, its own country, and its own best story.</p>
       <div class="grid g3" style="margin-top:30px">
         {families.map(f => (
@@ -94,6 +94,8 @@ import { families, joining, numbers } from "../data/families.js";
       would have to walk to reach their home town — and the lines are drawn to scale, so the
       longer the line, the further away it really is.</p>
       <div class="mapwrap"><div class="scroll"><WorldMap base={u("/")} /></div></div>
+      <p class="cap">Croatia has one pin in two colours, because two of the six families —
+      Defranceski and Blažević — both come from there, about eighty miles apart.</p>
       <div class="journey" style="margin-top:22px">
         {families.map(f => (
           <div class={`leg c-${f.key}`}>
@@ -120,8 +122,8 @@ import { families, joining, numbers } from "../data/families.js";
   <section>
     <div class="wrap">
       <div class="kicker" style="--c:var(--safrica)">The story</div>
-      <h2>How the five became one</h2>
-      <p class="lead">Families join together when two people meet. It took four meetings,
+      <h2>How the six became one</h2>
+      <p class="lead">Families join together when two people meet. It took five meetings,
       on two sides of the world, over sixty-six years.</p>
       <div class="joins" style="margin-top:28px">
         {joining.map(j => (
@@ -144,7 +146,7 @@ import { families, joining, numbers } from "../data/families.js";
       <div class="deep c-sun">
         <div>
           <div class="t">Want the whole grown-up version?</div>
-          <div class="s">Every single fact on this site came out of five much bigger archives,
+          <div class="s">Every single fact on this site came out of six much bigger archives,
           where you can read the actual old documents — the church books, the ships' papers,
           the wills and the gravestones.</div>
           <div class="flinks">

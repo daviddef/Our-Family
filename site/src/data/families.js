@@ -146,6 +146,65 @@ export const families = [
   },
 
   {
+    slug: "blazevic",
+    name: "Blažević",
+    key: "blazevic",
+    flagWord: "Croatia",
+    from: "Senj, where the sea meets the mountain road",
+    icon: "mountain",
+    blurb: "Carriers who took packhorses over a mountain pass, and a cigar-roller in the town tobacco factory. The newest research of all six.",
+    meaning:
+      "Blažević means “son of Blaž” — and Blaž is the Croatian form of Blaise. Like most Croatian names ending in -ić, it just tells you whose child you were.",
+    km: "about 15,900 km",
+    kmNote: "Senj, Croatia → Brisbane",
+    archive: "https://daviddef.github.io/TheDefranceski/senj-line/",
+    archiveName: "The Senj Line",
+    photos: [
+      { src: "blazevic-grave.webp", w: 700, h: 933,
+        alt: "A carved limestone panel set into a cemetery wall at Senj, naming four Blaževićs, with a darker plate below naming two more.",
+        who: "The wall grave at Senj",
+        cap: "Ljubomir and Milka are here, and two of their sons — Oto was only twenty-two when he died in 1945, in the last year of the war. For a long time nobody could read this stone. (Look closely: it says Ljubomir was born in 1891. His marriage record says 1892. Both cannot be right.)" },
+    ],
+    facts: [
+      {
+        big: "They died on the same day, six years apart.",
+        text: "Your great-grandpa Ivan died at Senj on 30 October 1995. Your great-grandma Hedviga died in Johannesburg on 30 October 2001 — six years later, to the very day.",
+      },
+      {
+        big: "Her grandfather carried things over a mountain.",
+        text: "Josip Papić was a trhonoša — one of the carriers of Senj. They loaded packhorses and took goods up the Vratnik pass, over the Velebit mountains and into the interior, then brought grain and timber back down. The whole town existed because that was where the sea met the road.",
+      },
+      {
+        big: "Packhorse to factory in one generation.",
+        text: "His daughter Milka went to work in the Senj tobacco factory, rolling cigars — and so did the man she married when she was twenty-one. Her father was still leading horses over a mountain. She was on a production line.",
+      },
+      {
+        big: "A girl who came down off the mountain road.",
+        text: "Antonija — everybody called her Tonka — was born up on the Velebit road at Krivi Put, house 136, on 12 May 1859. She came down off that road into the town, and the family has been in Senj ever since.",
+      },
+      {
+        big: "A gravestone nobody could read — until somebody found an older photo.",
+        text: "The family photographed this stone in hard, flat sunlight and could not make out the top panel at all. The plan was to go back with a special light. They never needed to: somebody found a picture taken at the very same wall on 5 June 2019, in soft even light, and the whole thing read perfectly.",
+      },
+      {
+        big: "The oldest people in the whole family are on this side.",
+        text: "Behind Hedviga’s mother the line runs down the coast to Karlobag, on the Velebit channel, and reaches people born around 1690. That is older than any Defranceski, any Falco, any D’Arcy — older than anybody else in this whole website.",
+      },
+    ],
+    ladder: [
+      { name: "A & M", where: "Brisbane, Australia", you: true },
+      { name: "D", rel: "Dad", where: "Johannesburg, South Africa" },
+      { name: "I", rel: "Grandpa", where: "Senj, Croatia" },
+      { name: "Hedviga", rel: "Great-grandma", when: "1926–2001", where: "Senj → Johannesburg" },
+      { name: "Ljubomir", rel: "2× great-grandpa", when: "1892–1966", where: "Rijeka → Senj" },
+      { name: "Juraj", rel: "3× great-grandpa", when: "no dates yet", where: "Croatia" },
+      { name: "Toma", rel: "4× great-grandpa", when: "1838–1907", where: "Croatia" },
+      { name: "Anton", rel: "5× great-grandpa", when: "no dates at all", where: "Croatia", last: true },
+    ],
+    mystery:
+      "This is the newest research of all six, and it has only just started. Anton at the top has no dates whatsoever. And there is a whole second set of Blaževićs in the family’s files — Mateša, then Grgica, then Ilija — that nobody has managed to join onto ours yet.",
+  },
+  {
     slug: "lerena",
     name: "Lerena",
     key: "argentina",
@@ -352,6 +411,11 @@ export const joining = [
   },
   {
     year: "then",
+    text: "At Senj, on the Croatian coast, Ivan Defranceski married Hedviga Blažević. Two Croatian families joined — and their son grew up to be your grandpa.",
+    keys: ["croatia", "blazevic"],
+  },
+  {
+    year: "then",
     text: "Their daughter — your grandma — grew up in Johannesburg, and had a son of her own there. That was your dad. Now Croatia was in the story too.",
     keys: ["argentina", "croatia"],
   },
@@ -367,20 +431,20 @@ export const joining = [
   },
   {
     year: "2015",
-    text: "On 19 December, in Brisbane, your mum and dad were married. That is the day all five families finally became one.",
-    keys: ["croatia", "argentina", "safrica", "italy", "britain"],
+    text: "On 19 December, in Brisbane, your mum and dad were married. That is the day all six families finally became one.",
+    keys: ["croatia", "blazevic", "argentina", "safrica", "italy", "britain"],
     big: true,
   },
   {
     year: "then",
-    text: "Then came A. And two years later, M. Both born in Brisbane — with all five families inside them.",
-    keys: ["croatia", "argentina", "safrica", "italy", "britain"],
+    text: "Then came A. And two years later, M. Both born in Brisbane — with all six families inside them.",
+    keys: ["croatia", "blazevic", "argentina", "safrica", "italy", "britain"],
     boy: true,
   },
 ];
 
 export const numbers = [
-  { n: "5", label: "families", sub: "on four continents" },
+  { n: "6", label: "families", sub: "on four continents" },
   { n: "2", label: "boys", sub: "in one house in Brisbane" },
   { n: "6", label: "countries", sub: "they were born in" },
   { n: "1750", label: "our oldest", sub: "Giovanni, in Croatia" },

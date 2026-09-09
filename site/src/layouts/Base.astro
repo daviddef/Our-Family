@@ -10,14 +10,14 @@ const here = Astro.url.pathname;
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>{title === SITE ? "Our Family — where we come from" : `${title} — ${SITE}`}</title>
-<meta name="description" content={dek ?? "Five families, four continents, two boys in Brisbane — a family story told for children. Living people are named by initial only."} />
+<meta name="description" content={dek ?? "Six families, four continents, two boys in Brisbane — a family story told for children. Living people are named by initial only."} />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,500&family=Nunito:wght@400;700;800&display=swap" />
 <link rel="icon" href={u("/favicon.svg")} type="image/svg+xml" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content={title === SITE ? "Our Family — where we come from" : `${title} — ${SITE}`} />
-<meta property="og:description" content={dek ?? "Five families, four continents, two boys in Brisbane — a family story told for children."} />
+<meta property="og:description" content={dek ?? "Six families, four continents, two boys in Brisbane — a family story told for children."} />
 <meta property="og:image" content={new URL(u("/og.png"), Astro.site).href} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -29,7 +29,7 @@ const here = Astro.url.pathname;
 <header class="site">
   <div class="wrap sitein">
     <a class="brand" href={u("/")}>Our <em>Family</em></a>
-    <nav aria-label="The five families">
+    <nav aria-label="The six families">
       <a href={u("/")} class={here === u("/") ? "on c-sun" : ""}>Home</a>
       {families.map(f => (
         <a href={u(`/${f.slug}/`)} class={`c-${f.key} ${here === u(`/${f.slug}/`) ? "on" : ""}`}>{f.name}</a>
@@ -42,8 +42,8 @@ const here = Astro.url.pathname;
 
 <footer class="site">
   <div class="wrap">
-    <p><strong>Our Family</strong> is the children's door into five grown-up research archives — the
-    Defranceski, the Falco, the Lerena, the Booyzen and the D'Arcy. Every fact on this site was carried
+    <p><strong>Our Family</strong> is the children's door into six grown-up research archives — the
+    Defranceski, the Falco, the Blažević, the Lerena, the Booyzen and the D'Arcy. Every fact on this site was carried
     over from one of them, where you can see the actual documents it came from.</p>
     <div class="flinks">
       {families.map(f => <a href={f.archive}>{f.archiveName} →</a>)}

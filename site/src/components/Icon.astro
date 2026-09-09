@@ -33,6 +33,12 @@ const s = { width: size, height: size, viewBox: "0 0 32 32", fill: "none",
     <path d="M4 20h24l-4 8H8l-4-8z" fill={color} />
   </svg>
 )}
+{name === "mountain" && (
+  <svg {...s}>
+    <path d="M2 26L12 9l6 10 4-6 8 13H2z" fill={color} />
+    <path d="M12 9l4 7-3 4-3-5 2-6z" fill="#fff" opacity="0.55" />
+  </svg>
+)}
 {name === "anchor" && (
   <svg {...s}>
     <path d="M4 27V13h4V9h5V4h6v5h5v4h4v14H4z" fill={color} />

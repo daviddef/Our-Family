@@ -143,8 +143,8 @@ export const families = [
       "Blažević means “son of Blaž” — and Blaž is the Croatian form of Blaise. Like most Croatian names ending in -ić, it just tells you whose child you were.",
     km: "about 15,900 km",
     kmNote: "Senj, Croatia → Brisbane",
-    archive: "https://daviddef.github.io/TheDefranceski/senj-line/",
-    archiveName: "The Senj Line",
+    archive: "https://daviddef.github.io/TheBlazevic/",
+    archiveName: "The Blažević Archive",
     photos: [
       { src: "blazevic-grave.webp", w: 700, h: 933,
         alt: "A carved limestone panel set into a cemetery wall at Senj, naming four Blaževićs, with a darker plate below naming two more.",

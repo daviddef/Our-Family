@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import BigTree from "../components/BigTree.astro";
+import WorldMap from "../components/WorldMap.astro";
 import Icon from "../components/Icon.astro";
 import { u } from "../lib/url.js";
 import { families, joining, numbers } from "../data/families.js";
@@ -64,11 +65,36 @@ import { families, joining, numbers } from "../data/families.js";
 
   <section>
     <div class="wrap">
+      <div class="kicker" style="--c:var(--safrica)">Real faces</div>
+      <h2>Some of the people</h2>
+      <p class="lead">These are photographs of people you are actually related to. The oldest of them
+      was born more than a hundred and sixty years ago.</p>
+      <div class="faces">
+        {families.map(f => (
+          <a class={`face c-${f.key}`} href={u(`/${f.slug}/`)}>
+            {f.photos.length > 0 ? (
+              <img src={u(`/photos/${f.photos[0].src}`)} alt={f.photos[0].alt}
+                   width={f.photos[0].w} height={f.photos[0].h} loading="lazy" decoding="async" />
+            ) : (
+              <div class="noface" aria-hidden="true">?</div>
+            )}
+            <b>{f.photos.length > 0 ? f.photos[0].who : "No photo yet"}</b>
+            <span>{f.name}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
       <div class="kicker" style="--c:var(--safrica)">The big journey</div>
-      <h2>How far they all came</h2>
-      <p class="lead">Every one of these families ended up in the same city. Look how far
-      they each had to travel to get there.</p>
-      <div class="journey" style="margin-top:28px">
+      <h2>How far, and which way</h2>
+      <p class="lead">Brisbane is in the middle. Each family sits in the exact direction you
+      would have to walk to reach their home town — and the lines are drawn to scale, so the
+      longer the line, the further away it really is.</p>
+      <div class="mapwrap"><div class="scroll"><WorldMap base={u("/")} /></div></div>
+      <div class="journey" style="margin-top:22px">
         {families.map(f => (
           <div class={`leg c-${f.key}`}>
             <div class="pl">{f.flagWord}<small>{f.name}</small></div>

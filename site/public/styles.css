@@ -288,3 +288,35 @@ footer.site .dim{color:var(--ink-3);font-size:14px}
 .frame figcaption span{
   display:block;margin-top:6px;font-size:15px;line-height:1.5;color:var(--ink-2);
 }
+
+/* ---------- world map ---------- */
+.mapwrap{margin-top:26px;background:var(--panel);border:3px solid var(--rule-2);border-radius:20px;padding:10px}
+.mapwrap .scroll{overflow-x:auto}
+.mapwrap svg{display:block;min-width:640px}
+
+/* ---------- faces strip ---------- */
+.faces{
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:28px;
+}
+@media (max-width:860px){.faces{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:520px){.faces{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.face{
+  display:block;text-decoration:none;color:inherit;background:var(--panel);
+  border:3px solid var(--c);border-radius:16px;padding:10px 10px 12px;text-align:center;
+  box-shadow:0 4px 0 var(--cw);transition:transform .12s ease;
+}
+.face:hover{transform:translateY(-3px)}
+.face img{
+  display:block;width:100%;height:auto;aspect-ratio:3/4;
+  object-fit:cover;object-position:50% 22%;
+  border-radius:10px;background:var(--cw);
+}
+.face .noface{
+  display:grid;place-items:center;width:100%;aspect-ratio:3/4;border-radius:10px;
+  background:var(--cw);color:var(--c);font-family:var(--serif);font-size:52px;font-weight:600;
+}
+.face b{display:block;margin-top:10px;font-size:15px;line-height:1.25;color:var(--ink)}
+.face span{
+  display:block;margin-top:3px;font-size:12px;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--c);
+}

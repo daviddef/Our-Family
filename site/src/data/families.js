@@ -208,7 +208,7 @@ export const families = [
     blurb: "Farmers on the dry Karoo plains, a family that changed one letter of its own name, and a gravestone that told the truth after ninety years.",
     meaning:
       "Booyzen is Booysen with the s swapped for a z. The family says one of the men changed it during a war, so nobody would mix him up with the Booysens fighting on the other side.",
-    km: "about 11,500 km",
+    km: "about 11,400 km",
     kmNote: "Johannesburg, South Africa → Brisbane",
     archive: "https://daviddef.github.io/TheBooyzen/",
     archiveName: "The Booyzen Archive",
@@ -296,7 +296,27 @@ export const families = [
       },
       {
         big: "Great-grandpa had a parrot that answered the door.",
-        text: "Kenneth Lindsay D’Arcy kept an African Grey parrot that had learned to call out “Come in!” whenever somebody knocked. He also had a mango tree, and he lived through Cyclone Althea.",
+        text: "Kenneth’s family kept an African Grey parrot, and it had learned to call out “Come in!” whenever somebody knocked. Visitors would let themselves into a completely empty house, because none of the family was even home.",
+      },
+      {
+        big: "He fell out of a mango tree into a bucket of manure.",
+        text: "His dad was a very keen gardener and kept liquid manure for the garden. Kenneth fell out of the mango tree straight into it. His dad was extremely upset — not about the injuries, but about the manure that had been spilt.",
+      },
+      {
+        big: "His job was whacking mosquitoes off his father’s back.",
+        text: "Every child in the house had garden chores. His was the strangest one: standing behind his dad and swatting the mosquitoes off his bare back while he watered the garden in the late afternoon — sometimes for hours. He always said the good part was all the chats they had.",
+      },
+      {
+        big: "He threw his lunch in the incinerator every single day.",
+        text: "He was not allowed a bike, because his dad thought bikes were dangerous, and he was not allowed to kick a football in the yard in case it hurt the garden. But at school he was mad for sport — so every morning he binned his carefully made lunch in the school incinerator on the way past, just to buy himself extra minutes of cricket and footy.",
+      },
+      {
+        big: "He beat a champion at table tennis and made him cry.",
+        text: "He grew up to be an A-grade table tennis player in Brisbane. One day he beat a teenager who had not lost a match in three whole seasons. The boy cried. He got over it — he went on to win the Australian Championship.",
+      },
+      {
+        big: "The carpet went up and down in waves.",
+        text: "In 1971 Cyclone Althea hit Townsville, where the family were living. Everybody had always said cyclones missed Townsville. This one did not. At the height of it somebody went upstairs and found the carpet rising and falling in waves two feet high, because the wind was getting in underneath it. They came straight back down.",
       },
       {
         big: "There might be a castle. Or there might not.",

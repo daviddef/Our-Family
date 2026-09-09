@@ -144,9 +144,9 @@ export const families = [
     name: "Blažević",
     key: "blazevic",
     flagWord: "Croatia",
-    from: "Senj, where the sea meets the mountain road",
+    from: "Senj and Smokvica Krmpotska",
     icon: "mountain",
-    blurb: "Carriers who took packhorses over a mountain pass, and a cigar-roller in the town tobacco factory. The newest research of all six.",
+    blurb: "A mountain village built on purpose, a port killed by a railway, and one family name spelled in three different alphabets.",
     meaning:
       "Blažević means “son of Blaž” — and Blaž is the Croatian form of Blaise. Like most Croatian names ending in -ić, it just tells you whose child you were.",
     km: "about 15,900 km",
@@ -181,8 +181,20 @@ export const families = [
         text: "The family photographed this stone in hard, flat sunlight and could not make out the top panel at all. The plan was to go back with a special light. They never needed to: somebody found a picture taken at the very same wall on 5 June 2019, in soft even light, and the whole thing read perfectly.",
       },
       {
-        big: "The oldest people in the whole family are on this side.",
-        text: "Behind Hedviga’s mother the line runs down the coast to Karlobag, on the Velebit channel, and reaches people born around 1690. That is older than any Defranceski, any Falco, any D’Arcy — older than anybody else in this whole website.",
+        big: "Their village was built on purpose.",
+        text: "Smokvica Krmpotska and Krivi Put were not old villages that grew slowly. They were founded — settled between about 1605 and 1647 by families called the Bunjevci Krmpoćani, who fled the Ottoman armies and were planted in the Senj mountains on purpose, to hold the frontier.",
+      },
+      {
+        big: "A railway went somewhere else, and the town died.",
+        text: "In 1873 the new Karlovac–Rijeka railway bypassed Senj. Everything that had come over the mountain on packhorses now went by train, somewhere else — and the port simply died. Almost every job in this family afterwards is downstream of that: day labourer, porter, sailor, and then the tobacco factory.",
+      },
+      {
+        big: "One family name, three alphabets.",
+        text: "A name in this family is written Žubrinić in Croatian, Xubrinich in the old Venetian-Italian way — where an X was used for the sound Ž — and Zubrinich in the German-Latin office hand. One of them sailed to Port Pirie in South Australia around 1884, and the spelling he arrived with stuck there for good.",
+      },
+      {
+        big: "Nobody knows how Oto died.",
+        text: "Hedviga’s brother Oto was twenty-two in 1945. The family remembers two completely different endings: a snakebite on the hill above the town, and the war away in Slavonia. There is no grave. His name was cut into his grandparents’ stone instead — which is what people do when somebody does not come home from far away.",
       },
     ],
     ladder: [
@@ -190,13 +202,16 @@ export const families = [
       { name: "D", rel: "Dad", where: "Johannesburg, South Africa" },
       { name: "I", rel: "Grandpa", where: "Senj, Croatia" },
       { name: "Hedviga", rel: "Great-grandma", when: "1926–2001", where: "Senj → Johannesburg" },
-      { name: "Ljubomir", rel: "2× great-grandpa", when: "1892–1966", where: "Rijeka → Senj" },
-      { name: "Juraj", rel: "3× great-grandpa", when: "no dates yet", where: "Croatia" },
-      { name: "Toma", rel: "4× great-grandpa", when: "1838–1907", where: "Croatia" },
-      { name: "Anton", rel: "5× great-grandpa", when: "no dates at all", where: "Croatia", last: true },
+      { name: "Ljubomir", rel: "2× great-grandpa", when: "1892–1966", where: "Rijeka → Senj", job: "sailor" },
+      { name: "Juraj", rel: "3× great-grandpa", when: "no dates yet", where: "Smokvica Krmpotska" },
+      { name: "Toma", rel: "4× great-grandpa", when: "1838–1907", where: "Smokvica Krmpotska, house 114", job: "day labourer" },
+      { name: "Anton", rel: "5× great-grandpa", when: "no dates at all", where: "Smokvica Krmpotska" },
+      { name: "Ilija", rel: "6× great-grandpa", when: "born 1790", where: "Smokvica Krmpotska" },
+      { name: "Grgica", rel: "7× great-grandpa", when: "born 1770", where: "Croatia" },
+      { name: "Mateša", rel: "8× great-grandpa", when: "born 1750", where: "Croatia", last: true },
     ],
     mystery:
-      "This is the newest research of all six, and it has only just started. Anton at the top has no dates whatsoever. And there is a whole second set of Blaževićs in the family’s files — Mateša, then Grgica, then Ilija — that nobody has managed to join onto ours yet.",
+      "The three names at the very top — Mateša, Grgica and Ilija — used to be a separate list that nobody could join onto ours. Now they are joined on. But be careful with them: they come from other people’s family trees, not from a church book. The oldest Blažević anybody has actually found written down in a register is Toma, in 1838. Everything above him is still a promise rather than a proof.",
   },
   {
     slug: "lerena",
@@ -262,9 +277,9 @@ export const families = [
     flagWord: "South Africa",
     from: "The Karoo, the Cape & Johannesburg",
     icon: "ship",
-    blurb: "Farmers on the dry Karoo plains, a family that changed one letter of its own name, and a gravestone that told the truth after ninety years.",
+    blurb: "Farmers on the dry Karoo plains, a name with a puzzle in it that took two hundred years to spot, and a gravestone that told the truth after ninety.",
     meaning:
-      "Booyzen is Booysen with the s swapped for a z. The family says one of the men changed it during a war, so nobody would mix him up with the Booysens fighting on the other side.",
+      "Booyzen looks like Booysen with the s swapped for a z, and the family has always said one of the men changed it on purpose during a war. That story has just been tested — and it did not hold.",
     km: "about 11,400 km",
     kmNote: "Johannesburg, South Africa → Brisbane",
     archive: "https://daviddef.github.io/TheBooyzen/",
@@ -272,11 +287,15 @@ export const families = [
     facts: [
       {
         big: "Only 646 people on Earth spell it Booyzen.",
-        text: "There are 53,764 Booysens — with an s. Our spelling is 83 times rarer. That is not an accident. Somebody really did change it on purpose.",
+        text: "There are 53,764 Booysens — with an s. Our spelling is 83 times rarer, and unlike its parent name it clusters in Gauteng rather than the Cape. Something separated this small group off. What is no longer certain is that anybody did it deliberately.",
       },
       {
-        big: "We caught the name changing, on paper.",
-        text: "On one form, filled in on the same day in 1905, the clerk wrote BOOYSEN — and four lines further down, the son signed his own name BOOYZEN. The old spelling and the new one, on one page, four lines apart.",
+        big: "The z was already there in 1851.",
+        text: "Somebody found a much better photograph of a church book from 1851, and the father’s name in it is BOOYZEN, plainly, with a z — long before the war the story blames. And three lines below, the very same clerk, in the very same ink, writes a completely different family’s name twice as PIETERZEN. The Pietersens never changed anything. In Dutch, -zen is simply one of the ordinary ways to end a name like that.",
+      },
+      {
+        big: "So this website was wrong, and here is the correction.",
+        text: "This page used to say the family invented the z. It cannot have. That is how research is supposed to work: you find a clearer photograph than the one you had, and it makes you take something back. What still stands is a form from 1905 where the clerk wrote BOOYSEN and the son signed BOOYZEN four lines below — two spellings of one name on one page — and the fact that today there are only 646 Booyzens on Earth and 53,764 Booysens.",
       },
       {
         big: "He sailed on a ship called the Nautilus.",
@@ -289,6 +308,10 @@ export const families = [
       {
         big: "His dad was a tailor with a shop near Bond Street.",
         text: "John Gottlob Kolbe made clothes in London and left a real business behind him — with a partner, and instructions in his will for the shop to keep going for fourteen more years.",
+      },
+      {
+        big: "Forty-four years and nineteen days.",
+        text: "When Johanna Catharina died in 1863 the form asked how old she was. It only wanted a number of years. Whoever was filling it in wrote “44 years & 19 days” — so we can count backwards and land exactly on her birthday, 30 April 1819, at Graaff-Reinet. Somebody in that room knew her that well.",
       },
       {
         big: "One family forgot its own grandparents in seventy years.",
@@ -315,7 +338,7 @@ export const families = [
       { name: "C", rel: "Grandma", where: "Johannesburg, South Africa" },
       { name: "Catherine Mary Sophia", rel: "Great-grandma", when: "1929–2013", where: "Johannesburg" },
       { name: "George Downing Mountjoy", rel: "2× great-grandpa", when: "1901–1947", where: "South Africa", job: "railways" },
-      { name: "Willem Hermanus", rel: "3× great-grandpa", when: "1851–1905", where: "Cradock → Indwe", job: "changed the name" },
+      { name: "Willem Hermanus", rel: "3× great-grandpa", when: "1851–1905", where: "Cradock → Indwe", job: "farmer, then mason" },
       { name: "Petrus Jacobus", rel: "4× great-grandpa", when: "1812–1884", where: "Graaff-Reinet" },
       { name: "Petrus Jacobus", rel: "5× great-grandpa", when: "1788–1876", where: "Graaff-Reinet → Rustenburg" },
       { name: "Gerthardus Lodewikus", rel: "6× great-grandpa", when: "no dates at all", where: "somewhere in the Cape", last: true },
@@ -445,7 +468,7 @@ export const numbers = [
   { n: "6", label: "families", sub: "on four continents" },
   { n: "2", label: "boys", sub: "in one house in Brisbane" },
   { n: "6", label: "countries", sub: "your family was born in" },
-  { n: "1690", label: "our oldest", sub: "at Karlobag, in Croatia" },
+  { n: "1717", label: "our oldest", sub: "Nicolaus, in Croatia" },
   { n: "646", label: "Booyzens", sub: "in the whole world" },
   { n: "2,124", label: "Lerenas", sub: "in the whole world" },
 ];

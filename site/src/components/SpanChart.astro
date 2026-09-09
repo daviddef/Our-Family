@@ -14,7 +14,7 @@ const rows = [
   { k: "safrica",   name: "Booyzen",     from: 1788, who: "Petrus Jacobus",
     ghost: 1683, ghostNote: "Downing, in England — untested" },
   { k: "blazevic",  name: "Blažević",    from: 1838, who: "Toma",
-    ghost: 1690, ghostNote: "Karlobag, through the mothers" },
+    ghost: 1750, ghostNote: "Mateša — named on a family tree, not in a register" },
   { k: "argentina", name: "Lerena",      from: 1882, who: "Bob" },
 ];
 
@@ -24,7 +24,7 @@ const bottom = TOP + rows.length * GAP + 6;
 ---
 
 <svg viewBox={`0 0 920 ${bottom + 46}`} role="img"
-     aria-label="A chart of how far back each family is documented. D’Arcy reaches 1751, Falco 1767, Defranceski 1787 (and 1750 on a family chart), Booyzen 1788 (and 1683 through an untested English line), Blažević 1838 (and about 1690 through the mothers at Karlobag), and Lerena 1882.">
+     aria-label="A chart of how far back each family is documented. D’Arcy reaches 1751, Falco 1767, Defranceski 1787 (and 1750 on a family chart), Booyzen 1788 (and 1683 through an untested English line), Blažević 1838 (and 1750 on a family tree), and Lerena 1882.">
 
   {ticks.map(t => (
     <g>

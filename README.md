@@ -16,7 +16,7 @@ give away a living person's birth date, the timeline says *then* instead.
 |---|---|---|---|
 | 🔵 | **Defranceski** | Istria, Croatia | [The Defranceschi Archive](https://daviddef.github.io/TheDefranceski/) |
 | 🟢 | **Falco** | Arienzo, Campania, Italy | [The Falco Archive](https://daviddef.github.io/TheFalco/) |
-| 🌸 | **Blažević** | Senj, Croatia | [The Senj Line](https://daviddef.github.io/TheDefranceski/senj-line/) — research just begun |
+| 🌸 | **Blažević** | Senj & Smokvica Krmpotska, Croatia | [The Senj Line](https://daviddef.github.io/TheDefranceski/senj-line/) — a dedicated Blažević archive now exists locally but is not yet published; relink when it is |
 | 🟠 | **Lerena** | Rosario, Argentina | [The Lerena Archive](https://daviddef.github.io/TheLerena/) |
 | 🔴 | **Booyzen** | The Karoo and the Cape, South Africa | [The Booyzen Archive](https://daviddef.github.io/TheBooyzen/) |
 | 🟣 | **D'Arcy** | Yorkshire and Limerick → Australia | [The D'Arcy Archive](https://daviddef.github.io/TheDArcy/) |
@@ -133,6 +133,19 @@ site/src/pages/index.astro      the landing page
 site/src/pages/[slug].astro     one page per family
 site/public/styles.css          the bright palette — the archives' own hues, turned up
 ```
+
+## Keeping up with the research
+
+The six archives move. This site is downstream of them, so it has to be re-read against them
+periodically — and that is not only about adding new findings. It is mostly about **taking things
+back**.
+
+The clearest example so far: this site told children, as a headline fact, that the family
+deliberately changed Booysen to Booyzen during the Anglo-Boer War. A better scan of an 1851
+baptism register then showed the z already present, and the same clerk on the same page spelling
+an unrelated family PIETERZEN — so `-zen` was ordinary Cape-Dutch orthography and nobody invented
+anything. The page now carries the retraction as a fact in its own right, because a child learning
+that research means changing your mind is worth more than a tidy story.
 
 ## Legibility
 

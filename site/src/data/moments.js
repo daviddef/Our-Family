@@ -2,8 +2,10 @@
 // Every one of these is documented in one of the archives.
 
 export const moments = [
-  { y: "about 1690", k: "blazevic", t: "The oldest people anybody can name",
-    w: "At Karlobag, on the Velebit channel in Croatia. They are on the mothers' side, and they are older than anyone else in this whole website." },
+  { y: "about 1717", k: "blazevic", t: "The oldest person anybody can name",
+    w: "Nicolaus Gerkacs, on the Croatian coast. But his name comes off a family tree, not out of a church book. The oldest ancestor with an actual record behind him is Joannis Antić, born about 1739 — and he is on this side too." },
+  { y: "1605–1647", k: "blazevic", t: "A village is built on purpose",
+    w: "Smokvica Krmpotska and Krivi Put were founded, not grown: families fleeing the Ottoman armies were settled in the Senj mountains to hold the frontier. Two of Hedviga's four grandparent lines come out of those villages." },
   { y: "about 1750", k: "croatia", t: "Giovanni is born — probably",
     w: "At Gologorica in Istria. He is the top of the Defranceski ladder, but this date comes off the family's own hand-drawn chart, not out of a register. What is certain is that he existed: later clerks kept calling his son “son of the late Giovanni”." },
   { y: "1751", k: "britain", t: "Robert D’Arcy is born in Yorkshire",
@@ -25,7 +27,9 @@ export const moments = [
   { y: "1 Dec 1844", k: "safrica", t: "Kolbe dies at his farm",
     w: "The gravestone at Burgersdorp is still standing today, and still naming him and his wife." },
   { y: "4 May 1851", k: "safrica", t: "Willem Hermanus is born",
-    w: "The man who would change one letter of the family's name — and be remembered for fifty years as having been shot by the British, when in fact he died of a stomach ulcer." },
+    w: "Remembered for fifty years as the man shot by the British — when in fact he died of a stomach ulcer, in bed, with a doctor and his eldest son beside him. And his baptism page is the one that shows the family name already spelled with a z." },
+  { y: "1873", k: "blazevic", t: "A railway bypasses Senj",
+    w: "The new line from Karlovac to Rijeka went somewhere else, and the port died. Everything the carriers used to bring over the mountain now travelled by train. Almost every job in that family afterwards is downstream of this one decision." },
   { y: "1857", k: "blazevic", t: "Josip Papić is baptised at Senj",
     w: "He grew up to be a trhonoša — one of the carriers who took packhorses over the Vratnik pass. Later he kept an inn on the same road." },
   { y: "1859", k: "blazevic", t: "Tonka is born at Krivi Put, house 136",

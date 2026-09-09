@@ -7,9 +7,10 @@ const X0 = 1680, X1 = 2035, L = 150, R = 880;
 const x = y => L + ((y - X0) / (X1 - X0)) * (R - L);
 
 const rows = [
-  { k: "croatia",   name: "Defranceski", from: 1750, who: "Giovanni" },
   { k: "britain",   name: "D’Arcy",      from: 1751, who: "Robert" },
-  { k: "italy",     name: "Falco",       from: 1767, who: "Matteo" },
+  { k: "italy",     name: "Falco",       from: 1767, who: "Pasquale" },
+  { k: "croatia",   name: "Defranceski", from: 1787, who: "Giov. Battista",
+    ghost: 1750, ghostNote: "Giovanni — on the family chart, not yet in a register" },
   { k: "safrica",   name: "Booyzen",     from: 1788, who: "Petrus Jacobus",
     ghost: 1683, ghostNote: "Downing, in England — untested" },
   { k: "blazevic",  name: "Blažević",    from: 1838, who: "Toma",
@@ -23,7 +24,7 @@ const bottom = TOP + rows.length * GAP + 6;
 ---
 
 <svg viewBox={`0 0 920 ${bottom + 46}`} role="img"
-     aria-label="A chart of how far back each family is documented. Defranceski reaches 1750, D’Arcy 1751, Falco 1767, Booyzen 1788 (and 1683 through an untested English line), Blažević 1838 (and about 1690 through the mothers at Karlobag), and Lerena 1882.">
+     aria-label="A chart of how far back each family is documented. D’Arcy reaches 1751, Falco 1767, Defranceski 1787 (and 1750 on a family chart), Booyzen 1788 (and 1683 through an untested English line), Blažević 1838 (and about 1690 through the mothers at Karlobag), and Lerena 1882.">
 
   {ticks.map(t => (
     <g>
@@ -60,5 +61,5 @@ const bottom = TOP + rows.length * GAP + 6;
   })}
 
   <text x={L} y={bottom + 32} fill="var(--ink-3)"
-        style="font-family:var(--sans);font-size:13px;font-weight:700">Faded = older still, but through the mothers, or not yet proved.</text>
+        style="font-family:var(--sans);font-size:13px;font-weight:700">Faded = older still, but through the mothers, or written on a family chart rather than in a register.</text>
 </svg>

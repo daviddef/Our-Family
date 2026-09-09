@@ -132,11 +132,11 @@ export const families = [
       { name: "Carmine Antonio", rel: "4× great-grandpa", when: "born 1850", where: "Arienzo, Italy" },
       { name: "Raffaele", rel: "5× great-grandpa", when: "1818–1880", where: "Arienzo, Italy" },
       { name: "Vincenzo", rel: "6× great-grandpa", when: "1793–1875", where: "Arienzo, Italy" },
-      { name: "Pasquale", rel: "7× great-grandpa", when: "1765–1834", where: "Arienzo, Italy" },
+      { name: "Pasquale", rel: "7× great-grandpa", when: "1767–1834", where: "Arienzo, Italy" },
       { name: "Matteo", rel: "8× great-grandpa", when: "children born from 1767", where: "Arienzo, Italy", last: true },
     ],
     mystery:
-      "Above Matteo the church book has a hole in it: the pages between 1738 and 1761 are missing. To climb any higher we have to find another way round.",
+      "Above Matteo the church book has a hole in it: the pages between 1738 and 1761 are missing. To climb any higher we have to find another way round. And Pasquale has two birthdays: the baptism register says he was a newborn in October 1767, but his death record makes him old enough to have been born in 1765. Both cannot be right, so this site follows the register.",
   },
 
   {
@@ -228,6 +228,10 @@ export const families = [
       {
         big: "He taught boys to be jockeys.",
         text: "Young riders came to learn from him. One of them, Alan Higgins, went on to build a whole training centre of his own — and still told people, sixty years later, that he had been “apprenticed to Bob Lerena.”",
+      },
+      {
+        big: "She was the seventh daughter, and her name says so.",
+        text: "Bob married Mary Septima Taylor. Septima is Latin for “the seventh” — because she was her parents’ seventh daughter. By sixteen she was already teaching in a school.",
       },
       {
         big: "The horses never stopped.",

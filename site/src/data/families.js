@@ -444,8 +444,8 @@ export const joining = [
 export const numbers = [
   { n: "6", label: "families", sub: "on four continents" },
   { n: "2", label: "boys", sub: "in one house in Brisbane" },
-  { n: "6", label: "countries", sub: "they were born in" },
-  { n: "1750", label: "our oldest", sub: "Giovanni, in Croatia" },
+  { n: "6", label: "countries", sub: "your family was born in" },
+  { n: "1690", label: "our oldest", sub: "at Karlobag, in Croatia" },
   { n: "646", label: "Booyzens", sub: "in the whole world" },
   { n: "2,124", label: "Lerenas", sub: "in the whole world" },
 ];

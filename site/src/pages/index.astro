@@ -12,11 +12,12 @@ import { families, joining, numbers } from "../data/families.js";
   <div class="hero">
     <div class="wrap">
       <h1>Six families,<br />two <span>boys</span>.</h1>
-      <p class="lead">A and M were born in Brisbane. But the people they come from
-      lived on four different continents — a stonecutter on a Croatian hill, a carrier who took
-      packhorses over a Croatian mountain, a farmer in Italy, a horse trainer in Argentina, a
-      family on the dry plains of South Africa, and a soldier who sailed from England.</p>
-      <p class="lead">Here is how all six of them ended up in one house.</p>
+      <p class="lead">You were both born in Brisbane. But the people you come from lived on
+      four different continents.</p>
+      <p class="lead">A stonecutter on a Croatian hill. A carrier who led packhorses over a
+      mountain. A farmer in Italy, a horse trainer in Argentina, a family on the dry plains of
+      South Africa, and a soldier who sailed from England.</p>
+      <p class="lead">Here is how all six of them ended up in one house. Yours.</p>
     </div>
   </div>
 
@@ -27,8 +28,8 @@ import { families, joining, numbers } from "../data/families.js";
       </div>
       <div class="narrow-only"><TreeMobile base={u("/")} /></div>
       <p class="lead center" style="margin:20px auto 0;max-width:60ch">
-        Start at the bottom, with A and M, and climb. Every line going up is a real
-        person who really lived. Tap any family at the top of the tree.</p>
+        Start at the bottom, where you are, and climb. Every line going up is a real
+        person who really lived. Tap any family to open its own page.</p>
     </div>
   </section>
 
@@ -93,11 +94,11 @@ import { families, joining, numbers } from "../data/families.js";
       <div class="kicker" style="--c:var(--safrica)">The big journey</div>
       <h2>How far, and which way</h2>
       <p class="lead">Brisbane is in the middle. Each family sits in the exact direction you
-      would have to walk to reach their home town — and the lines are drawn to scale, so the
+      would have to set off in to reach their home town — and the lines are drawn to scale, so the
       longer the line, the further away it really is.</p>
       <div class="mapwrap"><div class="scroll"><WorldMap base={u("/")} /></div></div>
       <p class="cap">Croatia has one pin in two colours, because two of the six families —
-      Defranceski and Blažević — both come from there, about eighty miles apart.</p>
+      Defranceski and Blažević — both come from there, about 70 km apart.</p>
       <div class="journey" style="margin-top:22px">
         {families.map(f => (
           <div class={`leg c-${f.key}`}>

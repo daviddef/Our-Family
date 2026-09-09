@@ -429,3 +429,15 @@ footer.site .dim{color:var(--ink-3);font-size:14px}
   .moment{grid-template-columns:1fr;gap:4px}
   .moment .my{font-size:14px}
 }
+
+/* ---------- the hero illustration ----------
+   Its background was colour-matched to --ground, so it bleeds edge to edge
+   with no visible seam and needs no frame. */
+.heroart{margin:26px 0 0;padding:0}
+.heroart img{display:block;width:100%;height:auto}
+.heroart .cap{
+  max-width:var(--maxw);margin:14px auto 0;padding:0 24px;text-align:center;
+}
+@media (max-width:700px){
+  .heroart{margin-top:18px}
+}

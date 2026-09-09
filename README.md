@@ -83,6 +83,20 @@ surname — the things made by hand, the things carried, the things grown, the h
 soldiers, the desks. Where a register gave the original word it is kept: *lapicida*,
 *trhonoša*, *agricola*, *gostioničar*, *radnica u tvornici duhana*.
 
+## The hero illustration
+
+`site/public/hero.webp` (1800 px) and `hero-sm.webp` (900 px, served below 700 px). One imaginary
+landscape read left to right, with a single road running through six real places: the Istrian hill
+village with a stonecutter's mallet, the bare mountain with packhorses and a boat at a stone quay,
+the Italian valley with a falcon over it, the river town with horses and a stable, the dry plain
+with a windmill and a railed monument and a ship on the horizon, and the Queenslander on stilts
+with its mango tree.
+
+Generated to a prompt built from the research, then processed: the dead cream margins cropped off,
+and the illustration's own background (#FFF3DD) shifted to sit exactly on the site's `--ground`
+(#FFF7E6) so it bleeds edge to edge with no frame and no seam. Measured afterwards — the image's
+corner pixels land within 1–2 of the page background.
+
 ## Photographs
 
 Ten images in `site/public/photos/`, all carried from the archives and all of people who are dead.

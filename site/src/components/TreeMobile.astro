@@ -11,9 +11,9 @@ const sides = [
     parent: { rel: "Mum", name: "C" },
     groups: [
       { gp: { rel: "Grandpa", name: "I", k: "britain" },
-        fams: [{ k: "britain", slug: "darcy", name: "D’Arcy", land: "England & Ireland", ggp: "Kenneth" }] },
+        fams: [{ k: "britain", slug: "darcy", name: "D’Arcy", land: "England & Ireland", gg2: "Lindesay", ggp: "Kenneth" }] },
       { gp: { rel: "Grandma", name: "G", k: "italy" },
-        fams: [{ k: "italy", slug: "falco", name: "Falco", land: "Italy", ggp: "C" }] },
+        fams: [{ k: "italy", slug: "falco", name: "Falco", land: "Italy", gg2: "Carmine Antonio", ggp: "Carmine" }] },
     ],
   },
   {
@@ -22,13 +22,13 @@ const sides = [
     groups: [
       { gp: { rel: "Grandma", name: "C", k: "argentina" },
         fams: [
-          { k: "safrica", slug: "booyzen", name: "Booyzen", land: "South Africa", ggp: "Catherine" },
-          { k: "argentina", slug: "lerena", name: "Lerena", land: "Argentina", ggp: "Nuno" },
+          { k: "safrica", slug: "booyzen", name: "Booyzen", land: "South Africa", gg2: "George", ggp: "Catherine" },
+          { k: "argentina", slug: "lerena", name: "Lerena", land: "Argentina", gg2: "Bob", ggp: "Nuno" },
         ] },
-      { gp: { rel: "Grandpa", name: "I", k: "croatia" },
+      { gp: { rel: "Grandpa", name: "Ivan", k: "croatia" },
         fams: [
-          { k: "croatia", slug: "defranceski", name: "Defranceski", land: "Croatia", ggp: "Ivan" },
-          { k: "blazevic", slug: "blazevic", name: "Blažević", land: "Croatia", ggp: "Hedviga" },
+          { k: "croatia", slug: "defranceski", name: "Defranceski", land: "Croatia", gg2: "Anton", ggp: "Ivan" },
+          { k: "blazevic", slug: "blazevic", name: "Blažević", land: "Croatia", gg2: "Ljubomir", ggp: "Hedviga" },
         ] },
     ],
   },
@@ -46,7 +46,7 @@ const sides = [
               <span class="bar" aria-hidden="true"></span>
               <span class="nm">{f.name}</span>
               <span class="ld">{f.land}</span>
-              <span class="gg">{f.ggp}</span>
+              <span class="gg"><em>{f.gg2}</em>{f.ggp}</span>
             </a>
           ))}
           <div class={`mgp c-${g.gp.k}`}>

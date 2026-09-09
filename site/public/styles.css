@@ -362,8 +362,12 @@ footer.site .dim{color:var(--ink-3);font-size:14px}
 }
 .mfam .gg{
   grid-column:3;grid-row:1 / span 2;font-family:var(--serif);font-size:18px;
-  font-weight:600;color:var(--ink);text-align:right;
+  font-weight:600;color:var(--ink);text-align:right;line-height:1.25;
 }
+.mfam .gg em{
+  display:block;font-style:normal;font-size:13.5px;font-weight:600;color:var(--ink-3);
+}
+.mfam .gg em::after{content:" ↓";font-size:11px}
 
 .mgp,.mparent,.mboys{text-align:center}
 .arw{
@@ -430,14 +434,34 @@ footer.site .dim{color:var(--ink-3);font-size:14px}
   .moment .my{font-size:14px}
 }
 
-/* ---------- the hero illustration ----------
-   Its background was colour-matched to --ground, so it bleeds edge to edge
-   with no visible seam and needs no frame. */
-.heroart{margin:26px 0 0;padding:0}
-.heroart img{display:block;width:100%;height:auto}
-.heroart .cap{
-  max-width:var(--maxw);margin:14px auto 0;padding:0 24px;text-align:center;
-}
 @media (max-width:700px){
-  .heroart{margin-top:18px}
+  }
+
+
+/* ---------- hero: the writing sits ON the banner ----------
+   The banner is full-bleed art, so it was rendering ~2000px wide beside a
+   narrow column of type - the picture read as the page and the words as a
+   footnote. The caption now overlays the pale sky in the top of the artwork,
+   which is the house pattern across the family sites. */
+figure.hero{display:grid;margin:0;padding:0;background:var(--ground);isolation:isolate}
+figure.hero > *{grid-area:1 / 1}
+figure.hero picture{display:block}
+figure.hero img{display:block;width:100%;height:auto;
+  max-height:clamp(420px,66vh,760px);object-fit:cover;object-position:50% 100%}
+figure.hero .cap{align-self:start;padding:40px 0 64px;text-align:center;
+  background:linear-gradient(to bottom,var(--ground) 0%,var(--ground) 56%,
+    rgba(253,246,229,.94) 74%,rgba(253,246,229,.72) 86%,rgba(253,246,229,0) 100%)}
+figure.hero h1{font-size:clamp(40px,7.2vw,82px);line-height:1.02;margin:0}
+figure.hero h1 span{color:var(--safrica)}
+figure.hero .lead{margin:16px auto 0;font-size:clamp(17px,1.8vw,21px);max-width:60ch}
+figure.hero .lead.strong{font-weight:600}
+.artnote{max-width:68ch;margin:16px auto 0;padding:0 24px;text-align:center;
+  font-size:15px;line-height:1.55;opacity:.75}
+
+@media (max-width:900px){
+  figure.hero img{max-height:none}
+  figure.hero{display:block}
+  figure.hero .cap{background:var(--ground);padding:36px 0 22px}
+  figure.hero .lead{font-size:17px}
 }
+

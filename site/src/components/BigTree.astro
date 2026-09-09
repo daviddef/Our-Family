@@ -1,10 +1,11 @@
 ---
-// The whole story in one picture: six families at the top of the tree,
-// growing down through the six great-grandparents who each carried one of those
-// surnames, then the grandparents, the parents, and two boys.
+// The whole story in one picture. Six families at the top, each under its own
+// flag, growing down through two generations of great-grandparents, then the
+// grandparents, the parents, and two boys.
 // Read it from the bottom up — that is the way you climb a family tree.
 //
 // Living people are shown by initial only, with no dates.
+import Flag from "./Flag.astro";
 
 const C = {
   britain: "var(--britain)", italy: "var(--italy)", safrica: "var(--safrica)",
@@ -16,98 +17,114 @@ const W = {
 };
 const D = {
   britain: "var(--britain-deep)", italy: "var(--italy-deep)", safrica: "var(--safrica-deep)",
-  argentina: "var(--argentina-deep)", croatia: "var(--croatia-deep)", blazevic: "var(--blazevic-deep)", sun: "#A87905",
+  argentina: "var(--argentina-deep)", croatia: "var(--croatia-deep)", blazevic: "var(--blazevic-deep)", sun: "#8C6504",
 };
 
-// top of the tree: the six families
 const fams = [
-  { x: 100,  k: "britain",   name: "D’Arcy",      land: "England & Ireland", slug: "darcy" },
-  { x: 300,  k: "italy",     name: "Falco",        land: "Italy",             slug: "falco" },
-  { x: 500,  k: "safrica",   name: "Booyzen",      land: "South Africa",      slug: "booyzen" },
-  { x: 700,  k: "argentina", name: "Lerena",       land: "Argentina",         slug: "lerena" },
-  { x: 900,  k: "croatia",   name: "Defranceski",  land: "Croatia",           slug: "defranceski" },
-  { x: 1100, k: "blazevic",  name: "Blažević", land: "Croatia",       slug: "blazevic" },
+  { x: 100,  k: "britain",   flag: "england",   name: "D’Arcy",      land: "England & Ireland", slug: "darcy" },
+  { x: 300,  k: "italy",     flag: "italy",     name: "Falco",       land: "Italy",             slug: "falco" },
+  { x: 500,  k: "safrica",   flag: "safrica",   name: "Booyzen",     land: "South Africa",      slug: "booyzen" },
+  { x: 700,  k: "argentina", flag: "argentina", name: "Lerena",      land: "Argentina",         slug: "lerena" },
+  { x: 900,  k: "croatia",   flag: "croatia",   name: "Defranceski", land: "Croatia",           slug: "defranceski" },
+  { x: 1100, k: "blazevic",  flag: "croatia",   name: "Blažević",    land: "Croatia",           slug: "blazevic" },
 ];
 
-const people = [
-  // the great-grandparents — each one carried the surname above them
-  { x: 100,  y: 174, k: "britain",   rel: "Great-grandpa", name: "Kenneth" },
-  { x: 300,  y: 174, k: "italy",     rel: "Great-grandpa", name: "C" },
-  { x: 500,  y: 174, k: "safrica",   rel: "Great-grandma", name: "Catherine" },
-  { x: 700,  y: 174, k: "argentina", rel: "Great-grandpa", name: "Nuno" },
-  { x: 900,  y: 174, k: "croatia",   rel: "Great-grandpa", name: "Ivan" },
-  { x: 1100, y: 174, k: "blazevic",  rel: "Great-grandma", name: "Hedviga" },
-  // the grandparents
-  { x: 100,  y: 286, k: "britain",   rel: "Grandpa", name: "I" },
-  { x: 300,  y: 286, k: "italy",     rel: "Grandma", name: "G" },
-  { x: 600,  y: 286, k: "argentina", rel: "Grandma", name: "C" },
-  { x: 1000, y: 286, k: "croatia",   rel: "Grandpa", name: "I" },
-  // the parents
-  { x: 200,  y: 400, k: "italy",     rel: "Mum", name: "C" },
-  { x: 800,  y: 400, k: "croatia",   rel: "Dad", name: "D" },
+// these two rows carry dates, because every one of them is in the records
+const gen2 = [
+  { x: 100,  k: "britain",   rel: "2× great-grandpa",  name: "Lindesay",        when: "1892–1936", sp: "Ivy Sneyd" },
+  { x: 300,  k: "italy",     rel: "2× great-grandpa",  name: "Carmine Antonio", when: "1901–1988", sp: "Filomena Annecchino" },
+  { x: 500,  k: "safrica",   rel: "2× great-grandpa",  name: "George",          when: "1901–1947", sp: "Anna Pretorius" },
+  { x: 700,  k: "argentina", rel: "2× great-grandpa",  name: "Pablo Armando",   when: "1882–1950", sp: "Mary Septima Taylor" },
+  { x: 900,  k: "croatia",   rel: "2× great-grandpa",  name: "Anton",           when: "1890–1943", sp: "Ursula Kovačina" },
+  { x: 1100, k: "blazevic",  rel: "2× great-grandpa",  name: "Ljubomir",        when: "1892–1966", sp: "Milka Papić" },
+];
+// Catherine married Nuno, and Ivan married Hedviga — which is why those pairs of
+// branches meet just below.
+const gen3 = [
+  { x: 100,  k: "britain",   rel: "Great-grandpa", name: "Kenneth",   when: "1927–2010", sp: "Dell Murdoch" },
+  { x: 300,  k: "italy",     rel: "Great-grandpa", name: "Carmine",   when: "1930–2026", sp: "Francesca Zampiello" },
+  { x: 500,  k: "safrica",   rel: "Great-grandma", name: "Catherine", when: "1929–2013", sp: "Nuno Lerena" },
+  { x: 700,  k: "argentina", rel: "Great-grandpa", name: "Nuno",      when: "1924–1971", sp: "Catherine Booyzen" },
+  { x: 900,  k: "croatia",   rel: "Great-grandpa", name: "Ivan",      when: "1925–1995", sp: "Hedviga Blažević" },
+  { x: 1100, k: "blazevic",  rel: "Great-grandma", name: "Hedviga",   when: "1926–2001", sp: "Ivan Defranceski" },
+];
+// grandparents and parents — the ones still living stay initials
+const gen45 = [
+  { x: 100,  y: 422, k: "britain",   rel: "Grandpa", name: "I" },
+  { x: 300,  y: 422, k: "italy",     rel: "Grandma", name: "G" },
+  { x: 600,  y: 422, k: "argentina", rel: "Grandma", name: "C" },
+  { x: 1000, y: 422, k: "croatia",   rel: "Grandpa", name: "Ivan" },
+  { x: 200,  y: 534, k: "italy",     rel: "Mum", name: "C" },
+  { x: 800,  y: 534, k: "croatia",   rel: "Dad", name: "D" },
 ];
 
 const branch = (x1, y1, x2, y2) =>
   `M${x1},${y1} C${x1},${y1 + (y2 - y1) * 0.6} ${x2},${y2 - (y2 - y1) * 0.6} ${x2},${y2}`;
 
+const cols = [[100,"britain"],[300,"italy"],[500,"safrica"],[700,"argentina"],[900,"croatia"],[1100,"blazevic"]];
 const limbs = [
-  // family -> the great-grandparent who carried that name
-  { d: branch(100, 96, 100, 146),   k: "britain",   w: 6 },
-  { d: branch(300, 96, 300, 146),   k: "italy",     w: 6 },
-  { d: branch(500, 96, 500, 146),   k: "safrica",   w: 6 },
-  { d: branch(700, 96, 700, 146),   k: "argentina", w: 6 },
-  { d: branch(900, 96, 900, 146),   k: "croatia",   w: 6 },
-  { d: branch(1100, 96, 1100, 146), k: "blazevic",  w: 6 },
-  // great-grandparents -> grandparents
-  { d: branch(100, 202, 100, 258),   k: "britain",   w: 8 },
-  { d: branch(300, 202, 300, 258),   k: "italy",     w: 8 },
-  { d: branch(500, 202, 600, 258),   k: "safrica",   w: 8 },
-  { d: branch(700, 202, 600, 258),   k: "argentina", w: 8 },
-  { d: branch(900, 202, 1000, 258),  k: "croatia",   w: 8 },
-  { d: branch(1100, 202, 1000, 258), k: "blazevic",  w: 8 },
-  // grandparents -> parents
-  { d: branch(100, 314, 200, 372),   k: "britain",   w: 9 },
-  { d: branch(300, 314, 200, 372),   k: "italy",     w: 9 },
-  { d: branch(600, 314, 800, 372),   k: "argentina", w: 9 },
-  { d: branch(1000, 314, 800, 372),  k: "croatia",   w: 9 },
-  // parents -> the join
-  { d: branch(200, 428, 500, 470), k: "italy",   w: 13 },
-  { d: branch(800, 428, 500, 470), k: "croatia", w: 13 },
-  // the join -> the boys
-  { d: branch(500, 468, 410, 505), k: "sun", w: 13 },
-  { d: branch(500, 468, 590, 505), k: "sun", w: 13 },
+  ...cols.map(([x, k]) => ({ d: branch(x, 108, x, 146), k, w: 6 })),
+  ...cols.map(([x, k]) => ({ d: branch(x, 226, x, 270), k, w: 7 })),
+  { d: branch(100, 350, 100, 394),   k: "britain",   w: 8 },
+  { d: branch(300, 350, 300, 394),   k: "italy",     w: 8 },
+  { d: branch(500, 350, 600, 394),   k: "safrica",   w: 8 },
+  { d: branch(700, 350, 600, 394),   k: "argentina", w: 8 },
+  { d: branch(900, 350, 1000, 394),  k: "croatia",   w: 8 },
+  { d: branch(1100, 350, 1000, 394), k: "blazevic",  w: 8 },
+  { d: branch(100, 450, 200, 506),   k: "britain",   w: 9 },
+  { d: branch(300, 450, 200, 506),   k: "italy",     w: 9 },
+  { d: branch(600, 450, 800, 506),   k: "argentina", w: 9 },
+  { d: branch(1000, 450, 800, 506),  k: "croatia",   w: 9 },
+  { d: branch(200, 562, 500, 604), k: "italy",   w: 13 },
+  { d: branch(800, 562, 500, 604), k: "croatia", w: 13 },
+  { d: branch(500, 602, 410, 640), k: "sun", w: 13 },
+  { d: branch(500, 602, 590, 640), k: "sun", w: 13 },
 ];
 
-const boys = [
-  { x: 410, name: "A" },
-  { x: 590, name: "M" },
-];
+const boys = [{ x: 410, name: "A" }, { x: 590, name: "M" }];
 const { base } = Astro.props;
 ---
 
-<svg viewBox="0 0 1200 622" role="img"
-     aria-label="A family tree. Six families — D’Arcy from England and Ireland, Falco from Italy, Booyzen from South Africa, Lerena from Argentina, and Defranceski and Blažević both from Croatia — each pass down through a great-grandparent, then four grandparents and two parents, into two boys, A and M, in Brisbane.">
+<svg viewBox="0 0 1200 778" role="img"
+     aria-label="A family tree under six flags. D’Arcy from England and Ireland, Falco from Italy, Booyzen from South Africa, Lerena from Argentina, and Defranceski and Blažević both from Croatia. Each passes down through a 2× great-grandparent and a great-grandparent, then four grandparents and two parents, into two boys, A and M, in Brisbane.">
 
-  <!-- branches -->
   {limbs.map(l => (
     <path d={l.d} fill="none" stroke={C[l.k]} stroke-width={l.w}
           stroke-linecap="round" opacity="0.85" />
   ))}
 
-  <!-- the six families -->
   {fams.map(f => (
     <a href={`${base}${f.slug}/`}>
-      <rect x={f.x - 93} y={36} width={186} height={60} rx={16}
+      <line x1={f.x - 62} y1={12} x2={f.x - 62} y2={48}
+            stroke="var(--ink-3)" stroke-width="2.5" stroke-linecap="round" />
+      <Flag id={f.slug} kind={f.flag} x={f.x - 61} y={11} />
+      <rect x={f.x - 93} y={48} width={186} height={60} rx={16}
             fill={W[f.k]} stroke={C[f.k]} stroke-width="3.5" />
-      <text x={f.x} y={62} text-anchor="middle" fill={D[f.k]}
+      <text x={f.x} y={74} text-anchor="middle" fill={D[f.k]}
             style="font-family:var(--serif);font-size:23px;font-weight:600">{f.name}</text>
-      <text x={f.x} y={82} text-anchor="middle" fill={D[f.k]}
+      <text x={f.x} y={94} text-anchor="middle" fill={D[f.k]}
             style="font-family:var(--sans);font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase">{f.land}</text>
     </a>
   ))}
 
-  <!-- the people -->
-  {people.map(p => (
+  {[...gen2.map(p => ({ ...p, y: 186 })), ...gen3.map(p => ({ ...p, y: 310 }))].map(p => (
+    <g>
+      <rect x={p.x - 90} y={p.y - 40} width={180} height={80} rx={14}
+            fill="var(--panel)" stroke={C[p.k]} stroke-width="3" />
+      <text x={p.x} y={p.y - 22} text-anchor="middle" fill={D[p.k]}
+            style="font-family:var(--sans);font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase">{p.rel}</text>
+      <text x={p.x} y={p.y - 1} text-anchor="middle" fill="var(--ink)"
+            style="font-family:var(--serif);font-size:19px;font-weight:600">{p.name}</text>
+      <text x={p.x} y={p.y + 14} text-anchor="middle" fill="var(--ink-3)"
+            style="font-family:var(--sans);font-size:10.5px;font-weight:700">{p.when}</text>
+      {p.sp && (
+        <text x={p.x} y={p.y + 31} text-anchor="middle" fill={D[p.k]}
+              style="font-family:var(--serif);font-style:italic;font-size:12.5px">m. {p.sp}</text>
+      )}
+    </g>
+  ))}
+
+  {gen45.map(p => (
     <g>
       <rect x={p.x - 82} y={p.y - 28} width={164} height={56} rx={14}
             fill="var(--panel)" stroke={C[p.k]} stroke-width="3" />
@@ -118,16 +135,17 @@ const { base } = Astro.props;
     </g>
   ))}
 
-  <!-- the boys -->
   {boys.map(b => (
     <g>
-      <rect x={b.x - 76} y={505} width={152} height={60} rx={18}
+      <rect x={b.x - 76} y={640} width={152} height={60} rx={18}
             fill="var(--sun-wash)" stroke="var(--safrica)" stroke-width="4" />
-      <text x={b.x} y={544} text-anchor="middle" fill="var(--ink)"
+      <text x={b.x} y={679} text-anchor="middle" fill="var(--ink)"
             style="font-family:var(--serif);font-size:30px;font-weight:600">{b.name}</text>
     </g>
   ))}
 
-  <text x="500" y="596" text-anchor="middle" fill="var(--ink-3)"
+  <line x1={500} y1={700} x2={500} y2={720} stroke="var(--ink-3)" stroke-width="2.5" stroke-linecap="round" />
+  <Flag id="home" kind="australia" x={501} y={719} />
+  <text x="500" y="766" text-anchor="middle" fill="var(--ink-3)"
         style="font-family:var(--sans);font-size:13px;font-weight:800;letter-spacing:.09em;text-transform:uppercase">Brisbane, Australia</text>
 </svg>

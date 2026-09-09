@@ -1,0 +1,74 @@
+---
+// Small waving flags for the top of the tree. Drawn 34 x 22 from the pole,
+// with a wavy outline clipping the stripes so the cloth reads as moving.
+const { id, kind, x, y } = Astro.props;
+const clip = `flagclip-${id}`;
+const wave = "M0,0 C10,-4 22,5 34,1 L34,21 C22,25 10,16 0,20 Z";
+---
+<g transform={`translate(${x} ${y})`}>
+  <defs><clipPath id={clip}><path d={wave} /></clipPath></defs>
+
+  <g clip-path={`url(#${clip})`}>
+    {kind === "croatia" && (
+      <>
+        <rect x="0" y="-4" width="34" height="10" fill="#FF0000" />
+        <rect x="0" y="6" width="34" height="9" fill="#FFFFFF" />
+        <rect x="0" y="15" width="34" height="12" fill="#171796" />
+        <g>
+          <rect x="13" y="6" width="4" height="4" fill="#FF0000" />
+          <rect x="17" y="6" width="4" height="4" fill="#FFFFFF" />
+          <rect x="13" y="10" width="4" height="4" fill="#FFFFFF" />
+          <rect x="17" y="10" width="4" height="4" fill="#FF0000" />
+        </g>
+      </>
+    )}
+    {kind === "italy" && (
+      <>
+        <rect x="0" y="-4" width="12" height="31" fill="#009246" />
+        <rect x="12" y="-4" width="11" height="31" fill="#FFFFFF" />
+        <rect x="23" y="-4" width="11" height="31" fill="#CE2B37" />
+      </>
+    )}
+    {kind === "argentina" && (
+      <>
+        <rect x="0" y="-4" width="34" height="10" fill="#74ACDF" />
+        <rect x="0" y="6" width="34" height="9" fill="#FFFFFF" />
+        <rect x="0" y="15" width="34" height="12" fill="#74ACDF" />
+        <circle cx="17" cy="10.5" r="3.1" fill="#F6B40E" />
+      </>
+    )}
+    {kind === "safrica" && (
+      <>
+        <rect x="0" y="-4" width="34" height="12" fill="#E03C31" />
+        <rect x="0" y="14" width="34" height="13" fill="#001489" />
+        <rect x="0" y="8" width="34" height="6" fill="#FFFFFF" />
+        <rect x="0" y="9.2" width="34" height="3.6" fill="#007A4D" />
+        <path d="M0,-4 L15,11 L0,26 Z" fill="#FFFFFF" />
+        <path d="M0,-1 L12,11 L0,23 Z" fill="#000000" />
+        <path d="M0,-4 L15,11 L0,26" fill="none" stroke="#FFB612" stroke-width="1.6" />
+      </>
+    )}
+    {kind === "england" && (
+      <>
+        <rect x="0" y="-4" width="34" height="31" fill="#FFFFFF" />
+        <rect x="13.5" y="-4" width="6.5" height="31" fill="#CE1124" />
+        <rect x="0" y="7.5" width="34" height="6" fill="#CE1124" />
+      </>
+    )}
+    {kind === "australia" && (
+      <>
+        <rect x="0" y="-4" width="34" height="31" fill="#00247D" />
+        <rect x="0" y="-4" width="15" height="14" fill="#00247D" />
+        <path d="M0,-4 L15,10 M15,-4 L0,10" stroke="#FFFFFF" stroke-width="3" />
+        <path d="M7.5,-4 V10 M0,3 H15" stroke="#FFFFFF" stroke-width="4.6" />
+        <path d="M7.5,-4 V10 M0,3 H15" stroke="#CE1124" stroke-width="2.4" />
+        <circle cx="7.5" cy="17" r="2.2" fill="#FFFFFF" />
+        <circle cx="24" cy="4" r="1.5" fill="#FFFFFF" />
+        <circle cx="28" cy="11" r="1.5" fill="#FFFFFF" />
+        <circle cx="23" cy="17" r="1.5" fill="#FFFFFF" />
+        <circle cx="30" cy="19" r="1.2" fill="#FFFFFF" />
+      </>
+    )}
+  </g>
+  <path d={wave} fill="none" stroke="rgba(0,0,0,.22)" stroke-width="1" />
+</g>

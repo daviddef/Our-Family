@@ -55,8 +55,9 @@ site *about* two living children, made for them. So it takes the next-strictest 
   and neither identifies a person on its own;
 - the deceased are named in full, as in the sibling archives.
 
-Anyone with a recorded death is named; anyone without one is treated as living, including the Falco
-great-grandfather born in 1930.
+Anyone with a recorded death is named; anyone without one is treated as living. That set shrinks as
+the family tells us: the Croatian grandfather, the Falco great-grandfather (1930–2026) and Dell
+Murdoch (d. 2022) have all been named since this site was first built.
 
 **Public figures are the exception.** The Lerena racing dynasty — Tex and Gavin Lerena — are named,
 because they are published sportsmen already named in the Lerena archive and in the racing press. The

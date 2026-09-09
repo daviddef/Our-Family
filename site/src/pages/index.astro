@@ -9,34 +9,36 @@ import { families, joining, numbers } from "../data/families.js";
 ---
 <Base title="Our Family">
 
-  <div class="hero">
-    <div class="wrap">
-      <h1>Six families,<br />two <span>boys</span>.</h1>
-      <p class="lead">You were both born in Brisbane. But the people you come from lived on
-      four different continents.</p>
-      <p class="lead">A stonecutter on a Croatian hill. A carrier who led packhorses over a
-      mountain. A farmer in Italy, a horse trainer in Argentina, a family on the dry plains of
-      South Africa, and a soldier who sailed from England.</p>
-      <p class="lead">Here is how all six of them ended up in one house. Yours.</p>
+  <figure class="hero">
+    <picture>
+      <source media="(max-width:700px)" srcset={u("/hero-sm.webp")} />
+      <img src={u("/hero.webp")} width="1800" height="713" fetchpriority="high" decoding="async"
+           alt="One long imaginary landscape joining all six places, with a pale road running
+                through it. On the left a stone hill village in Istria with a bell tower and a
+                stonecutter’s mallet; then a bare grey mountain with two packhorses climbing it
+                and a small sailing boat at a stone quay below; then a green Italian valley with
+                vines and a white church, and a falcon overhead; then a wide brown river with a
+                low river town and two horses beside a white stable; then a dry plain with a
+                windmill, a railed stone monument and a tall ship far out on the horizon; and on
+                the right a green hillside with a Queenslander house on stilts and a mango tree." />
+    </picture>
+    <div class="cap">
+      <div class="wrap">
+        <h1>Six families,<br />two <span>boys</span>.</h1>
+        <p class="lead">You were both born in Brisbane. But the people you come from lived on
+        four different continents.</p>
+        <p class="lead">A stonecutter on a Croatian hill. A carrier who led packhorses over a
+        mountain. A farmer in Italy, a horse trainer in Argentina, a family on the dry plains of
+        South Africa, and a soldier who sailed from England.</p>
+        <p class="lead strong">Here is how all six of them ended up in one house. Yours.</p>
+      </div>
     </div>
+  </figure>
 
-    <figure class="heroart">
-      <picture>
-        <source media="(max-width:700px)" srcset={u("/hero-sm.webp")} />
-        <img src={u("/hero.webp")} width="1800" height="713" fetchpriority="high" decoding="async"
-             alt="One long imaginary landscape joining all six places, with a pale road running
-                  through it. On the left a stone hill village in Istria with a bell tower and a
-                  stonecutter’s mallet; then a bare grey mountain with two packhorses climbing it
-                  and a small sailing boat at a stone quay below; then a green Italian valley with
-                  vines and a white church, and a falcon overhead; then a wide brown river with a
-                  low river town and two horses beside a white stable; then a dry plain with a
-                  windmill, a railed stone monument and a tall ship far out on the horizon; and on
-                  the right a green hillside with a Queenslander house on stilts and a mango tree." />
-      </picture>
-      <figcaption class="cap">Six places, one road. Everything in this picture is somewhere your
-      family actually lived — the hill village, the mountain pass, the valley, the river town, the
-      dry plain, and the house with the mango tree.</figcaption>
-    </figure>
+  <div class="wrap">
+    <p class="artnote">Six places, one road. Everything in this picture is somewhere your family
+    actually lived — the hill village, the mountain pass, the valley, the river town, the dry
+    plain, and the house with the mango tree.</p>
   </div>
 
   <section>

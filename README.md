@@ -56,6 +56,10 @@ site *about* two living children, made for them. So it takes the next-strictest 
 Anyone with a recorded death is named; anyone without one is treated as living, including the Falco
 great-grandfather born in 1930.
 
+**Public figures are the exception.** The Lerena racing dynasty — Tex and Gavin Lerena — are named,
+because they are published sportsmen already named in the Lerena archive and in the racing press. The
+relative is given as "your dad's cousin", which names no one in the household.
+
 ## Every fact is carried, not invented
 
 Nothing here was researched fresh. Each statement was lifted from one of the five archives and rewritten

@@ -150,7 +150,7 @@ export const families = [
       },
       {
         big: "The horses never stopped.",
-        text: "Bob’s son became a trainer too. His grandson was a top jockey for twenty-two years. And there is a Lerena riding as a champion jockey in South Africa right now — one of your cousins.",
+        text: "Bob’s son became a trainer too. His grandson Tex was a top jockey for twenty-two years. And Gavin Lerena is a champion jockey in South Africa right now — your dad’s cousin.",
       },
     ],
     ladder: [

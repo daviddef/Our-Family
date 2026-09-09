@@ -65,7 +65,10 @@ relative is given as "your dad's cousin", which names no one in the household.
 
 ## Pages
 
-`/` the landing page · `/when/` how far back each line goes and the moments in order ·
+`/` the landing page · `/journeys/` how they crossed the world and why they left ·
+`/places/` what those places are actually like, and what is still standing ·
+`/picture/` a find-it game on the front-page illustration · `/cards/` one card per ancestor ·
+`/words/` the family's own Croatian, Latin and Afrikaans · `/when/` how far back each line goes ·
 `/jobs/` what everybody did for a living · and one page per family.
 
 The landing page carries the convergence tree (a wide SVG on desktop, a vertical HTML layout

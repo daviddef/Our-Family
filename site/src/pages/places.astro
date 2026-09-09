@@ -1,0 +1,51 @@
+---
+import Base from "../layouts/Base.astro";
+import { u } from "../lib/url.js";
+import { places, stillThere } from "../data/places.js";
+---
+<Base title="Places" dek="What the places this family came from are actually like — and what of the family is still standing in them.">
+  <div class="hero" style="text-align:left">
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--safrica)">Where they were</div>
+      <h1 style="font-size:clamp(38px,7vw,70px)">The places</h1>
+      <p class="lead big">A hill village with no street names. A town so windy it can knock a lorry
+      over. A plain where you can watch a storm coming for an hour before it arrives.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="grid g2">
+        {places.map(p => (
+          <div class={`placecard c-${p.k}`}>
+            <div class="pname">{p.name}{p.also && <em> · {p.also}</em>}</div>
+            <div class="pland">{p.land}</div>
+            <p>{p.what}</p>
+            <div class="pfact">{p.fact}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--safrica)">You could go and stand there</div>
+      <h2>Things that are still there</h2>
+      <p class="lead">This is not all in the past. Some of it you could get on a plane and put your
+      hand on.</p>
+      <div class="grid g2" style="margin-top:24px">
+        {stillThere.map(s => (
+          <div class={`stillcard c-${s.k}`}>
+            <h3>{s.what}</h3>
+            <p>{s.text}</p>
+          </div>
+        ))}
+      </div>
+      <div class="pager">
+        <a href={u("/journeys/")}>← How they got away from there</a>
+        <a href={u("/")}>🌳 Back to the tree</a>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,44 @@
+---
+import Base from "../layouts/Base.astro";
+import { u } from "../lib/url.js";
+import { spots } from "../data/findit.js";
+---
+<Base title="Find it" dek="Eleven things hidden in the picture on the front page, and the true story behind each one.">
+  <div class="hero" style="text-align:left">
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--safrica)">A game</div>
+      <h1 style="font-size:clamp(38px,7vw,70px)">Find {spots.length} things</h1>
+      <p class="lead big">Everything in this picture is somewhere your family really lived. Tap a
+      numbered dot — or scroll down and read the list.</p>
+    </div>
+  </div>
+
+  <section style="padding-top:14px">
+    <div class="wrap">
+      <figure class="findit">
+        <img src={u("/hero.webp")} width="1800" height="870" decoding="async"
+             alt="The family landscape: a hill village, a mountain pass, a valley, a river town, a dry plain and a house on stilts." />
+        {spots.map(s => (
+          <a class={`spot c-${s.k}`} href={`#spot-${s.n}`}
+             style={`left:${s.x}%;top:${s.y}%`} aria-label={s.what}>{s.n}</a>
+        ))}
+      </figure>
+
+      <div class="finds">
+        {spots.map(s => (
+          <div class={`find c-${s.k}`} id={`spot-${s.n}`}>
+            <span class="fnum">{s.n}</span>
+            <div>
+              <h3>{s.what}</h3>
+              <p>{s.why}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="pager">
+        <a href={u("/")}>🌳 Back to the tree</a>
+        <a href={u("/places/")}>What those places are like →</a>
+      </div>
+    </div>
+  </section>
+</Base>

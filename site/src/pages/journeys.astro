@@ -1,0 +1,69 @@
+---
+import Base from "../layouts/Base.astro";
+import { u } from "../lib/url.js";
+import { crossings, reasons } from "../data/journeys.js";
+---
+<Base title="Journeys" dek="How each family actually crossed the world, how long it took, and why they went at all.">
+  <div class="hero" style="text-align:left">
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--safrica)">Getting here</div>
+      <h1 style="font-size:clamp(38px,7vw,70px)">The journeys</h1>
+      <p class="lead big">Six families ended up in one city. Not one of them walked there, and not
+      one of them left for no reason.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2>How long did it actually take?</h2>
+      <p class="lead">These are real dates out of real documents. Where we know when somebody left
+      and when they arrived, you can count the days in between.</p>
+      <div class="journeys">
+        {crossings.map(c => (
+          <div class={`crossing c-${c.k}`}>
+            <div class="route">
+              <b>{c.from}</b>
+              <span class="arw" aria-hidden="true">↓</span>
+              <b>{c.to}</b>
+            </div>
+            <div class="detail">
+              <div class="who">{c.who}{c.age ? `, ${c.age}` : ""}</div>
+              <div class="when">Left {c.left} · by {c.ship}</div>
+              {c.days && (
+                <div class="bigdays">
+                  <b>{c.days}</b> days at sea
+                  <i>{Math.round(c.days / 7)} weeks without setting foot on land</i>
+                </div>
+              )}
+              <p>{c.text}</p>
+              {c.times && (
+                <div class="thenNow">{c.now} — so his journey took <b>{c.times} times longer</b> than yours would.</div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--safrica)">The reasons</div>
+      <h2>Why did they go?</h2>
+      <p class="lead">Nobody moves to the other side of the world by accident. Every one of these
+      families had a reason, and they are all different.</p>
+      <div class="whys">
+        {reasons.map(r => (
+          <div class={`why c-${r.k}`}>
+            <h3>{r.q}</h3>
+            <p>{r.a}</p>
+          </div>
+        ))}
+      </div>
+      <div class="pager">
+        <a href={u("/")}>🌳 Back to the tree</a>
+        <a href={u("/places/")}>What those places are like →</a>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,36 @@
+---
+import Base from "../layouts/Base.astro";
+import { u } from "../lib/url.js";
+import { words } from "../data/words.js";
+---
+<Base title="Words" dek="Words out of the family's own records — Croatian, Latin, Afrikaans — and how to say them.">
+  <div class="hero" style="text-align:left">
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--safrica)">Say these out loud</div>
+      <h1 style="font-size:clamp(38px,7vw,70px)">{words.length} family words</h1>
+      <p class="lead big">Every one of these is written down somewhere in your family's papers — in
+      Croatian, in Latin, or in Afrikaans. Some of them name a job that does not exist any more.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="wordlist">
+        {words.map(w => (
+          <div class={`wordcard c-${w.k}`}>
+            <div class="wtop">
+              <b>{w.w}</b>
+              <span class="wsay">say it: {w.say}</span>
+            </div>
+            <div class="wfrom">{w.from}</div>
+            <p>{w.means}</p>
+          </div>
+        ))}
+      </div>
+      <div class="pager">
+        <a href={u("/")}>🌳 Back to the tree</a>
+        <a href={u("/jobs/")}>The jobs these words describe →</a>
+      </div>
+    </div>
+  </section>
+</Base>

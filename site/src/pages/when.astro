@@ -38,15 +38,60 @@ import { moments } from "../data/moments.js";
           <div class={`moment c-${m.k} ${m.big ? "big" : ""}`}>
             <div class="my">{m.y}</div>
             <div>
-              <div class="mt">{m.t}</div>
+              <div class="mt">{m.t}{m.age && <span class="agebadge">{m.age}</span>}</div>
               <p>{m.w}</p>
             </div>
           </div>
         ))}
       </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--safrica)">Meanwhile</div>
+      <h2>What the rest of the world was doing</h2>
+      <p class="lead">It is hard to feel how long ago 1750 is. Here is what had not been invented yet.</p>
+      <div class="grid g2" style="margin-top:24px">
+        <div class="callout" style="--c:var(--croatia);--cw:var(--croatia-wash);--cd:var(--croatia-deep)">
+          <h3>When Giovanni was born, about 1750</h3>
+          <p>There were no photographs, no railways, no electric light and no anaesthetic — if you
+          needed an operation, you were awake for it. Mozart had not been born.</p>
+        </div>
+        <div class="callout" style="--c:var(--safrica);--cw:var(--safrica-wash);--cd:var(--safrica-deep)">
+          <h3>When the Nautilus sailed, 1819</h3>
+          <p>Napoleon was still alive, in prison on a tiny island in the middle of the Atlantic —
+          not very far from the route the ship was taking. He died two years later.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--safrica)">A big number</div>
+      <h2>How many grandparents have you got?</h2>
+      <p class="lead">Everybody has two parents. So everybody has four grandparents, and eight
+      great-grandparents. It doubles every single time you go up a step.</p>
+      <div class="doubling">
+        {[["Parents",2],["Grandparents",4],["Great-grandparents",8],["2× great",16],["3× great",32],
+          ["4× great",64],["5× great",128],["6× great",256],["7× great",512],["8× great",1024]].map(([lab,n]) => (
+          <div class="dstep" style={`--w:${Math.max(4, (n/1024)*100)}%`}>
+            <span class="dlab">{lab}</span>
+            <span class="dbar"></span>
+            <b>{n.toLocaleString("en-GB")}</b>
+          </div>
+        ))}
+      </div>
+      <div class="callout" style="--c:var(--italy);--cw:var(--italy-wash);--cd:var(--italy-deep);margin-top:24px">
+        <h3>So think about Matteo Falco</h3>
+        <p>He is your 8× great-grandpa, at the very top of the Falco ladder. That means there were
+        <b>1,024 people</b> in his generation who all had to exist, and every single one of them had
+        to meet somebody, or you would not be here. Matteo is just the one whose name we know.</p>
+      </div>
       <div class="pager">
         <a href={u("/")}>🌳 Back to the tree</a>
-        <a href={u("/jobs/")}>What they did for a living</a>
+        <a href={u("/journeys/")}>How they all got here →</a>
       </div>
     </div>
   </section>

@@ -1,0 +1,51 @@
+---
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import { u } from "../lib/url.js";
+import { families } from "../data/families.js";
+
+// One card per named ancestor already on the site. Living people are skipped:
+// they appear as initials with no dates, and there is nothing to put on a card.
+const cards = families.flatMap(f =>
+  f.ladder
+    .filter(r => !r.you && r.name.length > 2 && (r.when || "").match(/\d/))
+    .map(r => ({ ...r, fam: f.name, k: f.key, icon: f.icon, slug: f.slug }))
+);
+const oldest = cards.filter(c => (c.when.match(/1[6-8]\d\d/) || [])[0]).length;
+---
+<Base title="Cards" dek="A card for every ancestor on this site who has a name and a date — 40-odd of them, one per person.">
+  <div class="hero" style="text-align:left">
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--safrica)">Collect them</div>
+      <h1 style="font-size:clamp(38px,7vw,70px)">{cards.length} people</h1>
+      <p class="lead big">One card each, for everybody on this site with a name and a date. The
+      colour tells you which family, and the little picture tells you which country.</p>
+      <p class="lead">{oldest} of them were born before 1900. The oldest was born in 1750.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="cardgrid">
+        {cards.map(c => (
+          <a class={`acard c-${c.k}`} href={u(`/${c.slug}/`)}>
+            <div class="atop">
+              <Icon name={c.icon} size={26} color="var(--cd)" />
+              <span class="afam">{c.fam}</span>
+            </div>
+            <div class="aname">{c.name}</div>
+            <div class="awhen">{c.when}</div>
+            <div class="awhere">{c.where}</div>
+            {c.job && <span class="ajob">{c.job}</span>}
+          </a>
+        ))}
+      </div>
+      <p class="cap" style="margin:22px auto 0;text-align:center">Tap a card to open that family's
+      page. These print well, if you want them on paper.</p>
+      <div class="pager">
+        <a href={u("/")}>🌳 Back to the tree</a>
+        <a href={u("/jobs/")}>What they did for a living →</a>
+      </div>
+    </div>
+  </section>
+</Base>

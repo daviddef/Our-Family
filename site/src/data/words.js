@@ -1,0 +1,33 @@
+// Words out of the family's own records, with how to say them.
+// Every one of these is written down somewhere in the six archives.
+
+export const words = [
+  { w: "trhonoša", say: "TER-ho-nosh-a", from: "Croatian", k: "blazevic",
+    means: "A carrier. Not just any worker — one of the men of Senj who loaded packhorses and took goods over the mountain pass. A whole trade in one word." },
+  { w: "bura", say: "BOO-ra", from: "Croatian", k: "blazevic",
+    means: "The wind that comes down off the mountain at Senj. Not a breeze. It can push a lorry over." },
+  { w: "nadničar", say: "NAD-nee-char", from: "Croatian", k: "blazevic",
+    means: "A day labourer. You turned up in the morning, and if there was work you got it, and if there wasn’t you didn’t." },
+  { w: "mornar", say: "MOR-nar", from: "Croatian", k: "blazevic",
+    means: "A sailor. Ljubomir’s job, once the packhorse trade had gone." },
+  { w: "lapicida", say: "la-PIH-chee-da", from: "Latin", k: "croatia",
+    means: "A stonecutter. This is what the priest wrote next to Antonio’s name, because parish books were kept in Latin." },
+  { w: "agricola", say: "a-GREE-ko-la", from: "Latin", k: "croatia",
+    means: "A farmer. Same book, same pen, one generation earlier." },
+  { w: "Status Animarum", say: "STA-toos a-nee-MAR-oom", from: "Latin", k: "croatia",
+    means: "“The state of the souls.” A book where a priest listed every household in his parish — who lived in which house, and when they were born, married and died." },
+  { w: "q. Joannis", say: "kon-DAM yo-AN-nis", from: "Latin", k: "croatia",
+    means: "Short for quondam Joannis — “son of the late Giovanni”. Two words that joined two houses and proved a family." },
+  { w: "octogesimo nono", say: "ok-toh-JEH-zee-mo NOH-no", from: "Latin", k: "italy",
+    means: "“Eighty-nine.” A priest wrote the year in words as well as numbers, and when the two disagreed, the words won." },
+  { w: "šahovnica", say: "sha-HOV-nee-tsa", from: "Croatian", k: "croatia",
+    means: "The red-and-white chessboard on the Croatian flag. Look at the two Croatian flags at the top of the tree — that little checked square is it." },
+  { w: "Bunjevci", say: "BOON-yev-tsi", from: "Croatian", k: "blazevic",
+    means: "The people who founded the mountain villages this family came from, after fleeing an invading army in the 1600s." },
+  { w: "sterfkennis", say: "STERF-ken-nis", from: "Afrikaans / Dutch", k: "safrica",
+    means: "A death notice. A form the family filled in when somebody died, listing their parents and their children — which is why so much of the South African side is known at all." },
+  { w: "gostioničar", say: "gos-tee-OH-nee-char", from: "Croatian", k: "blazevic",
+    means: "An innkeeper. What the carrier became when he got too old to walk over the mountain." },
+  { w: "Septima", say: "SEP-tee-ma", from: "Latin", k: "argentina",
+    means: "“The seventh.” Mary Septima Taylor was her parents’ seventh daughter, and they named her after the fact." },
+];

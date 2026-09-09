@@ -1,0 +1,26 @@
+// A find-it game on the hero illustration. Positions are percentages of the
+// picture, so they hold at any width as long as the image is not cropped.
+export const spots = [
+  { n: 1,  x: 11, y: 61, k: "croatia",   what: "A mallet and a chisel",
+    why: "Left on a half-carved block outside the village. Two of your Croatian great-grandfathers cut stone for a living — the parish book calls one of them a lapicida." },
+  { n: 2,  x: 29, y: 51, k: "blazevic",  what: "Two packhorses on the mountain",
+    why: "This is the trhonoša trade: loading horses and walking them over the Vratnik pass. It was the whole reason the town of Senj existed." },
+  { n: 3,  x: 30, y: 80, k: "blazevic",  what: "A little sailing boat at a stone quay",
+    why: "Ljubomir was a mornar — a sailor and fisherman. He took to the water after a railway killed the carrying trade." },
+  { n: 4,  x: 43, y: 27, k: "italy",     what: "A falcon in the sky",
+    why: "Falco is the Latin word for falcon. Somebody was nicknamed “the falcon” hundreds of years ago and it turned into a surname." },
+  { n: 5,  x: 45, y: 56, k: "italy",     what: "A small white church",
+    why: "In a church like this at Arienzo, on 24 October 1767, a priest wrote down the oldest Falco anybody can prove." },
+  { n: 6,  x: 67, y: 79, k: "argentina", what: "Two horses beside a stable",
+    why: "Bob Lerena trained racehorses. His passport gives his job in one word: Trainer." },
+  { n: 7,  x: 74, y: 49, k: "safrica",   what: "A windmill on the dry plain",
+    why: "This is the Karoo. Windmills pump water up from underground, because there is very little of it on the surface." },
+  { n: 8,  x: 79, y: 37, k: "safrica",   what: "A tall ship on the horizon",
+    why: "A ship like the Nautilus, which carried a sixteen-year-old from Gravesend to Africa in 133 days." },
+  { n: 9,  x: 77, y: 80, k: "safrica",   what: "A stone monument inside iron railings",
+    why: "The grave at Burgersdorp. It is still standing today, and it still names George Kolbe and Margaret Downing." },
+  { n: 10, x: 90, y: 60, k: "britain",   what: "A house up on stilts",
+    why: "A Queenslander. Built high to catch the breeze and stay out of the wet — which is what a house in Brisbane looks like." },
+  { n: 11, x: 96, y: 47, k: "britain",   what: "A mango tree",
+    why: "Great-grandpa Kenneth fell out of one as a boy, straight into his father’s bucket of liquid manure. His father was upset about the manure." },
+];

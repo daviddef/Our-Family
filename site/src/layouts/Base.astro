@@ -34,8 +34,11 @@ const here = Astro.url.pathname;
       {families.map(f => (
         <a href={u(`/${f.slug}/`)} class={`c-${f.key} ${here === u(`/${f.slug}/`) ? "on" : ""}`}>{f.name}</a>
       ))}
-      <a href={u("/jobs/")} class={`c-sun ${here === u("/jobs/") ? "on" : ""}`}>Jobs</a>
-      <a href={u("/when/")} class={`c-sun ${here === u("/when/") ? "on" : ""}`}>When</a>
+      <span class="navsplit" aria-hidden="true"></span>
+      {[["/journeys/","Journeys"],["/places/","Places"],["/jobs/","Jobs"],
+        ["/when/","When"],["/words/","Words"],["/cards/","Cards"],["/picture/","Find it"]].map(([h,l]) => (
+        <a href={u(h)} class={`c-sun topic ${here === u(h) ? "on" : ""}`}>{l}</a>
+      ))}
     </nav>
   </div>
 </header>

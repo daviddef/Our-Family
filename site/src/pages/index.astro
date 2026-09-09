@@ -1,0 +1,132 @@
+---
+import Base from "../layouts/Base.astro";
+import BigTree from "../components/BigTree.astro";
+import Icon from "../components/Icon.astro";
+import { u } from "../lib/url.js";
+import { families, joining, numbers } from "../data/families.js";
+---
+<Base title="Our Family">
+
+  <div class="hero">
+    <div class="wrap">
+      <h1>Five families,<br />two <span>boys</span>.</h1>
+      <p class="lead">Alessio and Mateo were born in Brisbane. But the people they come from
+      lived on four different continents — a stonecutter on a Croatian hill, a farmer in Italy,
+      a horse trainer in Argentina, a family on the dry plains of South Africa, and a soldier
+      who sailed from England.</p>
+      <p class="lead">Here is how all five of them ended up in one house.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="treewrap">
+        <div class="scroll"><BigTree base={u("/")} /></div>
+      </div>
+      <p class="lead center" style="margin:20px auto 0;max-width:60ch">
+        Start at the bottom, with Alessio and Mateo, and climb. Every line going up is a real
+        person who really lived. Tap any family at the top of the tree.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="nums">
+        {numbers.map(n => (
+          <div class="num"><b>{n.n}</b><span>{n.label}</span><i>{n.sub}</i></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker c-sun" style="--c:var(--safrica)">Pick a family</div>
+      <h2>The five families</h2>
+      <p class="lead">Each one has its own colour, its own country, and its own best story.</p>
+      <div class="grid g3" style="margin-top:30px">
+        {families.map(f => (
+          <a class={`fcard c-${f.key}`} href={u(`/${f.slug}/`)}>
+            <div class="badge">
+              <Icon name={f.icon} size={42} color="var(--c)" />
+              <div>
+                <h3>{f.name}</h3>
+                <div class="where">{f.flagWord}</div>
+              </div>
+            </div>
+            <p>{f.blurb}</p>
+            <div class="go">Climb this tree →</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--safrica)">The big journey</div>
+      <h2>How far they all came</h2>
+      <p class="lead">Every one of these families ended up in the same city. Look how far
+      they each had to travel to get there.</p>
+      <div class="journey" style="margin-top:28px">
+        {families.map(f => (
+          <div class={`leg c-${f.key}`}>
+            <div class="pl">{f.flagWord}<small>{f.name}</small></div>
+            <div class="arrow" aria-hidden="true">
+              <svg viewBox="0 0 120 20" width="120" height="20">
+                <path d="M2 10h100" stroke="currentColor" stroke-width="3.5"
+                      stroke-linecap="round" stroke-dasharray="9 8" />
+                <path d="M100 3l14 7-14 7z" fill="currentColor" />
+              </svg>
+            </div>
+            <div class="dist">{f.km}</div>
+          </div>
+        ))}
+        <div class="leg c-sun" style="border-left-width:12px">
+          <div class="pl">Brisbane<small>Home</small></div>
+          <div class="arrow" aria-hidden="true"></div>
+          <div class="dist">0 km 🎉</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--safrica)">The story</div>
+      <h2>How the five became one</h2>
+      <p class="lead">Families join together when two people meet. It took four meetings,
+      on two sides of the world, over sixty-six years.</p>
+      <div class="joins" style="margin-top:28px">
+        {joining.map(j => (
+          <div class={`join ${j.big ? "big" : ""} ${j.boy ? "boy" : ""}`}>
+            <div class="yr">{j.year}</div>
+            <div>
+              <div class="txt">{j.text}</div>
+              <div class="dots" aria-hidden="true">
+                {j.keys.map(k => <i style={`background:var(--${k})`}></i>)}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="deep c-sun">
+        <div>
+          <div class="t">Want the whole grown-up version?</div>
+          <div class="s">Every single fact on this site came out of five much bigger archives,
+          where you can read the actual old documents — the church books, the ships' papers,
+          the wills and the gravestones.</div>
+          <div class="flinks">
+            {families.map(f => <a href={f.archive}>{f.archiveName} →</a>)}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Base>

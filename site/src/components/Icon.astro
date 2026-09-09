@@ -1,0 +1,41 @@
+---
+// Five emblems, one per family. Bold and simple so they still read at 28px.
+const { name, size = 40, color = "currentColor" } = Astro.props;
+const s = { width: size, height: size, viewBox: "0 0 32 32", fill: "none",
+            "aria-hidden": "true", focusable: "false" };
+---
+{name === "chisel" && (
+  <svg {...s}>
+    <rect x="3" y="21" width="26" height="8" rx="2" fill={color} opacity="0.28" />
+    <path d="M13 3h6v12l-3 4.5L13 15V3z" fill={color} />
+    <path d="M13 9h6" stroke="#fff" stroke-width="1.6" />
+  </svg>
+)}
+{name === "falcon" && (
+  <svg {...s}>
+    <path d="M3 19c5-9 10-8 13 0 3-8 8-9 13 0" stroke={color} stroke-width="3.4"
+          stroke-linecap="round" stroke-linejoin="round" />
+    <circle cx="16" cy="23.5" r="2.2" fill={color} />
+  </svg>
+)}
+{name === "horse" && (
+  <svg {...s}>
+    <path d="M8 27a11 12 0 1 1 16 0" stroke={color} stroke-width="4.4"
+          stroke-linecap="round" fill="none" />
+    <circle cx="10.5" cy="14" r="1.5" fill={color} />
+    <circle cx="21.5" cy="14" r="1.5" fill={color} />
+  </svg>
+)}
+{name === "ship" && (
+  <svg {...s}>
+    <path d="M16 3l9 15h-9V3z" fill={color} />
+    <path d="M15 6L8 18h7V6z" fill={color} opacity="0.45" />
+    <path d="M4 20h24l-4 8H8l-4-8z" fill={color} />
+  </svg>
+)}
+{name === "anchor" && (
+  <svg {...s}>
+    <path d="M4 27V13h4V9h5V4h6v5h5v4h4v14H4z" fill={color} />
+    <rect x="13" y="18" width="6" height="9" fill="#fff" opacity="0.85" />
+  </svg>
+)}

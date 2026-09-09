@@ -1,0 +1,124 @@
+---
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import { u } from "../lib/url.js";
+import { families } from "../data/families.js";
+
+export function getStaticPaths() {
+  return families.map((f, i) => ({
+    params: { slug: f.slug },
+    props: {
+      f,
+      prev: families[(i - 1 + families.length) % families.length],
+      next: families[(i + 1) % families.length],
+    },
+  }));
+}
+
+const { f, prev, next } = Astro.props;
+// oldest at the top, the boys at the bottom — so you read it climbing upwards
+const rungs = [...f.ladder].reverse();
+---
+<Base title={f.name} dek={f.blurb} key={f.key}>
+
+  <div class="hero" style="text-align:left">
+    <div class="wrap">
+      <div class="badge" style="display:flex;align-items:center;gap:16px">
+        <Icon name={f.icon} size={56} color="var(--c)" />
+        <div>
+          <div class="kicker" style="margin:0">{f.from}</div>
+          <h1 style="font-size:clamp(40px,7vw,74px);color:var(--cd)">{f.name}</h1>
+        </div>
+      </div>
+      <p class="lead big">{f.blurb}</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="meaning">
+        <div class="kicker">What the name means</div>
+        <p>{f.meaning}</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker">The climb</div>
+      <h2>From you, all the way back</h2>
+      <p class="lead">Start at the bottom. Every step up is one more generation into the past —
+      a real person, in a real place, written down in a real book.</p>
+
+      <div class="upnote" style="margin-top:26px">
+        <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+          <path d="M10 3v14M4 9l6-6 6 6" stroke="currentColor" stroke-width="2.6"
+                fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        The oldest {f.name} we can prove
+      </div>
+
+      <div class="ladder">
+        {rungs.map(r => (
+          <div class={`rung ${r.you ? "is-you" : ""} ${r.last ? "is-last" : ""}`}>
+            <span class="stem" aria-hidden="true"></span>
+            <span class="dot" aria-hidden="true"></span>
+            <div class="card">
+              {r.rel && <div class="rel">{r.rel}</div>}
+              {r.you && <div class="rel" style="color:var(--safrica)">That's you</div>}
+              <div class="nm">{r.name}</div>
+              <div class="det">{r.when} · {r.where}</div>
+              {r.job && <span class="job">{r.job}</span>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker">The good bits</div>
+      <h2>Things they actually did</h2>
+      <div class="facts" style="margin-top:34px">
+        {f.facts.map((fact, i) => (
+          <div class="fact">
+            <span class="n">{i + 1}</span>
+            <h3>{fact.big}</h3>
+            <p>{fact.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="callout">
+        <h3>🔎 The bit we still can't solve</h3>
+        <p>{f.mystery}</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="deep">
+        <div>
+          <div class="t">See the real documents</div>
+          <div class="s">Everything on this page came out of {f.archiveName} — the grown-up
+          version, with the actual scans, the Latin, and all the arguments about what is
+          true and what is only a story.</div>
+        </div>
+        <a class="btn" href={f.archive}>Open {f.archiveName} →</a>
+      </div>
+
+      <div class="pager">
+        <a class={`c-${prev.key}`} href={u(`/${prev.slug}/`)}>← {prev.name}</a>
+        <a href={u("/")}>🌳 All five families</a>
+        <a class={`c-${next.key}`} href={u(`/${next.slug}/`)}>{next.name} →</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

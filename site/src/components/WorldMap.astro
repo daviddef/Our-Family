@@ -77,7 +77,7 @@ const fmt = n => n.toLocaleString("en-GB");
       )}
       <text x={p.lab[0]} y={p.lab[1]} text-anchor={p.anchor} fill={`var(--${p.k}-deep)`}
             style="font-family:var(--sans);font-size:17px;font-weight:800;paint-order:stroke;stroke:var(--panel);stroke-width:5px;stroke-linejoin:round">{p.name}</text>
-      <text x={p.lab[0]} y={p.lab[1] + 18} text-anchor={p.anchor} fill={`var(--${p.k})`}
+      <text x={p.lab[0]} y={p.lab[1] + 18} text-anchor={p.anchor} fill={`var(--${p.k}-deep)`}
             style="font-family:var(--sans);font-size:14px;font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:5px;stroke-linejoin:round">{fmt(p.km)} km</text>
     </a>
   ))}

@@ -2,12 +2,6 @@
 // Every fact here is carried over from one of the five research archives.
 // Written to be read out loud to a child of six, and read alone by a child of ten.
 
-// Living people are shown by initial only, with no dates.
-export const boys = [
-  { name: "A", place: "Brisbane" },
-  { name: "M", place: "Brisbane" },
-];
-
 export const families = [
   {
     slug: "defranceski",

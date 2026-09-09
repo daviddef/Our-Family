@@ -1,0 +1,40 @@
+---
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import { u } from "../lib/url.js";
+import { families } from "../data/families.js";
+---
+<Base title="Not found" dek="That page is not here. Try one of the six families instead.">
+
+  <div class="hero">
+    <div class="wrap">
+      <h1>Lost.</h1>
+      <p class="lead">There is no page here. Which is a bit like most of family history,
+      to be honest — you go looking for somebody and find an empty space where they should be.</p>
+      <p class="lead">Here is everywhere you <em>can</em> go:</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="grid g3">
+        {families.map(f => (
+          <a class={`fcard c-${f.key}`} href={u(`/${f.slug}/`)}>
+            <div class="badge">
+              <Icon name={f.icon} size={38} color="var(--c)" />
+              <div>
+                <h3>{f.name}</h3>
+                <div class="where">{f.flagWord}</div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="pager">
+        <a href={u("/")}>🌳 The family tree</a>
+        <a href={u("/jobs/")}>What they all did for a living</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

@@ -126,6 +126,23 @@ site/src/pages/[slug].astro     one page per family
 site/public/styles.css          the bright palette — the archives' own hues, turned up
 ```
 
+## Legibility
+
+The palette was audited against WCAG AA and it failed badly, which is worth recording because
+the failures were invisible to the eye: every family colour used as small text was under 4.5:1,
+amber worst at **2.26:1**, and `--ink-3` was under too. White text on the bright fills — the
+buttons and the numbered fact badges — was also short.
+
+Fixed by separating the two jobs a colour does. The bright hue stays for **fills**: icons, dots,
+borders, chips, the tree branches, the compass spokes. A darker `-deep` variant does all the
+**text**, solved so that it clears 4.5:1 against its own wash — the hardest background it ever
+sits on — and so that white clears 4.5:1 against it when it is used as a button. `--ink-3`
+was darkened to #796F60.
+
+A sweep of every text node on all nine pages, measuring computed colour against computed
+background, now reports **zero failures**. The site did not get duller: nothing that carries
+colour rather than words was changed.
+
 ## Design
 
 Same brand family as the five archives: EB Garamond for names and titles, a warm paper ground, and the

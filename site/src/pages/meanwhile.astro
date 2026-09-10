@@ -1,0 +1,111 @@
+---
+import Base from "../layouts/Base.astro";
+import { u } from "../lib/url.js";
+import { eras, rulers } from "../data/meanwhile.js";
+
+// Bar width is the length of the reign, on one shared scale. Rows rather than
+// a single strip: seven chips across a phone can be proportional or readable,
+// not both, and turning it on its side gets you both.
+const T0 = 1374, T1 = 2026;
+const wide = r => Math.max(1.2, (((r.to ?? T1) - r.from) / (T1 - T0)) * 100);
+---
+<Base title="Meanwhile" dek="What your family was doing, who was in charge of the ground they stood on, and what the rest of the world was up to — all at the same time.">
+
+  <div class="hero" style="text-align:left">
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--italy)">Three things at once</div>
+      <h1 style="font-size:clamp(38px,7vw,70px)">Meanwhile…</h1>
+      <p class="lead big">Nobody in your family lived in a bubble. While they were being born and
+      getting married and sailing away, other things were going on — and quite a lot of those
+      other things are the reason they went.</p>
+      <p class="lead">So every block below shows the same stretch of time three ways: what
+      <strong>your family</strong> was doing, <strong>who was in charge</strong> of the ground they
+      were standing on, and what was happening <strong>everywhere else</strong>.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--croatia)">Start with this one</div>
+      <h2>One village. Seven countries. It never moved.</h2>
+      <p class="lead">Gračišće is a stone village on a hill in Istria, about four hundred people.
+      Your family lived there at house 5 and house 19. In the time this website covers, the village
+      stayed exactly where it was and was ruled by seven different countries — six of those changes
+      in under two hundred years. Nobody packed. The border moved.</p>
+
+      <div class="ribbon">
+        {rulers.map(r => (
+          <div class="rrow">
+            <div class="ryr">{r.from}{r.to ? `–${r.to}` : " →"}</div>
+            <div class="rtrack">
+              <div class={`rbar ru-${r.c}`} style={`width:${wide(r)}%`}></div>
+              <div class="rlab"><b>{r.who}</b> <small>{r.note}</small></div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p class="cap">Read it left to right. If you had been born at house 19 in 1900 you would have
+      been Austrian, then Italian at twenty, then under German occupation at forty-three, then
+      Yugoslav at forty-five, and Croatian at ninety-one — without once leaving the street.</p>
+    </div>
+  </section>
+
+  {eras.map((e, i) => (
+    <section class={`erasec ${i % 2 ? "alt" : ""}`}>
+      <div class="wrap">
+        <div class="erahead">
+          <div class="eraspan">{e.span}</div>
+          <h2>{e.title}</h2>
+        </div>
+        <p class="lead">{e.lead}</p>
+
+        <div class="three">
+          <div class="col fam">
+            <h3>Your family</h3>
+            <ul>
+              {e.family.map(f => (
+                <li class={`c-${f.k}`}><b>{f.y}</b><span>{f.t}</span></li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="col chg">
+            <h3>Who was in charge</h3>
+            <ul>
+              {e.charge.map(c => (
+                <li><b>{c.where}</b><span>{c.who}</span></li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="col wld">
+            <h3>Meanwhile, everywhere else</h3>
+            <ul>
+              {e.world.map(w => (
+                <li><b>{w.y}</b><span>{w.t}</span></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section>
+    <div class="wrap">
+      <div class="callout" style="--c:var(--italy);--cw:var(--italy-wash);--cd:var(--italy-deep)">
+        <h3>🌍 Why this page exists</h3>
+        <p>Because “1873” means nothing on its own. But “a railway was built and it went the wrong
+        way and a whole town lost its work and your family had to find something else to be” — that
+        is a thing that happened to people. Almost every move in this website has a reason sitting
+        next to it in one of these rows.</p>
+      </div>
+      <div class="pager">
+        <a href={u("/when/")}>← How far back each family goes</a>
+        <a href={u("/walk/")}>🚶 Go and stand in it →</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

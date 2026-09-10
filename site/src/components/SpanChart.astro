@@ -3,7 +3,10 @@
 // Solid bar  = the direct line this site shows, from its oldest dated ancestor.
 // Faded bar  = deeper still, but reached through the mothers, or not yet tested.
 
-const X0 = 1680, X1 = 2035, L = 150, R = 880;
+// The names used to sit in a gutter on the left. On a phone this chart has to
+// scroll sideways, and the gutter — with every family's name in it — scrolled
+// straight out of view. So the name now rides inside its own bar.
+const X0 = 1680, X1 = 2035, L = 34, R = 880;
 const x = y => L + ((y - X0) / (X1 - X0)) * (R - L);
 
 const rows = [
@@ -42,24 +45,24 @@ const bottom = TOP + rows.length * GAP + 6;
     const y = TOP + i * GAP;
     return (
       <g>
-        <text x={L - 14} y={y + 20} text-anchor="end" fill={`var(--${r.k}-deep)`}
-              style="font-family:var(--serif);font-size:20px;font-weight:600">{r.name}</text>
-
         {r.ghost && (
           <rect x={x(r.ghost)} y={y + 5} width={x(r.from) - x(r.ghost)} height={H - 10} rx={5}
-                fill={`var(--${r.k})`} opacity="0.22" />
+                fill={`var(--${r.k}-wash)`} />
         )}
         {r.ghost && (
           <text x={x(r.ghost) + 10} y={y + 20} fill={`var(--${r.k}-deep)`}
                 style="font-family:var(--sans);font-size:12.5px;font-weight:800">{r.ghost}</text>
         )}
 
+        {/* the deep tone, not the bright one — white sits on top of it */}
         <rect x={x(r.from)} y={y} width={x(2026) - x(r.from)} height={H} rx={8}
-              fill={`var(--${r.k})`} opacity="0.9" />
-        <text x={x(r.from) + 11} y={y + 20} fill="#fff"
-              style="font-family:var(--sans);font-size:13.5px;font-weight:800">{r.from}</text>
-        <text x={x(2026) - 11} y={y + 20} text-anchor="end" fill="#fff"
-              style="font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:.06em">{r.who.toUpperCase()} → NOW</text>
+              fill={`var(--${r.k}-deep)`} />
+        <text x={x(r.from) + 13} y={y + 21} fill="#fff"
+              style="font-family:var(--serif);font-size:20px;font-weight:600">{r.name}</text>
+        <text x={x(r.from) + 13 + r.name.length * 10.5} y={y + 20} fill="#fff"
+              style="font-family:var(--sans);font-size:13px;font-weight:800;opacity:.85">{r.from}</text>
+        <text x={x(2026) - 12} y={y + 20} text-anchor="end" fill="#fff"
+              style="font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:.06em;opacity:.85">{r.who.toUpperCase()} → NOW</text>
       </g>
     );
   })}

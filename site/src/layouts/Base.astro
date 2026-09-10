@@ -36,7 +36,7 @@ const here = Astro.url.pathname;
       ))}
       <span class="navsplit" aria-hidden="true"></span>
       {[["/journeys/","Journeys"],["/walk/","The walk"],["/places/","Places"],["/jobs/","Jobs"],
-        ["/cousins/","Cousins"],["/when/","When"],["/words/","Words"],["/cards/","Cards"],["/picture/","Find it"]].map(([h,l]) => (
+        ["/cousins/","Cousins"],["/when/","When"],["/meanwhile/","Meanwhile"],["/words/","Words"],["/cards/","Cards"],["/picture/","Find it"]].map(([h,l]) => (
         <a href={u(h)} class={`c-sun topic ${here === u(h) ? "on" : ""}`}>{l}</a>
       ))}
     </nav>

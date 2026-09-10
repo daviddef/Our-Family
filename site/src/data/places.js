@@ -18,8 +18,8 @@ export const places = [
   },
   {
     k: "croatia", name: "Crikvenica", land: "the Kvarner coast, Croatia",
-    what: "A seaside town of pebble beaches an hour down the coast from Senj. Your great-grandpa Ivan was born here in 1925, his first daughter was born here in 1948, and Hedviga sang here.",
-    fact: "People have been coming here to swim since the 1890s, when the first hotel went up — so it was already a holiday town while the family was living in it.",
+    what: "A seaside town of pebble beaches an hour down the coast from Senj. Your great-grandpa Ivan was born here in 1925, his first daughter was born here in 1948, and Hedviga sang in the grandest building in the town — the Hotel Therapia.",
+    fact: "The Therapia opened in 1895 and had an X-ray machine about ten years after anybody had worked out how to take an X-ray. People came here to be made better as much as to swim.",
   },
   {
     k: "italy", name: "Arienzo", land: "near Naples, Italy",
@@ -87,6 +87,10 @@ export const stillThere = [
   {
     k: "mazza", what: "Four graves in a row at Nudgee",
     text: "RFM and MJM’s four Italian great-grandparents lie in consecutive plots at Nudgee in Brisbane — V-1026, V-1027, V-1028, V-1029 — buried in the order they died, with nineteen years between the first and the last. Born in three towns that had never heard of each other, and they ended up side by side.",
+  },
+  {
+    k: "blazevic", what: "The hotel Hedviga sang in",
+    text: "It is still standing, and it is still a hotel. It opened in 1895 as the Hotel Archduke Joseph, took the name Therapia in 1899 when a water-cure clinic moved in downstairs, and it is now protected as a historic monument. It stopped being called the Therapia in 2013, when an Austrian hotel company bought it and renamed it the Kvarner Palace — so the name she sang under is gone, and the room is not. You could walk into it.",
   },
   {
     k: "britain", what: "Toowong and Dutton Park",

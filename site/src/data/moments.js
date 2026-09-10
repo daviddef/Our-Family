@@ -60,6 +60,8 @@ const raw = [
     w: "Ivan Defranceski died at Senj on 30 October 1995. Hedviga died at Johannesburg on 30 October 2001 — the very same date, six years later." },
   { y: "2015", k: "sun", t: "A wedding in Brisbane",
     w: "On 19 December. Her twin sister married the other pair's dad too — and between the two weddings, ten families became one lot of cousins.", big: true },
+  { y: "1895", k: "blazevic", t: "The Hotel Therapia opens at Crikvenica",
+    w: "The grandest building in the town, with sea-water baths and, within about ten years, an X-ray machine. Fifty-odd years later your great-grandma Hedviga sang in it. It is still standing — it has been called the Kvarner Palace since 2013." },
   { y: "1948", k: "croatia", t: "Ivan and Hedviga leave for Africa", age: "1948",
     w: "The year the family remembers. Europe had just been wrecked by a war and other countries were offering Europeans somewhere safer to start again — and there is a second, quieter reason the family has always suspected and nobody wrote down. It took them three countries to stop moving: Botswana, then Zimbabwe, then South Africa." },
   { y: "2025", k: "argentina", t: "A plane from Johannesburg lands at Brisbane",

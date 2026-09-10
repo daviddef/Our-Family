@@ -158,7 +158,7 @@ export const families = [
       },
       {
         big: "Your great-grandma was a singer.",
-        text: "Before Africa, Hedviga sang at Crikvenica — the seaside town on the Kvarner coast where her first child was born. There is no record of it anywhere. It is only the family remembering her, which is the only place a voice can be kept.",
+        text: "Before Africa, Hedviga sang at the Hotel Therapia in Crikvenica — the big grand hotel on the seafront, the one people came to from all over the empire. There is no record of her singing anywhere. It is only the family remembering her, which is the only place a voice can be kept. But the hotel is still there. It is called the Kvarner Palace now.",
       },
       {
         big: "Her grandfather carried things over a mountain.",

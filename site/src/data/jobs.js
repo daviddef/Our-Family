@@ -101,7 +101,7 @@ export const groups = [
     icon: "note",
     jobs: [
       { job: "Singer", who: "Hedviga", when: "before she left in 1948", k: "blazevic",
-        text: "She sang at Crikvenica, on the Croatian coast. This is the only job on this whole page that no document anywhere records — every other line here came out of a register, a certificate or a factory book. This one is only remembered. Which is worth noticing: two hundred years of paper can tell you a man cut stone, and still never tell you that somebody sang." },
+        text: "She sang at the Hotel Therapia in Crikvenica, the grand seafront hotel where people came to take the sea cure. This is the only job on this whole page that no document anywhere records — every other line here came out of a register, a certificate or a factory book. This one is only remembered. Which is worth noticing: two hundred years of paper can tell you a man cut stone, and still never tell you that somebody sang." },
     ],
   },
 ];

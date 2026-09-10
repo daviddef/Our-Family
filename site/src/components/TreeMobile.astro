@@ -1,14 +1,33 @@
 ---
 // The same tree as BigTree, laid out vertically for a phone. The wide SVG is
-// unreadable below about 760px — only a third of it fits — so on narrow screens
-// this replaces it: read from the top down, the families feed into grandparents,
-// the grandparents into a parent, and both parents into the boys.
+// 2200 units across and unreadable on a narrow screen, so this replaces it:
+// read from the top down — families into grandparents, grandparents into a
+// parent, and each pair of parents into their two children.
+//
+// The middle block is the one all four cousins share.
 const { base } = Astro.props;
 
 const sides = [
   {
-    title: "Mum’s side",
-    parent: { rel: "Mum", name: "CAD" },
+    title: "Rocco & Mia’s dad’s side",
+    parent: { rel: "Dad", name: "MRM" },
+    groups: [
+      { gp: { rel: "Grandpa", name: "Frank", k: "mazza" },
+        fams: [
+          { k: "mazza", slug: "mazza", name: "Mazza", land: "Sicily", gg2: "Salvatore", ggp: "Sebastiano" },
+          { k: "prostamo", slug: "prostamo", name: "Prostamo", land: "Calabria", gg2: "Francessco", ggp: "Domenica" },
+        ] },
+      { gp: { rel: "Grandma", name: "Nancy", k: "arena" },
+        fams: [
+          { k: "arena", slug: "arena", name: "Arena", land: "Calabria", gg2: "Giuseppe", ggp: "Rocco" },
+          { k: "polistena", slug: "polistena", name: "Polistena", land: "Calabria", gg2: "Giovanni", ggp: "Angela" },
+        ] },
+    ],
+  },
+  {
+    title: "The side all four of you share",
+    shared: true,
+    parent: { rel: "Their daughters — twins", name: "SFD & CAD" },
     groups: [
       { gp: { rel: "Grandpa", name: "IKD", k: "britain" },
         fams: [{ k: "britain", slug: "darcy", name: "D’Arcy", land: "England & Ireland", gg2: "Lindesay", ggp: "Kenneth" }] },
@@ -17,13 +36,13 @@ const sides = [
     ],
   },
   {
-    title: "Dad’s side",
+    title: "Alessio & Mateo’s dad’s side",
     parent: { rel: "Dad", name: "DID" },
     groups: [
       { gp: { rel: "Grandma", name: "CAL", k: "argentina" },
         fams: [
           { k: "safrica", slug: "booyzen", name: "Booyzen", land: "South Africa", gg2: "George", ggp: "Catherine" },
-          { k: "argentina", slug: "lerena", name: "Lerena", land: "Argentina", gg2: "Bob", ggp: "Nuno" },
+          { k: "argentina", slug: "lerena", name: "Lerena", land: "Argentina", gg2: "Pablo Armando", ggp: "Nuno" },
         ] },
       { gp: { rel: "Grandpa", name: "Ivan", k: "croatia" },
         fams: [
@@ -33,11 +52,16 @@ const sides = [
     ],
   },
 ];
+
+const pairs = [
+  { initials: ["RFM", "MJM"], from: "MRM and SFD" },
+  { initials: ["ADD", "MCD"], from: "DID and CAD" },
+];
 ---
 
 <div class="mtree">
   {sides.map(side => (
-    <section class="mside">
+    <section class={`mside ${side.shared ? "is-shared" : ""}`}>
       <h3>{side.title}</h3>
       {side.groups.map(g => (
         <div class="mgroup">
@@ -62,9 +86,13 @@ const sides = [
     </section>
   ))}
 
-  <div class="mboys">
-    <span class="arw" aria-hidden="true">↓</span>
-    <div class="pair"><span>ADD</span><span>MCD</span></div>
-    <small>Brisbane, Australia</small>
+  <div class="mkids">
+    {pairs.map(p => (
+      <div class="mpair">
+        <small>{p.from}</small>
+        <div class="pair">{p.initials.map(i => <span>{i}</span>)}</div>
+      </div>
+    ))}
+    <small class="mplace">Brisbane, Australia</small>
   </div>
 </div>

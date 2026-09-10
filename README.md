@@ -1,6 +1,6 @@
 # Our Family
 
-The landing site for the family archives — and the only one of the six written for children.
+The landing site for the family archives — and the only one of the seven written for children.
 
 **Live:** https://daviddef.github.io/Our-Family/
 
@@ -20,8 +20,22 @@ give away a living person's birth date, the timeline says *then* instead.
 | 🟠 | **Lerena** | Rosario, Argentina | [The Lerena Archive](https://daviddef.github.io/TheLerena/) |
 | 🔴 | **Booyzen** | The Karoo and the Cape, South Africa | [The Booyzen Archive](https://daviddef.github.io/TheBooyzen/) |
 | 🟣 | **D'Arcy** | Yorkshire and Limerick → Australia | [The D'Arcy Archive](https://daviddef.github.io/TheDArcy/) |
+| 🟤 | **Mazza** | Piedimonte Etneo, Sicily | [The Mazza Archive](https://daviddef.github.io/TheMazza/) |
+| 🟦 | **Prostamo** | Briatico, Calabria — reaches 1697 | [The Mazza Archive](https://daviddef.github.io/TheMazza/) |
+| 🟪 | **Arena** | Scilla, Calabria | [The Mazza Archive](https://daviddef.github.io/TheMazza/) |
+| 🟩 | **Polistena** | Scilla, Calabria | [The Mazza Archive](https://daviddef.github.io/TheMazza/) |
 
-## How the five join
+## Four cousins, ten families
+
+The hinge is a pair of **twin sisters**: David married Cristina D'Arcy, Michael married Stefanie
+D'Arcy. So Alessio and Mateo, and their cousins Rocco and Mia, share one set of grandparents
+exactly — and therefore share **D'Arcy and Falco** all the way back. On their fathers' sides they
+share nothing at all: four families across Croatia, Argentina and South Africa on one side, four
+across Sicily and Calabria on the other.
+
+That is the whole story, and `/cousins/` is the page that tells it.
+
+## How the families join
 
 Each family badge passes down through the one great-grandparent who actually carried that surname,
 then into a grandparent. The six pair off into four grandparents: Booyzen and Lerena both arrive

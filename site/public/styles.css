@@ -155,7 +155,8 @@ section h2{font-size:clamp(30px,4.4vw,46px)}
 /* ---------- the big tree ---------- */
 .treewrap{background:var(--panel);border:3px solid var(--rule-2);border-radius:24px;padding:12px}
 .treewrap .scroll{overflow-x:auto}
-.treewrap svg{display:block;min-width:940px;margin:0 auto}
+/* the tree is 2200 units wide now; below this it stops being readable and scrolls */
+.treewrap svg{display:block;min-width:1700px;margin:0 auto}
 
 /* ---------- journey ---------- */
 .journey{display:flex;flex-direction:column;gap:12px}
@@ -607,3 +608,28 @@ header.site nav a.topic:hover{color:var(--ink)}
 .waycard .wemoji{display:block;font-size:26px;line-height:1}
 .waycard b{display:block;font-family:var(--serif);font-size:23px;font-weight:600;color:var(--ink);margin-top:8px}
 .waycard span:last-child{display:block;font-size:15px;line-height:1.5;color:var(--ink-2);margin-top:5px}
+
+/* ---------- cousins ---------- */
+.cousinsplit{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:26px}
+@media (max-width:860px){.cousinsplit{grid-template-columns:1fr}}
+.csplit{background:var(--panel);border:2px solid var(--rule);border-top:8px solid var(--c,var(--sun));
+  border-radius:16px;padding:18px 20px}
+.csplit.shared{--c:var(--sun);background:#FFF7DF;border-color:var(--sun)}
+.csplit b{display:block;font-family:var(--serif);font-size:24px;font-weight:600;color:var(--ink)}
+.csplit > span{display:block;font-size:12.5px;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-3);margin-top:3px}
+.cchips{display:flex;flex-direction:column;gap:7px;margin-top:13px}
+.cchip{display:block;text-decoration:none;background:var(--cw);border:2px solid var(--c);
+  border-radius:11px;padding:7px 12px;font-family:var(--serif);font-size:18px;font-weight:600;color:var(--cd)}
+.cchip i{display:block;font-style:normal;font-family:var(--sans);font-size:11.5px;font-weight:800;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--cd);opacity:.85;margin-top:1px}
+
+/* the shared block on the phone tree */
+/* a lighter tint than --sun-wash: the small grey type inside needs 4.5:1 */
+.mside.is-shared{border-color:var(--sun);background:#FFF7DF}
+.mkids{margin-top:14px;text-align:center}
+.mpair{margin-top:14px}
+.mpair small{display:block;font-size:11.5px;font-weight:800;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.mplace{display:block;margin-top:16px;font-size:11.5px;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3)}

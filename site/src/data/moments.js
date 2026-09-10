@@ -1,4 +1,4 @@
-// The biggest dated moments across all six families, in order.
+// The biggest dated moments across all ten families, in order.
 // Every one of these is documented in one of the archives.
 
 export const moments = [
@@ -51,5 +51,5 @@ export const moments = [
   { y: "1995 & 2001", k: "croatia", t: "Two deaths, six years to the day apart",
     w: "Ivan Defranceski died at Senj on 30 October 1995. Hedviga died at Johannesburg on 30 October 2001 — the very same date, six years later." },
   { y: "2015", k: "sun", t: "A wedding in Brisbane",
-    w: "On 19 December. That is the day all six families finally became one family.", big: true },
+    w: "On 19 December. Her twin sister married Rocco and Mia's dad too — and between the two weddings, ten families became one lot of cousins.", big: true },
 ];

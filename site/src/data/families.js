@@ -1,4 +1,4 @@
-// The five families that meet in the two boys.
+// The ten families that meet in the four cousins.
 // Every fact here is carried over from one of the five research archives.
 // Written to be read out loud to a child of six, and read alone by a child of ten.
 
@@ -115,8 +115,8 @@ export const families = [
         cap: "This exact photo was filed twice in the family papers: once under one couple’s name, once under another’s. So we honestly do not know who they are. When you don’t know, saying so is the right answer." },
     ],
     ladder: [
-      { name: "ADD & MCD", where: "Brisbane, Australia", you: true },
-      { name: "CAD", rel: "Mum", where: "Brisbane, Australia" },
+      { name: "ADD · MCD · RFM · MJM", rel: "All four of you", where: "Brisbane, Australia", you: true },
+      { name: "CAD & SFD", rel: "Mum and Aunty — twins", where: "Brisbane, Australia" },
       { name: "GF", rel: "Grandma", where: "Benevento, Italy" },
       { name: "Carmine", rel: "Great-grandpa", when: "1930–2026", where: "Forchia, Italy" },
       { name: "Carmine Antonio", rel: "2× great-grandpa", when: "1901–1988", where: "Arienzo → Brisbane" },
@@ -340,6 +340,202 @@ export const families = [
   },
 
   {
+    slug: "mazza",
+    name: "Mazza",
+    key: "mazza",
+    flagWord: "Italy",
+    from: "Piedimonte Etneo, on the slopes of Etna",
+    icon: "mountain",
+    blurb: "A village at the foot of a volcano. The family this whole side is named after — and the shortest line in it.",
+    meaning:
+      "Mazza is the Italian word for a club or a mallet. Somebody was nicknamed that a long time ago, and it stuck. It is a very common name in Sicily.",
+    km: "about 16,200 km",
+    kmNote: "Piedimonte Etneo, Sicily → Brisbane",
+    archive: "https://daviddef.github.io/TheMazza/",
+    archiveName: "The Mazza Archive",
+    facts: [
+      {
+        big: "The village is called “the foot of Etna”.",
+        text: "Piedimonte Etneo. That is literally what the name means, and it is literally where it is — on the lower slopes of a volcano that is still smoking today. Look for it in the big picture on the front page.",
+      },
+      {
+        big: "The family is named after its shortest line.",
+        text: "The Mazza line runs back only four generations before it stops dead at Rosario Mazza, a man with no dates at all. Meanwhile the Prostamo line, which comes in through a grandmother, reaches back nine. A surname tells you far less about where a family comes from than people think.",
+      },
+      {
+        big: "Sebastiano sailed on the Toscana.",
+        text: "Out of Genoa, on 4 October 1949. The family tree recorded eighteen crossings and not one ship’s name; somebody went to the Australian passenger index and found nine of them.",
+      },
+      {
+        big: "A sixteen-year-old on the Palermo.",
+        text: "Michele Mazza landed in 1925, off a ship out of Messina, aged sixteen. That is twenty-four years before Sebastiano — two family emigrations, a generation apart.",
+      },
+      {
+        big: "There are 120 Mazzas and no one can join them up.",
+        text: "In the whole archive there are 120 people called Mazza, in six separate groups that no record connects to each other. The name the family is named for is the most broken-up thing in it.",
+      },
+    ],
+    photos: [],
+    noPhotos:
+      "No photographs of the Sicilian side have been gathered here yet. The Mazza archive has a picture store — they just have not been brought across.",
+    ladder: [
+      { name: "RFM & MJM", where: "Brisbane, Australia", you: true },
+      { name: "MRM", rel: "Dad", where: "Brisbane, Australia" },
+      { name: "Frank", rel: "Grandpa", where: "Australia" },
+      { name: "Sebastiano", rel: "Great-grandpa", when: "1920–2002", where: "Piedimonte Etneo → Brisbane" },
+      { name: "Salvatore", rel: "2× great-grandpa", when: "1879–1929", where: "Piedimonte Etneo, Sicily" },
+      { name: "Rosario", rel: "3× great-grandpa", when: "no dates at all", where: "Sicily", last: true },
+    ],
+    mystery:
+      "Rosario Mazza is where it stops. No birthday, no death, nothing — exactly like Gerthardus on the Booyzen side. Two families, two continents, and the same kind of locked door at the top of each.",
+  },
+
+  {
+    slug: "prostamo",
+    name: "Prostamo",
+    key: "prostamo",
+    flagWord: "Italy",
+    from: "Briatico, on the Calabrian coast",
+    icon: "ship",
+    blurb: "The deepest line in the whole family — nine generations, back to 1697 — and it arrives through a grandmother.",
+    meaning:
+      "A rare Calabrian name. Nobody is quite sure where it comes from, which is unusual for a family this well recorded.",
+    km: "about 16,100 km",
+    kmNote: "Briatico, Calabria → Brisbane",
+    archive: "https://daviddef.github.io/TheMazza/",
+    archiveName: "The Mazza Archive",
+    facts: [
+      {
+        big: "1697. That is the oldest anybody in this family can be named.",
+        text: "Franco Antonino Prostamo was born in Briatico in 1697 — earlier than any Falco, any D’Arcy, any Defranceski, any Booyzen. Eight generations in one unbroken chain, all in the same small town on the Calabrian coast.",
+      },
+      {
+        big: "And it comes in sideways.",
+        text: "None of those people were called Mazza. This line reaches the cousins through Domenica Prostamo, a great-grandmother. If you only followed the surname you would never find them at all.",
+      },
+      {
+        big: "Why this line and not the others?",
+        text: "Not because they mattered more. Calabrian records simply survived better than Sicilian ones for these particular towns — and relatives in Italy and Argentina have been working on this line for years. How deep a family goes measures the paperwork, not the people.",
+      },
+      {
+        big: "Francessco came on the Roma.",
+        text: "Out of Genoa, landing at Fremantle on 10 October 1957 — the same year the Falcos sailed for Brisbane from the other end of Italy.",
+      },
+    ],
+    photos: [],
+    noPhotos:
+      "Nothing yet from Briatico. For a line that reaches 1697, not one face.",
+    ladder: [
+      { name: "RFM & MJM", where: "Brisbane, Australia", you: true },
+      { name: "MRM", rel: "Dad", where: "Brisbane, Australia" },
+      { name: "Frank", rel: "Grandpa", where: "Australia" },
+      { name: "Domenica", rel: "Great-grandma", when: "1928–2010", where: "Briatico → Brisbane" },
+      { name: "Francessco", rel: "2× great-grandpa", when: "1900–1983", where: "Briatico, Calabria" },
+      { name: "Alfonso", rel: "3× great-grandpa", when: "born 1858", where: "Briatico, Calabria" },
+      { name: "Domenico", rel: "4× great-grandpa", when: "born 1820", where: "Briatico, Calabria" },
+      { name: "Antonino", rel: "5× great-grandpa", when: "born 1785", where: "Briatico, Calabria" },
+      { name: "Pasquale", rel: "6× great-grandpa", when: "1760–1829", where: "Briatico, Calabria" },
+      { name: "Antonino", rel: "7× great-grandpa", when: "born 1726", where: "Briatico, Calabria" },
+      { name: "Franco Antonino", rel: "8× great-grandpa", when: "born 1697", where: "Briatico, Calabria", last: true },
+    ],
+    mystery:
+      "Even this line stops. Above Franco Antonino in 1697 there is nothing — and 1697 is a very long way back for a small town’s paper to survive at all.",
+  },
+
+  {
+    slug: "arena",
+    name: "Arena",
+    key: "arena",
+    flagWord: "Italy",
+    from: "Scilla, on the strait",
+    icon: "anchor",
+    blurb: "A castle on a rock above a fishing village, where the swordfish boats have prows as long as the boat.",
+    meaning:
+      "Arena means sand. In the whole archive the 39 Arenas form one single unbroken family — which makes it the exact opposite of Mazza.",
+    km: "about 16,100 km",
+    kmNote: "Scilla, Calabria → Brisbane",
+    archive: "https://daviddef.github.io/TheMazza/",
+    archiveName: "The Mazza Archive",
+    facts: [
+      {
+        big: "Three Roccos.",
+        text: "Rocco is named after his dad, Michael Rocco Mazza — who is named after his own grandfather, Rocco Arena, born at Scilla in 1924. The name has come down three steps and across the world.",
+      },
+      {
+        big: "His mother and his father were both called Arena.",
+        text: "Rocco Arena’s parents were Giuseppe Arena, born 1892, and Anna Arena, born 1893 — same surname, same little town, one year apart. In a place the size of Scilla that happens.",
+      },
+      {
+        big: "A castle on a rock.",
+        text: "Scilla sits on the strait between Sicily and the mainland, with a castle on a headland above the water and a fishing quarter below it. It is in the big picture on the front page — look for the castle.",
+      },
+      {
+        big: "Swordfish boats.",
+        text: "The boats at Scilla have enormous long prows sticking out in front. That is where the man with the harpoon stands, watching for swordfish. You can see them in the picture too.",
+      },
+    ],
+    photos: [],
+    noPhotos:
+      "No pictures from Scilla yet. There is a photograph store in the Mazza archive that has not been mined for this side.",
+    ladder: [
+      { name: "RFM & MJM", where: "Brisbane, Australia", you: true },
+      { name: "MRM", rel: "Dad", where: "Brisbane, Australia" },
+      { name: "Nancy", rel: "Grandma", where: "Australia" },
+      { name: "Rocco", rel: "Great-grandpa", when: "1924–1999", where: "Scilla → Brisbane" },
+      { name: "Giuseppe", rel: "2× great-grandpa", when: "1892–1984", where: "Scilla, Calabria" },
+      { name: "Giovanni", rel: "3× great-grandpa", when: "born 1870", where: "Scilla, Calabria", last: true },
+    ],
+    mystery:
+      "Because both of Rocco’s parents were Arenas, there are really two Arena lines running up out of him — and the one through his mother goes back further than the one through his father. Untangling them is the job.",
+  },
+
+  {
+    slug: "polistena",
+    name: "Polistena",
+    key: "polistena",
+    flagWord: "Italy",
+    from: "Scilla, on the strait",
+    icon: "falcon",
+    blurb: "From the same fishing town as the Arenas — two families who grew up in sight of each other and ended up in the same Brisbane cemetery.",
+    meaning:
+      "Polistena is a town in Calabria, so the name almost certainly means “the family from Polistena”. People were often named after where they came from.",
+    km: "about 16,100 km",
+    kmNote: "Scilla, Calabria → Brisbane",
+    archive: "https://daviddef.github.io/TheMazza/",
+    archiveName: "The Mazza Archive",
+    facts: [
+      {
+        big: "Two families from one small town.",
+        text: "The Arenas and the Polistenas both come from Scilla. Angela Polistena married Rocco Arena, and they had grown up in the same place — a town of a few thousand people on a rocky coast.",
+      },
+      {
+        big: "Antonino came on the Surriento.",
+        text: "Out of Naples, arriving 17 June 1949. The Australian index had him filed under a shortened name, which is why nobody had found the crossing before.",
+      },
+      {
+        big: "Angela lived the longest.",
+        text: "Born at Scilla in 1925, died in Brisbane in 2018 — ninety-three years, and the last of the four great-grandparents on this side to go.",
+      },
+      {
+        big: "The name changed on the way up.",
+        text: "Go up past Angela’s father Giovanni and the surname in the records turns into Pontillo. Names shifting like that is normal in old Italian registers, and it is exactly the same puzzle as Booysen turning into Booyzen.",
+      },
+    ],
+    photos: [],
+    noPhotos:
+      "None yet. Angela lived until 2018, so photographs of her almost certainly exist in the family.",
+    ladder: [
+      { name: "RFM & MJM", where: "Brisbane, Australia", you: true },
+      { name: "MRM", rel: "Dad", where: "Brisbane, Australia" },
+      { name: "Nancy", rel: "Grandma", where: "Australia" },
+      { name: "Angela", rel: "Great-grandma", when: "1925–2018", where: "Scilla → Brisbane" },
+      { name: "Giovanni", rel: "2× great-grandpa", when: "born 1883", where: "Scilla, Calabria" },
+      { name: "Antonio", rel: "3× great-grandpa", when: "no dates yet", where: "Scilla, Calabria", last: true },
+    ],
+    mystery:
+      "Above Antonio the name becomes Pontillo, and it is not yet clear whether that is the same family writing itself differently or two families being joined up by mistake.",
+  },
+  {
     slug: "darcy",
     name: "D’Arcy",
     key: "britain",
@@ -399,8 +595,8 @@ export const families = [
     noPhotos:
       "We have not found a single photograph of this side of the family yet — not of the Major, not of the surveyor, not even of Great-grandpa Kenneth and his talking parrot. They are the one line with no faces. That is the next thing to go looking for.",
     ladder: [
-      { name: "ADD & MCD", where: "Brisbane, Australia", you: true },
-      { name: "CAD", rel: "Mum", where: "Brisbane, Australia" },
+      { name: "ADD · MCD · RFM · MJM", rel: "All four of you", where: "Brisbane, Australia", you: true },
+      { name: "CAD & SFD", rel: "Mum and Aunty — twins", where: "Brisbane, Australia" },
       { name: "IKD", rel: "Grandpa", where: "Brisbane, Australia" },
       { name: "Kenneth Lindsay", rel: "Great-grandpa", when: "1927–2010", where: "Sandgate, Queensland", job: "and the parrot" },
       { name: "Lindesay Atkinson", rel: "2× great-grandpa", when: "1892–1936", where: "Brisbane, Queensland", job: "clerk" },
@@ -444,13 +640,13 @@ export const joining = [
   },
   {
     year: "2015",
-    text: "On 19 December, in Brisbane, your mum and dad were married. That is the day all six families finally became one.",
+    text: "On 19 December, in Brisbane, your mum and dad were married. That is the day six of the ten families became one household.",
     keys: ["croatia", "blazevic", "argentina", "safrica", "italy", "britain"],
     big: true,
   },
   {
     year: "then",
-    text: "Then came ADD, and two years later MCD. Both born in Brisbane — with all six families inside them.",
+    text: "Then came ADD, and two years later MCD. Both born in Brisbane — with six of the ten families inside them.",
     keys: ["croatia", "blazevic", "argentina", "safrica", "italy", "britain"],
     boy: true,
   },

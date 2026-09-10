@@ -17,13 +17,14 @@ import { families, joining, numbers } from "../data/families.js";
     </picture>
     <div class="cap">
       <div class="wrap">
-        <h1>Six families,<br />two <span>boys</span>.</h1>
-        <p class="lead">You were both born in Brisbane. But the people you come from lived on
-        four different continents.</p>
+        <h1>Ten families,<br />four <span>cousins</span>.</h1>
+        <p class="lead">Alessio and Mateo were born in Brisbane, and so were their cousins Rocco
+        and Mia. The people the four of you come from lived on four different continents.</p>
         <p class="lead">A stonecutter on a Croatian hill. A carrier who led packhorses over a
         mountain. A farmer in Italy, a horse trainer in Argentina, a family on the dry plains of
-        South Africa, and a soldier who sailed from England.</p>
-        <p class="lead strong">Here is how all six of them ended up in one house. Yours.</p>
+        South Africa, a soldier who sailed from England — and, on your cousins’ side, a village at
+        the foot of a volcano and a fishing town under a castle.</p>
+        <p class="lead strong">Here is how all ten of them ended up in one city.</p>
       </div>
     </div>
   </figure>
@@ -59,7 +60,7 @@ import { families, joining, numbers } from "../data/families.js";
   <section>
     <div class="wrap">
       <div class="kicker c-sun" style="--c:var(--safrica)">Pick a family</div>
-      <h2>The six families</h2>
+      <h2>The ten families</h2>
       <p class="lead">Each one has its own colour, its own country, and its own best story.</p>
       <div class="grid g3" style="margin-top:30px">
         {families.map(f => (
@@ -110,7 +111,7 @@ import { families, joining, numbers } from "../data/families.js";
       would have to set off in to reach their home town — and the lines are drawn to scale, so the
       longer the line, the further away it really is.</p>
       <div class="mapwrap"><div class="scroll"><WorldMap base={u("/")} /></div></div>
-      <p class="cap">Croatia has one pin in two colours, because two of the six families —
+      <p class="cap">Croatia has one pin in two colours, because two of the ten families —
       Defranceski and Blažević — both come from there, about 70 km apart.</p>
     </div>
   </section>
@@ -120,7 +121,8 @@ import { families, joining, numbers } from "../data/families.js";
       <div class="kicker" style="--c:var(--safrica)">More to poke about in</div>
       <h2>Six more ways in</h2>
       <div class="grid g3" style="margin-top:26px">
-        {[["/journeys/","🚢","The journeys","133 days at sea, and why each family left at all"],
+        {[["/cousins/","👦👧","You and your cousins","Half your tree is the same as theirs. Half is not"],
+          ["/journeys/","🚢","The journeys","133 days at sea, and why each family left at all"],
           ["/places/","🏔️","The places","A town so windy it can knock a lorry over"],
           ["/picture/","🔍","Find it","Eleven things hidden in the picture on this page"],
           ["/cards/","🃏","The cards","One card for every ancestor with a name and a date"],
@@ -153,9 +155,10 @@ import { families, joining, numbers } from "../data/families.js";
   <section>
     <div class="wrap">
       <div class="kicker" style="--c:var(--safrica)">The story</div>
-      <h2>How the six became one</h2>
-      <p class="lead">Families join together when two people meet. It took five meetings,
-      on two sides of the world, over sixty-six years.</p>
+      <h2>How they all came together</h2>
+      <p class="lead">Families join together when two people meet. And right at the end, two
+      sisters who were born on the same day married two men whose families had nothing whatsoever
+      in common.</p>
       <div class="joins" style="margin-top:28px">
         {joining.map(j => (
           <div class={`join ${j.big ? "big" : ""} ${j.boy ? "boy" : ""}`}>
@@ -177,7 +180,7 @@ import { families, joining, numbers } from "../data/families.js";
       <div class="deep c-sun">
         <div>
           <div class="t">Want the whole grown-up version?</div>
-          <div class="s">Every single fact on this site came out of six much bigger archives,
+          <div class="s">Every single fact on this site came out of seven much bigger archives,
           where you can read the actual old documents — the church books, the ships' papers,
           the wills and the gravestones.</div>
           <div class="flinks">

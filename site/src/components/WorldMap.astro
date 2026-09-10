@@ -57,7 +57,7 @@ const fmt = n => n.toLocaleString("en-GB");
           style="font-family:var(--serif);font-size:20px;font-weight:600">{c.t}</text>
   ))}
 
-  <!-- the journeys: five spokes, because Croatia carries two of the six families -->
+  <!-- the journeys: five spokes; Croatia carries two families and Italy now carries five -->
   {places.map(p => (
     <line x1={CX} y1={CY} x2={p.xy[0]} y2={p.xy[1]}
           stroke={`var(--${p.k})`} stroke-width="4" stroke-linecap="round"

@@ -17,6 +17,11 @@ export const places = [
     fact: "Nearby is Krivi Put, which means “crooked road” — and Tonka was born in house 136 on it.",
   },
   {
+    k: "croatia", name: "Crikvenica", land: "the Kvarner coast, Croatia",
+    what: "A seaside town of pebble beaches an hour down the coast from Senj. Your great-grandpa Ivan was born here in 1925, his first daughter was born here in 1948, and Hedviga sang here.",
+    fact: "People have been coming here to swim since the 1890s, when the first hotel went up — so it was already a holiday town while the family was living in it.",
+  },
+  {
     k: "italy", name: "Arienzo", land: "near Naples, Italy",
     what: "A green farming valley under the hills, about twenty miles from Naples and its volcano. Nine documented generations of Falcos were born, married and buried here.",
     fact: "The bishop who lived in the palace next to their church from 1762 to 1775 is now a saint.",

@@ -82,9 +82,9 @@ export const recent = [
   {
     k: "blazevic", who: "Ivan Defranceski and Hedviga Blažević", age: "with three children",
     from: "Senj, Croatia", to: "Botswana, then Zimbabwe, then South Africa",
-    left: "Croatia, some time after 1953", ship: "three moves, not one",
+    left: "Croatia in 1948", ship: "three moves, not one",
     text: "They did not go to Africa in one go. They went to Botswana first, then up to Zimbabwe, and only then south — about nine thousand kilometres in three hops, moving each time to somewhere the family had never been. Ivan is recorded dying back in Croatia, at Senj, in 1995. Out of every single person on this page, he is the only one who ended up in the country he started in.",
-    proof: "One date here is a document and the rest is family memory. Hedviga’s immigration record says: April 1975, into South Africa, from Zimbabwe. The Botswana years are remembered by the family and are in no index at all — somebody went looking, and Botswana has no searchable migration collection to look in.",
+    proof: "The family remembers the year as 1948, and the paper argues with it — so keep both. Their three children were born in Croatia in 1948, 1951 and 1953, and the middle one has a sworn birth extract from Senj to prove it, and there is a photograph of the five of them together that looks like 1953 or 1954. So either the leaving was later than everybody remembers, or Ivan went on ahead and the rest followed. The one date here that is definitely a document is the end of it: April 1975, Hedviga into South Africa, from Zimbabwe. The Botswana years are in no index at all — somebody went looking, and Botswana has no searchable migration collection to look in.",
   },
   {
     k: "croatia", who: "Ivan, the grandpa", age: "as a young man",
@@ -118,7 +118,7 @@ export const reasons = [
   { k: "mazza", q: "Why did the Sicilians and Calabrians go?",
     a: "Because Italy after the war was poor and Australia was asking for people — the same reason the Falcos went. Four grandparents born between 1920 and 1928, in three towns that had no connection to each other, and every one of them was in Queensland by 1954." },
   { k: "croatia", q: "Why did Ivan and Hedviga go to Africa?",
-    a: "Nobody has written it down. Their three children were born in Yugoslavia between 1948 and 1953, and the next thing the record shows is Africa. What the shape of it suggests is that they were not sure where they were going either — three countries in a row is not what people do when they have a plan. Somebody in the family may simply know the answer, and if they do, it should be written down before it is lost." },
+    a: "There are two answers, and only one of them is the kind that gets written down. The public one: the war had just ended, Europe was wrecked and frightening, and other countries were offering Europeans somewhere safer and easier to start again. Plenty of people took it. The private one is a family suspicion and nothing more. Ivan’s father Anton died in 1943, and afterwards his mother Ursula was with a man whose surname was Carr — and the family has always half-wondered whether the leaving was partly a getting-away from that too. Nobody wrote it down. Suspicions are not evidence, but they are worth keeping, because they are usually pointing at something." },
   { k: "argentina", q: "Why did Bob Lerena leave Argentina?",
     a: "Nobody knows. This is the honest answer, and it is worth saying out loud: there is a real gap here, and finding what fills it is somebody’s job — maybe yours." },
 ];

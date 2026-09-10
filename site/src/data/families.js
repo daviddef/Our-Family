@@ -157,6 +157,10 @@ export const families = [
         text: "Your great-grandpa Ivan died at Senj on 30 October 1995. Your great-grandma Hedviga died in Johannesburg on 30 October 2001 — six years later, to the very day.",
       },
       {
+        big: "Your great-grandma was a singer.",
+        text: "Before Africa, Hedviga sang at Crikvenica — the seaside town on the Kvarner coast where her first child was born. There is no record of it anywhere. It is only the family remembering her, which is the only place a voice can be kept.",
+      },
+      {
         big: "Her grandfather carried things over a mountain.",
         text: "Josip Papić was a trhonoša — one of the carriers of Senj. They loaded packhorses and took goods up the Vratnik pass, over the Velebit mountains and into the interior, then brought grain and timber back down. The whole town existed because that was where the sea met the road.",
       },

@@ -1,7 +1,7 @@
 // The biggest dated moments across all ten families, in order.
 // Every one of these is documented in one of the archives.
 
-export const moments = [
+const raw = [
   { y: "1697", k: "prostamo", t: "The oldest person anybody can name",
     w: "Franco Antonino Prostamo, born at Briatico on the Calabrian coast. Nine generations of Prostamos follow him in the same small town, and the line reaches ADD and MCD’s cousins through a great-grandmother. He is the oldest person in this entire website." },
   { y: "about 1717", k: "blazevic", t: "And the oldest on the other side",
@@ -60,4 +60,20 @@ export const moments = [
     w: "Ivan Defranceski died at Senj on 30 October 1995. Hedviga died at Johannesburg on 30 October 2001 — the very same date, six years later." },
   { y: "2015", k: "sun", t: "A wedding in Brisbane",
     w: "On 19 December. Her twin sister married the other pair's dad too — and between the two weddings, ten families became one lot of cousins.", big: true },
+  { y: "1948", k: "croatia", t: "Ivan and Hedviga leave for Africa", age: "1948",
+    w: "The year the family remembers. Europe had just been wrecked by a war and other countries were offering Europeans somewhere safer to start again — and there is a second, quieter reason the family has always suspected and nobody wrote down. It took them three countries to stop moving: Botswana, then Zimbabwe, then South Africa." },
+  { y: "2025", k: "argentina", t: "A plane from Johannesburg lands at Brisbane",
+    w: "Ivan and CAL moved 11,635 km in a single night — the last journey in this entire website, and the only one the four of you were alive to see." },
 ];
+
+// The page says "in the order they really happened", so make that true rather
+// than trusting whoever appended last. Pulls the first four-digit year out of
+// the label, and uses the day and month where the label carries them.
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function when(label) {
+  const year = Number((label.match(/\d{4}/) || [0])[0]);
+  const day = Number((label.match(/^(\d{1,2})\s/) || [0, 0])[1]);
+  const mon = MONTHS.findIndex(m => label.includes(m));
+  return year + (mon < 0 ? 0 : (mon + 1) / 13) + day / 400;
+}
+export const moments = [...raw].sort((a, b) => when(a.y) - when(b.y));

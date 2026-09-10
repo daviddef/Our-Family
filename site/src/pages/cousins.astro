@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import { u } from "../lib/url.js";
+import CousinVenn from "../components/CousinVenn.astro";
 const shared = [
   { k: "britain", n: "D’Arcy", w: "England & Ireland, back to a General born in 1751" },
   { k: "italy",   n: "Falco",  w: "Arienzo, back to a priest’s pen in 1767" },
@@ -23,20 +24,26 @@ const mazza = [
     <div class="wrap">
       <div class="kicker" style="--c:var(--safrica)">Four of you</div>
       <h1 style="font-size:clamp(36px,6.4vw,66px)">You and your cousins</h1>
-      <p class="lead big">Alessio and Mateo have two cousins, Rocco and Mia. Half of your family
+      <p class="lead big">There are four of you — two brothers, and their two cousins. Half of your family
       tree is <em>exactly</em> the same as theirs. The other half has nothing in common at all.</p>
     </div>
   </div>
 
+  <section style="padding-top:10px">
+    <div class="wrap">
+      <div class="vennwrap"><div class="scroll"><CousinVenn base={u("/")} /></div></div>
+    </div>
+  </section>
+
   <section>
     <div class="wrap">
       <h2>Why? Because your mums are twins</h2>
-      <p class="lead">Two sisters, born on the same day. One of them married Alessio and Mateo’s
-      dad. The other married Rocco and Mia’s dad. That one fact is the reason for everything on
+      <p class="lead">Two sisters, born on the same day. One of them married ADD and MCD’s dad.
+      The other married RFM and MJM’s dad. That single fact is the reason for everything else on
       this page.</p>
       <div class="cousinsplit">
         <div class="csplit c-mazza">
-          <b>Rocco &amp; Mia</b>
+          <b>RFM &amp; MJM</b>
           <span>MRM + SFD</span>
           <div class="cchips">{mazza.map(f => <a class={`cchip c-${f.k}`} href={u(`/${f.n.toLowerCase()}/`)}>{f.n}<i>{f.w}</i></a>)}</div>
         </div>
@@ -46,7 +53,7 @@ const mazza = [
           <div class="cchips">{shared.map(f => <a class={`cchip c-${f.k}`} href={u(`/${f.n === "D’Arcy" ? "darcy" : "falco"}/`)}>{f.n}<i>{f.w}</i></a>)}</div>
         </div>
         <div class="csplit c-croatia">
-          <b>Alessio &amp; Mateo</b>
+          <b>ADD &amp; MCD</b>
           <span>DID + CAD</span>
           <div class="cchips">{theirs.map(f => <a class={`cchip c-${f.k}`} href={u(`/${f.n === "Blažević" ? "blazevic" : f.n.toLowerCase()}/`)}>{f.n}<i>{f.w}</i></a>)}</div>
         </div>
@@ -69,9 +76,9 @@ const mazza = [
         </div>
         <div class="callout" style="--c:var(--mazza);--cw:var(--mazza-wash);--cd:var(--mazza-deep)">
           <h3>The half you don’t</h3>
-          <p>On your fathers’ sides you have <b>nothing whatsoever</b> in common. Alessio and Mateo’s
+          <p>On your fathers’ sides you have <b>nothing whatsoever</b> in common. ADD and MCD’s
           dad brings four families from Croatia, Argentina and South Africa — three continents.
-          Rocco and Mia’s dad brings four families from Sicily and Calabria — three towns in the
+          RFM and MJM’s dad brings four families from Sicily and Calabria — three towns in the
           south of Italy. Not one name overlaps.</p>
         </div>
       </div>
@@ -85,17 +92,17 @@ const mazza = [
       <div class="grid g3" style="margin-top:24px">
         <div class="jobcard c-arena">
           <div class="jt">Three Roccos</div>
-          <p>Rocco is named for his dad, Michael <b>Rocco</b> Mazza, who is named for <i>his</i>
+          <p>RFM is named for his dad, Michael <b>Rocco</b> Mazza, who is named for <i>his</i>
           grandfather Rocco Arena, born at Scilla in 1924.</p>
         </div>
         <div class="jobcard c-prostamo">
           <div class="jt">1697</div>
-          <p>The Prostamo line goes back nine generations — older than anybody on Alessio and
-          Mateo’s side. And it arrives through a great-grandmother, not the surname.</p>
+          <p>The Prostamo line goes back nine generations — older than anybody on ADD and
+          MCD’s side. And it arrives through a great-grandmother, not the surname.</p>
         </div>
         <div class="jobcard c-mazza">
           <div class="jt">Four graves in a row</div>
-          <p>Rocco and Mia’s four Italian great-grandparents lie in consecutive plots at Nudgee in
+          <p>RFM and MJM’s four Italian great-grandparents lie in consecutive plots at Nudgee in
           Brisbane, buried in the order they died — nineteen years between the first and the last.</p>
         </div>
       </div>

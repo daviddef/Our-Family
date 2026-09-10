@@ -381,7 +381,7 @@ export const families = [
     ladder: [
       { name: "RFM & MJM", where: "Brisbane, Australia", you: true },
       { name: "MRM", rel: "Dad", where: "Brisbane, Australia" },
-      { name: "Frank", rel: "Grandpa", where: "Australia" },
+      { name: "FM", rel: "Grandpa", where: "Australia" },
       { name: "Sebastiano", rel: "Great-grandpa", when: "1920–2002", where: "Piedimonte Etneo → Brisbane" },
       { name: "Salvatore", rel: "2× great-grandpa", when: "1879–1929", where: "Piedimonte Etneo, Sicily" },
       { name: "Rosario", rel: "3× great-grandpa", when: "no dates at all", where: "Sicily", last: true },
@@ -428,7 +428,7 @@ export const families = [
     ladder: [
       { name: "RFM & MJM", where: "Brisbane, Australia", you: true },
       { name: "MRM", rel: "Dad", where: "Brisbane, Australia" },
-      { name: "Frank", rel: "Grandpa", where: "Australia" },
+      { name: "FM", rel: "Grandpa", where: "Australia" },
       { name: "Domenica", rel: "Great-grandma", when: "1928–2010", where: "Briatico → Brisbane" },
       { name: "Francessco", rel: "2× great-grandpa", when: "1900–1983", where: "Briatico, Calabria" },
       { name: "Alfonso", rel: "3× great-grandpa", when: "born 1858", where: "Briatico, Calabria" },
@@ -480,7 +480,7 @@ export const families = [
     ladder: [
       { name: "RFM & MJM", where: "Brisbane, Australia", you: true },
       { name: "MRM", rel: "Dad", where: "Brisbane, Australia" },
-      { name: "Nancy", rel: "Grandma", where: "Australia" },
+      { name: "NA", rel: "Grandma", where: "Australia" },
       { name: "Rocco", rel: "Great-grandpa", when: "1924–1999", where: "Scilla → Brisbane" },
       { name: "Giuseppe", rel: "2× great-grandpa", when: "1892–1984", where: "Scilla, Calabria" },
       { name: "Giovanni", rel: "3× great-grandpa", when: "born 1870", where: "Scilla, Calabria", last: true },
@@ -527,7 +527,7 @@ export const families = [
     ladder: [
       { name: "RFM & MJM", where: "Brisbane, Australia", you: true },
       { name: "MRM", rel: "Dad", where: "Brisbane, Australia" },
-      { name: "Nancy", rel: "Grandma", where: "Australia" },
+      { name: "NA", rel: "Grandma", where: "Australia" },
       { name: "Angela", rel: "Great-grandma", when: "1925–2018", where: "Scilla → Brisbane" },
       { name: "Giovanni", rel: "2× great-grandpa", when: "born 1883", where: "Scilla, Calabria" },
       { name: "Antonio", rel: "3× great-grandpa", when: "no dates yet", where: "Scilla, Calabria", last: true },

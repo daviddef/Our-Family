@@ -69,8 +69,8 @@ const gen3 = [
 ];
 // grandparents, then the two sisters and the two men they married
 const gen45 = [
-  { x: 1550,  y: 422, k: "mazza",     rel: "Grandpa", name: "Frank" },
-  { x: 1950,  y: 422, k: "arena",     rel: "Grandma", name: "Nancy" },
+  { x: 1550,  y: 422, k: "mazza",     rel: "Grandpa", name: "FM" },
+  { x: 1950,  y: 422, k: "arena",     rel: "Grandma", name: "NA" },
   { x: 1000, y: 422, k: "britain",   rel: "Grandpa", name: "IKD" },
   { x: 1200, y: 422, k: "italy",     rel: "Grandma", name: "GF" },
   { x: 250, y: 422, k: "argentina", rel: "Grandma", name: "CAL" },
@@ -125,7 +125,7 @@ const { base } = Astro.props;
 ---
 
 <svg viewBox="0 0 2200 790" role="img"
-     aria-label="A family tree under ten flags. Four families — Booyzen, Lerena, Defranceski and Blažević — come down the left into Alessio and Mateo. Four Italian ones — Mazza, Prostamo, Arena and Polistena — come down the right into Rocco and Mia. D’Arcy and Falco sit in the middle and belong to all four cousins, because the two mothers are twin sisters.">
+     aria-label="A family tree under ten flags. Four families — Booyzen, Lerena, Defranceski and Blažević — come down the left into ADD and MCD. Four Italian ones — Mazza, Prostamo, Arena and Polistena — come down the right into RFM and MJM. D’Arcy and Falco sit in the middle and belong to all four cousins, because the two mothers are twin sisters.">
 
   {limbs.map(l => (
     <path d={l.d} fill="none" stroke={C[l.k]} stroke-width={l.w}

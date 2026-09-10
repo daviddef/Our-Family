@@ -1,0 +1,81 @@
+---
+// The whole idea in one picture: two circles, one per pair of children, and the
+// two families that sit in the overlap because their mothers are sisters.
+// The lens is drawn by clipping one circle with the other, so it is exact.
+const { base } = Astro.props;
+
+const R = 225, CY = 268, LX = 320, RX = 580;
+
+const left = [
+  { k: "safrica",   n: "Booyzen",     s: "booyzen" },
+  { k: "argentina", n: "Lerena",      s: "lerena" },
+  { k: "croatia",   n: "Defranceski", s: "defranceski" },
+  { k: "blazevic",  n: "Blažević",    s: "blazevic" },
+];
+const both = [
+  { k: "britain", n: "D’Arcy", s: "darcy" },
+  { k: "italy",   n: "Falco",  s: "falco" },
+];
+const right = [
+  { k: "mazza",     n: "Mazza",     s: "mazza" },
+  { k: "prostamo",  n: "Prostamo",  s: "prostamo" },
+  { k: "arena",     n: "Arena",     s: "arena" },
+  { k: "polistena", n: "Polistena", s: "polistena" },
+];
+const rowY = [212, 258, 304, 350];
+---
+
+<svg viewBox="0 0 900 560" role="img"
+     aria-label="Two overlapping circles. The left one holds Booyzen, Lerena, Defranceski and Blažević, which belong to ADD and MCD. The right one holds Mazza, Prostamo, Arena and Polistena, which belong to RFM and MJM. D’Arcy and Falco sit in the overlap, because they belong to all four cousins.">
+  <defs>
+    <clipPath id="lensclip"><circle cx={LX} cy={CY} r={R} /></clipPath>
+  </defs>
+
+  <circle cx={LX} cy={CY} r={R} fill="var(--croatia-wash)" opacity="0.75" />
+  <circle cx={RX} cy={CY} r={R} fill="var(--mazza-wash)" opacity="0.75" />
+  <circle cx={RX} cy={CY} r={R} fill="var(--sun-wash)" clip-path="url(#lensclip)" />
+
+  <circle cx={LX} cy={CY} r={R} fill="none" stroke="var(--croatia)" stroke-width="3.5" />
+  <circle cx={RX} cy={CY} r={R} fill="none" stroke="var(--mazza)" stroke-width="3.5" />
+
+  <text x={196} y={150} text-anchor="middle" fill="var(--croatia-deep)"
+        style="font-family:var(--serif);font-size:27px;font-weight:600">ADD &amp; MCD</text>
+  <text x={196} y={174} text-anchor="middle" fill="var(--croatia-deep)"
+        style="font-family:var(--sans);font-size:11.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase">Their four</text>
+
+  <text x={704} y={150} text-anchor="middle" fill="var(--mazza-deep)"
+        style="font-family:var(--serif);font-size:27px;font-weight:600">RFM &amp; MJM</text>
+  <text x={704} y={174} text-anchor="middle" fill="var(--mazza-deep)"
+        style="font-family:var(--sans);font-size:11.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase">Their four</text>
+
+  {left.map((f, i) => (
+    <a href={`${base}${f.s}/`}>
+      <text x={196} y={rowY[i]} text-anchor="middle" fill={`var(--${f.k}-deep)`}
+            style="font-family:var(--serif);font-size:22px;font-weight:600">{f.n}</text>
+    </a>
+  ))}
+  {right.map((f, i) => (
+    <a href={`${base}${f.s}/`}>
+      <text x={704} y={rowY[i]} text-anchor="middle" fill={`var(--${f.k}-deep)`}
+            style="font-family:var(--serif);font-size:22px;font-weight:600">{f.n}</text>
+    </a>
+  ))}
+
+  <text x={450} y={200} text-anchor="middle" fill="#8C6504"
+        style="font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase">Shared by</text>
+  <text x={450} y={218} text-anchor="middle" fill="#8C6504"
+        style="font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase">all four</text>
+  {both.map((f, i) => (
+    <a href={`${base}${f.s}/`}>
+      <text x={450} y={266 + i * 42} text-anchor="middle" fill={`var(--${f.k}-deep)`}
+            style="font-family:var(--serif);font-size:24px;font-weight:600">{f.n}</text>
+    </a>
+  ))}
+  <text x={450} y={372} text-anchor="middle" fill="var(--ink-3)"
+        style="font-family:var(--sans);font-size:12.5px;font-weight:700">because the mums</text>
+  <text x={450} y={390} text-anchor="middle" fill="var(--ink-3)"
+        style="font-family:var(--sans);font-size:12.5px;font-weight:700">are twins</text>
+
+  <text x={450} y={540} text-anchor="middle" fill="var(--ink-2)"
+        style="font-family:var(--sans);font-size:15px">Ten families. Two belong to everybody; eight belong to one pair or the other.</text>
+</svg>

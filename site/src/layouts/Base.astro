@@ -29,16 +29,19 @@ const here = Astro.url.pathname;
 <header class="site">
   <div class="wrap sitein">
     <a class="brand" href={u("/")}>Our <em>Family</em></a>
-    <nav aria-label="The ten families">
-      <a href={u("/")} class={here === u("/") ? "on c-sun" : ""}>Home</a>
-      {families.map(f => (
-        <a href={u(`/${f.slug}/`)} class={`c-${f.key} ${here === u(`/${f.slug}/`) ? "on" : ""}`}>{f.name}</a>
-      ))}
-      <span class="navsplit" aria-hidden="true"></span>
-      {[["/journeys/","Journeys"],["/walk/","The walk"],["/places/","Places"],["/jobs/","Jobs"],
-        ["/cousins/","Cousins"],["/when/","When"],["/meanwhile/","Meanwhile"],["/words/","Words"],["/cards/","Cards"],["/picture/","Find it"]].map(([h,l]) => (
-        <a href={u(h)} class={`c-sun topic ${here === u(h) ? "on" : ""}`}>{l}</a>
-      ))}
+    <nav aria-label="Site">
+      <div class="navfams" aria-label="The ten families" role="group">
+        <a href={u("/")} class={here === u("/") ? "on c-sun" : ""}>Home</a>
+        {families.map(f => (
+          <a href={u(`/${f.slug}/`)} class={`c-${f.key} ${here === u(`/${f.slug}/`) ? "on" : ""}`}>{f.name}</a>
+        ))}
+      </div>
+      <div class="navtopics" aria-label="The rest of the site" role="group">
+        {[["/journeys/","Journeys"],["/walk/","The walk"],["/places/","Places"],["/jobs/","Jobs"],
+          ["/cousins/","Cousins"],["/when/","When"],["/meanwhile/","Meanwhile"],["/words/","Words"],["/cards/","Cards"],["/picture/","Find it"]].map(([h,l]) => (
+          <a href={u(h)} class={`c-sun topic ${here === u(h) ? "on" : ""}`}>{l}</a>
+        ))}
+      </div>
     </nav>
   </div>
 </header>
@@ -57,6 +60,17 @@ const here = Astro.url.pathname;
     it should be fixed — tell us and we will fix it.</p>
   </div>
 </footer>
+
+<script is:inline>
+  /* On a phone both nav rows scroll sideways, so the chip for the page you are
+     actually on can start off-screen. Nudge it into view. */
+  for (const row of document.querySelectorAll(".navfams, .navtopics")) {
+    const on = row.querySelector("a.on");
+    if (on && row.scrollWidth > row.clientWidth) {
+      row.scrollLeft = on.offsetLeft - (row.clientWidth - on.offsetWidth) / 2;
+    }
+  }
+</script>
 
 </body>
 </html>

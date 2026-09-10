@@ -13,14 +13,16 @@ const wide = r => Math.max(1.2, (((r.to ?? T1) - r.from) / (T1 - T0)) * 100);
 
   <div class="hero" style="text-align:left">
     <div class="wrap">
-      <div class="kicker" style="--c:var(--italy)">Three things at once</div>
+      <div class="kicker" style="--c:var(--italy)">Four things at once</div>
       <h1 style="font-size:clamp(38px,7vw,70px)">Meanwhile…</h1>
       <p class="lead big">Nobody in your family lived in a bubble. While they were being born and
       getting married and sailing away, other things were going on — and quite a lot of those
       other things are the reason they went.</p>
-      <p class="lead">So every block below shows the same stretch of time three ways: what
+      <p class="lead">So every block below shows the same stretch of time four ways: what
       <strong>your family</strong> was doing, <strong>who was in charge</strong> of the ground they
-      were standing on, and what was happening <strong>everywhere else</strong>.</p>
+      were standing on, what was happening <strong>everywhere else</strong> — and then, along the
+      bottom, <strong>what they were up against</strong>. That last row is usually the answer to
+      “but why did they go?”</p>
     </div>
   </div>
 
@@ -88,6 +90,20 @@ const wide = r => Math.max(1.2, (((r.to ?? T1) - r.from) / (T1 - T0)) * 100);
             </ul>
           </div>
         </div>
+
+        {e.pressure.length > 0 && (
+          <div class="pressure">
+            <h3>What they were up against</h3>
+            <div class="prows">
+              {e.pressure.map(x => (
+                <div class="prow">
+                  <b>{x.y}</b>
+                  <div><strong>{x.t}</strong>{x.w && <span> — {x.w}</span>}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   ))}

@@ -6,23 +6,26 @@
 // The names used to sit in a gutter on the left. On a phone this chart has to
 // scroll sideways, and the gutter — with every family's name in it — scrolled
 // straight out of view. So the name now rides inside its own bar.
-const X0 = 1680, X1 = 2035, L = 34, R = 880;
+// The time axis stops at 620 so the last 280 units can carry the thing the
+// chart was missing: where each line starts on the ground, and where all ten
+// of them finish. Which is the same place.
+const X0 = 1680, X1 = 2035, L = 34, R = 620, PX = 646;
 const x = y => L + ((y - X0) / (X1 - X0)) * (R - L);
 
 const rows = [
-  { k: "prostamo",  name: "Prostamo",    from: 1697, who: "Franco Antonino" },
-  { k: "britain",   name: "D’Arcy",      from: 1751, who: "Robert" },
-  { k: "italy",     name: "Falco",       from: 1767, who: "Pasquale" },
-  { k: "croatia",   name: "Defranceski", from: 1787, who: "Giov. Battista",
+  { k: "prostamo",  name: "Prostamo",    from: 1697, who: "Franco Antonino", at: "Briatico" },
+  { k: "britain",   name: "D’Arcy",      from: 1751, who: "Robert", at: "Yorkshire" },
+  { k: "italy",     name: "Falco",       from: 1767, who: "Pasquale", at: "Arienzo" },
+  { k: "croatia",   name: "Defranceski", from: 1787, who: "Giov. Battista", at: "Gračišće",
     ghost: 1750, ghostNote: "Giovanni — on the family chart, not yet in a register" },
-  { k: "safrica",   name: "Booyzen",     from: 1788, who: "Petrus Jacobus",
+  { k: "safrica",   name: "Booyzen",     from: 1788, who: "Petrus Jacobus", at: "the Cape",
     ghost: 1683, ghostNote: "Downing, in England — untested" },
-  { k: "blazevic",  name: "Blažević",    from: 1838, who: "Toma",
+  { k: "blazevic",  name: "Blažević",    from: 1838, who: "Toma", at: "Smokvica",
     ghost: 1750, ghostNote: "Mateša — named on a family tree, not in a register" },
-  { k: "arena",     name: "Arena",       from: 1870, who: "Giovanni" },
-  { k: "mazza",     name: "Mazza",       from: 1879, who: "Salvatore" },
-  { k: "argentina", name: "Lerena",      from: 1882, who: "Pablo Armando" },
-  { k: "polistena", name: "Polistena",   from: 1883, who: "Giovanni" },
+  { k: "arena",     name: "Arena",       from: 1870, who: "Giovanni", at: "Scilla" },
+  { k: "mazza",     name: "Mazza",       from: 1879, who: "Salvatore", at: "Piedimonte" },
+  { k: "argentina", name: "Lerena",      from: 1882, who: "Pablo Armando", at: "Rosario" },
+  { k: "polistena", name: "Polistena",   from: 1883, who: "Giovanni", at: "Scilla" },
 ];
 
 const ticks = [1700, 1750, 1800, 1850, 1900, 1950, 2000];
@@ -31,7 +34,7 @@ const bottom = TOP + rows.length * GAP + 6;
 ---
 
 <svg viewBox={`0 0 920 ${bottom + 46}`} role="img"
-     aria-label="A chart of how far back each family is documented. Prostamo reaches 1697, D’Arcy 1751, Falco 1767, Defranceski 1787 (and 1750 on a family chart), Booyzen 1788 (and 1683 through an untested English line), Blažević 1838 (and 1750 on a family tree), and Lerena 1882.">
+     aria-label="A chart of how far back each family is documented, and where each line begins and ends. Prostamo reaches 1697 at Briatico, D’Arcy 1751 in Yorkshire, Falco 1767 at Arienzo, Defranceski 1787 at Gračišće, Booyzen 1788 in the Cape, Blažević 1838 at Smokvica, Arena 1870 and Polistena 1883 at Scilla, Mazza 1879 at Piedimonte, Lerena 1882 at Rosario. Every one of the ten ends in Brisbane.">
 
   {ticks.map(t => (
     <g>
@@ -61,8 +64,11 @@ const bottom = TOP + rows.length * GAP + 6;
               style="font-family:var(--serif);font-size:20px;font-weight:600">{r.name}</text>
         <text x={x(r.from) + 13 + r.name.length * 10.5} y={y + 20} fill="#fff"
               style="font-family:var(--sans);font-size:13px;font-weight:800;opacity:.85">{r.from}</text>
-        <text x={x(2026) - 12} y={y + 20} text-anchor="end" fill="#fff"
-              style="font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:.06em;opacity:.85">{r.who.toUpperCase()} → NOW</text>
+
+        <text x={PX} y={y + 13} fill={`var(--${r.k}-deep)`}
+              style="font-family:var(--sans);font-size:14px;font-weight:800">{r.at} <tspan style="opacity:.55">→</tspan> Brisbane</text>
+        <text x={PX} y={y + 28} fill="var(--ink-3)"
+              style="font-family:var(--sans);font-size:12px;font-weight:700">from {r.who}</text>
       </g>
     );
   })}

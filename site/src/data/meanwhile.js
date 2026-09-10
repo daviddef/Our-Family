@@ -1,4 +1,4 @@
-// Meanwhile — three things at once, for each stretch of time: what your family
+// Meanwhile — four things at once, for each stretch of time: what your family
 // was doing, who was in charge of the ground they were standing on, and what
 // the rest of the world was up to.
 //
@@ -39,6 +39,11 @@ export const eras = [
       { y: "about 1680", t: "The last dodo dies." },
       { y: "1687", t: "Isaac Newton writes down how gravity works." },
     ],
+    pressure: [
+      { y: "1615–18", t: "The Uskok War", w: "Venice and Austria fought each other on the exact stretch of coast this family lived on." },
+      { y: "1630–32", t: "Plague in the Adriatic", w: "It came up the coast from Italy. Villages emptied." },
+      { y: "1683–99", t: "The Great Turkish War", w: "Sixteen years of it, on this border. The mountain villages were built to survive exactly this." },
+    ],
   },
   {
     id: "1700s",
@@ -62,6 +67,9 @@ export const eras = [
       { y: "1783", t: "The first hot-air balloon goes up, in France." },
       { y: "1788", t: "The First Fleet lands at Sydney — the same year one of your ten families gets its first real date. Australia and the Booyzens start counting in the same twelve months." },
       { y: "1791", t: "Mozart dies, having written music since he was five." },
+    ],
+    pressure: [
+      { y: "1789–1815", t: "The Napoleonic wars", w: "Twenty-six years of war across the whole of Europe. Istria changed hands twice inside it." },
     ],
   },
   {
@@ -88,6 +96,10 @@ export const eras = [
       { y: "1815", t: "Waterloo. Napoleon is finished, and Istria goes back to Austria." },
       { y: "1837", t: "Victoria becomes queen at eighteen." },
       { y: "1859", t: "Darwin publishes On the Origin of Species." },
+    ],
+    pressure: [
+      { y: "1817–18", t: "The famine year", w: "A volcano on the other side of the world had thrown so much dust into the sky that the summer never really came, and the harvest failed across Europe." },
+      { y: "1848–49", t: "The revolutions", w: "Half of Europe rose up at once." },
     ],
   },
   {
@@ -116,6 +128,9 @@ export const eras = [
       { y: "1903", t: "The Wright brothers fly for twelve seconds." },
       { y: "1912", t: "The Titanic sinks." },
     ],
+    pressure: [
+      { y: "1880–1900", t: "Phylloxera", w: "A tiny insect ate the vines. Twenty years of it, and the wine villages of Istria lost their living. This is the sort of thing that makes people get on a boat." },
+    ],
   },
   {
     id: "wars",
@@ -140,6 +155,11 @@ export const eras = [
       { y: "1928", t: "Penicillin is discovered by accident, in a dish somebody forgot to wash up." },
       { y: "1936", t: "The first proper television broadcasts." },
       { y: "1939–45", t: "The Second World War. Every single one of the ten families is somewhere inside it." },
+    ],
+    pressure: [
+      { y: "1914–18", t: "The First World War", w: "" },
+      { y: "1920–43", t: "Surnames made Italian", w: "The government made people change the spelling of their own name. It is one reason this family's name is written three different ways." },
+      { y: "1939–45", t: "The Second World War", w: "" },
     ],
   },
   {
@@ -166,6 +186,9 @@ export const eras = [
       { y: "1989", t: "The Berlin Wall comes down." },
       { y: "1994", t: "South Africa's first election where everybody could vote." },
     ],
+    pressure: [
+      { y: "1945–56", t: "The exodus", w: "After the war, most of the Italian-speaking people of Istria left — hundreds of thousands of them. The place your family came from emptied out behind them." },
+    ],
   },
   {
     id: "now",
@@ -184,5 +207,6 @@ export const eras = [
     world: [
       { y: "yours", t: "Whatever happens next goes in this row. Somebody will read it in a hundred years and want to know what it was like — so it is worth writing down." },
     ],
+    pressure: [],
   },
 ];

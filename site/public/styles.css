@@ -743,3 +743,31 @@ header.site nav a.topic:hover{color:var(--ink)}
   .three li{grid-template-columns:1fr;gap:2px}
   .three li b{padding-top:0}
 }
+
+/* the ochre lane along the bottom: the reasons, rather than the dates */
+.pressure{margin-top:16px;background:#FBEBD3;border:2px solid #E8C98F;border-radius:16px;
+  padding:15px 18px 17px}
+.pressure h3{font-size:13px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;
+  color:#7A5B00;margin-bottom:10px}
+.prows{display:flex;flex-direction:column;gap:9px}
+.prow{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:baseline}
+.prow b{font-size:13px;font-weight:800;color:#7A5B00;white-space:nowrap}
+.prow strong{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--ink)}
+.prow span{font-size:16px;line-height:1.5;color:var(--ink-2)}
+@media (max-width:560px){
+  .prow{grid-template-columns:1fr;gap:2px}
+}
+
+/* the family row scrolls sideways on a phone instead of wrapping onto three
+   more lines — twenty-two links was pushing the content off the first screen */
+header.site nav{flex-direction:column;align-items:flex-end}
+.navfams,.navtopics{display:flex;flex-wrap:wrap;gap:6px 8px;justify-content:flex-end;max-width:100%}
+@media (max-width:760px){
+  header.site nav{align-items:stretch;width:100%}
+  .navfams,.navtopics{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .navfams::-webkit-scrollbar,.navtopics::-webkit-scrollbar{display:none}
+  /* both rows are cut off at the right edge on purpose — that is the only
+     affordance a scrolling row gets, so do not let the last chip end flush */
+  .navfams::after,.navtopics::after{content:"";flex:none;width:14px}
+}

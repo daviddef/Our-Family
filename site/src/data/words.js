@@ -1,5 +1,5 @@
 // Words out of the family's own records, with how to say them.
-// Every one of these is written down somewhere in the six archives.
+// Every one of these is written down somewhere in the ten archives.
 
 export const words = [
   { w: "trhonoša", say: "TER-ho-nosh-a", from: "Croatian", k: "blazevic",
@@ -28,6 +28,10 @@ export const words = [
     means: "A death notice. A form the family filled in when somebody died, listing their parents and their children — which is why so much of the South African side is known at all." },
   { w: "gostioničar", say: "gos-tee-OH-nee-char", from: "Croatian", k: "blazevic",
     means: "An innkeeper. What the carrier became when he got too old to walk over the mountain." },
+  { w: "Piedimonte", say: "pyeh-dee-MON-teh", from: "Italian", k: "mazza",
+    means: "“Foot of the mountain.” The village the Mazzas come from is Piedimonte Etneo — the foot of Etna. Italian place names are often just a plain description of where the place is." },
+  { w: "Scilla", say: "SHEEL-la", from: "Italian", k: "arena",
+    means: "The town the Arenas and Polistenas come from. In very old Greek stories, Scylla was a monster living on this exact stretch of water, opposite a whirlpool called Charybdis." },
   { w: "Septima", say: "SEP-tee-ma", from: "Latin", k: "argentina",
     means: "“The seventh.” Mary Septima Taylor was her parents’ seventh daughter, and they named her after the fact." },
 ];

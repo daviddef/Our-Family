@@ -20,8 +20,10 @@ const places = [
     lab: [268, 96], anchor: "middle" },
   { k: "croatia",   slug: "defranceski", name: "Croatia",      km: 15907, bear: 309.7, fam: "Defranceski · Blažević",
     lab: [220, 150], anchor: "middle", pair: "blazevic" },
-  { k: "italy",     slug: "falco",       name: "Italy",        km: 15961, bear: 302.8, fam: "Falco",
-    lab: [187, 236], anchor: "end" },
+  { k: "italy",     slug: "falco",       name: "Italy",        km: 15900, bear: 300.0,
+    fam: "Falco · Mazza · Prostamo", fam2: "Arena · Polistena",
+    pie: ["italy", "mazza", "prostamo", "arena", "polistena"],
+    lab: [187, 240], anchor: "end" },
   { k: "safrica",   slug: "booyzen",     name: "South Africa", km: 11401, bear: 224.8, fam: "Booyzen",
     lab: [266, 458], anchor: "end" },
   { k: "argentina", slug: "lerena",      name: "Argentina",    km: 12410, bear: 149.9, fam: "Lerena",
@@ -37,7 +39,7 @@ const fmt = n => n.toLocaleString("en-GB");
 ---
 
 <svg viewBox="0 0 800 700" role="img"
-     aria-label="A compass centred on Brisbane. Croatia’s pin is split in two colours because two of the families come from there. England lies 16,526 km to the north-west, Croatia 15,907 km north-west, Italy 15,961 km north-west, South Africa 11,401 km to the south-west and Argentina 12,410 km to the south-east.">
+     aria-label="A compass centred on Brisbane. Croatia’s pin is split in two because two families come from there, and Italy’s into five. England lies 16,526 km to the north-west, Croatia 15,907 km north-west, Italy about 15,900 km north-west, South Africa 11,401 km to the south-west and Argentina 12,410 km to the south-east.">
 
   <!-- distance rings -->
   {rings.map(km => (
@@ -67,12 +69,19 @@ const fmt = n => n.toLocaleString("en-GB");
   <!-- where each family started -->
   {places.map(p => (
     <a href={`${Astro.props.base}${p.slug}/`}>
-      <circle cx={p.xy[0]} cy={p.xy[1]} r="11" fill={`var(--${p.k})`} stroke="var(--panel)" stroke-width="3.5" />
-      {p.pair && (
-        <path d={`M${p.xy[0]},${p.xy[1] - 11} A11,11 0 0 1 ${p.xy[0]},${p.xy[1] + 11} Z`}
-              fill={`var(--${p.pair})`} />
+      {!p.pie && (
+        <circle cx={p.xy[0]} cy={p.xy[1]} r="11" fill={`var(--${p.k})`} stroke="var(--panel)" stroke-width="3.5" />
       )}
-      {p.pair && (
+      {p.pie && p.pie.map((k, i) => {
+        const n = p.pie.length, r = 11;
+        const a0 = (i / n) * 2 * Math.PI - Math.PI / 2, a1 = ((i + 1) / n) * 2 * Math.PI - Math.PI / 2;
+        const [x0, y0] = [p.xy[0] + r * Math.cos(a0), p.xy[1] + r * Math.sin(a0)];
+        const [x1, y1] = [p.xy[0] + r * Math.cos(a1), p.xy[1] + r * Math.sin(a1)];
+        const big = (a1 - a0) > Math.PI ? 1 : 0;
+        return <path d={`M${p.xy[0]},${p.xy[1]} L${x0},${y0} A${r},${r} 0 ${big} 1 ${x1},${y1} Z`}
+                     fill={`var(--${k})`} />;
+      })}
+      {p.pie && (
         <circle cx={p.xy[0]} cy={p.xy[1]} r="11" fill="none" stroke="var(--panel)" stroke-width="3.5" />
       )}
       <text x={p.lab[0]} y={p.lab[1]} text-anchor={p.anchor} fill={`var(--${p.k}-deep)`}
@@ -81,6 +90,10 @@ const fmt = n => n.toLocaleString("en-GB");
             style="font-family:var(--sans);font-size:14px;font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:5px;stroke-linejoin:round">{fmt(p.km)} km</text>
       <text x={p.lab[0]} y={p.lab[1] + 34} text-anchor={p.anchor} fill="var(--ink-3)"
             style="font-family:var(--sans);font-size:11.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;paint-order:stroke;stroke:var(--panel);stroke-width:5px;stroke-linejoin:round">{p.fam}</text>
+      {p.fam2 && (
+        <text x={p.lab[0]} y={p.lab[1] + 50} text-anchor={p.anchor} fill="var(--ink-3)"
+              style="font-family:var(--sans);font-size:11.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;paint-order:stroke;stroke:var(--panel);stroke-width:5px;stroke-linejoin:round">{p.fam2}</text>
+      )}
     </a>
   ))}
 

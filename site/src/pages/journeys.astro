@@ -1,15 +1,15 @@
 ---
 import Base from "../layouts/Base.astro";
 import { u } from "../lib/url.js";
-import { crossings, reasons } from "../data/journeys.js";
+import { crossings, recent, reasons } from "../data/journeys.js";
 ---
 <Base title="Journeys" dek="How each family actually crossed the world, how long it took, and why they went at all.">
   <div class="hero" style="text-align:left">
     <div class="wrap">
       <div class="kicker" style="--c:var(--safrica)">Getting here</div>
       <h1 style="font-size:clamp(38px,7vw,70px)">The journeys</h1>
-      <p class="lead big">Six families ended up in one city. Not one of them walked there, and not
-      one of them left for no reason.</p>
+      <p class="lead big">Ten families ended up in one city. Not one of them walked there, not one
+      of them left for no reason — and the very last of them arrived by plane in 2025.</p>
     </div>
   </div>
 
@@ -39,6 +39,38 @@ import { crossings, reasons } from "../data/journeys.js";
               {c.times && (
                 <div class="thenNow">{c.now} — so his journey took <b>{c.times} times longer</b> than yours would.</div>
               )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--croatia)">Still in living memory</div>
+      <h2>The journeys people can still remember</h2>
+      <p class="lead">Everything above happened long before anybody now alive was born. These three
+      did not. Somebody in the family packed for each of them.</p>
+      <div class="journeys">
+        {recent.map(c => (
+          <div class={`crossing c-${c.k}`}>
+            <div class="route">
+              <b>{c.from}</b>
+              <span class="arw" aria-hidden="true">↓</span>
+              <b>{c.to}</b>
+            </div>
+            <div class="detail">
+              <div class="who">{c.who}{c.age ? `, ${c.age}` : ""}</div>
+              <div class="when">Left {c.left} · by {c.ship}</div>
+              {c.km && (
+                <div class="bigdays">
+                  <b>{c.km}</b> in one night
+                  <i>the same trip by ship took months</i>
+                </div>
+              )}
+              <p>{c.text}</p>
+              {c.proof && <div class="thenNow">{c.proof}</div>}
             </div>
           </div>
         ))}

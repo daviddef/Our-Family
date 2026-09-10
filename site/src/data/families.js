@@ -336,7 +336,7 @@ export const families = [
       { name: "Gerthardus Lodewikus", rel: "6× great-grandpa", when: "no dates at all", where: "somewhere in the Cape", last: true },
     ],
     mystery:
-      "Gerthardus Lodewikus is the most frustrating person in all five families. We have his name and nothing else — no birthday, no parents, not one record. He is a locked door.",
+      "Gerthardus Lodewikus is the most frustrating person in all ten families. We have his name and nothing else — no birthday, no parents, not one record. He is a locked door.",
   },
 
   {
@@ -653,10 +653,10 @@ export const joining = [
 ];
 
 export const numbers = [
-  { n: "6", label: "families", sub: "on four continents" },
-  { n: "2", label: "boys", sub: "in one house in Brisbane" },
+  { n: "10", label: "families", sub: "on four continents" },
+  { n: "4", label: "cousins", sub: "two brothers and two cousins" },
   { n: "6", label: "countries", sub: "your family was born in" },
-  { n: "1717", label: "our oldest", sub: "Nicolaus, in Croatia" },
+  { n: "1697", label: "our oldest", sub: "Franco Antonino, in Calabria" },
   { n: "646", label: "Booyzens", sub: "in the whole world" },
   { n: "2,124", label: "Lerenas", sub: "in the whole world" },
 ];

@@ -32,6 +32,21 @@ export const places = [
     fact: "George Kolbe named his farm out here “Wurtemburg”, after the part of Germany his own father came from.",
   },
   {
+    k: "mazza", name: "Piedimonte Etneo", land: "Catania, Sicily",
+    what: "A village on the lower slopes of Mount Etna — the name means, literally, “the foot of Etna”. The volcano above it is still active, and still smoking.",
+    fact: "The soil around a volcano is famously good for growing things, which is why people live somewhere so obviously dangerous.",
+  },
+  {
+    k: "arena", name: "Scilla", land: "Reggio Calabria",
+    what: "A fishing town on the strait between Sicily and the mainland, with a castle on a rock above the water. Two of the ten families come from here — the Arenas and the Polistenas.",
+    fact: "The swordfish boats here have prows sticking out longer than the boat itself, so the man with the harpoon can stand right out over the water.",
+  },
+  {
+    k: "prostamo", name: "Briatico", land: "Vibo Valentia, Calabria",
+    what: "A small white town above a beach on the Calabrian coast. Nine straight generations of one family were born, married and buried here without leaving.",
+    fact: "This is the deepest line in the whole website — back to 1697 — and it is deep because Calabrian records happen to have survived better than Sicilian ones.",
+  },
+  {
     k: "britain", name: "Chatham & Parramatta", land: "England, then Australia",
     what: "Chatham was a great naval dockyard on the Medway where ships were built and soldiers embarked. Parramatta was a convict settlement upriver from Sydney. One family had children in both, two years apart.",
     fact: "That two-year gap is how we know exactly when they crossed the world.",
@@ -63,6 +78,10 @@ export const stillThere = [
   {
     k: "safrica", what: "St Anne’s, Soho",
     text: "The London church that recorded George Kolbe’s birth in 1803. It was bombed in the war and partly rebuilt, but the tower still stands and the registers survived.",
+  },
+  {
+    k: "mazza", what: "Four graves in a row at Nudgee",
+    text: "RFM and MJM’s four Italian great-grandparents lie in consecutive plots at Nudgee in Brisbane — V-1026, V-1027, V-1028, V-1029 — buried in the order they died, with nineteen years between the first and the last. Born in three towns that had never heard of each other, and they ended up side by side.",
   },
   {
     k: "britain", what: "Toowong and Dutton Park",

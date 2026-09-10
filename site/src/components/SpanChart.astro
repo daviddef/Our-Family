@@ -7,6 +7,7 @@ const X0 = 1680, X1 = 2035, L = 150, R = 880;
 const x = y => L + ((y - X0) / (X1 - X0)) * (R - L);
 
 const rows = [
+  { k: "prostamo",  name: "Prostamo",    from: 1697, who: "Franco Antonino" },
   { k: "britain",   name: "D’Arcy",      from: 1751, who: "Robert" },
   { k: "italy",     name: "Falco",       from: 1767, who: "Pasquale" },
   { k: "croatia",   name: "Defranceski", from: 1787, who: "Giov. Battista",
@@ -15,7 +16,10 @@ const rows = [
     ghost: 1683, ghostNote: "Downing, in England — untested" },
   { k: "blazevic",  name: "Blažević",    from: 1838, who: "Toma",
     ghost: 1750, ghostNote: "Mateša — named on a family tree, not in a register" },
-  { k: "argentina", name: "Lerena",      from: 1882, who: "Bob" },
+  { k: "arena",     name: "Arena",       from: 1870, who: "Giovanni" },
+  { k: "mazza",     name: "Mazza",       from: 1879, who: "Salvatore" },
+  { k: "argentina", name: "Lerena",      from: 1882, who: "Pablo Armando" },
+  { k: "polistena", name: "Polistena",   from: 1883, who: "Giovanni" },
 ];
 
 const ticks = [1700, 1750, 1800, 1850, 1900, 1950, 2000];
@@ -24,7 +28,7 @@ const bottom = TOP + rows.length * GAP + 6;
 ---
 
 <svg viewBox={`0 0 920 ${bottom + 46}`} role="img"
-     aria-label="A chart of how far back each family is documented. D’Arcy reaches 1751, Falco 1767, Defranceski 1787 (and 1750 on a family chart), Booyzen 1788 (and 1683 through an untested English line), Blažević 1838 (and 1750 on a family tree), and Lerena 1882.">
+     aria-label="A chart of how far back each family is documented. Prostamo reaches 1697, D’Arcy 1751, Falco 1767, Defranceski 1787 (and 1750 on a family chart), Booyzen 1788 (and 1683 through an untested English line), Blažević 1838 (and 1750 on a family tree), and Lerena 1882.">
 
   {ticks.map(t => (
     <g>

@@ -1,4 +1,4 @@
-// Every job the six archives actually record for a direct ancestor, grouped by
+// Every job the ten archives actually record for a direct ancestor, grouped by
 // what the work was rather than by which family it belonged to — because a
 // six-year-old cares that somebody carried things over a mountain, not which
 // surname he had.

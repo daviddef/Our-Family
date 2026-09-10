@@ -1,0 +1,109 @@
+---
+import Base from "../layouts/Base.astro";
+import Flag from "../components/Flag.astro";
+import { u } from "../lib/url.js";
+import { legs, totals } from "../data/walk.js";
+
+const count = legs.reduce((n, l) => n + l.stops.length, 0);
+const badge = { open: "Just walk up", ask: "You have to ask first", maybe: "Nobody has checked yet" };
+let stopNo = 0;
+---
+<Base title="The walk" dek="Every place in this website that is still standing, in the order you could actually go and see them — nineteen stops, six countries, and it ends at your own front door.">
+
+  <div class="hero" style="text-align:left">
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--croatia)">One trip, ten families</div>
+      <h1 style="font-size:clamp(38px,7vw,70px)">Walk along the line</h1>
+      <p class="lead big">Almost everything in this website is a place you could stand in. Here they
+      all are, in the order you could actually do them — and the last stop is your own front door.</p>
+      <p class="lead">This is not in date order. It is a route. It starts in London because two
+      families walked out of England and never came back, and it finishes in Brisbane because that
+      is where every single line in this story arrives.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="nums g4">
+        {totals.map(t => (
+          <div class="num">
+            <b>{t.label === "stops" ? count : t.n}</b><span>{t.label}</span><i>{t.sub}</i>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>What the three labels mean</h2>
+      <p class="lead">The grown-up archives keep itineraries like this for researchers, and they are
+      strict about one thing: never say a place is there when nobody has checked. So every stop
+      below carries one of these.</p>
+      <div class="keys">
+        <div class="keyrow"><span class="acc open">Just walk up</span>
+          <p>It is standing, it is public, and it costs nothing.</p></div>
+        <div class="keyrow"><span class="acc ask">You have to ask first</span>
+          <p>An archive or an office holds it. Somebody has to let you in, usually weeks ahead.</p></div>
+        <div class="keyrow"><span class="acc maybe">Nobody has checked yet</span>
+          <p>It should be there. No one in this family has stood in front of it to make sure.</p></div>
+      </div>
+    </div>
+  </section>
+
+  {legs.map(leg => (
+    <section class="legsec">
+      <div class="wrap">
+        <div class="leghead">
+          <svg width="46" height="34" viewBox="0 -6 40 34" aria-hidden="true">
+            <Flag id={`leg${leg.n}`} kind={leg.flag} x={2} y={2} />
+            <rect x="0" y="-6" width="2" height="34" fill="var(--ink-3)" />
+          </svg>
+          <div>
+            <div class="legno">Leg {leg.n}</div>
+            <h2>{leg.name}</h2>
+            <div class="legsub">{leg.sub} · {leg.km}</div>
+          </div>
+        </div>
+        <p class="lead">{leg.lead}</p>
+
+        <ol class="walk">
+          {leg.stops.map(s => {
+            stopNo += 1;
+            return (
+              <li class={`stop c-${s.k} ${s.last ? "is-last" : ""}`}>
+                <div class="pin"><b>{stopNo}</b></div>
+                <div class="card">
+                  <h3>{s.place}</h3>
+                  <div class="land">{s.land}</div>
+                  <span class={`acc ${s.access}`}>{badge[s.access]}</span>
+                  <p>{s.what}</p>
+                  <div class="still"><b>Still there:</b> {s.see}</div>
+                  <div class="lookfor"><b>Look for:</b> {s.look}</div>
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </section>
+  ))}
+
+  <section>
+    <div class="wrap">
+      <div class="callout" style="--c:var(--sun);--cw:#FFF7DF;--cd:#7A5B00">
+        <h3>🚶 And the honest bit</h3>
+        <p>Nobody has done this whole walk. Bits of it have been done — the archive at Pazin sent
+        pages out in 2021, the wall grave at Senj has been photographed twice, the Burgersdorp
+        stone has been read. Most of the rest is standing there being unvisited. If you ever go to
+        one of them, photograph it properly and write down the date, because that is exactly how
+        every fact on this website got here in the first place.</p>
+      </div>
+      <div class="pager">
+        <a href={u("/places/")}>← What those places are like</a>
+        <a href={u("/journeys/")}>How they got here →</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

@@ -24,6 +24,11 @@
   --safrica:#DE5334;    --safrica-wash:#FCE3DB;   --safrica-deep:#9B3319;
   --britain:#8560C9;    --britain-wash:#EDE4FB;   --britain-deep:#5B3A96;
   --blazevic:#C4407E;   --blazevic-wash:#FBE1EE;  --blazevic-deep:#8E2456;
+  /* the four Italian quarters on Rocco and Mia's side */
+  --mazza:#A8641E;      --mazza-wash:#F6ECE1;     --mazza-deep:#975A1B;
+  --prostamo:#1F7A72;   --prostamo-wash:#E2EFED;  --prostamo-deep:#1D746C;
+  --arena:#7A3B5C;      --arena-wash:#EFE5EA;     --arena-deep:#7A3B5C;
+  --polistena:#6E7B3A;  --polistena-wash:#EDEFE4; --polistena-deep:#636F34;
 
   --serif:"EB Garamond",Georgia,"Times New Roman",serif;
   --sans:"Nunito","Trebuchet MS","Helvetica Neue",Arial,sans-serif;
@@ -36,6 +41,10 @@
 .c-safrica{--c:var(--safrica);--cw:var(--safrica-wash);--cd:var(--safrica-deep)}
 .c-britain{--c:var(--britain);--cw:var(--britain-wash);--cd:var(--britain-deep)}
 .c-blazevic{--c:var(--blazevic);--cw:var(--blazevic-wash);--cd:var(--blazevic-deep)}
+.c-mazza{--c:var(--mazza);--cw:var(--mazza-wash);--cd:var(--mazza-deep)}
+.c-prostamo{--c:var(--prostamo);--cw:var(--prostamo-wash);--cd:var(--prostamo-deep)}
+.c-arena{--c:var(--arena);--cw:var(--arena-wash);--cd:var(--arena-deep)}
+.c-polistena{--c:var(--polistena);--cw:var(--polistena-wash);--cd:var(--polistena-deep)}
 .c-sun{--c:var(--sun);--cw:var(--sun-wash);--cd:#8C6504}
 
 *{box-sizing:border-box}
@@ -399,7 +408,7 @@ footer.site .dim{color:var(--ink-3);font-size:14px}
 
 .mboys .pair{display:flex;gap:12px;justify-content:center}
 .mboys .pair span{
-  font-family:var(--serif);font-size:30px;font-weight:600;color:var(--ink);
+  font-family:var(--serif);font-size:24px;font-weight:600;letter-spacing:.02em;color:var(--ink);
   background:var(--sun-wash);border:4px solid var(--safrica);border-radius:16px;
   padding:6px 28px;
 }

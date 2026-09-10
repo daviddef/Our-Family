@@ -50,12 +50,12 @@ const gen3 = [
 ];
 // grandparents and parents — the ones still living stay initials
 const gen45 = [
-  { x: 100,  y: 422, k: "britain",   rel: "Grandpa", name: "I" },
-  { x: 300,  y: 422, k: "italy",     rel: "Grandma", name: "G" },
-  { x: 600,  y: 422, k: "argentina", rel: "Grandma", name: "C" },
+  { x: 100,  y: 422, k: "britain",   rel: "Grandpa", name: "IKD" },
+  { x: 300,  y: 422, k: "italy",     rel: "Grandma", name: "GF" },
+  { x: 600,  y: 422, k: "argentina", rel: "Grandma", name: "CAL" },
   { x: 1000, y: 422, k: "croatia",   rel: "Grandpa", name: "Ivan" },
-  { x: 200,  y: 534, k: "italy",     rel: "Mum", name: "C" },
-  { x: 800,  y: 534, k: "croatia",   rel: "Dad", name: "D" },
+  { x: 200,  y: 534, k: "italy",     rel: "Mum", name: "CAD" },
+  { x: 800,  y: 534, k: "croatia",   rel: "Dad", name: "DID" },
 ];
 
 const branch = (x1, y1, x2, y2) =>
@@ -81,12 +81,12 @@ const limbs = [
   { d: branch(500, 602, 590, 640), k: "sun", w: 13 },
 ];
 
-const boys = [{ x: 410, name: "A" }, { x: 590, name: "M" }];
+const boys = [{ x: 410, name: "ADD" }, { x: 590, name: "MCD" }];
 const { base } = Astro.props;
 ---
 
 <svg viewBox="0 0 1200 778" role="img"
-     aria-label="A family tree under six flags. D’Arcy from England and Ireland, Falco from Italy, Booyzen from South Africa, Lerena from Argentina, and Defranceski and Blažević both from Croatia. Each passes down through a 2× great-grandparent and a great-grandparent, then four grandparents and two parents, into two boys, A and M, in Brisbane.">
+     aria-label="A family tree under six flags. D’Arcy from England and Ireland, Falco from Italy, Booyzen from South Africa, Lerena from Argentina, and Defranceski and Blažević both from Croatia. Each passes down through a 2× great-grandparent and a great-grandparent, then four grandparents and two parents, into two boys, ADD and MCD, in Brisbane.">
 
   {limbs.map(l => (
     <path d={l.d} fill="none" stroke={C[l.k]} stroke-width={l.w}
@@ -140,7 +140,7 @@ const { base } = Astro.props;
       <rect x={b.x - 76} y={640} width={152} height={60} rx={18}
             fill="var(--sun-wash)" stroke="var(--safrica)" stroke-width="4" />
       <text x={b.x} y={679} text-anchor="middle" fill="var(--ink)"
-            style="font-family:var(--serif);font-size:30px;font-weight:600">{b.name}</text>
+            style="font-family:var(--serif);font-size:25px;font-weight:600;letter-spacing:.02em">{b.name}</text>
     </g>
   ))}
 

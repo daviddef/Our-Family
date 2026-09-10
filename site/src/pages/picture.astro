@@ -16,8 +16,8 @@ import { spots } from "../data/findit.js";
   <section style="padding-top:14px">
     <div class="wrap">
       <figure class="findit">
-        <img src={u("/hero.webp")} width="1800" height="870" decoding="async"
-             alt="The family landscape: a hill village, a mountain pass, a valley, a river town, a dry plain and a house on stilts." />
+        <img src={u("/hero.webp")} width="1800" height="764" decoding="async"
+             alt="The family landscape: a hill village, a mountain pass, an Italian valley, a volcano, a castle on a rock, a white coastal town, an English dockyard, a dry plain and a house on stilts." />
         {spots.map(s => (
           <a class={`spot c-${s.k}`} href={`#spot-${s.n}`}
              style={`left:${s.x}%;top:${s.y}%`} aria-label={s.what}>{s.n}</a>

@@ -254,6 +254,10 @@ export const families = [
         alt: "A 1940 Argentine passport page: a photograph of a grey-haired man in a suit and tie, a red consular stamp, and a signature reading P. A. Lerena.",
         who: "Bob’s passport, 1940",
         cap: "His real face, in his real passport, stamped by the Argentine consulate in Cape Town. He signed his own name underneath — P. A. Lerena. Where the form asks what his job is, it says one word: Trainer." },
+      { src: "bob-restored.webp", w: 900, h: 900,
+        alt: "A cleaned-up black and white portrait of an older man with swept-back grey hair, in a dark suit, white shirt and a diagonally striped tie, looking straight at the camera with a slight smile.",
+        who: "The same photograph, cleaned up",
+        cap: "This is not a different picture. It is the passport photograph above, tidied up by a computer — the same suit, the same hair, the same half-smile, the same striped tie. Look at the two together: everything the computer sharpened was already there, and it still filled in the blur with its best guess rather than with anything it knew. So enjoy it, and remember which of the two is the evidence. The small blurry one is." },
     ],
     ladder: [
       { name: "ADD & MCD", where: "Brisbane, Australia", you: true },

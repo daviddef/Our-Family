@@ -1,5 +1,6 @@
 ---
 import { u } from "../lib/url.js";
+import SkipLink from "@daviddef/archive-kit/components/SkipLink.astro";
 import { families } from "../data/families.js";
 const { title, dek, key } = Astro.props;
 const SITE = "Our Family";
@@ -28,6 +29,7 @@ const here = Astro.url.pathname;
 <link rel="stylesheet" href={u("/styles.css")} />
 </head>
 <body class={key ? `c-${key}` : ""}>
+<SkipLink />
 
 <header class="site">
   <div class="wrap sitein">
@@ -49,7 +51,7 @@ const here = Astro.url.pathname;
   </div>
 </header>
 
-<main><slot /></main>
+<main id="main" tabindex="-1"><slot /></main>
 
 <footer class="site">
   <div class="wrap">

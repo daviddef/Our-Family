@@ -1,0 +1,50 @@
+{
+  "note": "The rule this whole site is built around: A LIVING PERSON IS INITIALS AND NOTHING MORE. No given name, no year of birth, no birthplace. This file is the list, and it is the only place the rule is written down — the guard reads it, so unlocking a name is a one-line edit here and never a code change. When somebody dies, move their entry from `living` to `released` with the date, and the name is free.",
+  "living": [
+    {
+      "initials": "ADD",
+      "who": "the elder of the two brothers this site is written for",
+      "forbid": [
+        "Alessio"
+      ]
+    },
+    {
+      "initials": "MCD",
+      "who": "the younger brother",
+      "forbid": [
+        "Mateo"
+      ]
+    },
+    {
+      "initials": "DID",
+      "who": "their father",
+      "forbid": [
+        "David"
+      ]
+    },
+    {
+      "initials": "CAL",
+      "who": "their grandmother, who flew from Johannesburg to Brisbane in 2025",
+      "forbid": [
+        "Cheryl"
+      ]
+    }
+  ],
+  "released": [
+    {
+      "initials": "Ivan Defranceski",
+      "who": "their grandfather, generation 7 of the direct line",
+      "died": "2026",
+      "note": "Named in full from 2026. He is the Ivan who left Zimbabwe for Johannesburg as a young man and flew to Brisbane in 2025."
+    }
+  ],
+  "allow": [
+    "Ivan Defranceski",
+    "Ivan Defrančeski",
+    "Ivan Blažević",
+    "Ivan Žubrinić"
+  ],
+  "allowFiles": [],
+  "whyNoYears": "A `born` year can be declared and the guard will hunt it, but NONE IS DECLARED HERE ON PURPOSE. This repository is public, so writing the children's birth years into it to stop them being published would publish them. The names are enough: no date reaches these pages except through a person, and no living person here has one.",
+  "falsePositives": "The guard is deliberately noisy. A four-digit year can be a photograph's date and a given name can be somebody else's, so it will occasionally flag something innocent. That is the right way round: a false alarm costs a minute and a line in `allow`, a miss costs a child their privacy."
+}

@@ -7,7 +7,7 @@
     "dev": "astro dev --port 4325",
     "build": "astro build && npm run check:living && npm run check:kit",
     "preview": "astro preview --port 4325",
-    "check:living": "python3 node_modules/@daviddef/archive-kit/kit/tools/checkliving.py --dist dist --declared src/data/living.json",
+    "check:living": "python3 node_modules/@daviddef/archive-kit/kit/tools/checkliving.py --dist dist --policy declared --declared src/data/living.json",
     "check:kit": "python3 node_modules/@daviddef/archive-kit/kit/tools/checkarchive.py --dist dist"
   },
   "dependencies": {

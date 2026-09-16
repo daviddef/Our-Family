@@ -52,7 +52,7 @@ export const families = [
     ladder: [
       { name: "ADD & MCD", where: "Brisbane, Australia", you: true },
       { name: "DID", rel: "Dad", where: "Johannesburg, South Africa" },
-      { name: "Ivan", rel: "Grandpa", where: "Senj, Croatia" },
+      { name: "Ivan", rel: "Grandpa", when: "died 2026", where: "Senj, Croatia" },
       { name: "Ivan", rel: "Great-grandpa", when: "1925–1995", where: "Crikvenica → Senj" },
       { name: "Anton Rudolf", rel: "2× great-grandpa", when: "1890–1943", where: "Klenovica, house 22" },
       { name: "Josip", rel: "3× great-grandpa", when: "1863–1951", where: "Gračišće → Crikvenica", job: "stonemason" },
@@ -196,7 +196,7 @@ export const families = [
     ladder: [
       { name: "ADD & MCD", where: "Brisbane, Australia", you: true },
       { name: "DID", rel: "Dad", where: "Johannesburg, South Africa" },
-      { name: "Ivan", rel: "Grandpa", where: "Senj, Croatia" },
+      { name: "Ivan", rel: "Grandpa", when: "died 2026", where: "Senj, Croatia" },
       { name: "Hedviga", rel: "Great-grandma", when: "1926–2001", where: "Senj → Johannesburg" },
       { name: "Ljubomir", rel: "2× great-grandpa", when: "1892–1966", where: "Rijeka → Senj", job: "sailor" },
       { name: "Juraj", rel: "3× great-grandpa", when: "no dates yet", where: "Smokvica Krmpotska" , told: true },

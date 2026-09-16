@@ -74,7 +74,7 @@ const gen45 = [
   { x: 1000, y: 422, k: "britain",   rel: "Grandpa", name: "IKD" },
   { x: 1200, y: 422, k: "italy",     rel: "Grandma", name: "GF" },
   { x: 250, y: 422, k: "argentina", rel: "Grandma", name: "CAL" },
-  { x: 650, y: 422, k: "croatia",   rel: "Grandpa", name: "Ivan" },
+  { x: 650, y: 422, k: "croatia",   rel: "Grandpa", name: "Ivan", when: "died 2026" },
   { x: 1750,  y: 534, k: "mazza",     rel: "Dad", name: "MRM" },
   { x: 1250,  y: 534, k: "britain",   rel: "Mum", name: "SFD" },
   { x: 950, y: 534, k: "italy",     rel: "Mum", name: "CAD" },
@@ -169,8 +169,15 @@ const { base } = Astro.props;
             fill="var(--panel)" stroke={C[p.k]} stroke-width="3" />
       <text x={p.x} y={p.y - 7} text-anchor="middle" fill={D[p.k]}
             style="font-family:var(--sans);font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase">{p.rel}</text>
-      <text x={p.x} y={p.y + 16} text-anchor="middle" fill="var(--ink)"
+      <text x={p.x} y={p.y + (p.when ? 12 : 16)} text-anchor="middle" fill="var(--ink)"
             style="font-family:var(--serif);font-size:22px;font-weight:600">{p.name}</text>
+      {/* Most of this row is living and carries initials only. One is not, and
+          the row above already gives dates to a great-grandfather who died the
+          same year, so silence here would be the odd thing. */}
+      {p.when && (
+        <text x={p.x} y={p.y + 25} text-anchor="middle" fill="var(--ink-3)"
+              style="font-family:var(--sans);font-size:10px;font-weight:700">{p.when}</text>
+      )}
     </g>
   ))}
 

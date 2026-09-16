@@ -17,7 +17,7 @@ import { places, stillThere } from "../data/places.js";
     <div class="wrap">
       <div class="grid g2">
         {places.map(p => (
-          <div class={`placecard c-${p.k}`}>
+          <div class={`placecard c-${p.k}${p.alsoK ? ` also-${p.alsoK}` : ""}`}>
             <div class="pname">{p.name}{p.also && <em> · {p.also}</em>}</div>
             <div class="pland">{p.land}</div>
             <p>{p.what}</p>

@@ -42,13 +42,14 @@ export const places = [
     fact: "The soil around a volcano is famously good for growing things, which is why people live somewhere so obviously dangerous.",
   },
   {
-    k: "arena", name: "Scilla", land: "Reggio Calabria",
+    // Two families, one town, and the card is coloured for both.
+    k: "arena", alsoK: "polistena", name: "Scilla", land: "Reggio Calabria",
     what: "A fishing town on the strait between Sicily and the mainland, with a castle on a rock above the water. Two of the ten families come from here — the Arenas and the Polistenas.",
     fact: "The swordfish boats here have prows sticking out longer than the boat itself, so the man with the harpoon can stand right out over the water.",
   },
   {
     k: "prostamo", name: "Briatico", land: "Vibo Valentia, Calabria",
-    what: "A small white town above a beach on the Calabrian coast. Nine straight generations of one family were born, married and buried here without leaving.",
+    what: "A small white town above a beach on the Calabrian coast. Nine generations of one family were born, married and buried here without leaving \u2014 the last four of them remembered rather than written down.",
     fact: "This is the deepest line in the whole website — back to 1697 — and the last stretch of it is family memory rather than paper. What IS on paper reaches 1820, and it is that deep because Calabrian records happen to have survived better than Sicilian ones.",
   },
   {

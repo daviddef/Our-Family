@@ -71,7 +71,7 @@ let stopNo = 0;
           {leg.stops.map(s => {
             stopNo += 1;
             return (
-              <li class={`stop c-${s.k} ${s.last ? "is-last" : ""}`}>
+              <li class={`stop c-${s.k}${s.alsoK ? ` also-${s.alsoK}` : ""} ${s.last ? "is-last" : ""}`}>
                 <div class="pin"><b>{stopNo}</b></div>
                 <div class="card">
                   <h3>{s.place}</h3>

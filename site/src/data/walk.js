@@ -110,7 +110,8 @@ export const legs = [
         access: "open",
       },
       {
-        k: "arena", place: "Scilla", land: "Reggio Calabria",
+        // Two families, one town — the stop is coloured for both.
+        k: "arena", alsoK: "polistena", place: "Scilla", land: "Reggio Calabria",
         what: "A fishing town on the strait between Sicily and the mainland, with a castle on a rock above the water. Two of the ten families come from this one town — the Arenas and the Polistenas — and in 1892 two Arenas married each other here.",
         see: "The castle, the beach under it, and the swordfish boats.",
         look: "Those boats have a prow sticking out further than the boat is long, so the man with the harpoon can stand right out over the water. And in very old Greek stories, a monster called Scylla lived on this exact stretch of sea.",

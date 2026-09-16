@@ -13,7 +13,11 @@ const X0 = 1680, X1 = 2035, L = 34, R = 620, PX = 646;
 const x = y => L + ((y - X0) / (X1 - X0)) * (R - L);
 
 const rows = [
-  { k: "prostamo",  name: "Prostamo",    from: 1697, who: "Franco Antonino", at: "Briatico" },
+  // The Mazza archive marks the four generations above 1785 as resting on the
+  // family tree alone, so the solid bar starts where the paper does - Domenico
+  // in 1820 - and 1697 becomes the ghost it already knew how to draw.
+  { k: "prostamo",  name: "Prostamo",    from: 1820, who: "Domenico", at: "Briatico",
+    ghost: 1697, ghostNote: "Franco Antonino \u2014 on the family tree, not in any register" },
   { k: "britain",   name: "D’Arcy",      from: 1751, who: "Robert", at: "Yorkshire" },
   { k: "italy",     name: "Falco",       from: 1767, who: "Pasquale", at: "Arienzo" },
   { k: "croatia",   name: "Defranceski", from: 1787, who: "Giov. Battista", at: "Gračišće",
@@ -31,10 +35,23 @@ const rows = [
 const ticks = [1700, 1750, 1800, 1850, 1900, 1950, 2000];
 const TOP = 54, H = 30, GAP = 52;
 const bottom = TOP + rows.length * GAP + 6;
+
+/* WRITTEN FROM THE ROWS, NOT TYPED BESIDE THEM. This sentence is what a screen
+   reader is given instead of the drawing, and it had gone on saying «Prostamo
+   reaches 1697» after the bar was corrected to start at 1820 where the paper
+   does - so the picture and its description disagreed, and only one of them was
+   checked by anybody. Where a line has a ghost, the description says so, in the
+   same words the drawing uses. */
+const label = "A chart of how far back each family is documented, and where each line begins and "
+  + "ends. " + rows.map((r) =>
+      `${r.name} ${r.from} at ${r.at}`
+      + (r.ghost ? `, with ${r.ghostNote}, reaching ${r.ghost}` : "")
+    ).join("; ")
+  + ". Every one of the ten ends in Brisbane.";
 ---
 
 <svg viewBox={`0 0 920 ${bottom + 46}`} role="img"
-     aria-label="A chart of how far back each family is documented, and where each line begins and ends. Prostamo reaches 1697 at Briatico, D’Arcy 1751 in Yorkshire, Falco 1767 at Arienzo, Defranceski 1787 at Gračišće, Booyzen 1788 in the Cape, Blažević 1838 at Smokvica, Arena 1870 and Polistena 1883 at Scilla, Mazza 1879 at Piedimonte, Lerena 1882 at Rosario. Every one of the ten ends in Brisbane.">
+     aria-label={label}>
 
   {ticks.map(t => (
     <g>

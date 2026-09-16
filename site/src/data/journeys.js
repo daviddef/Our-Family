@@ -54,6 +54,13 @@ export const crossings = [
     text: "The family tree recorded eighteen crossings and not a single ship’s name. Somebody went to the Australian passenger index and pulled out nine of them — this one exactly to the day.",
   },
   {
+    k: "arena", who: "Rocco Arena", age: "aged 29",
+    from: "Italy", to: "Sydney, Australia",
+    left: "27 December 1953", landed: "27 December 1953",
+    days: null, ship: "the Sydney",
+    text: "Rocco landed two days after Christmas, on a ship called the Sydney, sailing into Sydney. He had married Angela Polistena, who had come out four years earlier on the Surriento — two families who grew up in sight of each other at Scilla, crossing the world four years apart.",
+  },
+  {
     k: "prostamo", who: "Francessco Prostamo", age: "aged 57",
     from: "Genoa, Italy", to: "Fremantle, Australia",
     left: "10 October 1957", landed: "10 October 1957",

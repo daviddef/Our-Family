@@ -771,3 +771,14 @@ header.site nav{flex-direction:column;align-items:flex-end}
      affordance a scrolling row gets, so do not let the last chip end flush */
   .navfams::after,.navtopics::after{content:"";flex:none;width:14px}
 }
+
+
+/* SOME RUNGS ARE TOLD, NOT PROVED, and a child should be able to see which.
+   The seven grown-up archives grade every claim with the same five words. This
+   site said everything in one flat voice, including the four generations above
+   1697 that no register page names, and the two most recent D'Arcy generations
+   whose papers are shut because the people are alive. Two kinds of knowing are
+   enough here: a paper says so, or the family says so. */
+.rung .told{margin-top:.5rem;padding:.45rem .6rem;border-left:3px solid #c9843e;
+  background:rgba(201,132,62,.09);border-radius:0 4px 4px 0;font-size:.86rem;line-height:1.5}
+.rung .told b{color:#a5621f}

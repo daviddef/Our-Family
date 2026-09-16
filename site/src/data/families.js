@@ -58,7 +58,7 @@ export const families = [
       { name: "Josip", rel: "3× great-grandpa", when: "1863–1951", where: "Gračišće → Crikvenica", job: "stonemason" },
       { name: "Antonio", rel: "4× great-grandpa", when: "1825–1894", where: "Gračišće, house 19", job: "stonecutter" },
       { name: "Giovanni Battista", rel: "5× great-grandpa", when: "1787–1846", where: "Gračišće, house 5", job: "farmer" },
-      { name: "Giovanni", rel: "6× great-grandpa", when: "1750–1829", where: "Gologorica", last: true },
+      { name: "Giovanni", rel: "6× great-grandpa", when: "1750–1829", where: "Gologorica", last: true , told: true, toldWhy: "A book names his son «son of the late Giovanni», so a Giovanni was there — but no page has been found for the man himself." },
     ],
     mystery:
       "Giovanni at the very top is where the ladder stops. We think he might really be a Giovanni Battista from house 31 at Gologorica — but we cannot prove it yet.",
@@ -125,7 +125,7 @@ export const families = [
       { name: "Raffaele", rel: "5× great-grandpa", when: "1818–1880", where: "Arienzo, Italy" },
       { name: "Vincenzo", rel: "6× great-grandpa", when: "1793–1875", where: "Arienzo, Italy" },
       { name: "Pasquale", rel: "7× great-grandpa", when: "1767–1834", where: "Arienzo, Italy" },
-      { name: "Matteo", rel: "8× great-grandpa", when: "children born from 1767", where: "Arienzo, Italy", last: true },
+      { name: "Matteo", rel: "8× great-grandpa", when: "children born from 1767", where: "Arienzo, Italy", last: true , told: true, toldWhy: "He is named as the father on his son's baptism, and nothing else about him has been found." },
     ],
     mystery:
       "Above Matteo the church book has a hole in it: the pages between 1738 and 1761 are missing. To climb any higher we have to find another way round. And Pasquale has two birthdays: the baptism register says he was a newborn in October 1767, but his death record makes him old enough to have been born in 1765. Both cannot be right, so this site follows the register.",
@@ -199,12 +199,12 @@ export const families = [
       { name: "Ivan", rel: "Grandpa", where: "Senj, Croatia" },
       { name: "Hedviga", rel: "Great-grandma", when: "1926–2001", where: "Senj → Johannesburg" },
       { name: "Ljubomir", rel: "2× great-grandpa", when: "1892–1966", where: "Rijeka → Senj", job: "sailor" },
-      { name: "Juraj", rel: "3× great-grandpa", when: "no dates yet", where: "Smokvica Krmpotska" },
+      { name: "Juraj", rel: "3× great-grandpa", when: "no dates yet", where: "Smokvica Krmpotska" , told: true },
       { name: "Toma", rel: "4× great-grandpa", when: "1838–1907", where: "Smokvica Krmpotska, house 114", job: "day labourer" },
       { name: "Anton", rel: "5× great-grandpa", when: "no dates at all", where: "Smokvica Krmpotska" },
       { name: "Ilija", rel: "6× great-grandpa", when: "born 1790", where: "Smokvica Krmpotska" },
-      { name: "Grgica", rel: "7× great-grandpa", when: "born 1770", where: "Croatia" },
-      { name: "Mateša", rel: "8× great-grandpa", when: "born 1750", where: "Croatia", last: true },
+      { name: "Grgica", rel: "7× great-grandpa", when: "born 1770", where: "Croatia" , told: true },
+      { name: "Mateša", rel: "8× great-grandpa", when: "born 1750", where: "Croatia", last: true , told: true },
     ],
     mystery:
       "The three names at the very top — Mateša, Grgica and Ilija — used to be a separate list that nobody could join onto ours. Now they are joined on. But be careful with them: they come from other people’s family trees, not from a church book. The oldest Blažević anybody has actually found written down in a register is Toma, in 1838. Everything above him is still a promise rather than a proof.",
@@ -341,7 +341,7 @@ export const families = [
       { name: "Willem Hermanus", rel: "3× great-grandpa", when: "1851–1905", where: "Cradock → Indwe", job: "farmer, then mason" },
       { name: "Petrus Jacobus", rel: "4× great-grandpa", when: "1812–1884", where: "Graaff-Reinet" },
       { name: "Petrus Jacobus", rel: "5× great-grandpa", when: "1788–1876", where: "Graaff-Reinet → Rustenburg" },
-      { name: "Gerthardus Lodewikus", rel: "6× great-grandpa", when: "no dates at all", where: "somewhere in the Cape", last: true },
+      { name: "Gerthardus Lodewikus", rel: "6× great-grandpa", when: "no dates at all", where: "somewhere in the Cape", last: true , told: true, toldWhy: "One clerk wrote his name on his son's death notice in 1876. A printed book says the father was someone else called Jan. Nobody has settled it." },
     ],
     mystery:
       "Gerthardus Lodewikus is the most frustrating person in all ten families. We have his name and nothing else — no birthday, no parents, not one record. He is a locked door.",
@@ -384,8 +384,9 @@ export const families = [
       },
     ],
     photos: [],
+    facesElsewhere: true,
     noPhotos:
-      "No photographs of the Sicilian side have been gathered here yet. The Mazza archive has a picture store — they just have not been brought across.",
+      "Three of the men on the ladder below now have a face. The Mazza archive has put its picture store online — Sebastiano, Salvatore and Rosario are all in it. Almost none of the photographs are labelled, so if you know who somebody is, that is the most useful thing you can say.",
     ladder: [
       { name: "RFM & MJM", where: "Brisbane, Australia", you: true },
       { name: "MRM", rel: "Dad", where: "Brisbane, Australia" },
@@ -431,8 +432,9 @@ export const families = [
       },
     ],
     photos: [],
+    facesElsewhere: true,
     noPhotos:
-      "Nothing yet from Briatico. For a line that reaches 1697, not one face.",
+      "Briatico has faces after all. Domenica, Francessco and Alfonso — born in 1858 — are all in the Mazza archive's picture store now. What is still missing is anybody further up the ladder, which is also where the paper runs out.",
     ladder: [
       { name: "RFM & MJM", where: "Brisbane, Australia", you: true },
       { name: "MRM", rel: "Dad", where: "Brisbane, Australia" },
@@ -441,10 +443,10 @@ export const families = [
       { name: "Francessco", rel: "2× great-grandpa", when: "1900–1983", where: "Briatico, Calabria" },
       { name: "Alfonso", rel: "3× great-grandpa", when: "born 1858", where: "Briatico, Calabria" },
       { name: "Domenico", rel: "4× great-grandpa", when: "born 1820", where: "Briatico, Calabria" },
-      { name: "Antonino", rel: "5× great-grandpa", when: "born 1785", where: "Briatico, Calabria" },
-      { name: "Pasquale", rel: "6× great-grandpa", when: "1760–1829", where: "Briatico, Calabria" },
-      { name: "Antonino", rel: "7× great-grandpa", when: "born 1726", where: "Briatico, Calabria" },
-      { name: "Franco Antonino", rel: "8× great-grandpa", when: "born 1697", where: "Briatico, Calabria", last: true },
+      { name: "Antonino", rel: "5× great-grandpa", when: "born 1785", where: "Briatico, Calabria" , told: true },
+      { name: "Pasquale", rel: "6× great-grandpa", when: "1760–1829", where: "Briatico, Calabria" , told: true },
+      { name: "Antonino", rel: "7× great-grandpa", when: "born 1726", where: "Briatico, Calabria" , told: true },
+      { name: "Franco Antonino", rel: "8× great-grandpa", when: "born 1697", where: "Briatico, Calabria", last: true , told: true, toldWhy: "No register page names him. The whole family says he was there, and the paper that would prove it has not been found." },
     ],
     mystery:
       "Even this line stops. Above Franco Antonino in 1697 there is nothing — and 1697 is a very long way back for a small town’s paper to survive at all.",
@@ -483,8 +485,9 @@ export const families = [
       },
     ],
     photos: [],
+    facesElsewhere: true,
     noPhotos:
-      "No pictures from Scilla yet. There is a photograph store in the Mazza archive that has not been mined for this side.",
+      "Rocco and Giuseppe both have a photograph now, in the Mazza archive's picture store. Nothing yet from Scilla itself.",
     ladder: [
       { name: "RFM & MJM", where: "Brisbane, Australia", you: true },
       { name: "MRM", rel: "Dad", where: "Brisbane, Australia" },
@@ -530,8 +533,9 @@ export const families = [
       },
     ],
     photos: [],
+    facesElsewhere: true,
     noPhotos:
-      "None yet. Angela lived until 2018, so photographs of her almost certainly exist in the family.",
+      "Angela and Giovanni are both in the Mazza archive's picture store now. Angela lived until 2018, so there are almost certainly more of her in the family.",
     ladder: [
       { name: "RFM & MJM", where: "Brisbane, Australia", you: true },
       { name: "MRM", rel: "Dad", where: "Brisbane, Australia" },
@@ -600,12 +604,13 @@ export const families = [
       },
     ],
     photos: [],
+    facesElsewhere: true,
     noPhotos:
-      "We have not found a single photograph of this side of the family yet — not of the Major, not of the surveyor, not even of Great-grandpa Kenneth and his talking parrot. They are the one line with no faces. That is the next thing to go looking for.",
+      "Still not one photograph of a D’Arcy — not the Major, not the surveyor, not even Great-grandpa Kenneth. But one face has arrived from the family they married into. Lance-Corporal Vivian Sneyd was photographed for a newspaper in January 1919, in a peaked cap and tunic, wearing the Military Medal and a bar for winning it twice. Ivy Sneyd married your 2× great-grandpa Lindesay.",
     ladder: [
       { name: "ADD · MCD · RFM · MJM", rel: "All four of you", where: "Brisbane, Australia", you: true },
-      { name: "CAD & SFD", rel: "Mum and Aunty — twins", where: "Brisbane, Australia" },
-      { name: "IKD", rel: "Grandpa", where: "Brisbane, Australia" },
+      { name: "CAD & SFD", rel: "Mum and Aunty — twins", where: "Brisbane, Australia" , told: true },
+      { name: "IKD", rel: "Grandpa", where: "Brisbane, Australia" , told: true, toldWhy: "Not because he is far away — because he is close. Papers about people who are still alive are kept shut, so this part of the line rests on what the family says." },
       { name: "Kenneth Lindsay", rel: "Great-grandpa", when: "1927–2010", where: "Sandgate, Queensland", job: "and the parrot" },
       { name: "Lindesay Atkinson", rel: "2× great-grandpa", when: "1892–1936", where: "Brisbane, Queensland", job: "clerk" },
       { name: "George Pitt", rel: "3× great-grandpa", when: "1864–1931", where: "Brisbane, Queensland", job: "chief clerk, railways" },

@@ -59,7 +59,9 @@ const rungs = [...f.ladder].reverse();
           <path d="M10 3v14M4 9l6-6 6 6" stroke="currentColor" stroke-width="2.6"
                 fill="none" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
-        The oldest {f.name} we can prove
+        {rungs[0]?.told
+          ? `The oldest ${f.name} anybody can name`
+          : `The oldest ${f.name} we can prove`}
       </div>
 
       <div class="ladder">
@@ -73,6 +75,12 @@ const rungs = [...f.ladder].reverse();
               <div class="nm">{r.name}</div>
               <div class="det">{[r.when, r.where].filter(Boolean).join(" · ")}</div>
               {r.job && <span class="job">{r.job}</span>}
+              {r.told && (
+                <div class="told">
+                  <b>The family says so.</b>{" "}
+                  {r.toldWhy ?? "No paper has been found for this one yet."}
+                </div>
+              )}
             </div>
           </div>
         ))}
@@ -83,7 +91,11 @@ const rungs = [...f.ladder].reverse();
   <section>
     <div class="wrap">
       <div class="kicker">Their faces</div>
-      <h2>{f.photos.length ? "Look at them" : "Nobody to look at — yet"}</h2>
+      <h2>{f.photos.length
+        ? "Look at them"
+        : f.facesElsewhere
+          ? "Faces \u2014 but not here yet"
+          : "Nobody to look at \u2014 yet"}</h2>
       {f.photos.length > 0 ? (
         <>
           <p class="lead">Real photographs of real people you are related to. Some are more than

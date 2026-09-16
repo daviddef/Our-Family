@@ -118,7 +118,7 @@ export const legs = [
       },
       {
         k: "prostamo", place: "Briatico", land: "Vibo Valentia, Calabria",
-        what: "A small white town above a beach. Nine straight generations of Prostamos were born, married and buried here without leaving — back to Franco Antonino in 1697, who is the oldest person anybody in this whole website can name.",
+        what: "A small white town above a beach. Nine generations of Prostamos were born, married and buried here without leaving — the last four of them remembered rather than written down — back to Franco Antonino in 1697, who is the oldest person anybody in this whole website can name.",
         see: "The town, the sea, and how small a place can hold three hundred years of one family.",
         look: "This is the deepest root on the walk, and it arrives through a great-grandmother — not through anybody's surname.",
         access: "open",

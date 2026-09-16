@@ -49,7 +49,7 @@ export const places = [
   {
     k: "prostamo", name: "Briatico", land: "Vibo Valentia, Calabria",
     what: "A small white town above a beach on the Calabrian coast. Nine straight generations of one family were born, married and buried here without leaving.",
-    fact: "This is the deepest line in the whole website — back to 1697 — and it is deep because Calabrian records happen to have survived better than Sicilian ones.",
+    fact: "This is the deepest line in the whole website — back to 1697 — and the last stretch of it is family memory rather than paper. What IS on paper reaches 1820, and it is that deep because Calabrian records happen to have survived better than Sicilian ones.",
   },
   {
     k: "britain", name: "Chatham & Parramatta", land: "England, then Australia",

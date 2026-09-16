@@ -225,6 +225,10 @@ export const families = [
     archiveName: "The Lerena Archive",
     facts: [
       {
+        big: "A spelling mistake hid your great-great-great-grandpa for years.",
+        text: "In 1908 Pablo Armando walked into the Argentine consulate in Cape Town and filled in an army card. On it he wrote his father’s name and his mother’s. Then the card was filed in a drawer marked “Lera”, and whoever typed it up later turned him into “Armand Lorena”, born in a town seven hundred miles from the right one. So for years nobody could find it — you cannot search for a name that has been spelled wrong twice. It was found in September 2026, and it gave the family a whole new grandpa: Juan Carlos.",
+      },
+      {
         big: "Only 2,124 people in the whole world are called Lerena.",
         text: "That is fewer than the number of children in some schools. If you meet another Lerena anywhere on Earth, there is a very good chance you are related to them.",
       },
@@ -264,7 +268,8 @@ export const families = [
       { name: "DID", rel: "Dad", where: "Johannesburg, South Africa" },
       { name: "CAL", rel: "Grandma", where: "Johannesburg, South Africa" },
       { name: "Nuno Fernando", rel: "Great-grandpa", when: "1924–1971", where: "Cape Town → Germiston" },
-      { name: "Pablo Armando “Bob”", rel: "2× great-grandpa", when: "1882–1950", where: "Rosario → Cape Town", job: "horse trainer", last: true },
+      { name: "Pablo Armando “Bob”", rel: "2× great-grandpa", when: "1882–1950", where: "Rosario → Cape Town", job: "horse trainer" },
+      { name: "Juan Carlos", rel: "3× great-grandpa", where: "Argentina — probably Rosario", last: true },
     ],
     mystery:
       "This is the shortest ladder of the five — and the biggest mystery. We know Bob was born in Rosario in 1882, but we do not yet know his mother’s or his father’s name. Somewhere in Argentina there is a book with the answer in it.",
@@ -416,7 +421,7 @@ export const families = [
     facts: [
       {
         big: "1697. That is the oldest anybody in this family can be named.",
-        text: "Franco Antonino Prostamo was born in Briatico in 1697 — earlier than any Falco, any D’Arcy, any Defranceski, any Booyzen. Eight generations in one unbroken chain, all in the same small town on the Calabrian coast.",
+        text: "Franco Antonino Prostamo was born in Briatico in 1697 — earlier than any Falco, any D’Arcy, any Defranceski, any Booyzen. Eight generations in one line, all in the same small town on the Calabrian coast — though the top four of them are what the family says, not what a paper proves. The archive is trying to settle it.",
       },
       {
         big: "And it comes in sideways.",
@@ -669,7 +674,7 @@ export const numbers = [
   { n: "10", label: "families", sub: "on four continents" },
   { n: "4", label: "cousins", sub: "two brothers and two cousins" },
   { n: "6", label: "countries", sub: "your family was born in" },
-  { n: "1697", label: "our oldest", sub: "Franco Antonino, in Calabria" },
+  { n: "1697", label: "our oldest", sub: "Franco Antonino, in Calabria \u2014 said, not proved" },
   { n: "646", label: "Booyzens", sub: "in the whole world" },
   { n: "2,124", label: "Lerenas", sub: "in the whole world" },
 ];

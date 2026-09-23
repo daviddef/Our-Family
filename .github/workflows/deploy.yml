@@ -3,6 +3,12 @@ name: Build and deploy Our Family
 on:
   push:
     branches: [main]
+  # A pull request BUILDS but does not DEPLOY. The point is to run the gates —
+  # check:living above all — before a change reaches main, rather than after.
+  # Until this existed, `main` was the first place the kit pin was ever
+  # exercised on a machine that was not somebody's laptop.
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -10,8 +16,16 @@ permissions:
   pages: write
   id-token: write
 
+# REF-SCOPED, AND IT HAS TO BE. This was the bare group `pages` with
+# cancel-in-progress, which was right while only main pushes ran: deploys
+# queued behind each other instead of racing for the same Pages site. Adding
+# pull_request to a bare group would have put every PR build in the SAME group
+# as production, so opening a PR could cancel an in-flight deploy of main
+# halfway through. Keying on the ref keeps main's deploys serialised with each
+# other exactly as before, and gives each PR its own lane where a new push
+# supersedes that PR's own older run.
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -25,16 +39,26 @@ jobs:
       - name: Install
         run: npm ci || npm install
         working-directory: site
+      # This is the step the pull_request trigger exists for: `build` is
+      # `astro build && npm run check:living && npm run check:kit`, so a leak
+      # of a living person fails the PR instead of failing main.
       - name: Build
         run: npm run build
         working-directory: site
+      # Pages-only, and skipped on a pull request: these two steps exist to
+      # feed the deploy job, which does not run for a PR.
       - uses: actions/configure-pages@v5
+        if: github.event_name != 'pull_request'
       - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
         with:
           path: site/dist
 
   deploy:
     needs: build
+    # A PR must never publish. Without this the job would run on every pull
+    # request and deploy that branch over the live site.
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

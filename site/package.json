@@ -11,7 +11,7 @@
     "check:kit": "python3 node_modules/@daviddef/archive-kit/kit/tools/checkarchive.py --dist dist"
   },
   "dependencies": {
-    "@daviddef/archive-kit": "github:daviddef/TheArchiveKit#5e607b4e142b2d39f7ba74fdda39bcd484873d39",
+    "@daviddef/archive-kit": "github:daviddef/TheArchiveKit#2790d856cd48300604ce610dbc51bede7a655832",
     "astro": "^5.18.2"
   }
 }

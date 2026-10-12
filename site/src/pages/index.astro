@@ -185,7 +185,7 @@ import { families, joining, numbers } from "../data/families.js";
           where you can read the actual old documents — the church books, the ships' papers,
           the wills and the gravestones.</div>
           <div class="flinks">
-            {families.map(f => <a href={f.archive}>{f.archiveName} →</a>)}
+            {[...new Map(families.map(f => [f.archive, f])).values()].map(f => <a href={f.archive}>{f.archiveName} →</a>)}
           </div>
         </div>
       </div>

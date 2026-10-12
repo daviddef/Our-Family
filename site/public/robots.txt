@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ourfamily.defranceski.com/sitemap.xml

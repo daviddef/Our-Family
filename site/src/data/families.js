@@ -15,7 +15,7 @@ export const families = [
       "Defranceschi just means “of the Franceschi” — the family of a man called Francesco. So lots of families made the name up on their own, all over Italy. Ours is the one from the hill village of Gračišće.",
     km: "about 16,000 km",
     kmNote: "Gračišće, Croatia → Brisbane",
-    archive: "https://daviddef.github.io/TheDefranceski/",
+    archive: "https://archive.defranceski.com/",
     archiveName: "The Defranceschi Archive",
     facts: [
       {
@@ -76,7 +76,7 @@ export const families = [
       "Falco is the Latin word for falcon — a fast, sharp-eyed hunting bird. People got the name for being quick, or sharp-eyed, or for keeping falcons.",
     km: "about 16,000 km",
     kmNote: "Arienzo, Italy → Brisbane",
-    archive: "https://daviddef.github.io/TheFalco/",
+    archive: "https://falco.defranceski.com/",
     archiveName: "The Falco Archive",
     facts: [
       {
@@ -143,7 +143,7 @@ export const families = [
       "Blažević means “son of Blaž” — and Blaž is the Croatian form of Blaise. Like most Croatian names ending in -ić, it just tells you whose child you were.",
     km: "about 15,900 km",
     kmNote: "Senj, Croatia → Brisbane",
-    archive: "https://daviddef.github.io/TheBlazevic/",
+    archive: "https://blazevic.defranceski.com/",
     archiveName: "The Blažević Archive",
     photos: [
       { src: "blazevic-grave.webp", w: 700, h: 933,
@@ -221,7 +221,7 @@ export const families = [
       "Nobody is quite sure yet. Lerena might come from the Basque country, where -ena means “the house of.” Or it might be a short way of saying Llerena, a town in Spain.",
     km: "about 12,400 km",
     kmNote: "Rosario, Argentina → Brisbane",
-    archive: "https://daviddef.github.io/TheLerena/",
+    archive: "https://lerena.defranceski.com/",
     archiveName: "The Lerena Archive",
     facts: [
       {
@@ -287,7 +287,7 @@ export const families = [
       "Booyzen looks like Booysen with the s swapped for a z, and the family has always said one of the men changed it on purpose during a war. That story has just been tested — and it did not hold.",
     km: "about 11,400 km",
     kmNote: "Johannesburg, South Africa → Brisbane",
-    archive: "https://daviddef.github.io/TheBooyzen/",
+    archive: "https://booyzen.defranceski.com/",
     archiveName: "The Booyzen Archive",
     facts: [
       {
@@ -364,7 +364,7 @@ export const families = [
       "Mazza is the Italian word for a club or a mallet. Somebody was nicknamed that a long time ago, and it stuck. It is a very common name in Sicily.",
     km: "about 16,200 km",
     kmNote: "Piedimonte Etneo, Sicily → Brisbane",
-    archive: "https://daviddef.github.io/TheMazza/",
+    archive: "https://mazza.defranceski.com/",
     archiveName: "The Mazza Archive",
     facts: [
       {
@@ -416,7 +416,7 @@ export const families = [
       "A rare Calabrian name. Nobody is quite sure where it comes from, which is unusual for a family this well recorded.",
     km: "about 16,100 km",
     kmNote: "Briatico, Calabria → Brisbane",
-    archive: "https://daviddef.github.io/TheMazza/",
+    archive: "https://mazza.defranceski.com/",
     archiveName: "The Mazza Archive",
     facts: [
       {
@@ -469,7 +469,7 @@ export const families = [
       "Arena means sand. In the whole archive the 39 Arenas form one single unbroken family — which makes it the exact opposite of Mazza.",
     km: "about 16,100 km",
     kmNote: "Scilla, Calabria → Brisbane",
-    archive: "https://daviddef.github.io/TheMazza/",
+    archive: "https://mazza.defranceski.com/",
     archiveName: "The Mazza Archive",
     facts: [
       {
@@ -517,7 +517,7 @@ export const families = [
       "Polistena is a town in Calabria, so the name almost certainly means “the family from Polistena”. People were often named after where they came from.",
     km: "about 16,100 km",
     kmNote: "Scilla, Calabria → Brisbane",
-    archive: "https://daviddef.github.io/TheMazza/",
+    archive: "https://mazza.defranceski.com/",
     archiveName: "The Mazza Archive",
     facts: [
       {
@@ -564,7 +564,7 @@ export const families = [
       "D’Arcy was invented twice, and the two have nothing to do with each other. In France, d’Arcy means “from the town of Arcy.” In Ireland it comes from dorcha, which means “dark.”",
     km: "about 16,500 km",
     kmNote: "London, England → Brisbane",
-    archive: "https://daviddef.github.io/TheDArcy/",
+    archive: "https://darcy.defranceski.com/",
     archiveName: "The D’Arcy Archive",
     facts: [
       {

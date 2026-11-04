@@ -79,7 +79,10 @@ relative is given as "your dad's cousin", which names no one in the household.
 
 ## Pages
 
-`/` the landing page · `/journeys/` how they crossed the world and why they left ·
+`/` the landing page · `/routes/` Roots & Routes: every journey as a line on a map of the world from Brisbane, with
+a Play button and a year slider (the legs are `site/src/data/routes.js`, checked against the Journeys page by
+`scripts/routes.test.mjs`; the land is generated once by `site/scripts/make_world.mjs`) ·
+`/journeys/` how they crossed the world and why they left ·
 `/places/` what those places are actually like, and what is still standing ·
 `/picture/` a find-it game on the front-page illustration · `/cards/` one card per ancestor ·
 `/words/` the family's own Croatian, Latin and Afrikaans · `/when/` how far back each line goes ·

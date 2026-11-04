@@ -6,6 +6,14 @@ import TreeMobile from "../components/TreeMobile.astro";
 import Icon from "../components/Icon.astro";
 import { u } from "../lib/url.js";
 import { families, joining, numbers } from "../data/families.js";
+const ways = [["/cousins/","👦👧","You and your cousins","Half your tree is the same as theirs. Half is not"],
+          ["/routes/","🗺️","Roots & Routes","The world from Brisbane, and every family moving across it"],
+          ["/journeys/","🚢","The journeys","133 days at sea, and why each family left at all"],
+          ["/places/","🏔️","The places","A town so windy it can knock a lorry over"],
+          ["/picture/","🔍","Find it","Eleven things hidden in the picture on this page"],
+          ["/cards/","🃏","The cards","One card for every ancestor with a name and a date"],
+          ["/words/","🗣️","Family words","Trhonoša. Bura. Lapicida. How to say them"],
+          ["/when/","⏳","When","How far back each family goes, and 25 moments in order"]];
 ---
 <Base title="Our Family">
 
@@ -120,15 +128,9 @@ import { families, joining, numbers } from "../data/families.js";
   <section>
     <div class="wrap">
       <div class="kicker" style="--c:var(--safrica)">More to poke about in</div>
-      <h2>Six more ways in</h2>
+      <h2>{["Zero","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve"][ways.length]} more ways in</h2>
       <div class="grid g3" style="margin-top:26px">
-        {[["/cousins/","👦👧","You and your cousins","Half your tree is the same as theirs. Half is not"],
-          ["/journeys/","🚢","The journeys","133 days at sea, and why each family left at all"],
-          ["/places/","🏔️","The places","A town so windy it can knock a lorry over"],
-          ["/picture/","🔍","Find it","Eleven things hidden in the picture on this page"],
-          ["/cards/","🃏","The cards","One card for every ancestor with a name and a date"],
-          ["/words/","🗣️","Family words","Trhonoša. Bura. Lapicida. How to say them"],
-          ["/when/","⏳","When","How far back each family goes, and 25 moments in order"]].map(([h,e,t,d]) => (
+        {ways.map(([h,e,t,d]) => (
           <a class="waycard" href={u(h)}>
             <span class="wemoji" aria-hidden="true">{e}</span>
             <b>{t}</b>

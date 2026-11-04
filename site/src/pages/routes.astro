@@ -1,0 +1,258 @@
+---
+import Base from "../layouts/Base.astro";
+import { u } from "../lib/url.js";
+import RouteMap from "../components/RouteMap.astro";
+import { legs } from "../data/routes.js";
+import { families } from "../data/families.js";
+import { km } from "../lib/geo.js";
+
+const withKm = legs.map((l) => ({ ...l, km: Math.round(km(l.fromLL, l.toLL)) }));
+const total = withKm.reduce((s, l) => s + l.km, 0);
+const far = withKm.reduce((a, b) => (b.km > a.km ? b : a));
+const near = withKm.reduce((a, b) => (b.km < a.km ? b : a));
+const fmt = (n) => n.toLocaleString("en-GB");
+const round1000 = (n) => Math.round(n / 1000) * 1000;
+const times = (total / 40075).toFixed(0);
+
+const byKey = new Map(families.map((f) => [f.key, f]));
+const chips = [...new Map(withKm.map((l) => [l.k, l])).keys()].map((k) => ({ k, name: byKey.get(k).name }));
+const data = withKm.map((l) => ({
+  id: l.id, k: l.k, left: l.left, landed: l.landed ?? null, km: l.km, who: l.who, from: l.from, to: l.to,
+  say: l.say, by: l.by, line: l.line, days: l.days ?? null, about: !!l.about, dash: !!l.dash,
+}));
+---
+<Base title="Roots & Routes" dek={`Every journey in the family, drawn on a map of the world with Brisbane in the middle. Press play and watch them happen in order.`}>
+  <div class="hero" style="text-align:left">
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--croatia)">The world from Brisbane</div>
+      <h1 style="font-size:clamp(38px,7vw,70px)">Roots &amp; Routes</h1>
+      <p class="lead big">Brisbane is in the middle of this map, so how far a place is from the middle is how far it
+      really is. Everybody in this website started out near the edge. Press <b>Play</b> and watch them come home.</p>
+    </div>
+  </div>
+
+  <section style="padding-top:6px">
+    <div class="wrap">
+      <div class="rtool" id="rtool">
+        <div class="rtop">
+          <button type="button" class="rplay" id="rplay" aria-pressed="false">Play</button>
+          <label class="ryear" for="ryear"><span class="rylab">Year</span>
+            <output id="ryout" for="ryear">2025</output></label>
+          <input id="ryear" type="range" min="1815" max="2025" step="1" value="2025" aria-label="Year" />
+        </div>
+        <div class="rchips" id="rchips" role="group" aria-label="Show one family">
+          <button type="button" class="rchip on" data-k="">Everyone</button>
+          {chips.map((c) => <button type="button" class={`rchip c-${c.k}`} data-k={c.k}>{c.name}</button>)}
+        </div>
+        <div class="rmapwrap"><RouteMap /></div>
+        <div class="rread" aria-live="polite" id="rread">
+          <b id="rcount">{legs.length} journeys</b> · <span id="rkm">{fmt(round1000(total))} km</span> in straight lines
+        </div>
+        <div class="rcard" id="rcard">
+          <p class="rcard-h">All fourteen journeys are on the map.</p>
+          <p>Press <b>Play</b> to watch them happen in order, drag the year, or tap a family to see just theirs.</p>
+        </div>
+        <p class="rkey"><svg width="46" height="10" aria-hidden="true"><line x1="2" y1="5" x2="44" y2="5" stroke="var(--ink-2)" stroke-width="3" stroke-linecap="round"/></svg> a place we know at both ends
+          &nbsp; <svg width="46" height="10" aria-hidden="true"><line x1="2" y1="5" x2="44" y2="5" stroke="var(--ink-2)" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 7"/></svg> one end isn’t a recorded place</p>
+      </div>
+      <script type="application/json" id="rdata" set:html={JSON.stringify(data)}></script>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Some numbers, worked out from the map</h2>
+      <div class="rfacts">
+        <div class="rfact"><b>{fmt(round1000(total))} km</b><span>All {legs.length} journeys together, in straight lines. That is about {times} times round the Earth.</span></div>
+        <div class="rfact"><b>{fmt(Math.round(far.km / 100) * 100)} km</b><span>The longest: {far.who}, {far.from} to {far.to}.</span></div>
+        <div class="rfact"><b>{fmt(Math.round(near.km / 10) * 10)} km</b><span>The shortest: {near.who}, {near.from} to {near.to}.</span></div>
+      </div>
+      <p class="rnote">Every line is the shortest way across the globe, so it can bend on the map; on a real globe it would be straight.
+      Ships went round by the sea and planes by the airports, so the real trips were longer.
+      The edge of the circle is the spot on the other side of the Earth from Brisbane, in the middle of the Atlantic Ocean. The land is from Natural Earth, which is free for anyone to use.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>The journeys, in order</h2>
+      <p class="lead">These are the same ones as on the <a href={u("/journeys/")}>Journeys</a> page, where you can read all of each story.
+      Tap <b>Show</b> to find one on the map.</p>
+      <ol class="rlist">
+        {withKm.map((l) => (
+          <li class={`rrow c-${l.k}`} id={`leg-${l.id}`}>
+            <div class="ry">{l.about ? "about " : ""}{l.left}</div>
+            <div class="rb">
+              <div class="rwho">{l.who}</div>
+              <div class="rroute">{l.from} → {l.to} · {l.say} · {l.by}</div>
+              <p>{l.line}</p>
+              <div class="rmeta">{fmt(l.km)} km in a straight line{l.days ? `, and ${l.days} days at sea` : ""}{l.dash ? ". One end of this line is a guess about where, not a record." : ""}</div>
+            </div>
+            <button type="button" class="rshow" data-id={l.id}>Show</button>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <script is:inline>
+  (function () {
+    var wrap = document.getElementById("rtool");
+    if (!wrap) return;
+    var legs = JSON.parse(document.getElementById("rdata").textContent);
+    var svg = wrap.querySelector("svg.rmap");
+    var R = +svg.getAttribute("data-r");
+    var q = function (s, el) { return (el || wrap).querySelector(s); };
+    var PI = Math.PI, rad = PI / 180, LAT0 = -27.4698, LON0 = 153.0251;
+    var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* the same arc as lib/geo.js, read back out of the paths the page was built with */
+    legs.forEach(function (l) {
+      l.path = q('path.rt[data-id="' + l.id + '"]');
+      l.end = q('circle.end[data-id="' + l.id + '"]');
+      l.trav = q('circle.trav[data-id="' + l.id + '"]');
+      l.pts = l.path.getAttribute("d").slice(1).split("L").map(function (p) { var a = p.split(","); return [+a[0], +a[1]]; });
+      l.dur = Math.max(1, l.landed ? l.landed - l.left : 1);
+      l.row = document.getElementById("leg-" + l.id);
+    });
+    legs.sort(function (a, b) { return a.left - b.left; });
+
+    var sel = "";            // family key shown, "" is everybody
+    var playing = false, timer = null, raf = null;
+    var fmt = function (n) { return n.toLocaleString("en-GB"); };
+
+    function d(l, p) {
+      var n = l.pts.length - 1, f = Math.max(0, Math.min(1, p)) * n, i = Math.floor(f), t = f - i;
+      var pts = l.pts.slice(0, i + 1);
+      if (i < n) pts.push([l.pts[i][0] + (l.pts[i + 1][0] - l.pts[i][0]) * t, l.pts[i][1] + (l.pts[i + 1][1] - l.pts[i][1]) * t]);
+      return { d: "M" + pts.map(function (a) { return a[0].toFixed(1) + "," + a[1].toFixed(1); }).join("L"), tip: pts[pts.length - 1] };
+    }
+
+    /* progress[i] is how far leg i has got, 0 to 1; label is the text beside the year */
+    function render(progress, shownYear, cardLeg) {
+      var started = 0, kms = 0;
+      legs.forEach(function (l, i) {
+        var p = progress[i], mine = !sel || l.k === sel;
+        l.row && l.row.classList.toggle("on", !!cardLeg && cardLeg === l);
+        l.path.style.opacity = !mine ? 0.1 : (p >= 1 ? 0.8 : 1);
+        l.path.style.strokeWidth = (p > 0 && p < 1) ? 4.5 : 3;
+        if (p <= 0) { l.path.setAttribute("d", "M0,0"); l.path.style.visibility = "hidden"; l.end.style.visibility = "hidden"; l.trav.hidden = true; return; }
+        var s = d(l, p);
+        l.path.setAttribute("d", s.d); l.path.style.visibility = "visible";
+        l.end.style.visibility = (p >= 1 && mine) ? "visible" : "hidden";
+        l.trav.hidden = !(p > 0 && p < 1 && mine);
+        if (!l.trav.hidden) { l.trav.setAttribute("cx", s.tip[0]); l.trav.setAttribute("cy", s.tip[1]); }
+        if (mine) { started += 1; kms += l.km * p; }
+      });
+      q("#rcount").textContent = started + " of " + legs.filter(function (l) { return !sel || l.k === sel; }).length + " journeys";
+      q("#rkm").textContent = fmt(Math.round(kms / 100) * 100) + " km";
+      if (shownYear != null) q("#ryout").textContent = shownYear;
+      if (cardLeg) card(cardLeg);
+    }
+
+    var lastCard = null;
+    function card(l) {
+      if (lastCard === l) return; lastCard = l;
+      var el = q("#rcard");
+      el.innerHTML = "";
+      var h = document.createElement("p"); h.className = "rcard-h c-" + l.k; h.textContent = l.who; el.appendChild(h);
+      var r = document.createElement("p"); r.className = "rcard-r";
+      r.textContent = l.from + " → " + l.to + " · " + l.say + " · " + l.by; el.appendChild(r);
+      var t = document.createElement("p"); t.textContent = l.line; el.appendChild(t);
+      var m = document.createElement("p"); m.className = "rcard-m";
+      m.textContent = fmt(l.km) + " km in a straight line" + (l.days ? ", and " + l.days + " days at sea" : "") + (l.dash ? ". One end of this line is a guess about where, not a record." : "");
+      el.appendChild(m);
+    }
+    function resetCard() {
+      lastCard = null;
+      var n = legs.filter(function (l) { return !sel || l.k === sel; }).length;
+      q("#rcard").innerHTML = '<p class="rcard-h">' + (sel ? "Just this family’s " + n + (n === 1 ? " journey" : " journeys") + "." : "All " + legs.length + " journeys are on the map.") +
+        '</p><p>Press <b>Play</b> to watch them happen in order, drag the year, or tap a family to see just theirs.</p>';
+    }
+
+    /* the slider: every leg is its own length of time, so dragging the year draws whoever was on the move */
+    function atYear(Y) {
+      var latest = null;
+      var prog = legs.map(function (l) {
+        var p = Y < l.left ? 0 : (l.dur === 1 ? 1 : Math.min(1, (Y - l.left) / l.dur));
+        if (p > 0 && (!sel || l.k === sel)) latest = l;
+        return p;
+      });
+      render(prog, Y, latest);
+      if (!latest) { lastCard = null; q("#rcard").innerHTML = '<p class="rcard-h">Nobody has set off yet.</p><p>Drag the year forward, or press <b>Play</b>.</p>'; }
+    }
+
+    var slider = q("#ryear");
+    slider.addEventListener("input", function () { stop(); atYear(+slider.value); });
+
+    /* play: one journey after another, and the year counts up while each one is under way */
+    var playLegs = [], pi = 0, t0 = 0;
+    var PER = 2600;
+    function start() {
+      playLegs = legs.filter(function (l) { return !sel || l.k === sel; });
+      if (!playLegs.length) return;
+      playing = true; pi = 0; t0 = performance.now();
+      q("#rplay").textContent = "Pause"; q("#rplay").setAttribute("aria-pressed", "true");
+      if (reduce) { step(); return; }
+      raf = requestAnimationFrame(tick);
+    }
+    function frame(i, p) {
+      var cur = playLegs[i];
+      var prog = legs.map(function (l) {
+        var j = playLegs.indexOf(l);
+        if (j < 0) return 0;
+        return j < i ? 1 : (j === i ? p : 0);
+      });
+      var y = Math.round(cur.left + p * (cur.dur === 1 ? 0 : cur.dur));
+      slider.value = Math.min(+slider.max, Math.max(+slider.min, cur.left));
+      render(prog, y, cur);
+    }
+    function tick(now) {
+      if (!playing) return;
+      var p = (now - t0) / PER;
+      if (p >= 1) { frame(pi, 1); pi++; t0 = now + 350; if (pi >= playLegs.length) return finish(); }
+      else if (p >= 0) frame(pi, p);
+      raf = requestAnimationFrame(tick);
+    }
+    function step() {                       /* reduced motion: no tween, one journey every two seconds */
+      if (!playing) return;
+      frame(pi, 1); pi++;
+      if (pi >= playLegs.length) return finish();
+      timer = setTimeout(step, 2200);
+    }
+    function finish() {
+      playing = false; q("#rplay").textContent = "Play again"; q("#rplay").setAttribute("aria-pressed", "false");
+      slider.value = slider.max;
+    }
+    function stop() {
+      playing = false; cancelAnimationFrame(raf); clearTimeout(timer);
+      q("#rplay").textContent = "Play"; q("#rplay").setAttribute("aria-pressed", "false");
+    }
+    q("#rplay").addEventListener("click", function () { if (playing) { stop(); } else { start(); } });
+
+    /* one family at a time */
+    q("#rchips").addEventListener("click", function (e) {
+      var b = e.target.closest(".rchip"); if (!b) return;
+      stop(); sel = b.getAttribute("data-k");
+      [].forEach.call(wrap.querySelectorAll(".rchip"), function (c) { c.classList.toggle("on", c === b); });
+      slider.value = slider.max;
+      render(legs.map(function () { return 1; }), null, null); resetCard(); q("#ryout").textContent = "2025";
+    });
+
+    /* "Show" on a row in the list */
+    document.querySelectorAll(".rshow").forEach(function (b) {
+      b.addEventListener("click", function () {
+        stop(); sel = "";
+        [].forEach.call(wrap.querySelectorAll(".rchip"), function (c) { c.classList.toggle("on", c.getAttribute("data-k") === ""); });
+        var l = legs.filter(function (x) { return x.id === b.getAttribute("data-id"); })[0];
+        slider.value = Math.min(+slider.max, Math.max(+slider.min, l.left));
+        var at = legs.indexOf(l);
+        var prog = legs.map(function (x, i) { return i <= at ? 1 : 0; });
+        render(prog, l.left, l);
+        wrap.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+      });
+    });
+    render(legs.map(function () { return 1; }), null, null);
+  })();
+  </script>
+</Base>

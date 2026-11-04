@@ -83,6 +83,10 @@ relative is given as "your dad's cousin", which names no one in the household.
 a Play button and a year slider (the legs are `site/src/data/routes.js`, checked against the Journeys page by
 `scripts/routes.test.mjs`; the land is generated once by `site/scripts/make_world.mjs`) ·
 `/journeys/` how they crossed the world and why they left ·
+`/time/` the Time Machine: a year slider from 1697 to today showing who was alive in each family and where, with its flag ·
+`/ruler/` the Long Ruler: every person on the ladders as a bar on one scale, with a pointer year and a chip per family
+(both read `site/src/lib/lives.js`, which parses every ladder `when` and `where` and fails loudly on a format it does not know;
+`scripts/lives.test.mjs`; a person whose dates are only "at least" or "seen" is drawn dashed, labelled "we think") ·
 `/grow/` the family tree as a fan that grows ring by ring, and where its names run out (people from `site/src/data/pedigree.js`,
 shared with the Big Tree, drawn by `lib/fan.js`) · `/mysteries/` the unsolved questions as case files
 (`data/mysteries.js`, built from words the site already says; `scripts/mysteries.test.mjs` keeps them tied to the families) ·

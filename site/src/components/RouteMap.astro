@@ -1,0 +1,48 @@
+---
+// The world as seen from Brisbane, with every journey drawn as a line. This is the page at rest, all fourteen
+// legs in place; the script on /routes/ takes the same paths and draws them in order. Distances from the middle
+// are true (see lib/geo.js), so a longer line is a longer way.
+import { WORLD_LAND, WORLD_R } from "../data/world.js";
+import { legs } from "../data/routes.js";
+import { project, arc, pathOf, BRISBANE } from "../lib/geo.js";
+
+const R = WORLD_R;
+const rings = [5000, 10000, 15000, 20000].map((k) => ({ k, r: (k / 20015) * R }));
+const regions = [
+  ["EUROPE", [49, 12]], ["AFRICA", [4, 22]], ["SOUTH AMERICA", [-14, -58]], ["ASIA", [45, 95]],
+  ["NORTH AMERICA", [42, -100]], ["AUSTRALIA", [-32, 128]],
+].map(([t, ll]) => ({ t, xy: project(ll) }));
+const fmt = (n) => n.toLocaleString("en-GB");
+
+const drawn = legs.map((l) => {
+  const pts = arc(l.fromLL, l.toLL);
+  return { ...l, pts, d: pathOf(pts), a: project(l.fromLL), b: project(l.toLL) };
+});
+const origins = [...new Map(drawn.map((l) => [l.k + l.from, l])).values()];
+---
+<svg class="rmap" viewBox="-318 -318 636 636" role="img" aria-labelledby="rmap-t rmap-d" data-r={R}>
+  <title id="rmap-t">The world as seen from Brisbane</title>
+  <desc id="rmap-d">Brisbane is in the middle of the circle. How far a place is from the middle is how far it really is from Brisbane; the edge is the spot on the far side of the Earth, in the Atlantic Ocean, about 20,000 kilometres away. Fourteen coloured lines run from where each journey began to where it ended. The list under the map describes them one by one.</desc>
+  <circle class="sea" cx="0" cy="0" r={R} />
+  <path class="land" d={WORLD_LAND} />
+  {rings.map((g) => <circle class="ring" cx="0" cy="0" r={g.r} />)}
+  {rings.map((g) => <text class="ringlab" x="0" y={-g.r - 4} text-anchor="middle">{fmt(g.k)} km</text>)}
+  {regions.map((g) => <text class="region" x={g.xy[0]} y={g.xy[1]} text-anchor="middle">{g.t}</text>)}
+
+  <g class="legs">
+    {drawn.map((l) => (
+      <path class={`rt c-${l.k}${l.dash ? " dash" : ""}`} data-id={l.id} d={l.d} />
+    ))}
+  </g>
+  <g class="stops">
+    {origins.map((l) => <circle class={`stop c-${l.k}`} cx={l.a[0]} cy={l.a[1]} r="3.4" />)}
+    {drawn.map((l) => <circle class={`end c-${l.k}`} data-id={l.id} cx={l.b[0]} cy={l.b[1]} r="2.6" />)}
+  </g>
+  <g class="travs">
+    {drawn.map((l) => <circle class={`trav c-${l.k}`} data-id={l.id} cx={l.b[0]} cy={l.b[1]} r="7" hidden />)}
+  </g>
+
+  <circle class="home-halo" cx="0" cy="0" r="17" />
+  <circle class="home" cx="0" cy="0" r="9" />
+  <text class="homelab" x="0" y="34" text-anchor="middle">Brisbane</text>
+</svg>

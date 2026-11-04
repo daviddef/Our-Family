@@ -27,8 +27,8 @@ give away a living person's birth date, the timeline says *then* instead.
 
 ## Four cousins, ten families
 
-The hinge is a pair of **twin sisters**: David married Cristina D'Arcy, Michael married Stefanie
-D'Arcy. So Alessio and Mateo, and their cousins Rocco and Mia, share one set of grandparents
+The hinge is a pair of **twin sisters**: one is the mother of ADD and MCD, the other the mother of RFM and
+MJM. So ADD and MCD, and their cousins RFM and MJM, share one set of grandparents
 exactly — and therefore share **D'Arcy and Falco** all the way back. On their fathers' sides they
 share nothing at all: four families across Croatia, Argentina and South Africa on one side, four
 across Sicily and Calabria on the other.
@@ -83,6 +83,10 @@ relative is given as "your dad's cousin", which names no one in the household.
 a Play button and a year slider (the legs are `site/src/data/routes.js`, checked against the Journeys page by
 `scripts/routes.test.mjs`; the land is generated once by `site/scripts/make_world.mjs`) ·
 `/journeys/` how they crossed the world and why they left ·
+`/grow/` the family tree as a fan that grows ring by ring, and where its names run out (people from `site/src/data/pedigree.js`,
+shared with the Big Tree, drawn by `lib/fan.js`) · `/mysteries/` the unsolved questions as case files
+(`data/mysteries.js`, built from words the site already says; `scripts/mysteries.test.mjs` keeps them tied to the families) ·
+`/cousins/` also has a picker: choose two of the four and see which families and which places in the trees are shared ·
 `/places/` what those places are actually like, and what is still standing ·
 `/picture/` a find-it game on the front-page illustration · `/cards/` one card per ancestor ·
 `/words/` the family's own Croatian, Latin and Afrikaans · `/when/` how far back each line goes ·

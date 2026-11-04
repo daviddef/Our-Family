@@ -1,0 +1,41 @@
+---
+// One child's family as a fan: parents in the first ring, then grandparents, great-grandparents and 2× great-grandparents.
+// This is the page at rest, every ring in place; /grow/ draws it ring by ring. See lib/fan.js for who is where.
+import { buildFan, sector, named, R0, W } from "../lib/fan.js";
+const { side, id } = Astro.props;
+const { kids, rings } = buildFan(side);
+const LAB = ["Parents", "Grandparents", "Great-grandparents", "2× great-grandparents"];
+const outer = R0 + rings.length * W;
+// Text along the middle of a segment, turned so it reads outwards and never upside down.
+const rot = (deg) => (deg > 90 ? deg - 180 : deg) - 90 + 90;
+const first = (n) => n.split(" ")[0];
+const short = (p, ring) => (ring >= 2 ? first(p.name) : p.name);
+---
+<svg class="fan" id={id} data-side={side} viewBox={`${-outer - 8} ${-outer - 8} ${outer * 2 + 16} ${outer + 40}`} role="img"
+     aria-labelledby={`${id}-t`}>
+  <title id={`${id}-t`}>{kids}'s family as a fan</title>
+  {rings.map((ring, ri) => (
+    <g class={`fring r${ri + 1}`} data-ring={ri + 1}>
+      {ring.map((p, j) => {
+        const s = sector(ri + 1, j);
+        const label = p.unknown ? "?" : (p.initials ? p.name : (ri === 1 ? `${p.rel} ${p.name}` : short(p, ri + 1)));
+        const turn = ri >= 2 ? rot(s.deg) : 0;
+        const small = ri + 1 === 4;
+        return (
+          <g class={`seg c-${p.k === "other" || p.unknown ? "none" : p.k}${p.unknown ? " unk" : ""}${p.k === "other" ? " oth" : ""}`}
+             tabindex="0" role="button"
+             data-ring={ri + 1} data-name={p.unknown ? "" : p.name} data-rel={p.rel} data-when={p.when} data-slug={p.slug || ""}
+             data-k={p.k} data-initials={p.initials ? "1" : ""} data-unknown={p.unknown ? "1" : ""}
+             aria-label={p.unknown ? `${p.rel}: nobody named yet` : `${p.rel}: ${p.name}${p.when ? `, ${p.when}` : ""}`}>
+            <path d={s.d} />
+            <text x={s.cx} y={s.cy} transform={`rotate(${turn} ${s.cx} ${s.cy})`} text-anchor="middle" dominant-baseline="central"
+                  class={`flab${small ? " sm" : ""}`}>{label}</text>
+          </g>
+        );
+      })}
+    </g>
+  ))}
+  <circle class="fcore" cx="0" cy="0" r={R0 - 4} />
+  <text class="fkids" x="0" y="-6" text-anchor="middle">{kids.split(" & ")[0]}</text>
+  <text class="fkids" x="0" y="12" text-anchor="middle">&amp; {kids.split(" & ")[1]}</text>
+</svg>

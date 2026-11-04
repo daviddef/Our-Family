@@ -40,7 +40,7 @@ the `rel` ("Grandpa"), the `where` with its arrows, the `job`, and the `ref` tha
 ## Still written by hand, per household
 
 The home page's hero and the convergence tree (`BigTree.astro`, positions for ten families), `cousins.astro`,
-the joining timeline and the journeys, walk, places, jobs and words pages, `pedigree.js` (the fan and the cousins picker read it; `SIDES` in `lib/fan.js` says who is whose), `mysteries.js` (the case board), the `when` and `where` of every ladder row (the Time Machine and Long Ruler parse them in `lib/lives.js`; a new date format needs a line in `parseWhen`), and the legs of `routes.js` (Roots & Routes;
+the joining timeline and the journeys, walk, places, jobs and words pages, `pedigree.js` (the fan and the cousins picker read it; `SIDES` in `lib/fan.js` says who is whose), `mysteries.js` (the case board), the `when` and `where` of every ladder row (the Time Machine and Long Ruler parse them in `lib/lives.js`; a new date format needs a line in `parseWhen`), the `told` and `break` marks of every ladder row (the root tree on /grow/ draws them as we-think roots and gaps), and the legs of `routes.js` (Roots & Routes;
 the map itself is the world from the household's city, so a household elsewhere re-runs `site/scripts/make_world.mjs` and changes `BRISBANE` in `lib/geo.js`). They are the story of one household;
 a second household rewrites them. Their years should come from the ladders where they can; `SpanChart` and
 `BigTree` still carry a few that are typed (they were corrected on 4 November 2026).

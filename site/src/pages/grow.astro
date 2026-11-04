@@ -2,7 +2,9 @@
 import Base from "../layouts/Base.astro";
 import { u } from "../lib/url.js";
 import FanChart from "../components/FanChart.astro";
+import RootTree from "../components/RootTree.astro";
 import { buildFan, named, KEY_SLUG } from "../lib/fan.js";
+import { buildRoots, stepCounts } from "../lib/roottree.js";
 import { families } from "../data/families.js";
 
 const LAB = ["Parents", "Grandparents", "Great-grandparents", "2× great-grandparents"];
@@ -16,16 +18,18 @@ const deeper = families.map((fm) => {
   const top = Math.max(2, ...ns);
   return { name: fm.name, key: fm.key, slug: fm.slug, more: top - 2, gap: fm.ladder.some((r) => r.break) };
 }).sort((a, b) => b.more - a.more);
-const data = Object.fromEntries(sides.map((s) => [s.side, s.counts]));
+const treeCounts = Object.fromEntries(sides.map((s) => [s.side, stepCounts(buildRoots(s.side, families))]));
+const data = Object.fromEntries(sides.map((s) => [s.side, { fan: s.counts, tree: treeCounts[s.side] }]));
 const fmtN = (n) => (n === 1 ? "one" : String(n));
 ---
-<Base title="Grow the tree" dek="A family tree has room for twice as many people every step back. Watch a fan grow, and see where the names run out.">
+<Base title="Grow the tree" dek="A family tree with its roots showing: thick brown roots are people the records prove, thin dotted ones are people we think were there.">
   <div class="hero" style="text-align:left">
     <div class="wrap">
       <div class="kicker" style="--c:var(--italy)">Going back</div>
       <h1 style="font-size:clamp(38px,7vw,70px)">Grow the tree</h1>
-      <p class="lead big">Everybody has two parents, four grandparents, eight great-grandparents… every step back doubles.
-      Press <b>Grow</b> and watch the tree fill up. Then see where the names stop, and why the empty places are the fun part.</p>
+      <p class="lead big">A tree has a crown you can see, and roots you cannot. Here the crown is the children, and every family is a root
+      going down into the past. <b>Thick brown roots</b> are people the records prove. <b>Thin dotted roots</b> are people we only <i>think</i> were there.
+      Press <b>Grow it</b> and watch the roots reach down.</p>
     </div>
   </div>
 
@@ -35,17 +39,25 @@ const fmtN = (n) => (n === 1 ? "one" : String(n));
         <div class="gtabs" role="tablist" aria-label="Whose tree">
           {sides.map((s, i) => <button type="button" role="tab" class={`gtab${i === 0 ? " on" : ""}`} data-side={s.side} aria-selected={i === 0 ? "true" : "false"}>{s.kids}’s tree</button>)}
         </div>
+        <div class="gtabs gviews" role="tablist" aria-label="How to draw it">
+          <button type="button" role="tab" class="gtab gv-tab on" data-view="tree" aria-selected="true">A tree with roots</button>
+          <button type="button" role="tab" class="gtab gv-tab" data-view="fan" aria-selected="false">A fan: it doubles every step</button>
+        </div>
         <div class="gbar">
           <button type="button" class="rplay" id="ggrow">Grow it</button>
-          <button type="button" class="gstep" id="gnext">One more ring</button>
+          <button type="button" class="gstep" id="gnext">One more step</button>
           <button type="button" class="gstep" id="gall">Show all</button>
           <div class="gsay" id="gsay" aria-live="polite"></div>
         </div>
         <div class="gfan">
-          {sides.map((s, i) => <div class="gpane" data-side={s.side} hidden={i !== 0}><FanChart side={s.side} id={`fan-${s.side}`} /></div>)}
+          {sides.map((s, i) => <div class="gpane" data-side={s.side} hidden={i !== 0}>
+            <div class="gv" data-view="tree"><p class="rtswipe">Swipe sideways to see every root.</p><div class="rtscroll"><RootTree side={s.side} id={`tree-${s.side}`} /></div></div>
+            <div class="gv" data-view="fan" hidden><FanChart side={s.side} id={`fan-${s.side}`} /></div>
+          </div>)}
         </div>
-        <div class="gcard" id="gcard"><p class="rcard-h">Tap anybody on the fan.</p><p>Each coloured place is a family from this website. Dotted places are people the family has not found yet.</p></div>
-        <p class="rkey"><span class="gk gk-n"></span> a family from this site · <span class="gk gk-o"></span> a wife or husband the line names · <span class="gk gk-u"></span> nobody found yet</p>
+        <div class="gcard" id="gcard"></div>
+        <p class="rkey" data-view="tree"><span class="gk gk-s"></span> sure: the archive records them · <span class="gk gk-t"></span> we think: no page, only a clue · <b class="gq">?</b> a gap, or where the line stops for now</p>
+        <p class="rkey" data-view="fan" hidden><span class="gk gk-n"></span> a family from this site · <span class="gk gk-o"></span> a wife or husband the line names · <span class="gk gk-u"></span> nobody found yet</p>
       </div>
       <script type="application/json" id="gdata" set:html={JSON.stringify(data)}></script>
     </div>
@@ -92,54 +104,101 @@ const fmtN = (n) => (n === 1 ? "one" : String(n));
     var tool = document.getElementById("gtool"); if (!tool) return;
     var data = JSON.parse(document.getElementById("gdata").textContent);
     var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var side = "add", shown = 4, timer = null;
+    var side = "add", view = "tree", timer = null;
+    var MAX = { fan: 4, tree: Math.max(data.add.tree.length, data.rfm.tree.length) };
+    var shown = { fan: 4, tree: MAX.tree };
     var q = function (s) { return tool.querySelector(s); };
-    var panes = [].slice.call(tool.querySelectorAll(".gpane"));
+    var all = function (s) { return [].slice.call(tool.querySelectorAll(s)); };
+    var panes = all(".gpane");
     var say = q("#gsay"), card = q("#gcard");
-    var NUM = ["no", "one", "two", "three", "four"];
-    function svg() { return tool.querySelector('.gpane[data-side="' + side + '"] svg'); }
+    var HELLO = {
+      tree: ["Tap a root.", "Tap anybody on a root. A solid dot is a person the archive records. A dotted, open dot is somebody we think was there."],
+      fan: ["Tap anybody on the fan.", "Each coloured place is a family from this website. Dotted places are people the family has not found yet."]
+    };
+    function hello() { card.innerHTML = ""; var h = document.createElement("p"); h.className = "rcard-h"; h.textContent = HELLO[view][0]; var t = document.createElement("p"); t.textContent = HELLO[view][1]; card.appendChild(h); card.appendChild(t); }
+    function visible(el, n) { return +el.getAttribute("data-ring") <= n; }
     function draw() {
-      [].forEach.call(tool.querySelectorAll(".fring"), function (g) { g.style.opacity = (+g.getAttribute("data-ring") <= shown) ? 1 : 0; g.style.pointerEvents = (+g.getAttribute("data-ring") <= shown) ? "auto" : "none"; g.setAttribute("aria-hidden", (+g.getAttribute("data-ring") <= shown) ? "false" : "true"); });
-      [].forEach.call(tool.querySelectorAll(".seg"), function (g) { g.tabIndex = (+g.getAttribute("data-ring") <= shown) ? 0 : -1; });
-      if (shown === 0) { say.textContent = "Just you. Press Grow."; return; }
-      var c = data[side][shown - 1];
-      say.textContent = c.lab + ": room for " + c.room + ", " + (c.named === c.room ? "all " + c.named + " named" : c.named + " named, " + (c.room - c.named) + " still to find") + ".";
+      var n = shown[view];
+      if (view === "fan") {
+        all(".fring").forEach(function (g) { var on = visible(g, n); g.style.opacity = on ? 1 : 0; g.style.pointerEvents = on ? "auto" : "none"; g.setAttribute("aria-hidden", on ? "false" : "true"); });
+        all(".seg").forEach(function (g) { g.tabIndex = visible(g, n) ? 0 : -1; });
+      } else {
+        all(".rt-seg, .rt-tip, .rt-node").forEach(function (g) {
+          var st = +g.getAttribute("data-step"), on = st <= n;
+          g.style.opacity = on ? 1 : 0; g.style.pointerEvents = on ? "auto" : "none";
+          if (g.classList.contains("rt-node")) g.tabIndex = on ? 0 : -1;
+        });
+      }
+      var d = data[side][view];
+      if (n === 0) { say.textContent = "Just the crown. Press Grow it."; return; }
+      var c = d[n - 1];
+      if (view === "fan") { say.textContent = c.lab + ": room for " + c.room + ", " + (c.named === c.room ? "all " + c.named + " named" : c.named + " named, " + (c.room - c.named) + " still to find") + "."; }
+      else {
+        var bits = [c.sure + " sure"]; if (c.think) bits.push(c.think + " we think"); if (c.gap) bits.push(c.gap + (c.gap === 1 ? " gap" : " gaps"));
+        say.textContent = c.lab + ": " + c.lines + (c.lines === 1 ? " line reaches" : " lines reach") + " this far (" + bits.join(", ") + ").";
+      }
     }
     function stop() { clearTimeout(timer); timer = null; q("#ggrow").textContent = "Grow it"; }
     function grow() {
-      stop(); shown = 0; draw(); q("#ggrow").textContent = "Stop";
+      stop(); shown[view] = 0; draw(); q("#ggrow").textContent = "Stop";
       (function next() {
-        if (shown >= 4) { stop(); q("#ggrow").textContent = "Grow it again"; return; }
-        timer = setTimeout(function () { shown++; draw(); next(); }, reduce ? 900 : 1100);
+        if (shown[view] >= MAX[view]) { stop(); q("#ggrow").textContent = "Grow it again"; return; }
+        timer = setTimeout(function () { shown[view]++; draw(); next(); }, reduce ? 700 : (view === "tree" ? 800 : 1100));
       })();
     }
+    function setView() {
+      all(".gv").forEach(function (v) { v.hidden = v.getAttribute("data-view") !== view; });
+      all(".rkey").forEach(function (k) { k.hidden = k.getAttribute("data-view") !== view; });
+      q("#gnext").textContent = view === "fan" ? "One more ring" : "One more step";
+      all(".gv-tab").forEach(function (x) { var on = x.getAttribute("data-view") === view; x.classList.toggle("on", on); x.setAttribute("aria-selected", on ? "true" : "false"); });
+      hello(); draw();
+    }
     q("#ggrow").addEventListener("click", function () { if (timer) { stop(); } else { grow(); } });
-    q("#gnext").addEventListener("click", function () { stop(); shown = shown >= 4 ? 1 : shown + 1; draw(); });
-    q("#gall").addEventListener("click", function () { stop(); shown = 4; draw(); });
-    [].forEach.call(tool.querySelectorAll(".gtab"), function (b) {
+    q("#gnext").addEventListener("click", function () { stop(); shown[view] = shown[view] >= MAX[view] ? 1 : shown[view] + 1; draw(); });
+    q("#gall").addEventListener("click", function () { stop(); shown[view] = MAX[view]; draw(); });
+    all(".gv-tab").forEach(function (b) { b.addEventListener("click", function () { stop(); view = b.getAttribute("data-view"); setView(); }); });
+    all(".gtab:not(.gv-tab)").forEach(function (b) {
       b.addEventListener("click", function () {
         stop(); side = b.getAttribute("data-side");
-        [].forEach.call(tool.querySelectorAll(".gtab"), function (x) { var on = x === b; x.classList.toggle("on", on); x.setAttribute("aria-selected", on ? "true" : "false"); });
+        all(".gtab:not(.gv-tab)").forEach(function (x) { var on = x === b; x.classList.toggle("on", on); x.setAttribute("aria-selected", on ? "true" : "false"); });
         panes.forEach(function (p) { p.hidden = p.getAttribute("data-side") !== side; });
-        shown = 4; draw();
+        shown.fan = 4; shown.tree = MAX.tree; hello(); draw();
       });
     });
-    function show(g) {
-      if (!g) return;
+    function mk(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
+    function showFan(g) {
       var unk = g.getAttribute("data-unknown") === "1", name = g.getAttribute("data-name"), rel = g.getAttribute("data-rel"), when = g.getAttribute("data-when"), slug = g.getAttribute("data-slug"), k = g.getAttribute("data-k");
       card.innerHTML = "";
-      var h = document.createElement("p"); h.className = "rcard-h" + (k && k !== "other" && k !== "unknown" ? " c-" + k : ""); h.textContent = unk ? rel + ": not found yet" : name; card.appendChild(h);
-      var r = document.createElement("p"); r.className = "rcard-r";
-      r.textContent = unk ? "The line does not say who stood here." : rel + (when ? " · " + when : "") + (g.getAttribute("data-initials") === "1" ? " · living: initials only" : ""); card.appendChild(r);
+      card.appendChild(mk("p", "rcard-h" + (k && k !== "other" && k !== "unknown" ? " c-" + k : ""), unk ? rel + ": not found yet" : name));
+      card.appendChild(mk("p", "rcard-r", unk ? "The line does not say who stood here." : rel + (when ? " · " + when : "") + (g.getAttribute("data-initials") === "1" ? " · living: initials only" : "")));
       var t = document.createElement("p");
       if (unk) t.textContent = "Somebody stood here, because everybody has two parents. Finding out who is the work of the archives.";
       else if (k === "other") t.textContent = "The line names this person but this site does not follow their family back.";
       else { t.textContent = slug ? "From the " : ""; if (slug) { var a = document.createElement("a"); a.href = "../" + slug + "/"; a.textContent = slug.charAt(0).toUpperCase() + slug.slice(1) + " family"; t.appendChild(a); t.appendChild(document.createTextNode(".")); } }
       card.appendChild(t);
     }
-    tool.addEventListener("click", function (e) { var g = e.target.closest(".seg"); if (g) show(g); });
-    tool.addEventListener("keydown", function (e) { if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("seg")) { e.preventDefault(); show(e.target); } });
-    draw();
+    function showRoot(g) {
+      var kind = g.getAttribute("data-kind"), name = g.getAttribute("data-name"), rel = g.getAttribute("data-rel"), when = g.getAttribute("data-when"), where = g.getAttribute("data-where"), slug = g.getAttribute("data-slug"), key = g.getAttribute("data-key"), why = g.getAttribute("data-why");
+      card.innerHTML = "";
+      if (kind === "gap") {
+        card.appendChild(mk("p", "rcard-h c-" + key, "A gap in the line"));
+        card.appendChild(mk("p", "rcard-r", when ? "Years missing: " + when : ""));
+        card.appendChild(mk("p", "", "The papers that would join these two people have not been found, so the root is drawn dotted here. The people above the gap have pages of their own; how they join the ones below is not known."));
+      } else {
+        card.appendChild(mk("p", "rcard-h c-" + key, name));
+        card.appendChild(mk("p", "rcard-r", rel + (when ? " · " + when : "") + (where ? " · " + where : "")));
+        card.appendChild(mk("p", "rt-verdict " + kind, kind === "sure" ? "Sure: the archive records this person, with the years it gives." : "We think: " + (why || "no paper has been found for this one yet.")));
+      }
+      var a = document.createElement("a"); a.href = "../" + slug + "/"; a.textContent = "The " + slug.charAt(0).toUpperCase() + slug.slice(1) + " family page"; var p = document.createElement("p"); p.appendChild(a); card.appendChild(p);
+    }
+    tool.addEventListener("click", function (e) { var g = e.target.closest(".seg"); if (g) { showFan(g); return; } g = e.target.closest(".rt-node"); if (g) showRoot(g); });
+    tool.addEventListener("keydown", function (e) {
+      if ((e.key === "Enter" || e.key === " ") && e.target.classList) {
+        if (e.target.classList.contains("seg")) { e.preventDefault(); showFan(e.target); }
+        else if (e.target.classList.contains("rt-node")) { e.preventDefault(); showRoot(e.target); }
+      }
+    });
+    setView();
   })();
   </script>
 </Base>

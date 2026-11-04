@@ -87,7 +87,10 @@ a Play button and a year slider (the legs are `site/src/data/routes.js`, checked
 `/ruler/` the Long Ruler: every person on the ladders as a bar on one scale, with a pointer year and a chip per family
 (both read `site/src/lib/lives.js`, which parses every ladder `when` and `where` and fails loudly on a format it does not know;
 `scripts/lives.test.mjs`; a person whose dates are only "at least" or "seen" is drawn dashed, labelled "we think") ·
-`/grow/` the family tree as a fan that grows ring by ring, and where its names run out (people from `site/src/data/pedigree.js`,
+`/grow/` the family as a real tree: the children are the crown and every family is a root going down. A rung the ladder does not
+mark `told` is a thick brown root, a `told` rung a thin dotted «we think» root with the ladder's own `toldWhy`, a `break` a gap
+(`lib/roottree.js`, `components/RootTree.astro`, `scripts/roottree.test.mjs`; nothing is typed there, the roots are the ladders).
+A second tab is the fan that doubles ring by ring and shows where the names run out (people from `site/src/data/pedigree.js`,
 shared with the Big Tree, drawn by `lib/fan.js`) · `/mysteries/` the unsolved questions as case files
 (`data/mysteries.js`, built from words the site already says; `scripts/mysteries.test.mjs` keeps them tied to the families) ·
 `/cousins/` also has a picker: choose two of the four and see which families and which places in the trees are shared ·

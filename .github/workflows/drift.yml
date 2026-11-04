@@ -1,0 +1,21 @@
+name: Do the ladders still match the archives?
+
+# Our Family's ladders take their dates and their depth from the archives (scripts/sync_archives.py writes
+# site/src/data/archive-lines.json). The archives move: a generation is found, a year is corrected, a line is
+# shown to break. This job asks the archives again every Monday and fails when the committed snapshot is
+# out of date, so a ladder cannot quietly go on saying what an archive has already taken back.
+# It changes nothing and publishes nothing; GitHub emails the owner when it fails.
+on:
+  schedule:
+    - cron: "17 21 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/sync_archives.py --check

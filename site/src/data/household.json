@@ -1,0 +1,7 @@
+{
+  "_note": "Who this copy of the site is for. To make Our Family for another child or another branch, copy the repo and change this file, living.json, and the voice in families.js (see TEMPLATE.md). The initials are the living children, shown by initials only.",
+  "siteName": "Our Family",
+  "children": ["ADD", "MCD", "RFM", "MJM"],
+  "city": "Brisbane",
+  "howMany": { "families": "Ten", "continents": "four", "cousins": "four" }
+}

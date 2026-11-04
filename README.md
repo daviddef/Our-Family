@@ -1,8 +1,8 @@
 # Our Family
 
-The landing site for the family archives — and the only one of the seven written for children.
+The landing site for the family archives — and the only one written for children.
 
-**Live:** https://daviddef.github.io/Our-Family/
+**Live:** https://ourfamily.defranceski.com/
 
 Two boys were born in Brisbane. Six separately researched families meet in them. This site tells that
 story in a way a six-year-old can follow and a ten-year-old can read alone, and then hands the reader
@@ -14,16 +14,16 @@ give away a living person's birth date, the timeline says *then* instead.
 
 | | Family | From | Archive |
 |---|---|---|---|
-| 🔵 | **Defranceski** | Istria, Croatia | [The Defranceschi Archive](https://daviddef.github.io/TheDefranceski/) |
-| 🟢 | **Falco** | Arienzo, Campania, Italy | [The Falco Archive](https://daviddef.github.io/TheFalco/) |
-| 🌸 | **Blažević** | Senj & Smokvica Krmpotska, Croatia | [The Senj Line](https://daviddef.github.io/TheDefranceski/senj-line/) — a dedicated Blažević archive now exists locally but is not yet published; relink when it is |
-| 🟠 | **Lerena** | Rosario, Argentina | [The Lerena Archive](https://daviddef.github.io/TheLerena/) |
-| 🔴 | **Booyzen** | The Karoo and the Cape, South Africa | [The Booyzen Archive](https://daviddef.github.io/TheBooyzen/) |
-| 🟣 | **D'Arcy** | Yorkshire and Limerick → Australia | [The D'Arcy Archive](https://daviddef.github.io/TheDArcy/) |
-| 🟤 | **Mazza** | Piedimonte Etneo, Sicily | [The Mazza Archive](https://daviddef.github.io/TheMazza/) |
-| 🟦 | **Prostamo** | Briatico, Calabria — reaches 1697 | [The Mazza Archive](https://daviddef.github.io/TheMazza/) |
-| 🟪 | **Arena** | Scilla, Calabria | [The Mazza Archive](https://daviddef.github.io/TheMazza/) |
-| 🟩 | **Polistena** | Scilla, Calabria | [The Mazza Archive](https://daviddef.github.io/TheMazza/) |
+| 🔵 | **Defranceski** | Istria, Croatia | [The Defranceschi Archive](https://archive.defranceski.com/) |
+| 🟢 | **Falco** | Arienzo, Campania, Italy | [The Falco Archive](https://falco.defranceski.com/) |
+| 🌸 | **Blažević** | Senj & Smokvica Krmpotska, Croatia | [The Blažević Archive](https://blazevic.defranceski.com/) |
+| 🟠 | **Lerena** | Rosario, Argentina | [The Lerena Archive](https://lerena.defranceski.com/) |
+| 🔴 | **Booyzen** | The Karoo and the Cape, South Africa | [The Booyzen Archive](https://booyzen.defranceski.com/) |
+| 🟣 | **D'Arcy** | Yorkshire and Limerick → Australia | [The D'Arcy Archive](https://darcy.defranceski.com/) |
+| 🟤 | **Mazza** | Piedimonte Etneo, Sicily | [The Mazza Archive](https://mazza.defranceski.com/) |
+| 🟦 | **Prostamo** | Briatico, Calabria — reaches 1697 | [The Mazza Archive](https://mazza.defranceski.com/) |
+| 🟪 | **Arena** | Scilla, Calabria | [The Mazza Archive](https://mazza.defranceski.com/) |
+| 🟩 | **Polistena** | Scilla, Calabria | [The Mazza Archive](https://mazza.defranceski.com/) |
 
 ## Four cousins, ten families
 
@@ -148,23 +148,36 @@ parrot that said "Come in". Where an archive says something is uncertain, this s
 ```bash
 cd site
 npm install
-npm run dev      # http://localhost:4325/Our-Family
+npm run dev      # http://localhost:4325/
+npm test         # the ladder gate
 npm run build    # static output in site/dist
+npm run sync     # refresh the archive snapshot, then re-read each ladder's `mystery`
 ```
 
-Deploys to GitHub Pages on every push to `main`.
-To serve from a custom domain, set `base: '/'` and `site:` to that domain in `site/astro.config.mjs`.
+Deploys to GitHub Pages on every push to `main`, at https://ourfamily.defranceski.com/ (`site/public/CNAME`).
+A pull request builds and runs every gate but does not deploy.
 
 ## Layout
 
 ```
-site/src/data/families.js       all five families: facts, ladders, the joining timeline
+site/src/data/families.js       the ten families in a child's voice (ladders are merged with archive-lines.json)
+site/src/data/archive-lines.json  the archives' direct lines, made by scripts/sync_archives.py
+site/src/lib/ladders.js         builds a ladder from the two, and says when they disagree
 site/src/components/BigTree     the convergence tree on the home page
 site/src/components/Icon        the five emblems
 site/src/pages/index.astro      the landing page
 site/src/pages/[slug].astro     one page per family
 site/public/styles.css          the bright palette — the archives' own hues, turned up
 ```
+
+## The ladders come from the archives
+
+Until November 2026 every ladder was typed by hand, and the archives moved on without it (a whole generation
+found above Rosario Mazza, a birth year corrected, a line shown to break). Now `scripts/sync_archives.py`
+reads each archive's own direct line into `site/src/data/archive-lines.json`, and `site/src/lib/ladders.js`
+builds every ladder from it: the years, the depth, a link to the archive's page. `families.js` keeps only the
+child's voice. The build fails when the two disagree in a way a person must look at, and a weekly workflow
+(`drift.yml`) fails when an archive has moved on. `TEMPLATE.md` says how to make the site for another child.
 
 ## Keeping up with the research
 

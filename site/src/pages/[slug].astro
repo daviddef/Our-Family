@@ -59,21 +59,23 @@ const rungs = [...f.ladder].reverse();
           <path d="M10 3v14M4 9l6-6 6 6" stroke="currentColor" stroke-width="2.6"
                 fill="none" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
-        {rungs[0]?.told
+        {rungs[0]?.told || rungs.some(r => r.break)
           ? `The oldest ${f.name} anybody can name`
           : `The oldest ${f.name} we can prove`}
       </div>
 
       <div class="ladder">
         {rungs.map(r => (
-          <div class={`rung ${r.you ? "is-you" : ""} ${r.last ? "is-last" : ""}`}>
+          <div class={`rung ${r.you ? "is-you" : ""} ${r.last ? "is-last" : ""} ${r.break ? "is-break" : ""}`}>
             <span class="stem" aria-hidden="true"></span>
             <span class="dot" aria-hidden="true"></span>
             <div class="card">
+              {r.break && <div class="rel">{r.when}</div>}
               {r.rel && <div class="rel">{r.rel}</div>}
               {r.you && <div class="rel" style="color:var(--safrica-deep)">That's you</div>}
               <div class="nm">{r.name}</div>
-              <div class="det">{[r.when, r.where].filter(Boolean).join(" · ")}</div>
+              <div class="det">{(r.break ? [r.where] : [r.when, r.where]).filter(Boolean).join(" · ")}</div>
+              {r.break && <div class="told"><b>The line breaks.</b> {r.gap}</div>}
               {r.job && <span class="job">{r.job}</span>}
               {r.told && (
                 <div class="told">

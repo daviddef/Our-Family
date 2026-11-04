@@ -2,7 +2,10 @@
 // Every fact here is carried over from one of the five research archives.
 // Written to be read out loud to a child of six, and read alone by a child of ten.
 
-export const families = [
+import lines from "./archive-lines.json";
+import { resolveLadder } from "../lib/ladders.js";
+
+const RAW = [
   {
     slug: "defranceski",
     name: "Defranceski",
@@ -49,17 +52,19 @@ export const families = [
         who: "The book of souls",
         cap: "The real page. House 5, and a farmer called Giovanni Battista born in 1787 — ruled into neat columns and written in Latin with a dip pen." },
     ],
+    handDates: true,   // the Defranceski archive keeps no dated cards in its direct line: these years are typed here
     ladder: [
       { name: "ADD & MCD", where: "Brisbane, Australia", you: true },
       { name: "DID", rel: "Dad", where: "Johannesburg, South Africa" },
-      { name: "Ivan", rel: "Grandpa", when: "died 2026", where: "Senj, Croatia" },
-      { name: "Ivan", rel: "Great-grandpa", when: "1925–1995", where: "Crikvenica → Senj" },
-      { name: "Anton Rudolf", rel: "2× great-grandpa", when: "1890–1943", where: "Klenovica, house 22" },
-      { name: "Josip", rel: "3× great-grandpa", when: "1863–1951", where: "Gračišće → Crikvenica", job: "stonemason" },
-      { name: "Antonio", rel: "4× great-grandpa", when: "1825–1894", where: "Gračišće, house 19", job: "stonecutter" },
-      { name: "Giovanni Battista", rel: "5× great-grandpa", when: "1787–1846", where: "Gračišće, house 5", job: "farmer" },
-      { name: "Giovanni", rel: "6× great-grandpa", when: "1750–1829", where: "Gologorica", last: true , told: true, toldWhy: "A book names his son «son of the late Giovanni», so a Giovanni was there — but no page has been found for the man himself." },
+      { name: "Ivan", rel: "Grandpa", ref: "ivan-defranceski-1951", when: "died 2026", where: "Senj, Croatia" },
+      { name: "Ivan", rel: "Great-grandpa", ref: "ivan-defranceski-1925", when: "1925–1995", where: "Crikvenica → Senj" },
+      { name: "Anton Rudolf", rel: "2× great-grandpa", ref: "anton-rudolf-defranceski-1890", when: "1890–1943", where: "Klenovica, house 22" },
+      { name: "Josip", rel: "3× great-grandpa", ref: "josip-defranceschi-1863", when: "1863–1951", where: "Gračišće → Crikvenica", job: "stonemason" },
+      { name: "Antonio", rel: "4× great-grandpa", ref: "antonio-defranceschi-1825", when: "1825–1894", where: "Gračišće, house 19", job: "stonecutter" },
+      { name: "Giovanni Battista", rel: "5× great-grandpa", ref: "giovanni-battista-defranceschi-1787", when: "1787–1846", where: "Gračišće, house 5", job: "farmer" },
+      { name: "Giovanni", rel: "6× great-grandpa", ref: "giovanni-defranceschi-1750", when: "1750–1829", where: "Gologorica", told: true, toldWhy: "A book names his son «son of the late Giovanni», so a Giovanni was there — but no page has been found for the man himself." },
     ],
+    mysteryFor: "giovanni-defranceschi-1750",
     mystery:
       "Giovanni at the very top is where the ladder stops. We think he might really be a Giovanni Battista from house 31 at Gologorica — but we cannot prove it yet.",
   },
@@ -118,15 +123,16 @@ export const families = [
       { name: "ADD · MCD · RFM · MJM", rel: "All four of you", where: "Brisbane, Australia", you: true },
       { name: "CAD & SFD", rel: "Mum and Aunty — twins", where: "Brisbane, Australia" },
       { name: "GF", rel: "Grandma", where: "Benevento, Italy" },
-      { name: "Carmine", rel: "Great-grandpa", when: "1930–2026", where: "Forchia, Italy" },
-      { name: "Carmine Antonio", rel: "2× great-grandpa", when: "1901–1988", where: "Arienzo → Brisbane" },
-      { name: "Raffaele", rel: "3× great-grandpa", when: "born 1873", where: "Arienzo, Italy", job: "farmer" },
-      { name: "Carmine Antonio", rel: "4× great-grandpa", when: "born 1850", where: "Arienzo, Italy" },
-      { name: "Raffaele", rel: "5× great-grandpa", when: "1818–1880", where: "Arienzo, Italy" },
-      { name: "Vincenzo", rel: "6× great-grandpa", when: "1793–1875", where: "Arienzo, Italy" },
-      { name: "Pasquale", rel: "7× great-grandpa", when: "1767–1834", where: "Arienzo, Italy" },
-      { name: "Matteo", rel: "8× great-grandpa", when: "children born from 1767", where: "Arienzo, Italy", last: true , told: true, toldWhy: "He is named as the father on his son's baptism, and nothing else about him has been found." },
+      { name: "Carmine", rel: "Great-grandpa", ref: "carmine-falco-of-carmine-antonio-falco-filomena-ann", where: "Forchia, Italy" },
+      { name: "Carmine Antonio", rel: "2× great-grandpa", ref: "carmine-antonio-falco-of-carmine-antonio-falco-filomena-ann", where: "Arienzo → Brisbane" },
+      { name: "Raffaele", rel: "3× great-grandpa", ref: "raffaele-falco-of-raffaele-falco-costanza-maione", where: "Arienzo, Italy", job: "farmer" },
+      { name: "Carmine Antonio", rel: "4× great-grandpa", ref: "carmine-antonio-falco", where: "Arienzo, Italy" },
+      { name: "Raffaele", rel: "5× great-grandpa", ref: "raffaele-falco-of-raffaele-falco-angela-rosa-morgill", where: "Arienzo, Italy" },
+      { name: "Vincenzo", rel: "6× great-grandpa", ref: "vincenzo-falco-of-vincenzo-falco-andreana-crisci", where: "Arienzo, Italy" },
+      { name: "Pasquale", rel: "7× great-grandpa", ref: "pasquale-falco-of-pasquale-falco-chiara-rivetti", where: "Arienzo, Italy" },
+      { name: "Matteo", rel: "8× great-grandpa", ref: "matteo-falco-of-matteo-falco-francesca-crisci", where: "Arienzo, Italy", told: true, toldWhy: "He is named as the father on his son's baptism, and nothing else about him has been found." },
     ],
+    mysteryFor: "matteo-falco-of-matteo-falco-francesca-crisci",
     mystery:
       "Above Matteo the church book has a hole in it: the pages between 1738 and 1761 are missing. To climb any higher we have to find another way round. And Pasquale has two birthdays: the baptism register says he was a newborn in October 1767, but his death record makes him old enough to have been born in 1765. Both cannot be right, so this site follows the register.",
   },
@@ -197,15 +203,16 @@ export const families = [
       { name: "ADD & MCD", where: "Brisbane, Australia", you: true },
       { name: "DID", rel: "Dad", where: "Johannesburg, South Africa" },
       { name: "Ivan", rel: "Grandpa", when: "died 2026", where: "Senj, Croatia" },
-      { name: "Hedviga", rel: "Great-grandma", when: "1926–2001", where: "Senj → Johannesburg" },
-      { name: "Ljubomir", rel: "2× great-grandpa", when: "1892–1966", where: "Rijeka → Senj", job: "sailor" },
-      { name: "Juraj", rel: "3× great-grandpa", when: "no dates yet", where: "Smokvica Krmpotska" , told: true },
-      { name: "Toma", rel: "4× great-grandpa", when: "1838–1907", where: "Smokvica Krmpotska, house 114", job: "day labourer" },
-      { name: "Anton", rel: "5× great-grandpa", when: "no dates at all", where: "Smokvica Krmpotska" },
-      { name: "Ilija", rel: "6× great-grandpa", when: "born 1790", where: "Smokvica Krmpotska" },
-      { name: "Grgica", rel: "7× great-grandpa", when: "born 1770", where: "Croatia" , told: true },
-      { name: "Mateša", rel: "8× great-grandpa", when: "born 1750", where: "Croatia", last: true , told: true },
+      { name: "Hedviga", rel: "Great-grandma", ref: "hedviga-blazevic", where: "Senj → Johannesburg" },
+      { name: "Ljubomir", rel: "2× great-grandpa", ref: "ljubomir-blazevic", where: "Rijeka → Senj", job: "sailor" },
+      { name: "Juraj", rel: "3× great-grandpa", ref: "juraj-georgius-jure-blazevic", where: "Smokvica Krmpotska" , told: true },
+      { name: "Toma", rel: "4× great-grandpa", ref: "toma-tomislav-blazevic", where: "Smokvica Krmpotska, house 114", job: "day labourer" },
+      { name: "Anton", rel: "5× great-grandpa", ref: "anton-blazevic-5", where: "Smokvica Krmpotska" },
+      { name: "Ilija", rel: "6× great-grandpa", ref: "ilija-blazevic", where: "Smokvica Krmpotska" },
+      { name: "Grgica", rel: "7× great-grandpa", ref: "grgica-blazevic", where: "Croatia" , told: true },
+      { name: "Mateša", rel: "8× great-grandpa", ref: "matesa-blazevic", where: "Croatia", told: true },
     ],
+    mysteryFor: "matesa-blazevic",
     mystery:
       "The three names at the very top — Mateša, Grgica and Ilija — used to be a separate list that nobody could join onto ours. Now they are joined on. But be careful with them: they come from other people’s family trees, not from a church book. The oldest Blažević anybody has actually found written down in a register is Toma, in 1838. Everything above him is still a promise rather than a proof.",
   },
@@ -267,12 +274,15 @@ export const families = [
       { name: "ADD & MCD", where: "Brisbane, Australia", you: true },
       { name: "DID", rel: "Dad", where: "Johannesburg, South Africa" },
       { name: "CAL", rel: "Grandma", where: "Johannesburg, South Africa" },
-      { name: "Nuno Fernando", rel: "Great-grandpa", when: "1924–1971", where: "Cape Town → Germiston" },
-      { name: "Pablo Armando “Bob”", rel: "2× great-grandpa", when: "1882–1950", where: "Rosario → Cape Town", job: "horse trainer" },
-      { name: "Juan Carlos", rel: "3× great-grandpa", where: "Argentina — probably Rosario", last: true },
+      { name: "Nuno Fernando", rel: "Great-grandpa", ref: "nuno-fernando-lerena", where: "Cape Town → Germiston" },
+      { name: "Pablo Armando “Bob”", rel: "2× great-grandpa", ref: "pablo-armando-lerena", where: "Rosario → Cape Town", job: "horse trainer" },
+      { name: "Juan Carlos", rel: "3× great-grandpa", ref: "juan-carlos-lerena", where: "the River Plate — near Rosario, we think" },
+      { name: "A gap in the line", ref: "Sancho's children|1791–1815", break: true, where: "Canelones and Montevideo, Uruguay",
+        gap: "Nine children of Sancho and María are named in the papers. No paper says which of them, if any, was Juan Carlos’s parent — so the ladder breaks here. The two above the gap are real, but we cannot yet prove they are ours." },
     ],
+    mysteryFor: "felix-lerena",
     mystery:
-      "This is the shortest ladder of the five — and the biggest mystery. We know Bob was born in Rosario in 1882, but we do not yet know his mother’s or his father’s name. Somewhere in Argentina there is a book with the answer in it.",
+      "This ladder has a hole in the middle, and the hole is the mystery. We know Bob was born in Rosario in 1882 and that his father was a Juan Carlos Lerena. But Juan Carlos left almost no trace, and the two Llerenas above the gap, Sancho and Félix, may or may not be his grandfather and great-grandfather. Somewhere in the River Plate there is a book with the answer in it.",
   },
 
   {
@@ -341,13 +351,14 @@ export const families = [
       { name: "ADD & MCD", where: "Brisbane, Australia", you: true },
       { name: "DID", rel: "Dad", where: "Johannesburg, South Africa" },
       { name: "CAL", rel: "Grandma", where: "Johannesburg, South Africa" },
-      { name: "Catherine Mary Sophia", rel: "Great-grandma", when: "1929–2013", where: "Johannesburg" },
-      { name: "George Downing Mountjoy", rel: "2× great-grandpa", when: "1901–1947", where: "South Africa", job: "railways" },
-      { name: "Willem Hermanus", rel: "3× great-grandpa", when: "1851–1905", where: "Cradock → Indwe", job: "farmer, then mason" },
-      { name: "Petrus Jacobus", rel: "4× great-grandpa", when: "1812–1884", where: "Graaff-Reinet" },
-      { name: "Petrus Jacobus", rel: "5× great-grandpa", when: "1788–1876", where: "Graaff-Reinet → Rustenburg" },
-      { name: "Gerthardus Lodewikus", rel: "6× great-grandpa", when: "no dates at all", where: "somewhere in the Cape", last: true , told: true, toldWhy: "One clerk wrote his name on his son's death notice in 1876. A printed book says the father was someone else called Jan. Nobody has settled it." },
+      { name: "Catherine Mary Sophia", rel: "Great-grandma", ref: "catherine-mary-sophia-booyzen", where: "Johannesburg" },
+      { name: "George Downing Mountjoy", rel: "2× great-grandpa", ref: "george-downing-mountjoy-booyzen", where: "South Africa", job: "railways" },
+      { name: "Willem Hermanus", rel: "3× great-grandpa", ref: "willem-hermanus-william-henry-booyzen", where: "Cradock → Indwe", job: "farmer, then mason" },
+      { name: "Petrus Jacobus", rel: "4× great-grandpa", ref: "Petrus Jacobus Booysen|1812–1884", where: "Graaff-Reinet" },
+      { name: "Petrus Jacobus", rel: "5× great-grandpa", ref: "petrus-jacobus-booysen", where: "Graaff-Reinet → Rustenburg" },
+      { name: "Gerthardus Lodewikus", rel: "6× great-grandpa", ref: "gerthardus-lodewikus-booysen", where: "somewhere in the Cape", told: true, toldWhy: "One clerk wrote his name on his son's death notice in 1876. A printed book says the father was someone else called Jan. Nobody has settled it." },
     ],
+    mysteryFor: "gerthardus-lodewikus-booysen",
     mystery:
       "Gerthardus Lodewikus is the most frustrating person in all ten families. We have his name and nothing else — no birthday, no parents, not one record. He is a locked door.",
   },
@@ -372,8 +383,8 @@ export const families = [
         text: "Piedimonte Etneo. That is literally what the name means, and it is literally where it is — on the lower slopes of a volcano that is still smoking today. Look for it in the big picture on the front page.",
       },
       {
-        big: "The family is named after its shortest line.",
-        text: "The Mazza line runs back only four generations before it stops dead at Rosario Mazza, a man with no dates at all. Meanwhile the Prostamo line, which comes in through a grandmother, reaches back nine. A surname tells you far less about where a family comes from than people think.",
+        big: "The name we are called by is not the longest line.",
+        text: "The Mazza line runs back four generations of men and then stops, at Mariano Mazza, a day-labourer at Piedimonte Etneo, because nobody has found out who his father was. Meanwhile the Prostamo line, which comes in through a grandmother, reaches back eight generations on the family tree, to 1697. A surname tells you far less about how far back a family goes than people think.",
       },
       {
         big: "Sebastiano sailed on the Toscana.",
@@ -396,12 +407,13 @@ export const families = [
       { name: "RFM & MJM", where: "Brisbane, Australia", you: true },
       { name: "MRM", rel: "Dad", where: "Brisbane, Australia" },
       { name: "FM", rel: "Grandpa", where: "Australia" },
-      { name: "Sebastiano", rel: "Great-grandpa", when: "1920–2002", where: "Piedimonte Etneo → Brisbane" },
-      { name: "Salvatore", rel: "2× great-grandpa", when: "1879–1929", where: "Piedimonte Etneo, Sicily" },
-      { name: "Rosario", rel: "3× great-grandpa", when: "no dates at all", where: "Sicily", last: true },
+      { name: "Sebastiano", rel: "Great-grandpa", ref: "sebastiano-mazza", where: "Piedimonte Etneo → Brisbane" },
+      { name: "Salvatore", rel: "2× great-grandpa", ref: "salvatore-mazza", where: "Piedimonte Etneo, Sicily" },
+      { name: "Rosario", rel: "3× great-grandpa", ref: "rosario-mazza", where: "Piedimonte Etneo, Sicily" },
     ],
+    mysteryFor: "mariano-mazza-1809",
     mystery:
-      "Rosario Mazza is where it stops. No birthday, no death, nothing — exactly like Gerthardus on the Booyzen side. Two families, two continents, and the same kind of locked door at the top of each.",
+      "Mariano Mazza is where it stops. We know he was a labourer at Piedimonte Etneo in 1845 and still living there in 1871, and that he may have been born there, if he is the Mariano who married in 1836. We do not know who his father was. Gerthardus on the Booyzen side is the same kind of locked door, on another continent.",
   },
 
   {
@@ -444,15 +456,16 @@ export const families = [
       { name: "RFM & MJM", where: "Brisbane, Australia", you: true },
       { name: "MRM", rel: "Dad", where: "Brisbane, Australia" },
       { name: "FM", rel: "Grandpa", where: "Australia" },
-      { name: "Domenica", rel: "Great-grandma", when: "1928–2010", where: "Briatico → Brisbane" },
-      { name: "Francessco", rel: "2× great-grandpa", when: "1900–1983", where: "Briatico, Calabria" },
-      { name: "Alfonso", rel: "3× great-grandpa", when: "born 1858", where: "Briatico, Calabria" },
-      { name: "Domenico", rel: "4× great-grandpa", when: "born 1820", where: "Briatico, Calabria" },
-      { name: "Antonino", rel: "5× great-grandpa", when: "born 1785", where: "Briatico, Calabria" , told: true },
-      { name: "Pasquale", rel: "6× great-grandpa", when: "1760–1829", where: "Briatico, Calabria" , told: true },
-      { name: "Antonino", rel: "7× great-grandpa", when: "born 1726", where: "Briatico, Calabria" , told: true },
-      { name: "Franco Antonino", rel: "8× great-grandpa", when: "born 1697", where: "Briatico, Calabria", last: true , told: true, toldWhy: "No register page names him. The whole family says he was there, and the paper that would prove it has not been found." },
+      { name: "Domenica", rel: "Great-grandma", ref: "domenica-prostamo", where: "Briatico → Brisbane" },
+      { name: "Francessco", rel: "2× great-grandpa", ref: "francessco-prostamo", where: "Briatico, Calabria" },
+      { name: "Alfonso", rel: "3× great-grandpa", ref: "alfonso-prostamo", where: "Briatico, Calabria" },
+      { name: "Domenico", rel: "4× great-grandpa", ref: "domenico-prostamo-1820", where: "Briatico, Calabria" },
+      { name: "Antonino", rel: "5× great-grandpa", ref: "antonino-prostamo-1785", where: "Briatico, Calabria" , told: true },
+      { name: "Pasquale", rel: "6× great-grandpa", ref: "pasquale-prostamo", where: "Briatico, Calabria" , told: true },
+      { name: "Antonino", rel: "7× great-grandpa", ref: "antonino-prostamo", where: "Briatico, Calabria" , told: true },
+      { name: "Franco Antonino", rel: "8× great-grandpa", ref: "franco-antonino-prostamo", where: "Briatico, Calabria", told: true, toldWhy: "No register page names him. The whole family says he was there, and the paper that would prove it has not been found." },
     ],
+    mysteryFor: "franco-antonino-prostamo",
     mystery:
       "Even this line stops. Above Franco Antonino in 1697 there is nothing — and 1697 is a very long way back for a small town’s paper to survive at all.",
   },
@@ -497,12 +510,13 @@ export const families = [
       { name: "RFM & MJM", where: "Brisbane, Australia", you: true },
       { name: "MRM", rel: "Dad", where: "Brisbane, Australia" },
       { name: "NA", rel: "Grandma", where: "Australia" },
-      { name: "Rocco", rel: "Great-grandpa", when: "1924–1999", where: "Scilla → Brisbane" },
-      { name: "Giuseppe", rel: "2× great-grandpa", when: "1892–1984", where: "Scilla, Calabria" },
-      { name: "Giovanni", rel: "3× great-grandpa", when: "born 1870", where: "Scilla, Calabria", last: true },
+      { name: "Rocco", rel: "Great-grandpa", ref: "rocco-arena-1924", where: "Scilla → Brisbane" },
+      { name: "Giuseppe", rel: "2× great-grandpa", ref: "giuseppe-arena", where: "Scilla, Calabria" },
+      { name: "Giovanni", rel: "3× great-grandpa", ref: "giovanni-arena", where: "Scilla, Calabria" },
     ],
+    mysteryFor: "filippo-arena-1830",
     mystery:
-      "Because both of Rocco’s parents were Arenas, there are really two Arena lines running up out of him — and the one through his mother goes back further than the one through his father. Untangling them is the job.",
+      "The Arena ladder now goes back seven generations of Arenas in one little town, to a Filippo who had died by 1830. But because both of Rocco’s parents were Arenas, there are really two Arena lines running up out of him, and this ladder follows his father’s. Untangling the other is the job.",
   },
 
   {
@@ -545,10 +559,11 @@ export const families = [
       { name: "RFM & MJM", where: "Brisbane, Australia", you: true },
       { name: "MRM", rel: "Dad", where: "Brisbane, Australia" },
       { name: "NA", rel: "Grandma", where: "Australia" },
-      { name: "Angela", rel: "Great-grandma", when: "1925–2018", where: "Scilla → Brisbane" },
-      { name: "Giovanni", rel: "2× great-grandpa", when: "born 1883", where: "Scilla, Calabria" },
-      { name: "Antonio", rel: "3× great-grandpa", when: "no dates yet", where: "Scilla, Calabria", last: true },
+      { name: "Angela", rel: "Great-grandma", ref: "angela-polistena", where: "Scilla → Brisbane" },
+      { name: "Giovanni", rel: "2× great-grandpa", ref: "giovanni-polistena", where: "Scilla, Calabria" },
+      { name: "Antonio", rel: "3× great-grandpa", ref: "antonio-polistena-2", where: "Scilla, Calabria" },
     ],
+    mysteryFor: "antonio-polistena-2",
     mystery:
       "Above Antonio the name becomes Pontillo, and it is not yet clear whether that is the same family writing itself differently or two families being joined up by mistake.",
   },
@@ -616,17 +631,27 @@ export const families = [
       { name: "ADD · MCD · RFM · MJM", rel: "All four of you", where: "Brisbane, Australia", you: true },
       { name: "CAD & SFD", rel: "Mum and Aunty — twins", where: "Brisbane, Australia" , told: true },
       { name: "IKD", rel: "Grandpa", where: "Brisbane, Australia" , told: true, toldWhy: "Not because he is far away — because he is close. Papers about people who are still alive are kept shut, so this part of the line rests on what the family says." },
-      { name: "Kenneth Lindsay", rel: "Great-grandpa", when: "1927–2010", where: "Sandgate, Queensland", job: "and the parrot" },
-      { name: "Lindesay Atkinson", rel: "2× great-grandpa", when: "1892–1936", where: "Brisbane, Queensland", job: "clerk" },
-      { name: "George Pitt", rel: "3× great-grandpa", when: "1864–1931", where: "Brisbane, Queensland", job: "chief clerk, railways" },
-      { name: "George Lindsay", rel: "4× great-grandpa", when: "1829–1901", where: "Parramatta → Brisbane" },
-      { name: "Major George Pitt", rel: "5× great-grandpa", when: "1783–1849", where: "Portsmouth → Parramatta", job: "soldier, 39th Foot" },
-      { name: "Major-General Robert", rel: "6× great-grandpa", when: "1751–1827", where: "Yorkshire → Chatham", job: "Royal Engineers", last: true },
+      { name: "Kenneth Lindsay", rel: "Great-grandpa", ref: "kenneth-lindsay-d-arcy", where: "Sandgate, Queensland", job: "and the parrot" },
+      { name: "Lindesay Atkinson", rel: "2× great-grandpa", ref: "lindesay-atkinson-d-arcy", where: "Brisbane, Queensland", job: "clerk" },
+      { name: "George Pitt", rel: "3× great-grandpa", ref: "george-pitt-d-arcy-1864", where: "Brisbane, Queensland", job: "chief clerk, railways" },
+      { name: "George Lindsay", rel: "4× great-grandpa", ref: "george-lindsay-d-arcy", where: "Parramatta → Brisbane" },
+      { name: "Major George Pitt", rel: "5× great-grandpa", ref: "george-pitt-d-arcy-1783", where: "Portsmouth → Parramatta", job: "soldier, 39th Foot" },
+      { name: "Major-General Robert", rel: "6× great-grandpa", ref: "robert-d-arcy", where: "Chatham, Kent — Yorkshire, the family says", job: "Royal Engineers", told: true, toldWhy: "His rank and his death at Chatham are written in the papers. That he came from Yorkshire is the family’s story, and no paper has been found for his birth." },
     ],
+    mysteryFor: "robert-d-arcy",
     mystery:
       "Above the General the trail turns into a story instead of a record. Earls, a castle, a rumour that somebody was somebody’s secret son. Lovely — but not yet true.",
   },
 ];
+
+/* The ladders are the archives' (lib/ladders.js); what is left in RAW is the voice. A mismatch a person has to look at fails the build. */
+const resolved = RAW.map((f) => { const r = resolveLadder(f, lines); return { f: { ...f, ladder: r.ladder, lineSource: lines.families[f.slug] }, problems: r.problems }; });
+export const ladderProblems = resolved.flatMap((r) => r.problems);
+if (ladderProblems.length && !(typeof process !== "undefined" && process.env.LADDER_GATE === "warn")) {
+  throw new Error("Our Family ladders disagree with the archives:\n  " + ladderProblems.join("\n  "));
+}
+export const families = resolved.map((r) => r.f);
+
 
 // How the five became one. Living people are shown by role only, and years that
 // would give away a living person's birth date are left out.

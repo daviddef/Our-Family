@@ -52,7 +52,7 @@ export const eras = [
     lead: "Almost everything known about this century comes from one kind of object: a parish register. A man in a church, writing your family down in Latin, by hand, because it was his job.",
     family: [
       { y: "1711", k: "croatia", t: "The year cut over a doorway on the square at Gologorica — on a house nobody has yet proved is ours." },
-      { y: "1751", k: "britain", t: "Robert D'Arcy is born in Yorkshire." },
+      { y: "1751", k: "britain", t: "Robert D'Arcy is born, about now. Yorkshire, the family says; no baptism has been found." },
       { y: "24 Oct 1767", k: "italy", t: "A priest at Arienzo picks up a pen and writes Pasquale Falco into a book. That page still exists." },
       { y: "1787", k: "croatia", t: "Giovanni Battista is baptised at Gologorica on 13 August. He grew up to be a farmer at house 5." },
       { y: "1788", k: "safrica", t: "Petrus Jacobus Booyzen — the first Booyzen with a real date." },

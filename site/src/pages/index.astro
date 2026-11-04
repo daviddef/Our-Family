@@ -6,8 +6,11 @@ import TreeMobile from "../components/TreeMobile.astro";
 import Icon from "../components/Icon.astro";
 import { u } from "../lib/url.js";
 import { families, joining, numbers } from "../data/families.js";
+import { cases } from "../data/mysteries.js";
 const ways = [["/cousins/","👦👧","You and your cousins","Half your tree is the same as theirs. Half is not"],
           ["/routes/","🗺️","Roots & Routes","The world from Brisbane, and every family moving across it"],
+  ["/grow/","🌳","Grow the tree","Watch the tree double every step back, until the names run out"],
+  ["/mysteries/","🕵️","The case board",`${cases.length} questions nobody in the family can answer yet`],
           ["/journeys/","🚢","The journeys","133 days at sea, and why each family left at all"],
           ["/places/","🏔️","The places","A town so windy it can knock a lorry over"],
           ["/picture/","🔍","Find it","Eleven things hidden in the picture on this page"],

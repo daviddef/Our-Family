@@ -2,6 +2,25 @@
 import Base from "../layouts/Base.astro";
 import { u } from "../lib/url.js";
 import CousinVenn from "../components/CousinVenn.astro";
+import { buildFan, KEY_SLUG } from "../lib/fan.js";
+
+/* THE PICKER: two of the four, and what their trees share. Everything is read off the fan (lib/fan.js), so it can't
+   drift from the Grow the tree page: a place in the fan is shared when the same person stands in it for both. */
+const LAB = ["Parents", "Grandparents", "Great-grandparents", "2× great-grandparents"];
+const FAM = { croatia: "Defranceski", blazevic: "Blažević", argentina: "Lerena", safrica: "Booyzen", britain: "D’Arcy",
+  italy: "Falco", mazza: "Mazza", prostamo: "Prostamo", arena: "Arena", polistena: "Polistena" };
+const who = (p) => (p.unknown ? null : `${p.name}|${p.rel}`);
+const fans = { add: buildFan("add"), rfm: buildFan("rfm") };
+const people = [["ADD", "add"], ["MCD", "add"], ["RFM", "rfm"], ["MJM", "rfm"]];
+const keyset = (side) => [...new Set(fans[side].rings.flat().filter((p) => p.slug).map((p) => p.k))];
+const pickData = {
+  kids: people.map(([id, side]) => ({ id, side })),
+  sides: Object.fromEntries(["add", "rfm"].map((sd) => [sd, {
+    families: keyset(sd).map((k) => ({ k, name: FAM[k], slug: KEY_SLUG[k] })),
+    rings: fans[sd].rings.map((r) => r.map(who)),
+  }])),
+  lab: LAB,
+};
 const shared = [
   { k: "britain", n: "D’Arcy", w: "England & Ireland, back to an engineer who died a Major-General in 1827" },
   { k: "italy",   n: "Falco",  w: "Arienzo, back to a priest’s pen in 1767" },
@@ -32,6 +51,22 @@ const mazza = [
   <section style="padding-top:10px">
     <div class="wrap">
       <div class="vennwrap"><div class="scroll"><CousinVenn base={u("/")} /></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--italy)">Try it</div>
+      <h2>How much of your trees is the same?</h2>
+      <p class="lead">Pick one of you, then pick another.</p>
+      <div class="ptool" id="ptool">
+        <div class="prow"><span class="plab" id="pl-a">You are</span>
+          <div class="pbtns" role="group" aria-labelledby="pl-a" data-who="a">{people.map(([id]) => <button type="button" class={`pbtn${id === "ADD" ? " on" : ""}`} data-id={id}>{id}</button>)}</div></div>
+        <div class="prow"><span class="plab" id="pl-b">Compared with</span>
+          <div class="pbtns" role="group" aria-labelledby="pl-b" data-who="b">{people.map(([id]) => <button type="button" class={`pbtn${id === "RFM" ? " on" : ""}`} data-id={id}>{id}</button>)}</div></div>
+        <div class="pout" id="pout" aria-live="polite"></div>
+      </div>
+      <script type="application/json" id="pdata" set:html={JSON.stringify(pickData)}></script>
     </div>
   </section>
 
@@ -91,8 +126,8 @@ const mazza = [
       <h2>Three facts from your cousins’ side</h2>
       <div class="grid g3" style="margin-top:24px">
         <div class="jobcard c-arena">
-          <div class="jt">Three Roccos</div>
-          <p>RFM is named for his dad, Michael <b>Rocco</b> Mazza, who is named for <i>his</i>
+          <div class="jt">A name that travelled</div>
+          <p>RFM is named for his dad, MRM, who is named for <i>his</i>
           grandfather Rocco Arena, born at Scilla in 1924.</p>
         </div>
         <div class="jobcard c-prostamo">
@@ -112,4 +147,63 @@ const mazza = [
       </div>
     </div>
   </section>
+  <script is:inline>
+  (function () {
+    var tool = document.getElementById("ptool"); if (!tool) return;
+    var D = JSON.parse(document.getElementById("pdata").textContent);
+    var side = function (id) { return D.kids.filter(function (k) { return k.id === id; })[0].side; };
+    var pick = { a: "ADD", b: "RFM" };
+    var out = document.getElementById("pout");
+    function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+    function render() {
+      out.innerHTML = "";
+      var a = pick.a, b = pick.b;
+      if (a === b) { out.appendChild(el("p", "rcard-h", "That’s the same person!")); out.appendChild(el("p", null, "Pick somebody else to compare with.")); return; }
+      var sa = side(a), sb = side(b), same = sa === sb;
+      var h = same ? (sa === "add" ? "Brothers" : "Siblings") : "Cousins";
+      out.appendChild(el("p", "rcard-h", a + " and " + b + ": " + h.toLowerCase()));
+      out.appendChild(el("p", null, same
+        ? "Same mum, same dad, same grandparents — so every place in the two family trees holds the same people."
+        : "Two sisters, born on the same day, are their mums. So the grandparents on that side are the same people, and everything else is different."));
+      var list = el("div", "pbars");
+      var total = 0, shared = 0;
+      D.lab.forEach(function (l, i) {
+        var ra = D.sides[sa].rings[i], rb = D.sides[sb].rings[i], n = ra.length, s = 0;
+        for (var j = 0; j < n; j++) if (ra[j] === rb[j] && (ra[j] || same)) s++;
+        var row = el("div", "pbar");
+        row.appendChild(el("span", "pbl", l));
+        var track = el("span", "pbt"); var fill = el("i"); fill.style.width = (100 * s / n) + "%"; track.appendChild(fill); row.appendChild(track);
+        row.appendChild(el("span", "pbn", s + " of " + n + " places"));
+        list.appendChild(row);
+      });
+      out.appendChild(list);
+      if (!same) out.appendChild(el("p", "pnote", "Only people with a name are counted as the same. Places nobody has found yet are not."));
+      var fa = D.sides[sa].families, fb = {}; D.sides[sb].families.forEach(function (f) { fb[f.k] = 1; });
+      var common = fa.filter(function (f) { return fb[f.k]; });
+      var line = el("p", "pfam"); line.appendChild(document.createTextNode(same ? "All " + common.length + " families are shared: " : "Families you share (" + common.length + "): "));
+      common.forEach(function (f, i) { var x = el("a", "cchip c-" + f.k, f.name); x.href = "../" + f.slug + "/"; line.appendChild(x); });
+      out.appendChild(line);
+      if (!same) {
+        var mine = fa.filter(function (f) { return !fb[f.k]; });
+        var theirs = D.sides[sb].families.filter(function (f) { return !fa.some(function (g) { return g.k === f.k; }); });
+        var p2 = el("p", "pfam"); p2.appendChild(document.createTextNode(a + " only: "));
+        mine.forEach(function (f) { var x = el("a", "cchip c-" + f.k, f.name); x.href = "../" + f.slug + "/"; p2.appendChild(x); });
+        out.appendChild(p2);
+        var p3 = el("p", "pfam"); p3.appendChild(document.createTextNode(b + " only: "));
+        theirs.forEach(function (f) { var x = el("a", "cchip c-" + f.k, f.name); x.href = "../" + f.slug + "/"; p3.appendChild(x); });
+        out.appendChild(p3);
+      }
+    }
+    [].forEach.call(tool.querySelectorAll(".pbtns"), function (g) {
+      g.addEventListener("click", function (e) {
+        var b = e.target.closest(".pbtn"); if (!b) return;
+        pick[g.getAttribute("data-who")] = b.getAttribute("data-id");
+        [].forEach.call(g.querySelectorAll(".pbtn"), function (x) { x.classList.toggle("on", x === b); x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+        render();
+      });
+      [].forEach.call(g.querySelectorAll(".pbtn"), function (x) { x.setAttribute("aria-pressed", x.classList.contains("on") ? "true" : "false"); });
+    });
+    render();
+  })();
+  </script>
 </Base>

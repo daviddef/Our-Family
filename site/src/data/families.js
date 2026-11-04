@@ -486,8 +486,8 @@ const RAW = [
     archiveName: "The Mazza Archive",
     facts: [
       {
-        big: "Three Roccos.",
-        text: "Rocco is named after his dad, Michael Rocco Mazza — who is named after his own grandfather, Rocco Arena, born at Scilla in 1924. The name has come down three steps and across the world.",
+        big: "A name that travelled.",
+        text: "RFM is named after his dad, MRM — who is named after his own grandfather, Rocco Arena, born at Scilla in 1924. The name has come down three steps and across the world.",
       },
       {
         big: "His mother and his father were both called Arena.",

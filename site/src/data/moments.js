@@ -41,7 +41,7 @@ const raw = [
   { y: "1899–1902", k: "safrica", t: "The Anglo-Boer War",
     w: "The family is living right inside it. Burgersdorp alone produced 1,048 Cape Rebels. One family wedding was held mid-war, in July 1901, in the house of a man called D. Schoeman — and a Commandant D. Schoeman led about 400 Cape Rebels one district away. It might be the same man. Nobody has proved it." },
   { y: "1892", k: "arena", t: "Two Arenas marry at Scilla",
-    w: "Giuseppe Arena was born in 1892 and Anna Arena in 1893, in the same little town on the strait between Sicily and the mainland. Same surname, one year apart. Their son Rocco is the Rocco that RFM is named after." },
+    w: "Giuseppe Arena was born in 1892 and Anna Arena in 1893, in the same little town on the strait between Sicily and the mainland. Same surname, one year apart. Their son Rocco is the great-grandfather whose name has been handed down in the family." },
   { y: "1901", k: "italy", t: "Carmine Antonio Falco is born at Arienzo",
     w: "He is the one who eventually moved the whole Falco family to the other side of the planet. He is buried in Brisbane." },
   { y: "1920", k: "blazevic", t: "Milka marries Ljubomir Blažević", age: "she was 34",

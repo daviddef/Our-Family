@@ -1,0 +1,145 @@
+---
+import Base from "../layouts/Base.astro";
+import { u } from "../lib/url.js";
+import FanChart from "../components/FanChart.astro";
+import { buildFan, named, KEY_SLUG } from "../lib/fan.js";
+import { families } from "../data/families.js";
+
+const LAB = ["Parents", "Grandparents", "Great-grandparents", "2× great-grandparents"];
+const sides = ["add", "rfm"].map((s) => {
+  const f = buildFan(s);
+  return { side: s, kids: f.kids, counts: f.rings.map((r, i) => ({ lab: LAB[i], room: r.length, named: named(r) })) };
+});
+/* how much further back each line goes once the fan stops: ladder rungs numbered beyond 2× great-grandpa */
+const deeper = families.map((fm) => {
+  const ns = fm.ladder.map((r) => /^(\d+)× great-grandpa$/.exec(r.rel || "")).filter(Boolean).map((m) => +m[1]);
+  const top = Math.max(2, ...ns);
+  return { name: fm.name, key: fm.key, slug: fm.slug, more: top - 2, gap: fm.ladder.some((r) => r.break) };
+}).sort((a, b) => b.more - a.more);
+const data = Object.fromEntries(sides.map((s) => [s.side, s.counts]));
+const fmtN = (n) => (n === 1 ? "one" : String(n));
+---
+<Base title="Grow the tree" dek="A family tree has room for twice as many people every step back. Watch a fan grow, and see where the names run out.">
+  <div class="hero" style="text-align:left">
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--italy)">Going back</div>
+      <h1 style="font-size:clamp(38px,7vw,70px)">Grow the tree</h1>
+      <p class="lead big">Everybody has two parents, four grandparents, eight great-grandparents… every step back doubles.
+      Press <b>Grow</b> and watch the tree fill up. Then see where the names stop, and why the empty places are the fun part.</p>
+    </div>
+  </div>
+
+  <section style="padding-top:6px">
+    <div class="wrap">
+      <div class="gtool" id="gtool">
+        <div class="gtabs" role="tablist" aria-label="Whose tree">
+          {sides.map((s, i) => <button type="button" role="tab" class={`gtab${i === 0 ? " on" : ""}`} data-side={s.side} aria-selected={i === 0 ? "true" : "false"}>{s.kids}’s tree</button>)}
+        </div>
+        <div class="gbar">
+          <button type="button" class="rplay" id="ggrow">Grow it</button>
+          <button type="button" class="gstep" id="gnext">One more ring</button>
+          <button type="button" class="gstep" id="gall">Show all</button>
+          <div class="gsay" id="gsay" aria-live="polite"></div>
+        </div>
+        <div class="gfan">
+          {sides.map((s, i) => <div class="gpane" data-side={s.side} hidden={i !== 0}><FanChart side={s.side} id={`fan-${s.side}`} /></div>)}
+        </div>
+        <div class="gcard" id="gcard"><p class="rcard-h">Tap anybody on the fan.</p><p>Each coloured place is a family from this website. Dotted places are people the family has not found yet.</p></div>
+        <p class="rkey"><span class="gk gk-n"></span> a family from this site · <span class="gk gk-o"></span> a wife or husband the line names · <span class="gk gk-u"></span> nobody found yet</p>
+      </div>
+      <script type="application/json" id="gdata" set:html={JSON.stringify(data)}></script>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Room for them all, and who we have found</h2>
+      <p class="lead">Every ring has room for double the one before. Here is how many places there are and how many of them have a name.</p>
+      <div class="gtables">
+        {sides.map((s) => (
+          <table class="gtable">
+            <caption>{s.kids}</caption>
+            <thead><tr><th>Step back</th><th>Room for</th><th>Named</th></tr></thead>
+            <tbody>
+              {s.counts.map((c) => <tr><th scope="row">{c.lab}</th><td>{c.room}</td><td class={c.named === c.room ? "full" : "gap"}>{c.named}{c.room > c.named ? ` · ${c.room - c.named} still to find` : ""}</td></tr>)}
+            </tbody>
+          </table>
+        ))}
+      </div>
+      <p class="rnote">Ring four is where the fan ends because it is as far as <i>every</i> branch has been followed. The lines are not
+      all the same: each of the ten families has been followed on as a single line, father to father, far past it.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Past the fan: the ten lines keep going</h2>
+      <p class="lead">Each family’s own line goes back one name at a time. Here is how many more steps each one climbs beyond the edge of the fan.</p>
+      <ol class="gdeep">
+        {deeper.map((d) => (
+          <li class={`c-${d.key}`}>
+            <a href={u(`/${d.slug}/`)}><b>{d.name}</b></a>
+            <span class="gbars" aria-hidden="true">{Array.from({ length: d.more }, () => <i></i>)}</span>
+            <span class="gn">{d.more === 0 ? "the fan reaches the top of this line" : `${fmtN(d.more)} more ${d.more === 1 ? "step" : "steps"}`}{d.gap ? ", then a gap in the line" : ""}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <script is:inline>
+  (function () {
+    var tool = document.getElementById("gtool"); if (!tool) return;
+    var data = JSON.parse(document.getElementById("gdata").textContent);
+    var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var side = "add", shown = 4, timer = null;
+    var q = function (s) { return tool.querySelector(s); };
+    var panes = [].slice.call(tool.querySelectorAll(".gpane"));
+    var say = q("#gsay"), card = q("#gcard");
+    var NUM = ["no", "one", "two", "three", "four"];
+    function svg() { return tool.querySelector('.gpane[data-side="' + side + '"] svg'); }
+    function draw() {
+      [].forEach.call(tool.querySelectorAll(".fring"), function (g) { g.style.opacity = (+g.getAttribute("data-ring") <= shown) ? 1 : 0; g.style.pointerEvents = (+g.getAttribute("data-ring") <= shown) ? "auto" : "none"; g.setAttribute("aria-hidden", (+g.getAttribute("data-ring") <= shown) ? "false" : "true"); });
+      [].forEach.call(tool.querySelectorAll(".seg"), function (g) { g.tabIndex = (+g.getAttribute("data-ring") <= shown) ? 0 : -1; });
+      if (shown === 0) { say.textContent = "Just you. Press Grow."; return; }
+      var c = data[side][shown - 1];
+      say.textContent = c.lab + ": room for " + c.room + ", " + (c.named === c.room ? "all " + c.named + " named" : c.named + " named, " + (c.room - c.named) + " still to find") + ".";
+    }
+    function stop() { clearTimeout(timer); timer = null; q("#ggrow").textContent = "Grow it"; }
+    function grow() {
+      stop(); shown = 0; draw(); q("#ggrow").textContent = "Stop";
+      (function next() {
+        if (shown >= 4) { stop(); q("#ggrow").textContent = "Grow it again"; return; }
+        timer = setTimeout(function () { shown++; draw(); next(); }, reduce ? 900 : 1100);
+      })();
+    }
+    q("#ggrow").addEventListener("click", function () { if (timer) { stop(); } else { grow(); } });
+    q("#gnext").addEventListener("click", function () { stop(); shown = shown >= 4 ? 1 : shown + 1; draw(); });
+    q("#gall").addEventListener("click", function () { stop(); shown = 4; draw(); });
+    [].forEach.call(tool.querySelectorAll(".gtab"), function (b) {
+      b.addEventListener("click", function () {
+        stop(); side = b.getAttribute("data-side");
+        [].forEach.call(tool.querySelectorAll(".gtab"), function (x) { var on = x === b; x.classList.toggle("on", on); x.setAttribute("aria-selected", on ? "true" : "false"); });
+        panes.forEach(function (p) { p.hidden = p.getAttribute("data-side") !== side; });
+        shown = 4; draw();
+      });
+    });
+    function show(g) {
+      if (!g) return;
+      var unk = g.getAttribute("data-unknown") === "1", name = g.getAttribute("data-name"), rel = g.getAttribute("data-rel"), when = g.getAttribute("data-when"), slug = g.getAttribute("data-slug"), k = g.getAttribute("data-k");
+      card.innerHTML = "";
+      var h = document.createElement("p"); h.className = "rcard-h" + (k && k !== "other" && k !== "unknown" ? " c-" + k : ""); h.textContent = unk ? rel + ": not found yet" : name; card.appendChild(h);
+      var r = document.createElement("p"); r.className = "rcard-r";
+      r.textContent = unk ? "The line does not say who stood here." : rel + (when ? " · " + when : "") + (g.getAttribute("data-initials") === "1" ? " · living: initials only" : ""); card.appendChild(r);
+      var t = document.createElement("p");
+      if (unk) t.textContent = "Somebody stood here, because everybody has two parents. Finding out who is the work of the archives.";
+      else if (k === "other") t.textContent = "The line names this person but this site does not follow their family back.";
+      else { t.textContent = slug ? "From the " : ""; if (slug) { var a = document.createElement("a"); a.href = "../" + slug + "/"; a.textContent = slug.charAt(0).toUpperCase() + slug.slice(1) + " family"; t.appendChild(a); t.appendChild(document.createTextNode(".")); } }
+      card.appendChild(t);
+    }
+    tool.addEventListener("click", function (e) { var g = e.target.closest(".seg"); if (g) show(g); });
+    tool.addEventListener("keydown", function (e) { if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("seg")) { e.preventDefault(); show(e.target); } });
+    draw();
+  })();
+  </script>
+</Base>

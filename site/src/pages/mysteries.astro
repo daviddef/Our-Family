@@ -1,0 +1,75 @@
+---
+import Base from "../layouts/Base.astro";
+import { u } from "../lib/url.js";
+import { cases } from "../data/mysteries.js";
+import { families } from "../data/families.js";
+const name = new Map(families.map((f) => [f.slug, f.name]));
+const KIND = { record: "In a record", story: "Family story", tree: "Other people’s tree" };
+const STATUS = { open: "Still open", closer: "Getting closer" };
+const nOpen = cases.filter((c) => c.status === "open").length;
+---
+<Base title="Mysteries" dek={`${cases.length} cases the family has not cracked yet. Read the clues, weigh the theories, and see what would solve each one.`}>
+  <div class="hero" style="text-align:left">
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--blazevic)">Unsolved</div>
+      <h1 style="font-size:clamp(38px,7vw,70px)">The case board</h1>
+      <p class="lead big">Ten families have been looked into by seven archives, and there are still questions nobody can answer.
+      Here are {cases.length} of them, as cases. {nOpen} are wide open. The rest are getting closer.</p>
+    </div>
+  </div>
+
+  <section style="padding-top:6px">
+    <div class="wrap">
+      <div class="dkit">
+        <div><b>A clue</b><span>something a record, or a person, actually says.</span></div>
+        <div><b>A theory</b><span>something that <i>might</i> be true. It is never a fact until a record backs it.</span></div>
+        <div><b>Proof</b><span>the paper that would close the case. Every case says what it would be.</span></div>
+      </div>
+      <div class="dleg" aria-label="What the tags on a clue mean">
+        <span class="dtag k-record">In a record</span> a document says it
+        <span class="dtag k-story">Family story</span> somebody remembers it
+        <span class="dtag k-tree">Other people’s tree</span> a family tree, not a document
+      </div>
+      <div class="dfilter" id="dfilter" role="group" aria-label="Show cases">
+        <button type="button" class="rchip on" data-s="">All {cases.length}</button>
+        <button type="button" class="rchip" data-s="open">Still open</button>
+        <button type="button" class="rchip" data-s="closer">Getting closer</button>
+      </div>
+      <div class="board" id="board">
+        {cases.map((c, i) => (
+          <details class={`case c-${c.k}`} data-s={c.status} open={i < 2}>
+            <summary>
+              <span class="cno">Case {i + 1}</span>
+              <span class={`stamp ${c.status}`}>{STATUS[c.status]}</span>
+              <span class="ctitle">{c.title}</span>
+              <span class="cask">{c.ask}</span>
+            </summary>
+            <div class="cbody">
+              <h3>Clues</h3>
+              <ul class="clues">
+                {c.clues.map((k) => <li>{k.kind && <span class={`dtag k-${k.kind}`}>{KIND[k.kind]}</span>} {k.t}</li>)}
+              </ul>
+              {c.theories.length > 0 && <h3>Theories</h3>}
+              {c.theories.length > 0 && <ul class="theories">{c.theories.map((t) => <li>{t}</li>)}</ul>}
+              <h3>What would crack it</h3>
+              <p>{c.next}</p>
+              <a class="cfam" href={u(`/${c.slug}/`)}>The {name.get(c.slug)} family →</a>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+  (function () {
+    var f = document.getElementById("dfilter"); if (!f) return;
+    f.addEventListener("click", function (e) {
+      var b = e.target.closest(".rchip"); if (!b) return;
+      var s = b.getAttribute("data-s");
+      [].forEach.call(f.querySelectorAll(".rchip"), function (x) { x.classList.toggle("on", x === b); });
+      [].forEach.call(document.querySelectorAll("#board .case"), function (c) { c.hidden = !!s && c.getAttribute("data-s") !== s; });
+    });
+  })();
+  </script>
+</Base>

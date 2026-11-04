@@ -46,7 +46,7 @@ const here = Astro.url.pathname;
         ))}
       </div>
       <div class="navtopics" aria-label="The rest of the site" role="group">
-        {[["/routes/","Roots & Routes"],["/journeys/","Journeys"],["/walk/","The walk"],["/places/","Places"],["/jobs/","Jobs"],
+        {[["/routes/","Roots & Routes"],["/grow/","Grow the tree"],["/mysteries/","Mysteries"],["/journeys/","Journeys"],["/walk/","The walk"],["/places/","Places"],["/jobs/","Jobs"],
           ["/cousins/","Cousins"],["/when/","When"],["/meanwhile/","Meanwhile"],["/words/","Words"],["/cards/","Cards"],["/picture/","Find it"]].map(([h,l]) => (
           <a href={u(h)} class={`c-sun topic ${here === u(h) ? "on" : ""}`}>{l}</a>
         ))}

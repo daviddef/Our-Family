@@ -2,16 +2,20 @@
 import { u } from "../lib/url.js";
 import SkipLink from "@daviddef/archive-kit/components/SkipLink.astro";
 import { families } from "../data/families.js";
+import household from "../data/household.json";
 const { title, dek, key } = Astro.props;
-const SITE = "Our Family";
+const SITE = household.siteName;
+const H = household.howMany;
+const list = (a) => a.length < 2 ? a.join("") : `${a.slice(0, -1).join(", ")} and ${a.at(-1)}`;
+const about = `${H.families} families, ${H.continents} continents, ${H.cousins} cousins in ${household.city}`;
 const here = Astro.url.pathname;
 ---
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>{title === SITE ? "Our Family — where we come from" : `${title} — ${SITE}`}</title>
-<meta name="description" content={dek ?? "Ten families, four continents, four cousins in Brisbane — a family story told for children. Living people are named by initial only."} />
+<title>{title === SITE ? `${SITE} — where we come from` : `${title} — ${SITE}`}</title>
+<meta name="description" content={dek ?? `${about} — a family story told for children. Living people are named by initial only.`} />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,500&family=Nunito:wght@400;700;800&display=swap" />
@@ -20,8 +24,8 @@ const here = Astro.url.pathname;
 <link rel="canonical" href={new URL(here.replace(/\/+$/, "") + "/", Astro.site).href} />
 <meta property="og:url" content={new URL(here.replace(/\/+$/, "") + "/", Astro.site).href} />
 <meta property="og:type" content="website" />
-<meta property="og:title" content={title === SITE ? "Our Family — where we come from" : `${title} — ${SITE}`} />
-<meta property="og:description" content={dek ?? "Ten families, four continents, four cousins in Brisbane — a family story told for children."} />
+<meta property="og:title" content={title === SITE ? `${SITE} — where we come from` : `${title} — ${SITE}`} />
+<meta property="og:description" content={dek ?? `${about} — a family story told for children.`} />
 <meta property="og:image" content={new URL(u("/og.jpg"), Astro.site).href} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -61,8 +65,8 @@ const here = Astro.url.pathname;
     <div class="flinks">
       {[...new Map(families.map(f => [f.archive, f])).values()].map(f => <a href={f.archive}>{f.archiveName} →</a>)}
     </div>
-    <p class="dim">Built for ADD, MCD, RFM and MJM, {new Date().getFullYear()}. Everyone still living is shown by initial only, with no dates. If anything here is wrong,
-    it should be fixed — tell us and we will fix it.</p>
+    <p class="dim">Built for {list(household.children)}, {new Date().getFullYear()}. Everyone still living is shown by initial only, with no dates. If anything here is wrong,
+    it should be fixed — tell us and we will fix it. <a href={u("/privacy/")}>Privacy</a></p>
   </div>
 </footer>
 

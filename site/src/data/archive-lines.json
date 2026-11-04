@@ -1,0 +1,597 @@
+{
+ "_note": "Made by scripts/sync_archives.py from the archives' own direct lines; do not edit by hand. Living people are kept as {living: true} and nothing else.",
+ "syncedAt": "2026-11-04",
+ "families": {
+  "defranceski": {
+   "repo": "daviddef/TheDefranceski",
+   "file": "site/src/data/direct-line.json",
+   "source": "direct-line",
+   "archive": "https://archive.defranceski.com/",
+   "cards": [
+    {
+     "name": "Giovanni Defranceschi",
+     "years": "",
+     "person": "giovanni-defranceschi-1750"
+    },
+    {
+     "name": "Giovanni Battista Defranceschi",
+     "years": "",
+     "person": "giovanni-battista-defranceschi-1787"
+    },
+    {
+     "name": "Antonio Defranceschi",
+     "years": "",
+     "person": "antonio-defranceschi-1825"
+    },
+    {
+     "name": "Josip Defranceschi",
+     "years": "",
+     "person": "josip-defranceschi-1863"
+    },
+    {
+     "name": "Anton Rudolf Defranceski",
+     "years": "",
+     "person": "anton-rudolf-defranceski-1890"
+    },
+    {
+     "name": "Ivan Defranceski",
+     "years": "",
+     "person": "ivan-defranceski-1925"
+    },
+    {
+     "name": "Ivan Defranceski",
+     "years": "",
+     "person": "ivan-defranceski-1951"
+    },
+    {
+     "living": true
+    }
+   ]
+  },
+  "falco": {
+   "repo": "daviddef/TheFalco",
+   "file": "site/src/data/story.json",
+   "source": "ribbon",
+   "archive": "https://falco.defranceski.com/",
+   "cards": [
+    {
+     "name": "Matteo Falco",
+     "years": "c. 1747–1802",
+     "origin": "Arienzo",
+     "grade": "inf",
+     "person": "matteo-falco-of-matteo-falco-francesca-crisci",
+     "title": "Found at Arienzo from his children's baptisms; his own baptism would fall in the register's gap of 1738 to 1761, so where he was born is not documented"
+    },
+    {
+     "name": "Pasquale Falco",
+     "years": "1767–1834",
+     "origin": "Arienzo",
+     "grade": "doc",
+     "person": "pasquale-falco-of-pasquale-falco-chiara-rivetti",
+     "title": "Baptised at Sant'Andrea, Arienzo, 24 July 1767; died on strada Camellara"
+    },
+    {
+     "name": "Vincenzo Falco",
+     "years": "1792–1875",
+     "origin": "Arienzo",
+     "grade": "doc",
+     "person": "vincenzo-falco-of-vincenzo-falco-andreana-crisci",
+     "title": "Baptised at Arienzo, 1 February 1792, by the extract in his marriage file"
+    },
+    {
+     "name": "Raffaele Falco",
+     "years": "1818–1880",
+     "origin": "Arienzo",
+     "grade": "doc",
+     "person": "raffaele-falco-of-raffaele-falco-angela-rosa-morgill",
+     "title": "Born in his father's house on strada Camellara, 10 May 1818"
+    },
+    {
+     "name": "Carminantonio Falco",
+     "years": "b. 1850",
+     "origin": "Arienzo",
+     "grade": "doc",
+     "person": "carmine-antonio-falco",
+     "title": "Born at Arienzo, 10 July 1850; no death is recorded in the archive"
+    },
+    {
+     "name": "Raffaele Falco",
+     "years": "b. 1873",
+     "origin": "Arienzo",
+     "grade": "doc",
+     "person": "raffaele-falco-of-raffaele-falco-costanza-maione",
+     "title": "Born at Arienzo, 6 April 1873; a son registered at Arpaia in 1913, by inference his; no death is recorded in the archive"
+    },
+    {
+     "name": "Carminantonio Falco",
+     "years": "1901–1985 or 1988",
+     "origin": "Arienzo",
+     "grade": "doc",
+     "person": "carmine-antonio-falco-of-carmine-antonio-falco-filomena-ann",
+     "title": "Born at Arienzo, 11 January 1901, by his passport; at Forchia in 1937; died at Brisbane, the year in dispute"
+    },
+    {
+     "name": "Carmine Falco",
+     "years": "1930–2026",
+     "origin": "Forchia",
+     "grade": "doc",
+     "person": "carmine-falco-of-carmine-antonio-falco-filomena-ann",
+     "title": "Born at Forchia, 8 June 1930, by the army's register; on the passenger list of 1964 to Brisbane"
+    },
+    {
+     "living": true
+    }
+   ]
+  },
+  "blazevic": {
+   "repo": "daviddef/TheBlazevic",
+   "file": "site/src/data/story.json",
+   "source": "ribbon",
+   "archive": "https://blazevic.defranceski.com/",
+   "cards": [
+    {
+     "name": "Mateša Blažević",
+     "years": "b. 1750",
+     "origin": "Smokvica Krmpotska",
+     "grade": "lore",
+     "person": "matesa-blazevic",
+     "title": "The earliest on the line, from the family's tree only; no register read for him"
+    },
+    {
+     "name": "Grgica Blažević",
+     "years": "b. 1770",
+     "origin": "Smokvica Krmpotska",
+     "grade": "lore",
+     "person": "grgica-blazevic",
+     "title": "The family's tree only"
+    },
+    {
+     "name": "Ilija Blažević",
+     "years": "b. 1790",
+     "origin": "Smokvica Krmpotska",
+     "grade": "lore",
+     "person": "ilija-blazevic",
+     "title": "The family's tree, placed at Smokvica Krmpotska"
+    },
+    {
+     "name": "Anton Blažević",
+     "years": "",
+     "origin": "Smokvica Krmpotska",
+     "grade": "lore",
+     "person": "anton-blazevic-5",
+     "title": "Toma's father in the family's tree; no year at all"
+    },
+    {
+     "name": "Toma Blažević",
+     "years": "1838–1907",
+     "origin": "Smokvica Krmpotska",
+     "grade": "doc",
+     "person": "toma-tomislav-blazevic",
+     "title": "At house 114 in 1882 and 1884 by the baptisms; a day labourer dying at Senj in 1907"
+    },
+    {
+     "name": "Juraj «Jurko» Blažević",
+     "years": "† before 1920",
+     "origin": "Smokvica Krmpotska",
+     "grade": "inf",
+     "person": "juraj-georgius-jure-blazevic",
+     "title": "At Smokvica 114 in 1895; that he came from Toma's household is the archive's inference"
+    },
+    {
+     "name": "Ljubomir Blažević",
+     "years": "1892–1966",
+     "origin": "Rijeka",
+     "grade": "doc",
+     "person": "ljubomir-blazevic",
+     "title": "Born at Rijeka by his marriage entry; a sailor at Senj"
+    },
+    {
+     "name": "Hedviga Blažević",
+     "years": "1926–2001",
+     "origin": "Senj",
+     "grade": "doc",
+     "person": "hedviga-blazevic",
+     "title": "Born at Senj, confirmed by a register extract; resident at Crikvenica by the same extract"
+    },
+    {
+     "living": true
+    }
+   ]
+  },
+  "lerena": {
+   "repo": "daviddef/TheLerena",
+   "file": "site/src/data/story.json",
+   "source": "ribbon",
+   "archive": "https://lerena.defranceski.com/",
+   "cards": [
+    {
+     "name": "Félix Llerena",
+     "years": "named 1791",
+     "origin": "Córdoba",
+     "grade": "doc",
+     "person": "felix-lerena",
+     "title": "Named, with his wife, on his son's marriage act of 1791 and a grandson's baptism of 1811; nothing else is known of either"
+    },
+    {
+     "name": "Sancho Llerena",
+     "years": "c.1767–after 1812",
+     "origin": "Córdova la Llana",
+     "grade": "doc",
+     "person": "sancho-llerena-aguilar",
+     "title": "Married at Canelones in 1791; in the census of Montevideo in 1812"
+    },
+    {
+     "name": "Sancho's children",
+     "years": "1791–1815",
+     "origin": "Canelones",
+     "grade": "doc",
+     "title": "Nine children are named in the papers; no paper says which of them, if any, is the parent of the next card"
+    },
+    {
+     "name": "Juan Carlos Lerena",
+     "years": "by 1882",
+     "origin": "the River Plate",
+     "grade": "inf",
+     "person": "juan-carlos-lerena",
+     "title": "Two names on their son's Argentine army card, and no other record of either anywhere"
+    },
+    {
+     "name": "Pablo Armando Lerena",
+     "years": "1882–1950",
+     "origin": "Rosario de Santa Fe",
+     "grade": "doc",
+     "person": "pablo-armando-lerena",
+     "title": "Born at Rosario by his own passport; a horse-dealer, trainer and racehorse owner at the Cape"
+    },
+    {
+     "name": "Nuno Fernando Lerena",
+     "years": "1924–1971",
+     "origin": "Wynberg, Cape Town",
+     "grade": "doc",
+     "person": "nuno-fernando-lerena",
+     "title": "Born at Wynberg; married at Johannesburg; a salesman at Germiston"
+    },
+    {
+     "living": true
+    }
+   ]
+  },
+  "booyzen": {
+   "repo": "daviddef/TheBooyzen",
+   "file": "site/src/data/story.json",
+   "source": "ribbon",
+   "archive": "https://booyzen.defranceski.com/",
+   "cards": [
+    {
+     "name": "Gerthardus Lodewikus Booysen",
+     "years": "",
+     "origin": "the Cape, place not known",
+     "grade": "inf",
+     "person": "gerthardus-lodewikus-booysen",
+     "title": "Named only as a parent, on his son's death notice of 1876; no dates"
+    },
+    {
+     "name": "Petrus Jacobus Booysen",
+     "years": "c. 1788–1876",
+     "origin": "Graaff-Reinet",
+     "grade": "doc",
+     "person": "petrus-jacobus-booysen",
+     "title": "Born at Graaff-Reinet by his death notice; died a widower in the Transvaal; a second wife, Elizabetha van der Merwe"
+    },
+    {
+     "name": "Petrus Jacobus Booysen",
+     "years": "1812–1884",
+     "origin": "district Graaff-Reinet",
+     "grade": "doc",
+     "title": "Born in the district of Graaff-Reinet by his death notice; a farmer at Zevenfontein who owned his clothes; he shares his father's person page, so this card has no link of its own"
+    },
+    {
+     "name": "Willem Hermanus Booyzen",
+     "years": "1851–1905",
+     "origin": "achter Sneeuwberg",
+     "grade": "doc",
+     "person": "willem-hermanus-william-henry-booyzen",
+     "title": "Baptised behind the Sneeuberg in 1851; a farmer of Lady Grey in 1879, a mason at Indwe in 1905"
+    },
+    {
+     "name": "George Downing Mountjoy Booyzen",
+     "years": "1901–1947",
+     "origin": "the Cape",
+     "grade": "inf",
+     "person": "george-downing-mountjoy-booyzen",
+     "title": "Born in the Cape in 1901 by the family's tree; no birthplace read; a railway clerk in Johannesburg"
+    },
+    {
+     "name": "Catherine Mary Sophia Booyzen",
+     "years": "1929–2013",
+     "origin": "South Africa, town not recorded",
+     "grade": "doc",
+     "person": "catherine-mary-sophia-booyzen",
+     "title": "Her birthday is in both her parents' death notices; married at St Joseph's, Mayfair, 1949"
+    },
+    {
+     "living": true
+    },
+    {
+     "living": true
+    }
+   ]
+  },
+  "darcy": {
+   "repo": "daviddef/TheDArcy",
+   "file": "site/src/data/story.json",
+   "source": "ribbon",
+   "archive": "https://darcy.defranceski.com/",
+   "cards": [
+    {
+     "name": "Robert D'Arcy",
+     "years": "by 1758–1827",
+     "origin": "Yorkshire, by family tradition",
+     "grade": "lore",
+     "person": "robert-d-arcy",
+     "title": "Second lieutenant of engineers 1776; Chatham, where he was buried in 1827. Where he came from is the family's story, not a paper's"
+    },
+    {
+     "name": "George Pitt D'Arcy",
+     "years": "1780–1849",
+     "origin": "Portsmouth or the West Indies",
+     "grade": "lore",
+     "person": "george-pitt-d-arcy-1783",
+     "title": "Born 1780 or 1783, the tree offering Portsmouth or the West Indies; Major of the 39th; at Parramatta from 1826"
+    },
+    {
+     "name": "George Lindsay D'Arcy",
+     "years": "1829–1901",
+     "origin": "Parramatta",
+     "grade": "doc",
+     "person": "george-lindsay-d-arcy",
+     "title": "Born at Parramatta, christened at Sydney 1829; in Brisbane from 1863"
+    },
+    {
+     "name": "George Pitt D'Arcy",
+     "years": "1864–1931",
+     "origin": "Brisbane",
+     "grade": "doc",
+     "person": "george-pitt-d-arcy-1864",
+     "title": "Born at Brisbane 1864, the first of the line born in Queensland; found dead at Banyo in 1931"
+    },
+    {
+     "name": "Lindesay Atkinson D'Arcy",
+     "years": "1892–1936",
+     "origin": "Brisbane",
+     "grade": "doc",
+     "person": "lindesay-atkinson-d-arcy",
+     "title": "Born at Brisbane 1892; of Botany Street, Clayfield, when he died in 1936"
+    },
+    {
+     "name": "Kenneth Lindsay D'Arcy",
+     "years": "1927–2010",
+     "origin": "Sandgate",
+     "grade": "doc",
+     "person": "kenneth-lindsay-d-arcy",
+     "title": "Born at Sandgate 1927; Brisbane, Townsville, Perth and Brisbane again"
+    },
+    {
+     "living": true
+    },
+    {
+     "living": true
+    }
+   ]
+  },
+  "mazza": {
+   "repo": "daviddef/TheMazza",
+   "file": "site/src/data/story.json",
+   "source": "ribbon",
+   "archive": "https://mazza.defranceski.com/",
+   "cards": [
+    {
+     "name": "Mariano Mazza",
+     "years": "c. 1809 – after 1871",
+     "origin": "Piedimonte Etneo",
+     "grade": "inf",
+     "person": "mariano-mazza-1809",
+     "title": "A bracciale at Piedimonte Etneo in 1845 and still living there in 1871; born there if he is the groom of 1836"
+    },
+    {
+     "name": "Rosario Mazza",
+     "years": "1845–1924",
+     "origin": "Piedimonte Etneo",
+     "grade": "doc",
+     "person": "rosario-mazza",
+     "title": "Born at Piedimonte Etneo, 2 June 1845; died there, at Presa, 15 November 1924"
+    },
+    {
+     "name": "Salvatore Mazza",
+     "years": "1873–1929",
+     "origin": "Piedimonte Etneo",
+     "grade": "doc",
+     "person": "salvatore-mazza",
+     "title": "Born in Contrada Terremorte, 5 January 1873; died in the frazione of Vena, 19 September 1929"
+    },
+    {
+     "name": "Sebastiano Mazza",
+     "years": "1920–2002",
+     "origin": "Piedimonte Etneo",
+     "grade": "lore",
+     "person": "sebastiano-mazza",
+     "title": "Born 22 October 1920, at Piedimonte Etneo by the family's tree; on the Toscana from Genoa in 1949; at Wacol in 1959"
+    },
+    {
+     "living": true
+    },
+    {
+     "living": true
+    }
+   ]
+  },
+  "prostamo": {
+   "repo": "daviddef/TheMazza",
+   "file": "site/src/data/family-lines.json",
+   "source": "line:prostamo",
+   "archive": "https://mazza.defranceski.com/",
+   "cards": [
+    {
+     "name": "Franco Antonino Prostamo",
+     "years": "b. 1697",
+     "origin": "Briatico",
+     "grade": "lore",
+     "person": "franco-antonino-prostamo",
+     "title": "Franco Antonino Prostamo: born Briatico 1697"
+    },
+    {
+     "name": "Antonino Prostamo",
+     "years": "b. 1726",
+     "origin": "Briatico",
+     "grade": "lore",
+     "person": "antonino-prostamo",
+     "title": "Antonino Prostamo: born Briatico 1726"
+    },
+    {
+     "name": "Pasquale Prostamo",
+     "years": "1760–1829",
+     "origin": "Briatico",
+     "grade": "lore",
+     "person": "pasquale-prostamo",
+     "title": "Pasquale Prostamo: born Briatico 1760; died Pizzo 1829"
+    },
+    {
+     "name": "Antonino Prostamo",
+     "years": "b. 1785",
+     "origin": "Briatico",
+     "grade": "lore",
+     "person": "antonino-prostamo-1785",
+     "title": "Antonino Prostamo: born Briatico 1785"
+    },
+    {
+     "name": "Domenico Prostamo",
+     "years": "b. 1820",
+     "origin": "Briatico",
+     "grade": "lore",
+     "person": "domenico-prostamo-1820",
+     "title": "Domenico Prostamo: born Briatico 1820"
+    },
+    {
+     "name": "Alfonso Prostamo",
+     "years": "b. 1858",
+     "origin": "Briatico",
+     "grade": "lore",
+     "person": "alfonso-prostamo",
+     "title": "Alfonso Prostamo: born Briatico 1858"
+    },
+    {
+     "name": "Francessco Prostamo",
+     "years": "1900–1983",
+     "origin": "Briatico",
+     "grade": "lore",
+     "person": "francessco-prostamo",
+     "title": "Francessco Prostamo: born Briatico 1900; died Briatico 1983"
+    },
+    {
+     "name": "Domenica Prostamo",
+     "years": "1928–2010",
+     "origin": "Briatico",
+     "grade": "lore",
+     "person": "domenica-prostamo",
+     "title": "Domenica Prostamo: born Briatico 1928; died Brisbane 2010"
+    }
+   ]
+  },
+  "arena": {
+   "repo": "daviddef/TheMazza",
+   "file": "site/src/data/family-lines.json",
+   "source": "line:arena",
+   "archive": "https://mazza.defranceski.com/",
+   "cards": [
+    {
+     "name": "Filippo Arena",
+     "years": "d. before 1830",
+     "origin": "Scilla",
+     "grade": "doc",
+     "person": "filippo-arena-1830",
+     "title": "Filippo Arena: born Scilla; died before 12 July 1830"
+    },
+    {
+     "name": "Orazio Arena",
+     "years": "c. 1751 – 1830",
+     "origin": "Scilla",
+     "grade": "doc",
+     "person": "orazio-arena-1751",
+     "title": "Orazio Arena: born Scilla c. 1751; died 12 July 1830"
+    },
+    {
+     "name": "Filippo Arena",
+     "years": "b. 1793",
+     "origin": "Scilla",
+     "grade": "doc",
+     "person": "filippo-arena",
+     "title": "Filippo Arena: born Scilla 25 March 1793"
+    },
+    {
+     "name": "Francesco Antonio Arena",
+     "years": "1819–1901",
+     "origin": "Scilla",
+     "grade": "doc",
+     "person": "francesco-antonio-arena",
+     "title": "Francesco Antonio Arena: born Scilla 25 November 1819; died 29 August 1901"
+    },
+    {
+     "name": "Giovanni Arena",
+     "years": "b. 1870",
+     "origin": "Scilla",
+     "grade": "lore",
+     "person": "giovanni-arena",
+     "title": "Giovanni Arena: born Scilla 1870"
+    },
+    {
+     "name": "Giuseppe Arena",
+     "years": "1892–1984",
+     "origin": "Scilla",
+     "grade": "doc",
+     "person": "giuseppe-arena",
+     "title": "Giuseppe Arena: born Scilla 1892; died Scilla 1984"
+    },
+    {
+     "name": "Rocco Arena",
+     "years": "1924–1999",
+     "origin": "Scilla",
+     "grade": "lore",
+     "person": "rocco-arena-1924",
+     "title": "Rocco Arena: born Scilla 1924; died Brisbane 1999"
+    }
+   ]
+  },
+  "polistena": {
+   "repo": "daviddef/TheMazza",
+   "file": "site/src/data/family-lines.json",
+   "source": "line:polistena",
+   "archive": "https://mazza.defranceski.com/",
+   "cards": [
+    {
+     "name": "Antonio Polistena",
+     "years": "",
+     "origin": "Scilla",
+     "grade": "lore",
+     "person": "antonio-polistena-2",
+     "title": "Antonio Polistena: born Scilla"
+    },
+    {
+     "name": "Giovanni Polistena",
+     "years": "b. 1883",
+     "origin": "Scilla",
+     "grade": "doc",
+     "person": "giovanni-polistena",
+     "title": "Giovanni Polistena: born Scilla 1883"
+    },
+    {
+     "name": "Angela Polistena",
+     "years": "1925–2018",
+     "origin": "Scilla",
+     "grade": "lore",
+     "person": "angela-polistena",
+     "title": "Angela Polistena: born Scilla 1925; died Brisbane 2018"
+    }
+   ]
+  }
+ }
+}

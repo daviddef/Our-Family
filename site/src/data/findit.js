@@ -14,7 +14,7 @@ export const spots = [
   { n: 6,  x: 41, y: 45, k: "mazza",     what: "A smoking volcano",
     why: "That is Etna. Sebastiano Mazza was born at Piedimonte Etneo — a name that means, literally, “the foot of Etna”." },
   { n: 7,  x: 44, y: 56, k: "mazza",     what: "A village in the orange groves",
-    why: "The Sicilian side. Of all ten families this is the shallowest — it stops after four generations, at a man with no dates at all." },
+    why: "The Sicilian side. Of all ten families this is one of the shallowest — it stops after four generations, at a labourer called Mariano whose father nobody has found." },
   { n: 8,  x: 50, y: 47, k: "arena",     what: "A castle on a rock",
     why: "Scilla, on the strait between Sicily and the mainland. Rocco Arena came from here — and Rocco is named after him." },
   { n: 9,  x: 48, y: 85, k: "polistena", what: "Boats with very tall prows",

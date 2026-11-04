@@ -39,6 +39,10 @@ jobs:
       - name: Install
         run: npm ci || npm install
         working-directory: site
+      # The ladder gate proved on synthetic archives: it must fail when an archive moves away from the page.
+      - name: Test the ladder gate
+        run: npm test
+        working-directory: site
       # This is the step the pull_request trigger exists for: `build` is
       # `astro build && npm run check:living && npm run check:kit`, so a leak
       # of a living person fails the PR instead of failing main.

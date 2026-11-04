@@ -12,25 +12,44 @@
 const X0 = 1680, X1 = 2035, L = 34, R = 620, PX = 646;
 const x = y => L + ((y - X0) / (X1 - X0)) * (R - L);
 
+import lines from "../data/archive-lines.json";
+import { cardKey, forename, startYear } from "../lib/ladders.js";
+
+/* THE YEARS COME FROM THE ARCHIVES' CARDS, NOT FROM THIS FILE. A row names the family and the card its solid bar
+   starts at; the year and the name are read from the snapshot (data/archive-lines.json), so a corrected year
+   moves the bar. `ghost` is the card the faded bar reaches, by the same rule. `from` / `ghost` as numbers are
+   for a bar that starts somewhere no card says (a family chart, a tree in England). */
+const card = (fam, ref) => {
+  const c = lines.families[fam].cards.find((c) => cardKey(c) === ref);
+  if (!c) throw new Error(`SpanChart: ${fam} has no card ${ref} in the archive snapshot`);
+  return c;
+};
+const bar = (k, name, fam, ref, at, extra = {}) => {
+  const c = card(fam, ref);
+  const from = extra.from ?? startYear(c.years);
+  if (!from) throw new Error(`SpanChart: ${fam}/${ref} has no year; give one`);
+  const ghost = typeof extra.ghost === "string" ? startYear(card(fam, extra.ghost).years) : extra.ghost;
+  return { k, name, from, who: extra.who ?? forename(c.name), at, ghost, ghostNote: extra.ghostNote };
+};
 const rows = [
-  // The Mazza archive marks the four generations above 1785 as resting on the
-  // family tree alone, so the solid bar starts where the paper does - Domenico
-  // in 1820 - and 1697 becomes the ghost it already knew how to draw.
-  { k: "prostamo",  name: "Prostamo",    from: 1820, who: "Domenico", at: "Briatico",
-    ghost: 1697, ghostNote: "Franco Antonino \u2014 on the family tree, not in any register" },
-  { k: "britain",   name: "D’Arcy",      from: 1751, who: "Robert", at: "Yorkshire" },
-  { k: "italy",     name: "Falco",       from: 1767, who: "Pasquale", at: "Arienzo" },
-  { k: "croatia",   name: "Defranceski", from: 1787, who: "Giov. Battista", at: "Gračišće",
-    ghost: 1750, ghostNote: "Giovanni — on the family chart, not yet in a register" },
-  { k: "safrica",   name: "Booyzen",     from: 1788, who: "Petrus Jacobus", at: "the Cape",
-    ghost: 1683, ghostNote: "Downing, in England — untested" },
-  { k: "blazevic",  name: "Blažević",    from: 1838, who: "Toma", at: "Smokvica",
-    ghost: 1750, ghostNote: "Mateša — named on a family tree, not in a register" },
-  { k: "arena",     name: "Arena",       from: 1870, who: "Giovanni", at: "Scilla" },
-  { k: "mazza",     name: "Mazza",       from: 1879, who: "Salvatore", at: "Piedimonte" },
-  { k: "argentina", name: "Lerena",      from: 1882, who: "Pablo Armando", at: "Rosario" },
-  { k: "polistena", name: "Polistena",   from: 1883, who: "Giovanni", at: "Scilla" },
-];
+  // The Mazza archive marks the generations above 1785 in the Prostamo line as resting on the
+  // family tree alone, so the solid bar starts where the paper does and 1697 is the ghost.
+  bar("prostamo", "Prostamo", "prostamo", "domenico-prostamo-1820", "Briatico",
+    { ghost: "franco-antonino-prostamo", ghostNote: "Franco Antonino \u2014 on the family tree, not in any register" }),
+  bar("arena", "Arena", "arena", "orazio-arena-1751", "Scilla"),
+  bar("britain", "D\u2019Arcy", "darcy", "robert-d-arcy", "Chatham"),
+  bar("italy", "Falco", "falco", "pasquale-falco-of-pasquale-falco-chiara-rivetti", "Arienzo"),
+  bar("croatia", "Defranceski", "defranceski", "giovanni-battista-defranceschi-1787", "Gra\u010di\u0161\u0107e",
+    { from: 1787, who: "Giov. Battista", ghost: 1750, ghostNote: "Giovanni \u2014 on the family chart, not yet in a register" }),
+  bar("safrica", "Booyzen", "booyzen", "petrus-jacobus-booysen", "the Cape",
+    { from: 1788, ghost: 1683, ghostNote: "Downing, in England \u2014 untested" }),
+  bar("mazza", "Mazza", "mazza", "mariano-mazza-1809", "Piedimonte"),
+  bar("blazevic", "Bla\u017eevi\u0107", "blazevic", "toma-tomislav-blazevic", "Smokvica",
+    { ghost: "matesa-blazevic", ghostNote: "Mate\u0161a \u2014 named on a family tree, not in a register" }),
+  bar("argentina", "Lerena", "lerena", "pablo-armando-lerena", "Rosario",
+    { ghost: "sancho-llerena-aguilar", ghostNote: "Sancho \u2014 a Llerena in the papers, but no paper joins him to Juan Carlos" }),
+  bar("polistena", "Polistena", "polistena", "giovanni-polistena", "Scilla"),
+].sort((a, b) => (b.k === "prostamo") - (a.k === "prostamo") || a.from - b.from);   // by where the solid bar starts; Prostamo, whose faded bar reaches furthest, first
 
 const ticks = [1700, 1750, 1800, 1850, 1900, 1950, 2000];
 const TOP = 54, H = 30, GAP = 52;

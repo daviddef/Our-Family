@@ -1,0 +1,65 @@
+{
+ "_note": "Where each family's direct line comes from. `how`: «ribbon» is the ribbon in the archive's story.json; «line:ID» is a surname line in family-lines.json; «direct-line» is direct-line.json (names only). Add a family with scripts/new_family.py.",
+ "families": {
+  "defranceski": {
+   "repo": "TheDefranceski",
+   "file": "site/src/data/direct-line.json",
+   "how": "direct-line",
+   "archive": "https://archive.defranceski.com/"
+  },
+  "falco": {
+   "repo": "TheFalco",
+   "file": "site/src/data/story.json",
+   "how": "ribbon",
+   "archive": "https://falco.defranceski.com/"
+  },
+  "blazevic": {
+   "repo": "TheBlazevic",
+   "file": "site/src/data/story.json",
+   "how": "ribbon",
+   "archive": "https://blazevic.defranceski.com/"
+  },
+  "lerena": {
+   "repo": "TheLerena",
+   "file": "site/src/data/story.json",
+   "how": "ribbon",
+   "archive": "https://lerena.defranceski.com/"
+  },
+  "booyzen": {
+   "repo": "TheBooyzen",
+   "file": "site/src/data/story.json",
+   "how": "ribbon",
+   "archive": "https://booyzen.defranceski.com/"
+  },
+  "darcy": {
+   "repo": "TheDArcy",
+   "file": "site/src/data/story.json",
+   "how": "ribbon",
+   "archive": "https://darcy.defranceski.com/"
+  },
+  "mazza": {
+   "repo": "TheMazza",
+   "file": "site/src/data/story.json",
+   "how": "ribbon",
+   "archive": "https://mazza.defranceski.com/"
+  },
+  "prostamo": {
+   "repo": "TheMazza",
+   "file": "site/src/data/family-lines.json",
+   "how": "line:prostamo",
+   "archive": "https://mazza.defranceski.com/"
+  },
+  "arena": {
+   "repo": "TheMazza",
+   "file": "site/src/data/family-lines.json",
+   "how": "line:arena",
+   "archive": "https://mazza.defranceski.com/"
+  },
+  "polistena": {
+   "repo": "TheMazza",
+   "file": "site/src/data/family-lines.json",
+   "how": "line:polistena",
+   "archive": "https://mazza.defranceski.com/"
+  }
+ }
+}

@@ -77,9 +77,9 @@ export const groups = [
     title: "They were soldiers — and one drew maps",
     icon: "anchor",
     jobs: [
-      { job: "Major", who: "George Pitt D'Arcy", when: "1783–1849", k: "britain",
+      { job: "Major", who: "George Pitt D'Arcy", when: "1780–1849", k: "britain",
         text: "An officer of the 39th Regiment of Foot. His job on the voyage to Australia in 1826 was guarding the convicts." },
-      { job: "Major-General", who: "Robert D'Arcy", when: "1751–1827", k: "britain",
+      { job: "Major-General", who: "Robert D'Arcy", when: "by 1758–1827", k: "britain",
         text: "He commanded the Royal Engineers at Chatham — the part of the army that builds bridges, forts and roads." },
       { job: "Surveyor", who: "Frederick Robert D'Arcy", when: "1811–1875", k: "britain",
         text: "In 1836 the Governor picked three men to go and chart Port Phillip Bay and the Yarra River. He was one of them. The city of Melbourne is there now." },

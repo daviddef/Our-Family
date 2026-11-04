@@ -83,7 +83,10 @@ relative is given as "your dad's cousin", which names no one in the household.
 a Play button and a year slider (the legs are `site/src/data/routes.js`, checked against the Journeys page by
 `scripts/routes.test.mjs`; the land is generated once by `site/scripts/make_world.mjs`) ·
 `/journeys/` how they crossed the world and why they left ·
-`/grow/` the family tree as a fan that grows ring by ring, and where its names run out (people from `site/src/data/pedigree.js`,
+`/grow/` the family as a real tree: the children are the crown and every family is a root going down. A rung the ladder does not
+mark `told` is a thick brown root, a `told` rung a thin dotted «we think» root with the ladder's own `toldWhy`, a `break` a gap
+(`lib/roottree.js`, `components/RootTree.astro`, `scripts/roottree.test.mjs`; nothing is typed there, the roots are the ladders).
+A second tab is the fan that doubles ring by ring and shows where the names run out (people from `site/src/data/pedigree.js`,
 shared with the Big Tree, drawn by `lib/fan.js`) · `/mysteries/` the unsolved questions as case files
 (`data/mysteries.js`, built from words the site already says; `scripts/mysteries.test.mjs` keeps them tied to the families) ·
 `/cousins/` also has a picker: choose two of the four and see which families and which places in the trees are shared ·

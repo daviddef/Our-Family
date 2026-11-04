@@ -1,0 +1,53 @@
+---
+// One child pair's family as a real tree: the crown is the children, each family is a root going down.
+// Thick brown roots are sure (the archive records them); thin dotted roots are «we think». See lib/roottree.js.
+import { SIDES } from "../lib/fan.js";
+import { buildRoots, layoutRoots, GROUND } from "../lib/roottree.js";
+import { families } from "../data/families.js";
+const { side, id } = Astro.props;
+const kids = SIDES[side].kids;
+const lay = layoutRoots(buildRoots(side, families));
+const { W, H, trunkX } = lay;
+const [k1, k2] = kids.split(" & ");
+// the crown: a heap of leafy circles, the same every build
+const crown = [[0, -60, 92], [-96, -30, 70], [96, -30, 70], [-52, -112, 66], [54, -114, 66], [-150, 10, 48], [150, 10, 48], [0, -146, 54], [-118, -86, 46], [118, -86, 46]];
+const ty = GROUND - 190;           // the middle of the crown
+---
+<svg class="rtree" id={id} data-side={side} viewBox={`0 0 ${W} ${H}`} role="img" aria-labelledby={`${id}-t`}>
+  <title id={`${id}-t`}>{kids}'s family as a tree: the children are the crown and each family is a root</title>
+  <rect class="rt-soil" x="0" y={GROUND} width={W} height={H - GROUND} />
+  <path class="rt-grass" d={`M0,${GROUND}Q${W * 0.25},${GROUND - 9} ${W * 0.5},${GROUND}T${W},${GROUND}`} />
+  <g class="rt-crown">
+    <path class="rt-trunk" d={`M${trunkX - 34},${GROUND + 4}C${trunkX - 22},${GROUND - 50} ${trunkX - 18},${GROUND - 100} ${trunkX - 14},${ty + 60}L${trunkX + 14},${ty + 60}C${trunkX + 18},${GROUND - 100} ${trunkX + 22},${GROUND - 50} ${trunkX + 34},${GROUND + 4}Z`} />
+    <path class="rt-bough" d={`M${trunkX - 10},${GROUND - 120}C${trunkX - 50},${GROUND - 150} ${trunkX - 80},${GROUND - 170} ${trunkX - 110},${GROUND - 200}M${trunkX + 10},${GROUND - 120}C${trunkX + 50},${GROUND - 150} ${trunkX + 80},${GROUND - 170} ${trunkX + 110},${GROUND - 200}`} />
+    {crown.map(([dx, dy, r]) => <circle class="rt-leaf" cx={trunkX + dx} cy={ty + dy + 60} r={r} />)}
+    <text class="rt-kids" x={trunkX} y={ty - 6} text-anchor="middle">{k1}</text>
+    <text class="rt-kids" x={trunkX} y={ty + 24} text-anchor="middle">&amp; {k2}</text>
+  </g>
+  {lay.roots.map((root) => (
+    <g class={`rt-root c-${root.key}`} data-key={root.key}>
+      {root.segs.map((s) => <path class={`rt-seg step${s.step} ${s.gap ? "gap" : s.sure ? "sure" : "think"}`} data-step={s.step} d={s.d} />)}
+      <g class="rt-tip" data-step={root.rungs.length}>
+        <path class="tipline" d={root.tip.d} />
+        <text class="rt-q" x={root.tip.qx} y={root.tip.qy} text-anchor="middle">?</text>
+      </g>
+      {root.rungs.map((r, k) => {
+        const p = root.pts[k];
+        const kind = r.gap ? "gap" : r.sure ? "sure" : "think";
+        return (
+          <g class={`rt-node ${kind}`} data-step={r.step} tabindex="0" role="button" data-key={root.key} data-slug={root.slug}
+             data-name={r.gap ? "" : r.full} data-rel={r.rel} data-when={r.when} data-where={r.where} data-kind={kind} data-why={r.why}
+             aria-label={r.gap ? `${root.name}: a gap in the line, ${r.when}` : `${root.name}, ${r.rel}: ${r.full}, ${r.when}, ${r.sure ? "sure" : "we think"}`}>
+            <circle class="hit" cx={p.x} cy={p.y} r="22" />
+            <circle class="dot" cx={p.x} cy={p.y} r={r.sure ? 10 : 9} />
+            {r.gap && <text class="rt-gapq" x={p.x} y={p.y} text-anchor="middle" dominant-baseline="central">?</text>}
+            <text class="rt-name" x={p.x + 17} y={p.y - 2}>{r.gap ? "a gap" : r.name}</text>
+            <text class="rt-when" x={p.x + 17} y={p.y + 13}>{r.when}</text>
+            {!r.sure && !r.gap && <text class="rt-think" x={p.x + 17} y={p.y + 26}>we think</text>}
+          </g>
+        );
+      })}
+      <text class="rt-fam" x={root.x - 14} y={GROUND + 80}>{root.name}</text>
+    </g>
+  ))}
+</svg>

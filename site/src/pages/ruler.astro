@@ -1,0 +1,141 @@
+---
+import Base from "../layouts/Base.astro";
+import { u } from "../lib/url.js";
+import { families } from "../data/families.js";
+import { buildLives, drawn } from "../lib/lives.js";
+import { sayYear } from "../lib/timecard.js";
+
+const { people, problems } = buildLives(families);
+if (problems.length && !(typeof process !== "undefined" && process.env.LADDER_GATE === "warn")) throw new Error("Long Ruler: " + problems.join("; "));
+
+const A0 = 1690, A1 = 2030, TODAY = 2026;
+const pct = (y) => ((y - A0) / (A1 - A0)) * 100;
+const rows = people.filter(drawn).sort((a, b) => a.start - b.start || a.name.localeCompare(b.name));
+const left = people.filter((p) => !drawn(p));
+const ticks = []; for (let y = 1700; y <= 2000; y += 50) ticks.push(y);
+
+const exact = rows.filter((p) => p.kind === "span" && !p.bornQ && !p.diedQ && !p.diedAlt && p.died != null);
+const life = (p) => p.died - p.born;
+const longest = exact.reduce((a, b) => (life(b) > life(a) ? b : a));
+const shortest = exact.reduce((a, b) => (life(b) < life(a) ? b : a));
+let peak = { y: A0, n: 0 };
+for (let y = A0; y <= TODAY; y++) { const n = rows.filter((p) => p.start <= y && y <= p.end).length; if (n >= peak.n) peak = { y, n }; }
+const first = rows[0];
+const famNames = [...new Map(families.map((f) => [f.slug, f])).values()];
+const attrs = (p) => ({ s: p.start, e: p.end });
+---
+<Base title="Long Ruler" dek="Everyone on the ten ladders as a bar on one scale, from 1690 to today, so you can see who could have met whom.">
+  <div class="hero" style="text-align:left">
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--prostamo)">Everybody at once</div>
+      <h1 style="font-size:clamp(38px,7vw,70px)">The Long Ruler</h1>
+      <p class="lead big">One bar for every person on the ten ladders, all on the same scale. A long bar is a long life. Put your finger
+      (or the pointer) on any year, and everybody whose bar you cross was alive then. That is how you find out who could have met whom.</p>
+    </div>
+  </div>
+
+  <section style="padding-top:6px">
+    <div class="wrap">
+      <div class="lrtool" id="lrtool" data-a0={A0} data-a1={A1}>
+        <div class="tmtop">
+          <label class="ryear" for="lryear"><span class="rylab">Year</span><output id="lrout" for="lryear">{peak.y}</output></label>
+          <input id="lryear" type="range" min={A0} max={TODAY} step="1" value={peak.y} aria-label="Year" />
+        </div>
+        <div class="rchips" id="lrchips" role="group" aria-label="Show one family">
+          <button type="button" class="rchip on" data-slug="">Everyone</button>
+          {famNames.map((f) => <button type="button" class={`rchip c-${f.key}`} data-slug={f.slug}>{f.name}</button>)}
+        </div>
+        <p class="tmsay" id="lrsay" aria-live="polite"><b id="lrn">{rows.filter((p) => p.start <= peak.y && peak.y <= p.end).length}</b> people on the ruler were alive in <b id="lry">{peak.y}</b>.</p>
+        <p class="tmmoment" id="lrnames"></p>
+
+        <div class="lr" id="lr">
+          <div class="lr-axis" aria-hidden="true">
+            <div class="lr-lab"></div>
+            <div class="lr-track">{ticks.map((y) => <span class="lr-tick" style={`left:${pct(y)}%`}>{y}</span>)}</div>
+          </div>
+          <div class="lr-rows" id="lrrows">
+            <div class="lr-line" id="lrline" style={`left:calc(var(--lw) + (100% - var(--lw)) * ${pct(peak.y) / 100})`} aria-hidden="true"></div>
+            {rows.map((p) => {
+              const end = p.end, soft = !!p.bornQ, open = p.died == null || p.diedQ === "after";
+              const w = pct(end) - pct(p.start);
+              return (
+                <div class={`lr-row c-${p.key}`} data-slug={p.slug} data-s={p.start} data-e={end} data-n={p.name}>
+                  <div class="lr-lab" title={`${p.name}: ${p.rel} of the ${p.fam} line`}><span class="lr-name">{p.name}</span><span class="lr-rel">{p.fam}</span></div>
+                  <div class="lr-track">
+                    {Array.from({ length: Math.floor((A1 - A0) / 50) }, (_, i) => <i class="lr-grid" style={`left:${pct(A0 + (i + 1) * 50 - 40)}%`}></i>)}
+                    <span class={`lr-bar${p.told ? " told" : ""}${soft ? " softl" : ""}${open ? " open" : ""}`}
+                          style={`left:${pct(p.start)}%;width:${Math.max(w, 0.5)}%`}
+                          title={`${p.name}: ${sayYear(p)}${p.told ? " (we think)" : ""}`}></span>
+                    {p.diedAlt && <span class="lr-tail" style={`left:${pct(p.died)}%;width:${pct(p.diedAlt) - pct(p.died)}%`}></span>}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <p class="rkey"><span class="lrk"></span> a life with years in the records &nbsp; <span class="lrk told"></span> “we think”: the archive rests it on a family story &nbsp;
+          <span class="lrk open"></span> still alive at the end, or no later date is recorded</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Some numbers, worked out from the bars</h2>
+      <div class="rfacts">
+        <div class="rfact"><b>{peak.n} people</b><span>The most alive at once: {peak.n} of the {rows.length} on the ruler were alive in {peak.y}.</span></div>
+        <div class="rfact"><b>{life(longest)} years</b><span>The longest life with exact years: {longest.name} of the {longest.fam} line, {longest.born}–{longest.died}.</span></div>
+        <div class="rfact"><b>{life(shortest)} years</b><span>The shortest: {shortest.name} of the {shortest.fam} line, {shortest.born}–{shortest.died}.</span></div>
+        <div class="rfact"><b>{first.start}</b><span>The oldest bar starts here: {first.name} of the {first.fam} line. This is said, not proved.</span></div>
+      </div>
+      <p class="rnote">Only people with years on a ladder get a bar, and living people never do. Where a ladder gives only a birth year, the bar runs to the year their child in the line
+      was born, and no further. {left.length} people on the ladders have no usable years yet and are not on the ruler:
+      {left.map((p, i) => <span>{i ? ", " : ""}{p.name} ({p.fam}{p.rel ? `, ${p.rel.toLowerCase()}` : ""})</span>)}.</p>
+    </div>
+  </section>
+
+  <script is:inline>
+  (function () {
+    var tool = document.getElementById("lrtool"); if (!tool) return;
+    var hd = document.querySelector("header.site");
+    function hh() { document.documentElement.style.setProperty("--hh", (hd ? hd.offsetHeight : 0) + "px"); }
+    hh(); window.addEventListener("resize", hh);
+    var A0 = +tool.dataset.a0, A1 = +tool.dataset.a1, TODAY = 2026;
+    var rows = [].slice.call(tool.querySelectorAll(".lr-row"));
+    var slider = document.getElementById("lryear"), line = document.getElementById("lrline");
+    var plot = document.getElementById("lrrows"), sel = "", pinned = true;
+    function setYear(y) {
+      y = Math.max(A0, Math.min(TODAY, Math.round(y)));
+      slider.value = y; document.getElementById("lrout").textContent = y; document.getElementById("lry").textContent = y;
+      line.style.left = "calc(var(--lw) + (100% - var(--lw)) * " + ((y - A0) / (A1 - A0)) + ")";
+      var names = [], n = 0;
+      rows.forEach(function (r) {
+        var on = !r.hidden && +r.dataset.s <= y && y <= +r.dataset.e;
+        r.classList.toggle("on", on);
+        if (on) { n++; names.push(r.dataset.n); }
+      });
+      document.getElementById("lrn").textContent = n;
+      document.getElementById("lrnames").textContent = n ? names.join(", ") : "";
+    }
+    function fromPointer(e) {
+      var t = rows[0].querySelector(".lr-track").getBoundingClientRect();
+      var f = (e.clientX - t.left) / t.width;
+      if (f < 0 || f > 1) return;
+      setYear(A0 + f * (A1 - A0));
+    }
+    var down = false;
+    plot.addEventListener("pointerdown", function (e) { down = true; fromPointer(e); });
+    plot.addEventListener("pointermove", function (e) { if (down || e.pointerType === "mouse") fromPointer(e); });
+    window.addEventListener("pointerup", function () { down = false; });
+    slider.addEventListener("input", function () { setYear(+slider.value); });
+    document.getElementById("lrchips").addEventListener("click", function (e) {
+      var b = e.target.closest(".rchip"); if (!b) return;
+      sel = b.getAttribute("data-slug");
+      [].forEach.call(document.querySelectorAll("#lrchips .rchip"), function (x) { x.classList.toggle("on", x === b); });
+      rows.forEach(function (r) { r.hidden = !!sel && r.dataset.slug !== sel; });
+      setYear(+slider.value);
+    });
+    setYear(+slider.value);
+  })();
+  </script>
+</Base>

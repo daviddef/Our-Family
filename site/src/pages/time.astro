@@ -1,0 +1,114 @@
+---
+import Base from "../layouts/Base.astro";
+import { u } from "../lib/url.js";
+import Flag from "../components/Flag.astro";
+import { families } from "../data/families.js";
+import { moments } from "../data/moments.js";
+import { buildLives, alive } from "../lib/lives.js";
+import { cardBody, familyRange } from "../lib/timecard.js";
+
+const { people, problems } = buildLives(families);
+if (problems.length && !(typeof process !== "undefined" && process.env.LADDER_GATE === "warn")) throw new Error("Time Machine: " + problems.join("; "));
+
+const FLAGS = ["croatia", "italy", "argentina", "uruguay", "safrica", "australia", "england"];
+const famInfo = families.map((f) => {
+  const mine = people.filter((p) => p.slug === f.slug);
+  return { key: f.key, slug: f.slug, name: f.name, ...familyRange(mine) };
+});
+const MIN = Math.min(...famInfo.map((f) => f.first)), MAX = 2026;
+const inYear = (y) => famInfo.filter((f) => people.some((p) => p.slug === f.slug && alive(p, y))).length;
+let best = MIN;
+for (let y = MIN; y <= MAX; y++) if (inYear(y) >= inYear(best)) best = y;     // the latest year with the most families present
+const ms = moments.map((m) => ({ y: Number((m.y.match(/\d{4}/) || [0])[0]), t: m.t, k: m.k })).filter((m) => m.y);
+const near = (y) => ms.filter((m) => Math.abs(m.y - y) <= 6).sort((a, b) => Math.abs(a.y - y) - Math.abs(b.y - y))[0];
+const m0 = near(best);
+const data = { people, fams: famInfo, moments: ms, min: MIN, max: MAX };
+const jumps = [MIN, 1820, 1900, 1957, 2025];
+---
+<Base title="Time Machine" dek="Slide the year from 1697 to today and see who was alive in each family, where they lived, and under which flag.">
+  <div class="hero" style="text-align:left">
+    <div class="wrap">
+      <div class="kicker" style="--c:var(--britain)">Pick a year</div>
+      <h1 style="font-size:clamp(38px,7vw,70px)">The Time Machine</h1>
+      <p class="lead big">Slide the year and see where each of the ten families was standing. Who is the oldest person we can
+      name who was alive then? Where did they live? Some years only a few families have a name.</p>
+    </div>
+  </div>
+
+  <svg class="flsprite" width="0" height="0" aria-hidden="true" focusable="false">
+    {FLAGS.map((k) => <symbol id={`fl-${k}`} viewBox="-1 -3 36 27"><Flag kind={k} id={`tm-${k}`} x={0} y={0} /></symbol>)}
+  </svg>
+
+  <section style="padding-top:6px">
+    <div class="wrap">
+      <div class="tmbar" id="tmbar">
+        <div class="tmtop">
+          <button type="button" class="rplay" id="tmplay">Play</button>
+          <label class="ryear" for="tmyear"><span class="rylab">Year</span><output id="tmout" for="tmyear">{best}</output></label>
+          <input id="tmyear" type="range" min={MIN} max={MAX} step="1" value={best} aria-label="Year" />
+        </div>
+        <div class="tmjump" role="group" aria-label="Jump to a year">
+          <button type="button" class="gstep" id="tmback">− 10 years</button>
+          <button type="button" class="gstep" id="tmfwd">+ 10 years</button>
+          {jumps.map((y) => <button type="button" class="rchip" data-y={y}>{y}</button>)}
+        </div>
+        <p class="tmsay" id="tmsay" aria-live="polite"><b id="tmn">{inYear(best)}</b> of the ten families have somebody we can name.</p>
+        <p class="tmmoment" id="tmmoment">{m0 ? `Around then (${m0.y}): ${m0.t}` : ""}</p>
+      </div>
+      <div class="tmgrid" id="tmgrid">
+        {famInfo.map((f) => (
+          <article class={`tm-card c-${f.key}`} data-slug={f.slug}>
+            <h2><a href={u(`/${f.slug}/`)}>{f.name}</a></h2>
+            <div class="tm-body" set:html={cardBody(f, people.filter((p) => p.slug === f.slug), best)}></div>
+          </article>
+        ))}
+      </div>
+      <p class="rnote">The years are the ones on each family’s ladder. Where a ladder gives only a birth year, we count the person as alive until their
+      child in the line was born, and no longer. “We think” marks a name the archive rests on a family story rather than a paper. A flag is the
+      country a place is in <i>today</i>: Gračišće was ruled from Vienna and then Rome, but it is in Croatia now. Two flags with an arrow mean the person
+      moved, and the records do not say in which year.</p>
+      <script type="application/json" id="tmdata" set:html={JSON.stringify(data)}></script>
+    </div>
+  </section>
+
+  <script>
+    import { alive } from "../lib/lives.js";
+    import { cardBody } from "../lib/timecard.js";
+    const D = JSON.parse(document.getElementById("tmdata")!.textContent!);
+    const slider = document.getElementById("tmyear") as HTMLInputElement;
+    const out = document.getElementById("tmout")!;
+    const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const mine = (slug: string) => D.people.filter((p: any) => p.slug === slug);
+    function show(y: number) {
+      y = Math.max(D.min, Math.min(D.max, Math.round(y)));
+      slider.value = String(y); out.textContent = String(y);
+      let n = 0;
+      document.querySelectorAll<HTMLElement>(".tm-card").forEach((card) => {
+        const f = D.fams.find((x: any) => x.slug === card.dataset.slug);
+        if (D.people.some((p: any) => p.slug === f.slug && alive(p, y))) n++;
+        card.querySelector(".tm-body")!.innerHTML = cardBody(f, mine(f.slug), y);
+      });
+      document.getElementById("tmn")!.textContent = String(n);
+      const near = D.moments.filter((m: any) => Math.abs(m.y - y) <= 6).sort((a: any, b: any) => Math.abs(a.y - y) - Math.abs(b.y - y))[0];
+      document.getElementById("tmmoment")!.textContent = near ? `Around then (${near.y}): ${near.t}` : "";
+    }
+    let timer: number | null = null, last = 0;
+    function stop() { if (timer) cancelAnimationFrame(timer); timer = null; document.getElementById("tmplay")!.textContent = "Play"; }
+    function play() {
+      let y = +slider.value >= D.max ? D.min : +slider.value;
+      document.getElementById("tmplay")!.textContent = "Pause"; last = performance.now();
+      const tick = (now: number) => {
+        y += ((now - last) / 1000) * (reduce ? 40 : 16); last = now;
+        show(y);
+        if (y >= D.max) { stop(); return; }
+        timer = requestAnimationFrame(tick);
+      };
+      timer = requestAnimationFrame(tick);
+    }
+    document.getElementById("tmplay")!.addEventListener("click", () => (timer ? stop() : play()));
+    slider.addEventListener("input", () => { stop(); show(+slider.value); });
+    document.getElementById("tmback")!.addEventListener("click", () => { stop(); show(+slider.value - 10); });
+    document.getElementById("tmfwd")!.addEventListener("click", () => { stop(); show(+slider.value + 10); });
+    document.querySelectorAll<HTMLElement>(".tmjump .rchip").forEach((b) => b.addEventListener("click", () => { stop(); show(+b.dataset.y!); }));
+  </script>
+</Base>
